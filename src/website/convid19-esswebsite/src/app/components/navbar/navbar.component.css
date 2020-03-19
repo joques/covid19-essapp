@@ -6,10 +6,7 @@
       color: #fff;
   } */
 }
-.nv{
 
-  background-color: rgba(0, 0, 0, 0.329);
-}
 .navb {
   font-family: karmina;
   font-size: 20px;
@@ -20,4 +17,33 @@
 float: inline-end;
 }
 
+nav {
+    background-color: rgba(0, 0, 0, 0.9);
+    transition-duration: 1.2s;
+}
+.navbar .navbar-brand {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 26px;
+    position: relative;
+    left: 20px;
+}
 
+.navbar .nav-item .nav-link {
+    color: rgba(255, 255, 255,0.7);
+    font-weight: 100;
+}
+.navbar .nav-item.active .nav-link{
+    color: #fff;
+    font-weight: bold;
+}
+
+.navbar .nav-item.activeClick .nav-link {
+    color: #DC3545;
+}
+
+@media screen and (min-width: 768px) {
+    nav {
+        background-color: transparent;
+    }
+}
