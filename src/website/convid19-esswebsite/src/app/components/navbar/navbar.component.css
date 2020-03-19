@@ -6,7 +6,18 @@
       color: #fff;
   } */
 }
+.nv{
+
+  background-color: rgba(0, 0, 0, 0.329);
+}
+.navb {
+  font-family: karmina;
+  font-size: 20px;
+  font-weight: bold;
+}
 
 .navfloat {
 float: inline-end;
 }
+
+
