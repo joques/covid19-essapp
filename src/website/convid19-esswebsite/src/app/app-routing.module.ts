@@ -11,6 +11,9 @@ import { SymptomsComponent } from './components/symptoms/symptoms.component';
 import { TreatmentComponent } from './components/treatment/treatment.component';
 import { MeasuresComponent } from './components/measures/measures.component';
 import { TipsComponent } from './components/tips/tips.component';
+import { StatisticsLatestComponent } from './components/statistics-latest/statistics-latest.component';
+import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
+import { CircularsComponent } from './components/circulars/circulars.component';
 
 
 const routes: Routes = [
@@ -28,6 +31,9 @@ const routes: Routes = [
   { path: 'app-treatment', component: TreatmentComponent },
   { path: 'app-measures', component: MeasuresComponent },
   { path: 'app-tips', component: TipsComponent },
+  { path: 'app-statistics-latest', component: StatisticsLatestComponent },
+  { path: 'app-statistics-periodic', component: StatisticsPeriodicComponent },
+  { path: 'app-circulars', component: CircularsComponent },
 ];
 
 @NgModule({

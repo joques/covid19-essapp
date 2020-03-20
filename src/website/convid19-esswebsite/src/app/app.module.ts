@@ -18,6 +18,7 @@ import { MeasuresComponent } from './components/measures/measures.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { StatisticsLatestComponent } from './components/statistics-latest/statistics-latest.component';
 import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
+import { CircularsComponent } from './components/circulars/circulars.component';
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import { StatisticsPeriodicComponent } from './components/statistics-periodic/st
 
     StatisticsLatestComponent,
 
-    StatisticsPeriodicComponent
+    StatisticsPeriodicComponent,
+
+    CircularsComponent
 
   ],
   imports: [
