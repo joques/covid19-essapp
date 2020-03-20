@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
@@ -10,6 +10,7 @@ import { TransmissionComponent } from './components/transmission/transmission.co
 import { SymptomsComponent } from './components/symptoms/symptoms.component';
 import { TreatmentComponent } from './components/treatment/treatment.component';
 import { MeasuresComponent } from './components/measures/measures.component';
+import { TipsComponent } from './components/tips/tips.component';
 
 
 const routes: Routes = [
@@ -25,12 +26,13 @@ const routes: Routes = [
   { path: 'app-transmission', component: TransmissionComponent },
   { path: 'app-symptoms', component: SymptomsComponent },
   { path: 'app-treatment', component: TreatmentComponent },
-  { path: 'app-measures', component: MeasuresComponent }
+  { path: 'app-measures', component: MeasuresComponent },
+  { path: 'app-tips', component: TipsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
-    HttpClientModule   ],
+    HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

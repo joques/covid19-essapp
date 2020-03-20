@@ -15,6 +15,9 @@ import { TransmissionComponent } from './components/transmission/transmission.co
 import { SymptomsComponent } from './components/symptoms/symptoms.component';
 import { TreatmentComponent } from './components/treatment/treatment.component';
 import { MeasuresComponent } from './components/measures/measures.component';
+import { TipsComponent } from './components/tips/tips.component';
+import { StatisticsLatestComponent } from './components/statistics-latest/statistics-latest.component';
+import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
 
 
 @NgModule({
@@ -37,7 +40,13 @@ import { MeasuresComponent } from './components/measures/measures.component';
 
     TreatmentComponent,
 
-    MeasuresComponent
+    MeasuresComponent,
+
+    TipsComponent,
+
+    StatisticsLatestComponent,
+
+    StatisticsPeriodicComponent
 
   ],
   imports: [
