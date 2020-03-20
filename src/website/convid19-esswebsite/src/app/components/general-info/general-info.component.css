@@ -1,9 +1,5 @@
 .home {
-  background-image: url(../../../assets/img/image.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
+padding-top: 7rem;
 }
 
 
@@ -70,7 +66,7 @@
 }
 
 .general {
-  padding: 50px 15px;
+  padding: 70px 15px;
 }
 
 .general-img-container {
@@ -126,6 +122,10 @@
   margin-right: 8px;
   color: #DC3545;
 }
+h3 span {
+  margin-right: 8px;
+  color: #DC3545;
+}
 
 .btn {
   float: none;
@@ -142,7 +142,10 @@
   border-top: 1px dotted rgb(85, 85, 85);
   margin: 10px auto 0;
 }
-
+div.hr {
+  border-top: 1px dotted rgb(85, 85, 85);
+  margin: 10px auto 0;
+}
 
 
 /* general MEDIA QUERIES */
@@ -165,18 +168,6 @@
       padding: 0 15px;
   }
 
-  .measures-left {
-    margin-top: 22px;
-    width: 60%;
-    float: left;
-    padding: 0 15px;
-}
-
-.measures-right {
-    width: 40%;
-    float: right;
-    padding: 0 15px;
-}
   .general-body div.hr {
       margin-bottom: 0;
   }
@@ -199,15 +190,6 @@
   .general-right {
       width: 57%;
   }
-  .measures-left {
-    width: 57%;
-    text-align: right;
-    margin-left: 30px;
-}
-
-.measures-right {
-    width: 35%;
-}
 
   .general-img-container {
       position: relative;
@@ -239,7 +221,7 @@
 
 }
 .general {
-    padding: 50px 15px;
+    padding: 70px 15px;
 }
 
 .general-img-container {
@@ -335,18 +317,6 @@ h4 span {
         float: right;
         padding: 0 15px;
     }
-    .measures-left {
-      margin-top: 22px;
-      width: 60%;
-      float: left;
-      padding: 0 15px;
-  }
-
-  .measures-right {
-      width: 40%;
-      float: right;
-      padding: 0 15px;
-  }
 
     .general-body div.hr {
         margin-bottom: 0;
@@ -370,16 +340,6 @@ h4 span {
     .general-right {
         width: 57%;
     }
-
-    .measures-left {
-      width: 57%;
-      text-align: right;
-      margin-left: 30px;
-  }
-
-  .measures-right {
-      width: 35%;
-  }
 
     .general-img-container {
         position: relative;
