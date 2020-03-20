@@ -87,7 +87,7 @@ class GeneralInfoWidget extends StatelessWidget {
                         ),
                         Positioned(
                           left: 20,
-                          top: 0,
+                          top: 20,
                           right: 88,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -103,7 +103,7 @@ class GeneralInfoWidget extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(right: 21),
+                                margin: EdgeInsets.only(right: 21, top: 10),
                                 child: Text(
                                   "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
                                   textAlign: TextAlign.left,
@@ -240,8 +240,6 @@ class GeneralInfoWidget extends StatelessWidget {
                                 width: 345,
                                 height: 80,
                                 child: Row(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
                                   children: [
                                     Container(
                                       width: 168,
