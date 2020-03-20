@@ -9,6 +9,9 @@ import { HomeComponent } from './components/home/home.component';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
+import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
+import { TransmissionComponent } from './components/transmission/transmission.component';
 
 
 @NgModule({
@@ -19,7 +22,13 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 
     GeneralInfoComponent,
 
-    AboutUsComponent
+    AboutUsComponent,
+
+    CoronaLatestInfoComponent,
+
+    CoronaWhatisComponent,
+
+    TransmissionComponent
 
   ],
   imports: [
