@@ -10,6 +10,17 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
+  //Dummy Data
+  String refreshDate = "Thur, 19 March 2020, 7:30 am";
+  int confirmedDeaths = 0;
+  int confirmedCases = 0;
+  int recoveredPatients = 0;
+  int suspectedCases = 0;
+
+  //Push Notification Consent
+  bool _consent = false;
+
+  //View By Area Drop Down Value
   var _value;
 
   DropdownButton _itemDown() => DropdownButton<String>(
@@ -73,6 +84,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         onChanged: (value) {
           setState(() {
             _value = value;
+            print(_value);
           });
         },
         hint: Text('All Namibia'),
@@ -93,7 +105,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       body: Column(
         children: <Widget>[
           Container(
-            height: 70,
+            height: 16,
             margin: EdgeInsets.only(
               left: 20,
               right: 20,
@@ -103,43 +115,36 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    width: 79,
-                    child: Text(
-                      "Statistics",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: AppColors.primaryText,
-                        fontFamily: "Roboto",
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                      ),
+                Container(
+                  child: Text(
+                    "Statistics",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: AppColors.primaryText,
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
                     ),
                   ),
                 ),
                 Spacer(),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(top: 3),
-                    child: Text(
-                      "As of Thur, 19 March 2020, 7:30 am",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColors.secondaryText,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 13,
-                      ),
+                Container(
+                  margin: EdgeInsets.only(top: 3),
+                  child: Text(
+                    "As of $refreshDate",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppColors.secondaryText,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 13,
                     ),
                   ),
                 ),
               ],
             ),
-          ),
+          ), // Statistics Heading
           Container(
-            height: 120,
+            height: 180,
             margin: EdgeInsets.only(
               left: 20,
               right: 10,
@@ -153,15 +158,48 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     Row(
                       children: <Widget>[
                         Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: AppColors.accentElement,
-                              borderRadius: BorderRadius.circular(9.0),
-                            ),
-                            child: Container()),
+                          width: 168,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: AppColors.accentElement,
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 10),
+                                child: Text(
+                                  //TODO: Resize Text After 100000
+                                  confirmedCases.toString(),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.primaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 38,
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, bottom: 10),
+                                child: Text(
+                                  "CONFIRMED CASES",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.secondaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
+                    ), //Confirmed Cases
                     SizedBox(
                       width: 10,
                       height: 10,
@@ -169,15 +207,48 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     Row(
                       children: <Widget>[
                         Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: AppColors.accentElement,
-                              borderRadius: BorderRadius.circular(9.0),
-                            ),
-                            child: Container()),
+                          width: 168,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: AppColors.accentElement,
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 10),
+                                child: Text(
+                                  //TODO: Resize Text After 100000
+                                  recoveredPatients.toString(),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.primaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 38,
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, bottom: 10),
+                                child: Text(
+                                  "RECOVERED PATIENTS",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.secondaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
+                    ), // Recovered Patients
                   ],
                 ),
                 SizedBox(
@@ -189,15 +260,48 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     Row(
                       children: <Widget>[
                         Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: AppColors.accentElement,
-                              borderRadius: BorderRadius.circular(9.0),
-                            ),
-                            child: Container()),
+                          width: 168,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: AppColors.accentElement,
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 10),
+                                child: Text(
+                                  //TODO: Resize Text After 100000
+                                  confirmedDeaths.toString(),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.primaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 38,
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, bottom: 10),
+                                child: Text(
+                                  "CONFIRMED DEATHS",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.secondaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
+                    ), // Confirmed Deaths
                     SizedBox(
                       width: 10,
                       height: 10,
@@ -205,20 +309,80 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     Row(
                       children: <Widget>[
                         Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: AppColors.accentElement,
-                              borderRadius: BorderRadius.circular(9.0),
-                            ),
-                            child: Container()),
+                          width: 168,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: AppColors.accentElement,
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 10),
+                                child: Text(
+                                  //TODO: Resize Text After 100000
+                                  suspectedCases.toString(),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.primaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 38,
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, bottom: 10),
+                                child: Text(
+                                  "SUSPECTED CASES",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: AppColors.secondaryText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
+                    ), // Suspected Cases
                   ],
                 ),
               ],
             ),
-          ),
+          ), // Statistics Data
+          Container(
+            height: 16,
+            margin: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 15,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    child: Text(
+                      "View By Area",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ), // View By Area Heading
           Container(
               height: 50,
               margin: EdgeInsets.only(
@@ -239,7 +403,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   decoration: BoxDecoration(
                     color: AppColors.accentElement,
                   ),
-                  child: _itemDown())),
+                  child: _itemDown())), // Drop Down Menu
+          Divider(),
           Container(
             height: 70,
             margin: EdgeInsets.only(
@@ -268,10 +433,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       Container(
                         width: 52,
                         height: 45,
-                        child: Switch.adaptive(
+                        child: Switch(
                           value: true,
                           inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            setState(() {
+                              _consent = value;
+                              print(_consent);
+                            });
+                          },
                           activeColor: AppColors.primaryElement,
                           activeTrackColor: AppColors.primaryElement,
                         ),
@@ -293,7 +463,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 ),
               ],
             ),
-          ),
+          ), // Push Notifications Consent
         ],
       ),
     );
