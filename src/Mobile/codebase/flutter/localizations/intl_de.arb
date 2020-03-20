@@ -1,0 +1,392 @@
+{
+ "symptoms4widgetItemAppBar": "back",
+ "@symptoms4widgetItemAppBar": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetByPressingThisButText": "By Pressing This Button We Your Are Accepting Terms of Service\nand That You Have Answered The Questions Truthfuly",
+ "@symptoms4widgetByPressingThisButText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetDoYouHaveADryCoText": "Do You Have A Dry cough?",
+ "@symptoms4widgetDoYouHaveADryCoText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetIsYourTemperatureText": "Is Your Temperature 38ºC and Above",
+ "@symptoms4widgetIsYourTemperatureText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetDoYouHaveADifficText": "Do you have A Difficulty Breathing?",
+ "@symptoms4widgetDoYouHaveADifficText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetWhatIsCoronavirusText": "What is CoronaVirus (COVID-19)?",
+ "@symptoms4widgetWhatIsCoronavirusText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetExcepteurSintOccaeText": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+ "@symptoms4widgetExcepteurSintOccaeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "symptoms4widgetButtonButton": "Call: 0800 100 100",
+ "@symptoms4widgetButtonButton": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetByPressingThisButText": "By Pressing This Button We Your Are Accepting Terms of Service\nand That You Have Answered The Questions Truthfuly",
+ "@prevention5widgetByPressingThisButText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetAvoidTouchingYourText": "Avoid Touching your face",
+ "@prevention5widgetAvoidTouchingYourText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetKeepADistanceText": "Keep a distance",
+ "@prevention5widgetKeepADistanceText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetWashYourHandsFreqText": "Wash your hands frequently with soap in running water.",
+ "@prevention5widgetWashYourHandsFreqText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetCoverYourMouthAndText": "Cover your mouth and nose with a flexed elbow or tissue when coughing or sneezing.",
+ "@prevention5widgetCoverYourMouthAndText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetWhatIsCoronavirusText": "What is CoronaVirus (COVID-19)?",
+ "@prevention5widgetWhatIsCoronavirusText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetExcepteurSintOccaeText": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+ "@prevention5widgetExcepteurSintOccaeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "prevention5widgetButtonButton": "FIND HELP",
+ "@prevention5widgetButtonButton": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "officialcircularsmemos6widgetItem": "Circulars",
+ "@officialcircularsmemos6widgetItem": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "officialcircularsmemos6widgetTodayText": "Today",
+ "@officialcircularsmemos6widgetTodayText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "blogitemwidgetExcepteurSintOccaeText": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia, non proident, sunt in culpa.",
+ "@blogitemwidgetExcepteurSintOccaeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "blogitemwidgetByAuthorNameText": "By Author Name",
+ "@blogitemwidgetByAuthorNameText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "blogitemwidgetTitleText": "Title",
+ "@blogitemwidgetTitleText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "blogitemwidgetReadMoreText": "Read More",
+ "@blogitemwidgetReadMoreText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetItem": "Statistics",
+ "@detailedstatistics3widgetItem": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetAllOfNamibiaText": "All of Namibia",
+ "@detailedstatistics3widgetAllOfNamibiaText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetTextText": "3",
+ "@detailedstatistics3widgetTextText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetSuspectedCasesText": "SUSPECTED CASES",
+ "@detailedstatistics3widgetSuspectedCasesText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetTextTwoText": "1",
+ "@detailedstatistics3widgetTextTwoText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetRecoveredPatientsText": "RECOVERED PATIENTS",
+ "@detailedstatistics3widgetRecoveredPatientsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetTextThreeText": "1",
+ "@detailedstatistics3widgetTextThreeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetConfirmedCasesText": "CONFIRMED CASES",
+ "@detailedstatistics3widgetConfirmedCasesText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetTextFourText": "0",
+ "@detailedstatistics3widgetTextFourText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetConfirmedDeathsText": "CONFIRMED DEATHS",
+ "@detailedstatistics3widgetConfirmedDeathsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetThisDataIsProvideText": "This Data is provided to you by the Ministry of …",
+ "@detailedstatistics3widgetThisDataIsProvideText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetPushNotificationsText": "Push Notifications",
+ "@detailedstatistics3widgetPushNotificationsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetByEnablingThisOptText": "By Enabling this option you will receive the latest notifications ",
+ "@detailedstatistics3widgetByEnablingThisOptText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetStatisticsText": "Statistics",
+ "@detailedstatistics3widgetStatisticsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "detailedstatistics3widgetAsOfThur19MarchText": "As of Thur, 19 March 2020, 7:30 am",
+ "@detailedstatistics3widgetAsOfThur19MarchText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetItem": "Testing Centers",
+ "@testingcentres2widgetItem": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetFromText": "From",
+ "@testingcentres2widgetFromText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetCurrentLocationText": "Current Location",
+ "@testingcentres2widgetCurrentLocationText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetToText": "To",
+ "@testingcentres2widgetToText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetJacksonKaujeuaSText": "13 Jackson Kaujeua Street.",
+ "@testingcentres2widgetJacksonKaujeuaSText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetLocationAccessText": "Location Access",
+ "@testingcentres2widgetLocationAccessText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetYouNeedToEnableTText": "You Need To Enable this option for you to use this feature.",
+ "@testingcentres2widgetYouNeedToEnableTText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "testingcentres2widgetButtonButton": "FIND NEAREST CENTER",
+ "@testingcentres2widgetButtonButton": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "post7widgetExcepteurSintOccaeText": "Excepteur sint occaecat cupidatat non proident, ",
+ "@post7widgetExcepteurSintOccaeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "post7widgetLoremIpsumDolorSiText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco poriti laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in uienply voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat norin proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in uienply voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+ "@post7widgetLoremIpsumDolorSiText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "post7widgetPostedJune22017Text": "Posted: June 2, 2017",
+ "@post7widgetPostedJune22017Text": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "post7widgetByAuthorNameText": "by Author Name",
+ "@post7widgetByAuthorNameText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetItem": "General",
+ "@generalinfo1widgetItem": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetExcepteurSintOccaeText": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+ "@generalinfo1widgetExcepteurSintOccaeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetWhatIsCoronavirusText": "What is CoronaVirus (COVID-19)?",
+ "@generalinfo1widgetWhatIsCoronavirusText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetStatisticsText": "Statistics",
+ "@generalinfo1widgetStatisticsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetAsOfThur19MarchText": "As of Thur, 19 March 2020, 7:30 am",
+ "@generalinfo1widgetAsOfThur19MarchText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetTextText": "3",
+ "@generalinfo1widgetTextText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetSuspectedCasesText": "SUSPECTED CASES",
+ "@generalinfo1widgetSuspectedCasesText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetTextTwoText": "0",
+ "@generalinfo1widgetTextTwoText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetRecoveredPatientsText": "RECOVERED PATIENTS",
+ "@generalinfo1widgetRecoveredPatientsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetConfirmedCasesText": "CONFIRMED CASES",
+ "@generalinfo1widgetConfirmedCasesText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetTextThreeText": "1",
+ "@generalinfo1widgetTextThreeText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetTextFourText": "0",
+ "@generalinfo1widgetTextFourText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetConfirmedDeathsText": "CONFIRMED DEATHS",
+ "@generalinfo1widgetConfirmedDeathsText": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetButtonButton": "Detailed Statistics",
+ "@generalinfo1widgetButtonButton": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetSymptomsButton": "SYMPTOMS",
+ "@generalinfo1widgetSymptomsButton": {
+  "type": "text",
+  "placeholders": {
+  }
+ },
+ "generalinfo1widgetPreventionButton": "PREVENTION",
+ "@generalinfo1widgetPreventionButton": {
+  "type": "text",
+  "placeholders": {
+  }
+ }
+}
