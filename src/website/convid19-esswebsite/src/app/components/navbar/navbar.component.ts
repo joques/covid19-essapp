@@ -8,7 +8,7 @@ import { DOCUMENT } from "@angular/common";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( @Inject(DOCUMENT) private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
     // craating and script element and add it to the body

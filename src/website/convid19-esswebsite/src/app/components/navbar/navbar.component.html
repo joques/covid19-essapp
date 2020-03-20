@@ -1,361 +1,74 @@
-<!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-  <div class="container">
 
-
- 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link waves-effect" href="#"><strong></strong>
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-
-      </ul>
-      
-
-    
-      <ul class="navbar-nav nav-flex-icons">
-        <ng-container >
-          <li class="nav-item" mdbDropdown>
-            <a class="nav-link waves-effect" [routerLink]="['']">
-              <strong class="black-text">General Info</strong>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-
-            </a>
-          </li>
-          <li class="nav-item" mdbDropdown>
-            <a class="nav-link waves-effect" [routerLink]="['']">
-              <strong class="black-text">Preventative Measures</strong>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-
-            </a>
-          </li>
-          <li class="nav-item" mdbDropdown>
-            <a class="nav-link waves-effect" [routerLink]="['']">
-              <strong class="black-text">Symptoms</strong>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-
-            </a>
-            
-          </li>
-          <li class="nav-item" mdbDropdown>
-            <a class="nav-link waves-effect" [routerLink]="['']">
-              <strong class="black-text">Testing Centres</strong>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-
-            </a>
-          </li>
-
-          <li class="nav-item" mdbDropdown>
-            <a class="nav-link waves-effect" [routerLink]="['']">
-              <strong class="black-text">Official Circulars & Memos</strong>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-
-            </a>
-          </li>
-
-
-
-        </ng-container>
-
-
-
-      </ul>
-    </div>
-
-  </div>
-</nav>
-
--->
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark light fixed-top">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color-dark fixed-top">
+
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#home">WHO</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" style="color: azure;" [routerLink]="['/home']">WHO</a></mdb-navbar-brand>
+
   <!-- Collapsible content -->
   <links>
 
     <!-- Links -->
-    <ul mdbScrollSpy="scrollspy1" class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a mdbScrollSpyLink="link_1" class="nav-link waves-light" href="#link1" mdbWavesEffect>General Info<span
-            class="sr-only">(current)</span></a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/app-about-us']"> About Us</a>
       </li>
-      <li class="nav-item">
-        <a mdbScrollSpyLink="link_2" class="nav-link waves-light" href="#link2" mdbWavesEffect>Preventative Measures</a>
+      <!-- Dropdown -->
+      <li class="nav-item btn-group" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          General Info<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-corona-latest-info']">Last Date Updated</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-corona-whatis']">What is Corona Virus?</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-transmission']">Transmission mode</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-circulars']">Common symptoms</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-treatment']">Vaccine and treatment</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-measures']">Preventative measures</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Myths and Facts</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-tips']">Advice and Tips </a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a mdbScrollSpyLink="link_3" class="nav-link waves-light" href="#link3" mdbWavesEffect>Symptoms</a>
+      <li class="nav-item btn-group" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Statistics<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-statistics-latest']">Last Date Updated</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Recovered</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Death cases</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Suspected cases</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Confirmed cases</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">World wide</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a mdbScrollSpyLink="link_4" class="nav-link waves-light" href="#link4" mdbWavesEffect>Testing Centres</a>
+      <li class="nav-item btn-group">
+        <a dropdownToggle mdbWavesEffect class="nav-link" [routerLink]="['/faq']" mdbWavesEffect>
+          Faq</a>
       </li>
-      <li class="nav-item">
-        <a mdbScrollSpyLink="link_5" class="nav-link waves-light" href="#link5" mdbWavesEffect>Official Circulars &
-          Memos</a>
+      <li class="nav-item btn-group">
+        <a dropdownToggle mdbWavesEffect class="nav-link" [routerLink]="['/contact']" mdbWavesEffect>
+          Contact</a>
+      </li>
+      <li class="nav-item btn-group" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          More<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Latest Discoveries</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Research/Publications</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Memos and Circulars</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Health Facilities</a>
+        </div>
       </li>
     </ul>
     <!-- Links -->
 
+    <!-- Search form -->
+    <!-- <form class="form-inline waves-light" mdbWavesEffect>
+      <div class="md-form my-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      </div>
+    </form> -->
   </links>
   <!-- Collapsible content -->
 
 </mdb-navbar>
-
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
-<div>
-  <section id="home" class="home">
-    <div class="trans-background">
-      <div class="welcome-message">
-        <span>Get you facts right on</span>
-        <h1>Corona Virus - Covid 19</h1>
-        <p>Brought to you by WHO</p>
-      </div>
-    </div>
-  </section>
-</div>
-
 <!--/.Navbar-->
-
-<div class="scrollspy-example z-depth-1 mt-4 px-5">
-  <div mdbScrollSpyElement="scrollspy1" id="link_1">
-    <mdb-card>
-      <div id="general" class="general container">
-        <div id="link1">
-          <mdb-card-body>
-            <mdb-card-text>
-              <section id="general" class="general container">
-                <div class="general-left">
-                  <div class="general-img-container">
-                    <div class="general-img-shadow"></div>
-                    <img src="../../../assets/img/virus.png" alt="profile">
-
-                  </div>
-                </div>
-                <div class="general-right">
-                  <div class="general-body">
-                    <h2 class="text-center">General<span> Info</span></h2>
-                    <h3>What is Corona Virus?</h3>
-                    <p>Coronaviruses (CoV) are a large family of viruses that cause illness ranging from the common cold
-                      to
-                      more severe diseases such as Middle East Respiratory Syndrome (MERS-CoV) and Severe Acute
-                      Respiratory
-                      Syndrome (SARS-CoV).<br>
-                      <br> Coronavirus disease (COVID-19) is a new strain that was discovered in 2019 and has not been
-                      previously identified in humans.<br>
-                      <br>
-                      Coronaviruses are zoonotic, meaning they are transmitted between animals and people. Detailed
-                      investigations found that SARS-CoV was transmitted from civet cats to humans and MERS-CoV from
-                      dromedary camels to humans. Several known coronaviruses are circulating in animals that have not
-                      yet
-                      infected humans. <br>
-                      <br>
-                      Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and
-                      breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute
-                      respiratory
-                      syndrome, kidney failure and even death.<br>
-                      <br>
-                      Standard recommendations to prevent infection spread include regular hand washing, covering mouth
-                      and
-                      nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone
-                      showing symptoms of respiratory illness such as coughing and sneezing.</p>
-                    <div class="hr"></div>
-
-                  </div>
-
-                </div>
-                <div class="clr"></div>
-              </section>
-            </mdb-card-text>
-
-            <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
-          </mdb-card-body>
-        </div>
-      </div>
-
-    </mdb-card>
-  </div>
-  <div mdbScrollSpyElement="scrollspy1" id="link_2">
-    <mdb-card>
-      <div id="general" class="general container">
-        <div id="link2">
-          <mdb-card-body>
-            <mdb-card-text>
-              <section id="general" class="general container">
-                <div class="general-left">
-                  <div class="general-img-container">
-                    <div class="general-img-shadow"></div>
-                    <img src="../../../assets/img/person.png" alt="profile">
-                  </div>
-                </div>
-                <div class="general-right">
-                  <div class="general-body">
-                    <h2 class="text-center">Preventative <span>Measures</span></h2>
-                    <h3 style="float:left !important;">Take steps to protect yourself</h3>
-                    <h4 style="float:left !important;">Clean your hands often</h4>
-                    <p style="float:left !important; text-align: left !important;"><strong>Wash your hands</strong>
-                      often with soap and water for at least 20 seconds especially after you have been in a public
-                      place, or after blowing your nose, coughing, or sneezing.<br>
-                      <br> If soap and water are not readily available, <strong>use a hand sanitizer that contains at
-                        least 60% alcohol</strong>. Cover all surfaces of your hands and rub them together until they
-                      feel dry.<br>
-                      <br>
-                      <strong>Avoid touching your eyes, nose, and mouth</strong> with unwashed hands. <br>
-                      <br>
-                    </p>
-                    <h4 style="float:left !important;">Avoid close contact</h4>
-                    <p style="float:left !important; text-align: left !important;">
-                      <strong>Avoid close contact</strong> with people who are sick<br>
-                      Put <strong>distance between yourself and other people</strong> if COVID-19 is spreading in your
-                      community. This is especially important for people who are at higher risk of getting very sick.
-                    </p>
-                    <div class="about-footer">
-                      <a class="btn btn-danger" style="outline-color: white; float: left !important;" [routerLink]="''"
-                        target="blank">Read more
-                      </a>
-
-                    </div>
-                    <div class="hr"></div>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </section>
-            </mdb-card-text>
-
-            <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
-          </mdb-card-body>
-        </div>
-      </div>
-
-    </mdb-card>
-  </div>
-  <div mdbScrollSpyElement="scrollspy1" id="link_3">
-    <mdb-card>
-      <div id="general" class="general container">
-        <div id="link3">
-          <mdb-card-body>
-            <mdb-card-text>
-              <section id="general" class="general container">
-                <div class="general-left">
-                  <div class="general-img-container">
-                    <div class="general-img-shadow"></div>
-                    <img src="../../../assets/img/symtom.png" alt="profile">
-                  </div>
-                </div>
-                <div class="general-right">
-                  <div class="general-body">
-                    <h2 class="text-center">Symptoms</h2>
-                    <h4>If you are infected you may experience the following symptoms</h4>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cough</li>
-                      <li class="list-group-item">Fever</li>
-                      <li class="list-group-item">Tiredness</li>
-                      <li class="list-group-item">Porta ac consectetur ac</li>
-                      <li class="list-group-item">Difficulty breathing </li>
-                    </ul>
-                    <div class="hr"></div>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </section>
-            </mdb-card-text>
-
-            <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
-          </mdb-card-body>
-        </div>
-      </div>
-
-    </mdb-card>
-  </div>
-  <div mdbScrollSpyElement="scrollspy1" id="link_4">
-    <mdb-card>
-      <div id="general" class="general container">
-        <div id="link4">
-          <mdb-card-body>
-            <mdb-card-text>
-              <section id="general" class="general container">
-                <div class="general-left">
-                  <div class="general-img-container">
-                    <div class="general-img-shadow"></div>
-                    <img src="../../../assets/img/hospital.png" alt="profile">
-                  </div>
-                </div>
-                <div class="general-right">
-                  <div class="general-body">
-                    <h2 class="text-center">Testing <span>Center</span></h2>
-                    <h3>Content here</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam tenetur magnam commodi officia
-                      adipisci fugit voluptatum labore dolorum voluptates similique.</p>
-                    <div class="hr"></div>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </section>
-            </mdb-card-text>
-
-            <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
-          </mdb-card-body>
-        </div>
-      </div>
-
-    </mdb-card>
-  </div>
-  <div mdbScrollSpyElement="scrollspy1" id="link_5">
-    <mdb-card>
-      <div id="general" class="general container">
-        <div id="link5">
-          <mdb-card-body>
-            <mdb-card-text>
-              <section id="general" class="general container">
-                <div class="general-left">
-                  <div class="general-img-container">
-                    <div class="general-img-shadow"></div>
-                    <img src="../../../assets/img/printer.png" alt="profile">
-                  </div>
-                </div>
-                <div class="general-right">
-                  <div class="general-body">
-                    <h2 class="text-center">Official Circulars & <span>Memo</span></h2>
-                    <h3>Content here</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam tenetur magnam commodi officia
-                      adipisci fugit voluptatum labore dolorum voluptates similique.</p>
-                    <div class="hr"></div>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </section>
-            </mdb-card-text>
-
-            <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
-          </mdb-card-body>
-        </div>
-      </div>
-
-    </mdb-card>
-  </div>
-</div>
