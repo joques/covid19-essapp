@@ -16,10 +16,18 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
   List<Widget> _screens = [
-    InformationScreen(),
-    CentresScreen(),
-    StatisticsScreen(),
-    NewsScreen(),
+    InformationScreen(
+      title: 'General Information',
+    ),
+    CentresScreen(
+      title: 'Testing Centres',
+    ),
+    StatisticsScreen(
+      title: 'Statistics',
+    ),
+    NewsScreen(
+      title: 'Official Circulars & Memos',
+    ),
   ];
   List<BottomNavigationBarItem> _navItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
@@ -46,14 +54,9 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Title',
-        ),
-        centerTitle: true,
-      ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
         onTap: _onTapped,
         items: _navItems,
         type: BottomNavigationBarType.fixed,
