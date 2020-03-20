@@ -55,15 +55,15 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryElement,
+      //backgroundColor: AppColors.primaryElement,
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onTapped,
         items: _navItems,
         backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: AppColors.accentText,
+        selectedItemColor: AppColors.secondaryText,
         type: BottomNavigationBarType.fixed,
       ),
     );

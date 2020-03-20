@@ -1,3 +1,4 @@
+import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/screens/main_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'COVID-19',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-        accentColor: Colors.amber,
-      ),
+          //primarySwatch: AppColors.primaryElement,
+          accentColor: AppColors.accentElement,
+          primaryColor: AppColors.primaryElement,
+          backgroundColor: AppColors.primaryBackground,
+          cardColor: AppColors.accentElement,
+          textSelectionColor: AppColors.primaryText),
       home: MainPage(),
     );
   }
