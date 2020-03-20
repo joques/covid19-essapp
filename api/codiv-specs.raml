@@ -80,6 +80,42 @@ version: v1
                             application/json:
                                 {}
 
+/statistics/latest:
+    displayName: Provide latest statistics about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {
+                                    recovered: "",
+                                    dead: "",
+                                    suspected: "",
+                                    confirmed: ""
+                                    world-wide: ""
+                                }
+
+/statistics/periodic:
+    displayName: Provide periodic statistics about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {
+                                    "20-03-2020": {
+                                        recovered: "",
+                                        dead: "",
+                                        suspected: "",
+                                        confirmed: ""
+                                        world-wide: ""
+                                    }
+                                }
+
 /tips:
     displayName: Safety tips and pieces of advice
         description:

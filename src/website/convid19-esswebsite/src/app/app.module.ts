@@ -11,6 +11,16 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
+import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
+import { TransmissionComponent } from './components/transmission/transmission.component';
+import { SymptomsComponent } from './components/symptoms/symptoms.component';
+import { TreatmentComponent } from './components/treatment/treatment.component';
+import { MeasuresComponent } from './components/measures/measures.component';
+import { TipsComponent } from './components/tips/tips.component';
+import { StatisticsLatestComponent } from './components/statistics-latest/statistics-latest.component';
+import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
+import { CircularsComponent } from './components/circulars/circulars.component';
 
 
 @NgModule({
@@ -18,14 +28,20 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-
     GeneralInfoComponent,
-
     AboutUsComponent,
-
     ContactComponent,
-    FooterComponent
-
+    FooterComponent,
+    CoronaLatestInfoComponent,
+    CoronaWhatisComponent,
+    TransmissionComponent,
+    SymptomsComponent,
+    TreatmentComponent,
+    MeasuresComponent,
+    TipsComponent,
+    StatisticsLatestComponent,
+    StatisticsPeriodicComponent,
+    CircularsComponent
   ],
   imports: [
     BrowserModule,
