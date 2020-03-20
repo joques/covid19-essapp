@@ -3,16 +3,82 @@ title: CODIV Essential Information
 baseURI: http://196.216.167.190/codiv/v1/
 version: v1
 
-/awareness:
-    displayName: Quick awareness info about the virus
+/awareness/latest:
+    displayName: Latest information about the virus
     description:
-    get:
-        description:
-        responses:
-            200:
-                body:
-                    application/json:
-                        {}
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
+
+/awareness/whatis:
+    displayName: Attempt a general explanation on the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
+
+/awareness/transmission:
+    displayName: Summarise the transmission mode of the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
+
+/awareness/symptoms:
+    displayName: Present the common symptoms after contamination
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
+
+/awareness/treatment:
+    displayName: Provide information about treatment and prevention
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
+
+/awareness/measures:
+    displayName: Quick info about preventative measures
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
+
+/awareness/tips:
+    displayName: Advanced safety tips about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                {}
 
 /tips:
     displayName: Safety tips and pieces of advice
