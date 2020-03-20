@@ -1,4 +1,3 @@
-import 'package:covid_19_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class CentresScreen extends StatefulWidget {
@@ -14,7 +13,6 @@ class _CentresScreenState extends State<CentresScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryElement,
         title: Text(
           widget.title,
         ),
