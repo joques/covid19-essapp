@@ -1,4 +1,5 @@
 import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:flutter/material.dart';
 
 class StatisticsScreen extends StatefulWidget {
@@ -12,10 +13,6 @@ class StatisticsScreen extends StatefulWidget {
 class _StatisticsScreenState extends State<StatisticsScreen> {
   //Dummy Data
   String refreshDate = "Thur, 19 March 2020, 7:30 am";
-  int confirmedDeaths = 0;
-  int confirmedCases = 0;
-  int recoveredPatients = 0;
-  int suspectedCases = 0;
 
   //Push Notification Consent
   bool consent = false;
@@ -94,6 +91,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double _wd = (MediaQuery.of(context).size.width / 2) - 50;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -143,213 +141,42 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             ),
           ), // Statistics Heading
           Container(
-            height: 180,
-            margin: EdgeInsets.only(
-              left: 20,
-              right: 10,
-              top: 10,
-              bottom: 10,
-            ),
-            child: Row(
-              children: [
-                Column(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          width: 168,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: AppColors.accentElement,
-                            borderRadius: BorderRadius.circular(9.0),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Text(
-                                  //TODO: Resize Text After 100000
-                                  confirmedCases.toString(),
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.primaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 38,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 10),
-                                child: Text(
-                                  "CONFIRMED CASES",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.secondaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ), //Confirmed Cases
-                    SizedBox(
-                      width: 10,
-                      height: 10,
+                    StatisticCounter(
+                      width: _wd,
+                      count: 2,
+                      title: 'Confirmed Cases',
                     ),
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          width: 168,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: AppColors.accentElement,
-                            borderRadius: BorderRadius.circular(9.0),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Text(
-                                  //TODO: Resize Text After 100000
-                                  recoveredPatients.toString(),
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.primaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 38,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 10),
-                                child: Text(
-                                  "RECOVERED PATIENTS",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.secondaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ), // Recovered Patients
+                    StatisticCounter(
+                      width: _wd,
+                      count: 0,
+                      title: 'Confirmed Deaths',
+                    ),
                   ],
                 ),
                 SizedBox(
-                  width: 10,
-                  height: 10,
+                  height: 16,
                 ),
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          width: 168,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: AppColors.accentElement,
-                            borderRadius: BorderRadius.circular(9.0),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Text(
-                                  //TODO: Resize Text After 100000
-                                  confirmedDeaths.toString(),
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.primaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 38,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 10),
-                                child: Text(
-                                  "CONFIRMED DEATHS",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.secondaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ), // Confirmed Deaths
-                    SizedBox(
-                      width: 10,
-                      height: 10,
+                    StatisticCounter(
+                      width: _wd,
+                      count: 0,
+                      title: 'Recoverd Patients',
                     ),
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          width: 168,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: AppColors.accentElement,
-                            borderRadius: BorderRadius.circular(9.0),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Text(
-                                  //TODO: Resize Text After 100000
-                                  suspectedCases.toString(),
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.primaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 38,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, bottom: 10),
-                                child: Text(
-                                  "SUSPECTED CASES",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: AppColors.secondaryText,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ), // Suspected Cases
+                    StatisticCounter(
+                      width: _wd,
+                      count: 19,
+                      title: 'Suspected Cases',
+                    ),
                   ],
                 ),
               ],
