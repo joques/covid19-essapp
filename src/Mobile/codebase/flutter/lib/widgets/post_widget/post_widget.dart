@@ -9,7 +9,22 @@
 import 'package:covid19_essapp/values/values.dart';
 import 'package:flutter/material.dart';
 
-class Post7Widget extends StatelessWidget {
+class PostWidget extends StatelessWidget {
+  final String title;
+  final String date;
+  final String shortDesc;
+  final String author;
+  final String body;
+
+  const PostWidget({
+    Key key,
+    this.title,
+    this.date,
+    this.shortDesc,
+    this.author,
+    this.body,
+  }) : super(key: key);
+
   void onBackwardArrowPressed(BuildContext context) => Navigator.pop(context);
 
   @override
@@ -18,7 +33,7 @@ class Post7Widget extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
-          "TITLE",
+          title,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppColors.accentText,
@@ -77,7 +92,7 @@ class Post7Widget extends StatelessWidget {
                             child: Container(
                               margin: EdgeInsets.only(bottom: 111),
                               child: Text(
-                                "Posted: June 2, 2017",
+                                date,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),
@@ -94,7 +109,7 @@ class Post7Widget extends StatelessWidget {
                               width: 311,
                               margin: EdgeInsets.only(top: 111),
                               child: Text(
-                                "Excepteur sint occaecat cupidatat non proident, ",
+                                title,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: AppColors.accentText,
@@ -110,7 +125,7 @@ class Post7Widget extends StatelessWidget {
                             child: Container(
                               margin: EdgeInsets.only(top: 18),
                               child: Text(
-                                "by Author Name",
+                                author,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),
@@ -132,7 +147,7 @@ class Post7Widget extends StatelessWidget {
               height: 298,
               margin: EdgeInsets.only(left: 33, right: 31),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco poriti laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in uienply voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat norin proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in uienply voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+                body,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: AppColors.secondaryText,

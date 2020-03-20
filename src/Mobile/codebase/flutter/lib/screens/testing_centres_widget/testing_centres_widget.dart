@@ -55,7 +55,9 @@ class TestingCentresWidget extends StatelessWidget {
                     height: 199,
                     margin: EdgeInsets.symmetric(horizontal: 9),
                     child: GoogleMap(
-                      initialCameraPosition: CameraPosition(target: null),
+                      initialCameraPosition: CameraPosition(
+                        target: LatLng(22.5609, 17.0658),
+                      ),
                       onMapCreated: (controller) {},
                     ),
                   ),

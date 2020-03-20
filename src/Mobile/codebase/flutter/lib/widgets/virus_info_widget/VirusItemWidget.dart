@@ -10,7 +10,18 @@ import 'package:covid19_essapp/Widgets/post_widget/post_widget.dart';
 import 'package:covid19_essapp/values/values.dart';
 import 'package:flutter/material.dart';
 
-class VirusItemWidget extends StatelessWidget {
+class VirusInfoWidget extends StatelessWidget {
+  final String title;
+  final String image;
+  final String shortDesc;
+
+  const VirusInfoWidget({
+    Key key,
+    this.title,
+    this.image,
+    this.shortDesc,
+  }) : super(key: key);
+
   void onReadMorePressed(BuildContext context) {}
 
   @override
@@ -53,7 +64,7 @@ class VirusItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "What is CoronaVirus (COVID-19)?",
+                  title,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     color: AppColors.primaryText,
@@ -65,7 +76,7 @@ class VirusItemWidget extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(right: 21, top: 10),
                   child: Text(
-                    "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+                    shortDesc,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: AppColors.secondaryText,
