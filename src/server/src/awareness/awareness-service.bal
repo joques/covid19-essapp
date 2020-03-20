@@ -1,4 +1,5 @@
 import ballerina:http;
+import ballerina/log;
 
 listener http:Listener apiListener1 new (6547, host: "196.216.167.150");
 
@@ -21,6 +22,16 @@ service awareness on apiListener1 {
 	}
 	resource function getCovidDefinition(http:Caller caller, http:Request defReq) {
 		// will extract the response and send it back
+		http:Response resp = new;
+		// will have to finalise how this json is generated
+		json covidDefJson = {};
+
+		// might refine the following code depending on the content of json
+		resp.setJsonPayload(covidDefJson);
+		var result = caller->respond(resp);
+		if (result is error) {
+			log:printError(result.reason(), result);
+		}
 	}
 
 	@http: ResourceConfig {
