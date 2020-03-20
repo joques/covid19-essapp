@@ -9,6 +9,16 @@ import { HomeComponent } from './components/home/home.component';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
+import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
+import { TransmissionComponent } from './components/transmission/transmission.component';
+import { SymptomsComponent } from './components/symptoms/symptoms.component';
+import { TreatmentComponent } from './components/treatment/treatment.component';
+import { MeasuresComponent } from './components/measures/measures.component';
+import { TipsComponent } from './components/tips/tips.component';
+import { StatisticsLatestComponent } from './components/statistics-latest/statistics-latest.component';
+import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
+import { CircularsComponent } from './components/circulars/circulars.component';
 
 
 @NgModule({
@@ -19,7 +29,27 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 
     GeneralInfoComponent,
 
-    AboutUsComponent
+    AboutUsComponent,
+
+    CoronaLatestInfoComponent,
+
+    CoronaWhatisComponent,
+
+    TransmissionComponent,
+
+    SymptomsComponent,
+
+    TreatmentComponent,
+
+    MeasuresComponent,
+
+    TipsComponent,
+
+    StatisticsLatestComponent,
+
+    StatisticsPeriodicComponent,
+
+    CircularsComponent
 
   ],
   imports: [
