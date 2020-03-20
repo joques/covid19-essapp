@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:flutter/material.dart';
 
 class InformationScreen extends StatefulWidget {
@@ -16,9 +17,10 @@ class _InformationScreenState extends State<InformationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double _wd = (MediaQuery.of(context).size.width / 2) - 50;
+
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.primaryElement,
           title: Text(
             widget.title,
           ),
@@ -26,7 +28,7 @@ class _InformationScreenState extends State<InformationScreen> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: <Widget>[
                 CarouselSlider(
@@ -39,7 +41,10 @@ class _InformationScreenState extends State<InformationScreen> {
                     return Builder(
                       builder: (BuildContext context) {
                         return Card(
-                          color: Theme.of(context).accentColor,
+                          elevation: 5,
+                          shape: BeveledRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(16))),
                           child: Padding(
                             padding: const EdgeInsets.all(16),
                             child: Column(
@@ -49,8 +54,9 @@ class _InformationScreenState extends State<InformationScreen> {
                                 Text(
                                   'Whats Corona Virus?',
                                   style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w900),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900,
+                                      color: AppColors.secondaryText),
                                   textAlign: TextAlign.start,
                                 ),
                                 SizedBox(
@@ -60,8 +66,10 @@ class _InformationScreenState extends State<InformationScreen> {
                                   'Some text here Some text hereSome text hereSome text hereSome text hereSome text hereSome text hereSome text hereSome text here',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .body2
-                                      .copyWith(color: Colors.white),
+                                      .bodyText2
+                                      .copyWith(
+                                          color: AppColors.primaryText,
+                                          fontSize: 16),
                                 )
                               ],
                             ),
@@ -88,7 +96,7 @@ class _InformationScreenState extends State<InformationScreen> {
                     ),
                     RaisedButton(
                       onPressed: () {},
-                      color: Theme.of(context).accentColor,
+                      color: AppColors.ternaryBackground,
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(16))),
@@ -111,14 +119,56 @@ class _InformationScreenState extends State<InformationScreen> {
                   children: <Widget>[
                     Text(
                       'Statistics',
-                      style: Theme.of(context).textTheme.headline,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                     Text(
                       'As of Thur, 19 March 2020, 7:30am',
                       style: Theme.of(context).textTheme.overline,
                     )
                   ],
-                )
+                ),
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          StatisticCounter(
+                            width: _wd,
+                            count: 2,
+                            title: 'Confirmed Cases',
+                          ),
+                          StatisticCounter(
+                            width: _wd,
+                            count: 0,
+                            title: 'Confirmed Deaths',
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          StatisticCounter(
+                            width: _wd,
+                            count: 0,
+                            title: 'Recoverd Patients',
+                          ),
+                          StatisticCounter(
+                            width: _wd,
+                            count: 19,
+                            title: 'Suspected Cases',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

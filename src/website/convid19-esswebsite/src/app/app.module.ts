@@ -7,8 +7,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
-
+import { ReactiveFormsModule } from "@angular/forms";
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
 import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
 import { TransmissionComponent } from './components/transmission/transmission.component';
@@ -26,35 +28,25 @@ import { CircularsComponent } from './components/circulars/circulars.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-
     GeneralInfoComponent,
-
     AboutUsComponent,
-
+    ContactComponent,
+    FooterComponent,
     CoronaLatestInfoComponent,
-
     CoronaWhatisComponent,
-
     TransmissionComponent,
-
     SymptomsComponent,
-
     TreatmentComponent,
-
     MeasuresComponent,
-
     TipsComponent,
-
     StatisticsLatestComponent,
-
     StatisticsPeriodicComponent,
-
     CircularsComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [],
