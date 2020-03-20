@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:covid_19_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class InformationScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class _InformationScreenState extends State<InformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primaryElement,
           title: Text(
             widget.title,
           ),

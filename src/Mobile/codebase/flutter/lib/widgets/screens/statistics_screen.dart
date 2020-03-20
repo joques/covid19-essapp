@@ -1,3 +1,4 @@
+import 'package:covid_19_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class StatisticsScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryElement,
         title: Text(
           widget.title,
         ),

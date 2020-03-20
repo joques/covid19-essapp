@@ -1,3 +1,4 @@
+import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/screens/centres_screen.dart';
 import 'package:covid_19_app/widgets/screens/information_screen.dart';
 import 'package:covid_19_app/widgets/screens/news_screen.dart';
@@ -54,6 +55,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryElement,
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
