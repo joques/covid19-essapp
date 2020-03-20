@@ -10,6 +10,43 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
+  var _value;
+
+  DropdownButton _itemDown() => DropdownButton<String>(
+        items: [
+          DropdownMenuItem(
+            value: "1",
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "All Namibia",
+                ),
+              ],
+            ),
+          ),
+          DropdownMenuItem(
+            value: "2",
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Windhoek",
+                ),
+              ],
+            ),
+          ),
+        ],
+        onChanged: (value) {
+          setState(() {
+            _value = value;
+          });
+        },
+        hint: Text('All Namibia'),
+        value: _value,
+        isExpanded: true,
+      );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +59,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       ),
       body: Column(
         children: <Widget>[
+          Container(
+              height: 45,
+              margin: EdgeInsets.only(
+                left: 20,
+                right: 20,
+                top: 16,
+                bottom: 16,
+              ),
+              child: _itemDown()),
           Container(
             height: 45,
             margin: EdgeInsets.only(
