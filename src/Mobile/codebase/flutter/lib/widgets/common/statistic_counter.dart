@@ -17,7 +17,7 @@ class _StatisticCounterState extends State<StatisticCounter> {
   Widget build(BuildContext context) {
     return Container(
       width: 168,
-      height: 80,
+      height: 85,
       decoration: BoxDecoration(
         color: AppColors.accentElement,
         borderRadius: BorderRadius.circular(9.0),
@@ -40,7 +40,7 @@ class _StatisticCounterState extends State<StatisticCounter> {
           ),
           Spacer(),
           Container(
-            margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            margin: EdgeInsets.only(left: 10, right: 10, bottom: 11),
             child: Text(
               widget.title,
               textAlign: TextAlign.left,
