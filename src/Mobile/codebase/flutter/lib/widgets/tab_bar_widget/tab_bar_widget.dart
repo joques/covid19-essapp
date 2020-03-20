@@ -34,6 +34,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     return Scaffold(
       body: _tabWidgets[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromARGB(255, 40, 53, 67),
         type: BottomNavigationBarType.fixed,
         fixedColor: Color.fromARGB(255, 85, 85, 85),
         currentIndex: _currentIndex,
