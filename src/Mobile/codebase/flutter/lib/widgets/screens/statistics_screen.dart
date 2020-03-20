@@ -20,8 +20,64 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(widget.title),
+      body: Column(
+        children: <Widget>[
+          Container(
+            height: 45,
+            margin: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 86,
+              bottom: 86,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  height: 25,
+                  child: Row(
+                    children: [
+                      Text(
+                        "Push Notifications",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: AppColors.primaryText,
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                        width: 52,
+                        height: 32,
+                        child: Switch.adaptive(
+                          value: true,
+                          inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
+                          onChanged: (value) {},
+                          activeColor: AppColors.primaryElement,
+                          activeTrackColor: AppColors.primaryElement,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.only(right: 66),
+                  child: Text(
+                    "By Enabling this option you will receive the latest notifications ",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: AppColors.secondaryText,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
