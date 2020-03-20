@@ -18,7 +18,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   int suspectedCases = 0;
 
   //Push Notification Consent
-  bool _consent = false;
+  bool consent = false;
 
   //View By Area Drop Down Value
   var _value;
@@ -433,12 +433,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         width: 52,
                         height: 45,
                         child: Switch(
-                          value: true,
+                          value: consent,
                           inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
                           onChanged: (value) {
                             setState(() {
-                              _consent = value;
-                              print(_consent);
+                              consent = value;
+                              print(consent);
                             });
                           },
                           activeColor: AppColors.primaryElement,
