@@ -62,8 +62,8 @@ class _MainPageState extends State<MainPage> {
         onTap: _onTapped,
         items: _navItems,
         backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: AppColors.accentText,
-        selectedItemColor: AppColors.secondaryText,
+        unselectedItemColor: AppColors.secondaryText,
+        selectedItemColor: AppColors.secondaryElement,
         type: BottomNavigationBarType.fixed,
       ),
     );
