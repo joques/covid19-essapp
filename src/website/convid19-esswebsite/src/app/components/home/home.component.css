@@ -1,55 +1,19 @@
-.toastr{
-  position: absolute;
-  right: 75px;
-  top: 80px;
-  /* button: {
-      color: #fff;
-  } */
-}
-
-.navb {
-  font-family: karmina;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.navfloat {
-float: inline-end;
-}
-
-nav {
-    background-color: rgba(0, 0, 0, 0.9);
-    transition-duration: 1.2s;
-}
-.navbar .navbar-brand {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 26px;
-    position: relative;
-    left: 20px;
-}
-
-.navbar .nav-item .nav-link {
-    color: rgba(255, 255, 255,0.7);
-    font-weight: 100;
-}
-.navbar .nav-item.active .nav-link{
-    color: #fff;
-    font-weight: bold;
-}
-
-.navbar .nav-item.activeClick .nav-link {
-    color: #DC3545;
-}
-
-
-
 .home {
-  /* background-image: url(../../../assets/img/image.jpg); */
+  background-image: url(../../../assets/img/image.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+}
+
+
+
+.home-main {
+  height: 100%;
+}
+.centerpiece {
+  animation: fadeIn 0.7s ease-in both;
+
 }
 
 /* .home #word {
@@ -106,12 +70,13 @@ nav {
 }
 
 .general {
-  padding: 70px 15px;
+  padding: 50px 15px;
 }
 
 .general-img-container {
   position: relative;
   margin-bottom: 10px;
+  margin-top: 8rem;
 }
 
 
@@ -162,6 +127,10 @@ nav {
   color: #DC3545;
 }
 
+.btn {
+  float: none;
+}
+
 .general-body p {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -196,12 +165,24 @@ nav {
       padding: 0 15px;
   }
 
+  .measures-left {
+    margin-top: 22px;
+    width: 60%;
+    float: left;
+    padding: 0 15px;
+}
+
+.measures-right {
+    width: 40%;
+    float: right;
+    padding: 0 15px;
+}
   .general-body div.hr {
       margin-bottom: 0;
   }
 
   .general-footer button {
-      padding: 12px 22px;
+      padding: 62px 42px;
   }
 
 }
@@ -218,6 +199,15 @@ nav {
   .general-right {
       width: 57%;
   }
+  .measures-left {
+    width: 57%;
+    text-align: right;
+    margin-left: 30px;
+}
+
+.measures-right {
+    width: 35%;
+}
 
   .general-img-container {
       position: relative;
@@ -249,12 +239,13 @@ nav {
 
 }
 .general {
-    padding: 70px 15px;
+    padding: 50px 15px;
 }
 
 .general-img-container {
     position: relative;
     margin-bottom: 10px;
+
 }
 
 
@@ -262,6 +253,7 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+
 }
 
 .general-img-cover {
@@ -279,6 +271,7 @@ nav {
 
 .general-img-container:hover .general-img-cover {
     height: 100%;
+
 }
 
 .general-img-cover a {
@@ -300,11 +293,15 @@ nav {
     font-weight: 600;
 }
 
-.general-body h2 span {
+.general-body h2 h4 span {
     margin-right: 8px;
     color: #DC3545;
 }
 
+h4 span {
+  margin-right: 8px;
+  color: #DC3545;
+}
 .general-body p {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -338,6 +335,18 @@ nav {
         float: right;
         padding: 0 15px;
     }
+    .measures-left {
+      margin-top: 22px;
+      width: 60%;
+      float: left;
+      padding: 0 15px;
+  }
+
+  .measures-right {
+      width: 40%;
+      float: right;
+      padding: 0 15px;
+  }
 
     .general-body div.hr {
         margin-bottom: 0;
@@ -362,6 +371,16 @@ nav {
         width: 57%;
     }
 
+    .measures-left {
+      width: 57%;
+      text-align: right;
+      margin-left: 30px;
+  }
+
+  .measures-right {
+      width: 35%;
+  }
+
     .general-img-container {
         position: relative;
         top: 20px;
@@ -381,55 +400,6 @@ nav {
 
 }
 
-/* home section */
-.welcome-message {
-  padding-top: 5rem;
-}
-
-/* nav bar styling */
-.navbar  {
-  margin-bottom: 5rem !important; 
-}
-
-.navbar-nav {
-  padding: 0 0 0 20rem;
-}
-
-
-.navbar-nav  li a {
-  font-size: medium;
-}
-
-#link1 {
-  min-height: 100vh;
-  /* padding-top: 2rem; */
-}
-
-#link2 {
-  min-height: 100vh;
-  /* padding-top: 2rem; */
-}
-
-#link3 {
-  min-height: 100vh;
-  /* padding-top: 2rem; */
-}
-
-
-#link4 {
-  min-height: 100vh;
-  /* padding-top: 2rem; */
-}
-
-#link5 {
-  min-height: 100vh;
-  /* padding-top: 2rem; */
-}
-
-mdb-card {
-  margin-bottom: 2rem;
-}
-
 @media screen and (min-width: 1200px) {
     .general-body h2 {
         margin-bottom: 20px;
@@ -440,65 +410,3 @@ mdb-card {
     }
 
 }
-
-
-
-@media screen and (min-width: 768px) {
-    nav {
-        background-color: transparent;
-    }
-}
-
-
-.dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-
-  @media only screen and (max-width: 1025px) {
-    .navbar-nav {
-      padding: 0;
-    }
-  }
