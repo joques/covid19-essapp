@@ -12,6 +12,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
 import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
 import { TransmissionComponent } from './components/transmission/transmission.component';
+import { SymptomsComponent } from './components/symptoms/symptoms.component';
+import { TreatmentComponent } from './components/treatment/treatment.component';
+import { MeasuresComponent } from './components/measures/measures.component';
 
 
 @NgModule({
@@ -28,7 +31,13 @@ import { TransmissionComponent } from './components/transmission/transmission.co
 
     CoronaWhatisComponent,
 
-    TransmissionComponent
+    TransmissionComponent,
+
+    SymptomsComponent,
+
+    TreatmentComponent,
+
+    MeasuresComponent
 
   ],
   imports: [

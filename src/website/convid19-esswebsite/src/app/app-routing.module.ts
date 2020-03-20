@@ -6,6 +6,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
 import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
 import { TransmissionComponent } from './components/transmission/transmission.component';
+import { SymptomsComponent } from './components/symptoms/symptoms.component';
+import { TreatmentComponent } from './components/treatment/treatment.component';
+import { MeasuresComponent } from './components/measures/measures.component';
 
 
 const routes: Routes = [
@@ -19,7 +22,9 @@ const routes: Routes = [
   { path: 'app-corona-latest-info', component: CoronaLatestInfoComponent },
   { path: 'app-corona-whatis', component: CoronaWhatisComponent },
   { path: 'app-transmission', component: TransmissionComponent },
-
+  { path: 'app-symptoms', component: SymptomsComponent },
+  { path: 'app-treatment', component: TreatmentComponent },
+  { path: 'app-measures', component: MeasuresComponent }
 ];
 
 @NgModule({
