@@ -1,7 +1,15 @@
 import ballerina:http;
 import ballerina/log;
+import ballerina/io;
+import wso2/mongodb;
 
 listener http:Listener apiListener1 new (6547, host: "196.216.167.150");
+endpoint mongodb:Client dbConn {
+	dbName: "covid",
+	username: "",
+	password: "",
+	options: {}
+};
 
 @http: ServiceConfig {
 	basePath: "/covid/v1/awareness"
@@ -13,7 +21,15 @@ service awareness on apiListener1 {
 		path: "/latest"
 	}
 	resource function getLatestAwareness(http:Caller caller, http:Request ltReq) {
-		// will pull the latest awareness info and share it
+		http:Response latestResp = new;
+		// the content should come from dbConn
+		json latestData = {};
+
+		latestResp.setJsonPayload(latestData);
+		var respResult = caller->respond(latestResp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
+		}
 	}
 
 	@http: ResourceConfig {
@@ -21,16 +37,15 @@ service awareness on apiListener1 {
 		path: "/whatis"
 	}
 	resource function getCovidDefinition(http:Caller caller, http:Request defReq) {
-		// will extract the response and send it back
 		http:Response resp = new;
-		// will have to finalise how this json is generated
+		// will get this from dbConn later
 		json covidDefJson = {};
 
 		// might refine the following code depending on the content of json
 		resp.setJsonPayload(covidDefJson);
-		var result = caller->respond(resp);
-		if (result is error) {
-			log:printError(result.reason(), result);
+		var respResult = caller->respond(resp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
 		}
 	}
 
