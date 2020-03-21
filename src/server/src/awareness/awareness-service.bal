@@ -37,13 +37,13 @@ service awareness on apiListener1 {
 		path: "/whatis"
 	}
 	resource function getCovidDefinition(http:Caller caller, http:Request defReq) {
-		http:Response resp = new;
+		http:Response defResp = new;
 		// will get this from dbConn later
 		json covidDefJson = {};
 
 		// might refine the following code depending on the content of json
-		resp.setJsonPayload(covidDefJson);
-		var respResult = caller->respond(resp);
+		defResp.setJsonPayload(covidDefJson);
+		var respResult = caller->respond(defResp);
 		if (respResult is error) {
 			log:printError(respResult.reason(), respResult);
 		}
@@ -54,7 +54,16 @@ service awareness on apiListener1 {
 		path: "/transmission"
 	}
 	resource function getTransmissionDetails(http:Caller caller, http:Request trReq) {
-		// transmission info goes here
+		http:Response transResp = new;
+
+		// the actual content will come from the DB
+		json covidTransJson = {};
+
+		transResp.setJsonPayload(covidTransJson);
+		var respResult = caller->respond(transResp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
+		}
 	}
 
 	@http: ResourceConfig {
