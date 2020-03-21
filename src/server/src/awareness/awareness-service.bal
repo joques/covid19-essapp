@@ -1,19 +1,38 @@
-import ballerina:http;
+import ballerina/http;
 import ballerina/log;
 import ballerina/io;
-import wso2/mongodb;
 
-listener http:Listener apiListener1 new (6547, host: "196.216.167.150");
-endpoint mongodb:Client dbConn {
-	dbName: "covid",
-	username: "",
-	password: "",
-	options: {}
-};
+listener http:Listener apiListener1 = new (6547);
+
+function loadAwarenessData(string awarenessPath) returns @tainted json {
+	var rbc = io:openReadableFile(awarenessPath);
+
+	if (rbc is error) {
+		log:printError("An error occurred while creating a byte channel", err=rbc);
+		return {};
+	} else {
+		io:ReadableCharacterChannel rch = new (rbc, "UTF8");
+		var jsonData = rch.readJson();
+		var closeRes = rch.close();
+		if (closeRes is error) {
+			log:printError("An error occurred while closing the character channel", err=closeRes);
+			return {};
+		} else {
+			if (jsonData is error) {
+				log:printError("An error occurred while reading the JSON data", err=jsonData);
+			} else {
+				return jsonData;
+			}
+		}
+	}
+}
+
+// local store with all awareness info
+json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
 
 @http: ServiceConfig {
 	basePath: "/covid/v1/awareness"
-};
+}
 
 service awareness on apiListener1 {
 	@http: ResourceConfig {
@@ -23,16 +42,20 @@ service awareness on apiListener1 {
 	resource function getLatestAwareness(http:Caller caller, http:Request ltReq) {
 		http:Response latestResp = new;
 
-		// the content should come from the MongoDB client
-		json latestData = {};
+		// pull the latest news data
+		var latestData = awarenessDS?.latestNews;
 
 		// fill the repsonse payload with the new content
-		latestResp.setJsonPayload(latestData);
+		if (latestData is error) {
+			log:printError("An error occurred while pulling the latest data from awareness", err=latestData);
+		} else {
+			latestResp.setJsonPayload(latestData);
 
-		// send the response to the caller and log errors
-		var respResult = caller->respond(latestResp);
-		if (respResult is error) {
-			log:printError(respResult.reason(), respResult);
+			// send the response to the caller and log errors
+			var respResult = caller->respond(latestResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
 		}
 	}
 
@@ -43,16 +66,20 @@ service awareness on apiListener1 {
 	resource function getCovidDefinition(http:Caller caller, http:Request defReq) {
 		http:Response defResp = new;
 
-		// will get this from dbConn later
-		json covidDefJson = {};
+		// pull the official virus definition data
+		var covidDefJson = awarenessDS?.virusDef;
 
-		// fill the response payload with the new content
-		defResp.setJsonPayload(covidDefJson);
+		if (covidDefJson is error) {
+			log:printError("An error occurred while pulling the virus definition data from awareness", err=covidDefJson);
+		} else {
+			// fill the response payload with the new content
+			defResp.setJsonPayload(covidDefJson);
 
-		// send the response to the caller and log errors
-		var respResult = caller->respond(defResp);
-		if (respResult is error) {
-			log:printError(respResult.reason(), respResult);
+			// send the response to the caller and log errors
+			var respResult = caller->respond(defResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
 		}
 	}
 
@@ -63,16 +90,20 @@ service awareness on apiListener1 {
 	resource function getTransmissionDetails(http:Caller caller, http:Request trReq) {
 		http:Response transResp = new;
 
-		// the actual content will come from the DB
-		json covidTransJson = {};
+		// pull the transmission info
+		var covidTransJson = awarenessDS?.transmission;
 
-		// fill the response payload with the new content
-		transResp.setJsonPayload(covidTransJson);
+		if (covidTransJson is error) {
+			log:printError("An error occurred while pulling the virus transmission info from awareness", err=covidTransJson);
+		} else {
+			// fill the response payload with the new content
+			transResp.setJsonPayload(covidTransJson);
 
-		// send the response to the caller
-		var respResult = caller->respond(transResp);
-		if (respResult is error) {
-			log:printError(respResult.reason(), respResult);
+			// send the response to the caller
+			var respResult = caller->respond(transResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
 		}
 	}
 
@@ -83,16 +114,20 @@ service awareness on apiListener1 {
 	resource function getTreatmentInfo(http:Caller caller, http:Request tr1Req) {
 		http:Response treatResp = new;
 
-		// the actual content will come from the MongoDB client
-		json convidTreatJson = {};
+		// pull the treatment information
+		var convidTreatJson = awarenessDS?.treatment;
 
-		// fill the response payload with the new content
-		treatResp.setJsonPayload(convidTreatJson);
+		if (convidTreatJson is error) {
+			log:printError("An error occurred while pulling the treatment info from awareness", err=convidTreatJson);
+		} else {
+			// fill the response payload with the new content
+			treatResp.setJsonPayload(convidTreatJson);
 
-		// send the response to the caller and log errors
-		var respResult = caller->respond(treatResp);
-		if (respResult is error) {
-			log:printError(respResult.reason(), respResult);
+			// send the response to the caller and log errors
+			var respResult = caller->respond(treatResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
 		}
 	}
 
@@ -104,15 +139,19 @@ service awareness on apiListener1 {
 		http:Response tipResp = new;
 
 		// load the safety tips from DB client
-		json covidSafetyTipsJson = {};
+		var covidSafetyTipsJson = awarenessDS?.tips;
 
-		// fill the response payload with the new content
-		tipResp.setJsonPayload(covidSafetyTipsJson);
+		if (covidSafetyTipsJson is error) {
+			log:printError("An error occurred while pulling the safety tips from awareness", err=covidSafetyTipsJson);
+		} else {
+			// fill the response payload with the new content
+			tipResp.setJsonPayload(covidSafetyTipsJson);
 
-		// send response to caller and log errors
-		var respResult = caller->respond(tipResp);
-		if (respResult is error) {
-			log:printError(respResult.reason(), respResult);
+			// send response to caller and log errors
+			var respResult = caller->respond(tipResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
 		}
 	}
 }

@@ -1,5 +1,9 @@
 [project]
-org-name= "jequo"
+org-name= "Covid-Nam"
 version= "0.1.0"
+license = "Apache-2.0"
+authors = ["José", "Delano"]
+repository = "https://github.com:joques/covid19-essapp.git"
+keywords = ["COVID 19", "Namibia"]
 
 [dependencies]
