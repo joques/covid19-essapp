@@ -21,6 +21,7 @@ import { TipsComponent } from './components/tips/tips.component';
 import { StatisticsLatestComponent } from './components/statistics-latest/statistics-latest.component';
 import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
 import { CircularsComponent } from './components/circulars/circulars.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CircularsComponent } from './components/circulars/circulars.component';
     TipsComponent,
     StatisticsLatestComponent,
     StatisticsPeriodicComponent,
-    CircularsComponent
+    CircularsComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import 'package:covid_19_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class NewsScreen extends StatefulWidget {

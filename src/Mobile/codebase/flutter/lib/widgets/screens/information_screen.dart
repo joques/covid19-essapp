@@ -66,7 +66,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                   'Some text here Some text hereSome text hereSome text hereSome text hereSome text hereSome text hereSome text hereSome text here',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .body2
                                       .copyWith(
                                           color: AppColors.primaryText,
                                           fontSize: 16),
@@ -119,7 +119,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   children: <Widget>[
                     Text(
                       'Statistics',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headline,
                     ),
                     Text(
                       'As of Thur, 19 March 2020, 7:30am',
