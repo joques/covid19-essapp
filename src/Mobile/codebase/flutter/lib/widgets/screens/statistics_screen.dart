@@ -23,56 +23,86 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   DropdownButton _itemDown() => DropdownButton<String>(
         items: [
           DropdownMenuItem(
-            value: "1",
+            value: "All Namibia",
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "All Namibia",
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
           ),
           DropdownMenuItem(
-            value: "2",
+            value: "Kunene",
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "Kunene",
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
           ),
           DropdownMenuItem(
-            value: "3",
+            value: "Kavango Region",
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "Kavango Region",
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
           ),
           DropdownMenuItem(
-            value: "4",
+            value: "Khomas",
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "Khomas",
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
           ),
           DropdownMenuItem(
-            value: "5",
+            value: "Erongo",
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "Erongo",
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
@@ -151,7 +181,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   children: <Widget>[
                     StatisticCounter(
                       width: _wd,
-                      count: 2,
+                      count: 0,
                       title: 'Confirmed Cases',
                     ),
                     StatisticCounter(
@@ -187,7 +217,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             margin: EdgeInsets.only(
               left: 20,
               right: 20,
-              top: 15,
+              top: 30,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
