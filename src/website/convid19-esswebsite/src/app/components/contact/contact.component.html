@@ -1,41 +1,89 @@
-<section class="contact-section container">
+<div class="contact text-center container">
 
-  <mdb-card>
-    <!-- Default form subscription -->
-    <form [formGroup]="contactForm" class="text-center border border-light p-5" (ngSubmit)="submit()">
-      <h2 class="text-center">Please contact us</h2>
-      <div class="md-form mt-6">
-        <input formControlName="name" type="text" id="name" class="form-control mb-6" mdbInput required>
-        <label for="name">Name</label>
 
-        <div *ngIf="form.name.errors.name " class="invalid-feedback">
-          <strong>Please enter your name</strong>
+  <section class="mb-3">
+    <div class=" card-body col-md-12 pb-0 pt-0">
+      <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+      <p class="text-center w-responsive mx-auto mb-5">Please visit our frequently asked questions if you have a query about Covid-19. If your question is not answered, please use the Toll Free, email provided below or send us a message to contact us.. Our team will come back to you within
+        a matter of hours to help you.</p>
+
+      <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+          <form [formGroup]="contactForm" id="contact-form" name="contact-form" >
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="md-form mb-0">
+                  <input type="text" id="name" formControlName="name" class="form-control" placeholder="Your name">
+
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="md-form mb-0">
+                  <input type="text" id="email" formControlName="email" class="form-control" placeholder="Your email">
+                  <!-- <label for="email" class="">Your email</label> -->
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="md-form mb-0">
+                  <input type="text" id="subject" formControlName="subject" class="form-control" placeholder="Subject">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="md-form">
+                  <textarea type="text" id="message" formControlName="message" rows="2" class="form-control  md-textarea"
+                    placeholder="Your message"></textarea>
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </form>
+
+          <div class="text-center text-md-left">
+            <a class="btn btn-primary btn-block white-text mdbWavesEffect"
+               disabled="!form.valid">Send Message</a>
+          </div>
+          <div class="status"></div>
         </div>
+        <div class="col-md-3 text-center">
+          <ul class="list-unstyled mb-0">
 
-      </div>
 
-      <div class="md-form mt-6">
-        <input formControlName="phone" type="tel" id="phone" class="form-control mb-6" mdbInput required>
-        <label for="phone">Phone</label>
+            <li><i class="fas fa-phone mt-4 fa-2x"></i>
+              <p>+264 81 111 1111</p>
+            </li>
 
-        <div *ngIf="form.phone.errors.phone" class="invalid-feedback">
-          <strong>Please enter your phone</strong>
+            <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+              <p>contact@who.who</p>
+            </li>
+
+            <li style="padding-top: 2rem;">
+
+              <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f black-text fa-2x"></i></a>
+              <a href="#" class="mx-2" role="button"><i class="fab fa-twitter black-text fa-2x"></i></a>
+              <!-- <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in black-text"></i></a> -->
+              <a href="" class="mx-2" target="_blank" role="button"><i
+                  class="fab fa-instagram black-text fa-2x"></i></a>
+                  <p style="padding-top: 1rem;">You can visit our social media pages for more info </p>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
+</div>
 
-
-
-      <div class="md-form mt-6">
-        <input formControlName="email" type="email" id="email" class="form-control mb-4" mdbInput required>
-        <label for="email">Email</label>
-      </div>
-      <div *ngIf="form.email.errors.email" class="invalid-feedback">
-        <strong style="color: red;">Please enter a valid emal address</strong>
-      </div>
-      <!-- Sign in button -->
-      <button mdbBtn color="primary" block="true" type="submit">Submit</button>
-
-    </form>
-  </mdb-card>
-  <!-- Default form subscription -->
-</section>

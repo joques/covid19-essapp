@@ -9,14 +9,24 @@
           <span>Get you facts right on</span>
           <h1>Corona Virus - Covid 19</h1>
           <p>Brought to you by WHO</p>
+          <div class="row" id="arrow-style" (click)="scroll(general)">
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+          </div>
         </div>
+      </div>
+      <div class="row" id="arrow-style" (click)="scroll(general)">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <div class="chevron"></div>
       </div>
     </section>
   </div>
 
   <!--/.Navbar-->
 
-  <div class="scrollspy-example mt-4 px-5">
+  <div #general class="scrollspy-example mt-4 px-5">
     <div id="link_1">
       <mdb-card>
         <div id="general" class="general container">
