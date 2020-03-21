@@ -22,10 +22,14 @@ service awareness on apiListener1 {
 	}
 	resource function getLatestAwareness(http:Caller caller, http:Request ltReq) {
 		http:Response latestResp = new;
-		// the content should come from dbConn
+
+		// the content should come from the MongoDB client
 		json latestData = {};
 
+		// fill the repsonse payload with the new content
 		latestResp.setJsonPayload(latestData);
+
+		// send the response to the caller and log errors
 		var respResult = caller->respond(latestResp);
 		if (respResult is error) {
 			log:printError(respResult.reason(), respResult);
@@ -38,11 +42,14 @@ service awareness on apiListener1 {
 	}
 	resource function getCovidDefinition(http:Caller caller, http:Request defReq) {
 		http:Response defResp = new;
+
 		// will get this from dbConn later
 		json covidDefJson = {};
 
-		// might refine the following code depending on the content of json
+		// fill the response payload with the new content
 		defResp.setJsonPayload(covidDefJson);
+
+		// send the response to the caller and log errors
 		var respResult = caller->respond(defResp);
 		if (respResult is error) {
 			log:printError(respResult.reason(), respResult);
@@ -59,7 +66,10 @@ service awareness on apiListener1 {
 		// the actual content will come from the DB
 		json covidTransJson = {};
 
+		// fill the response payload with the new content
 		transResp.setJsonPayload(covidTransJson);
+
+		// send the response to the caller
 		var respResult = caller->respond(transResp);
 		if (respResult is error) {
 			log:printError(respResult.reason(), respResult);
@@ -71,7 +81,19 @@ service awareness on apiListener1 {
 		path: "/treatment"
 	}
 	resource function getTreatmentInfo(http:Caller caller, http:Request tr1Req) {
-		// treatment information goes here
+		http:Response treatResp = new;
+
+		// the actual content will come from the MongoDB client
+		json convidTreatJson = {};
+
+		// fill the response payload with the new content
+		treatResp.setJsonPayload(convidTreatJson);
+
+		// send the response to the caller and log errors
+		var respResult = caller->respond(treatResp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
+		}
 	}
 
 	@http: ResourceConfig {
@@ -79,6 +101,18 @@ service awareness on apiListener1 {
 		path: "/tips"
 	}
 	resource function getSafetyTips(http:Caller caller, http:Request safReq) {
-		// safety tips go here
+		http:Response tipResp = new;
+
+		// load the safety tips from DB client
+		json covidSafetyTipsJson = {};
+
+		// fill the response payload with the new content
+		tipResp.setJsonPayload(covidSafetyTipsJson);
+
+		// send response to caller and log errors
+		var respResult = caller->respond(tipResp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
+		}
 	}
 }
