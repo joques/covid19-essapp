@@ -1,5 +1,6 @@
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/screens/centres_screen.dart';
+import 'package:covid_19_app/widgets/screens/faq_screen.dart';
 import 'package:covid_19_app/widgets/screens/information_screen.dart';
 import 'package:covid_19_app/widgets/screens/news_screen.dart';
 import 'package:covid_19_app/widgets/screens/statistics_screen.dart';
@@ -29,6 +30,9 @@ class _MainPageState extends State<MainPage> {
     NewsScreen(
       title: 'Official Circulars & Memos',
     ),
+    FAQScreen(
+      title: 'FAQ',
+    )
   ];
   List<BottomNavigationBarItem> _navItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
@@ -39,6 +43,8 @@ class _MainPageState extends State<MainPage> {
         icon: Icon(LineIcons.pie_chart), title: Text('Statistics')),
     BottomNavigationBarItem(
         icon: Icon(LineIcons.info_circle), title: Text('News')),
+    BottomNavigationBarItem(
+        icon: Icon(LineIcons.question_circle), title: Text('FAQ')),
   ];
 
   _onTapped(index) {
