@@ -1,6 +1,17 @@
+import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
+
+mongodb:ClientEndpointConfig  mongoConfig = {
+	host: "localhost",
+	dbName: "covid-nam",
+	username: "",
+	password: "",
+	options: {sslEnabled: false, serverSelectionTimeout: 500}
+};
+
+mongodb:Client dbClient = check new (mongoConfig);
 
 listener http:Listener apiListener1 = new (6547);
 
@@ -172,7 +183,7 @@ service awareness on apiListener1 {
 			factResp.setJsonPayload(factJson);
 
 			// send the response to the caller
-			var respResult = caller->respond(transResp);
+			var respResult = caller->respond(factResp);
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
 			}
