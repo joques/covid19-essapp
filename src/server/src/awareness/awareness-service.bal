@@ -199,7 +199,7 @@ service awareness on apiListener1 {
 		http:Response measureResp = new;
 
 		// pull the facts
-		var measureJson = awarenessDS?.measure;
+		var measureJson = awarenessDS?.measures;
 
 		if (measureJson is error) {
 			log:printError("An error occurred while pulling info related to the measures against the virus", err=measureJson);
