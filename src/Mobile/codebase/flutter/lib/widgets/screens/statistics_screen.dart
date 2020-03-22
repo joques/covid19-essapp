@@ -367,11 +367,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         StatisticCounter(
                           width: _wd,
                           count: 0,
+                          borderColor:Colors.blue.shade900.value,
                           title: 'Confirmed Cases',
                         ),
                         StatisticCounter(
                           width: _wd,
                           count: 0,
+                          borderColor:Colors.red.shade800.value,
                           title: 'Confirmed Deaths',
                         ),
                       ],
@@ -385,11 +387,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         StatisticCounter(
                           width: _wd,
                           count: 0,
+                          borderColor:Colors.green.shade900.value,
                           title: 'Recoverd Patients',
                         ),
                         StatisticCounter(
                           width: _wd,
                           count: 19,
+                          borderColor:Colors.orange.shade900.value,
                           title: 'Suspected Cases',
                         ),
                       ],

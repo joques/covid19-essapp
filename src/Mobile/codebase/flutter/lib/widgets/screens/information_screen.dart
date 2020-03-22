@@ -139,6 +139,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   ],
                 ),
                 Container(
+          
                   child: Column(
                     children: <Widget>[
                       SizedBox(
@@ -150,11 +151,13 @@ class _InformationScreenState extends State<InformationScreen> {
                           StatisticCounter(
                             width: _wd,
                             count: 2,
+                            borderColor:Colors.blue.shade800.value,
                             title: 'Confirmed Cases',
                           ),
                           StatisticCounter(
                             width: _wd,
                             count: 0,
+                            borderColor:Colors.red.shade900.value,
                             title: 'Confirmed Deaths',
                           ),
                         ],
@@ -168,11 +171,13 @@ class _InformationScreenState extends State<InformationScreen> {
                           StatisticCounter(
                             width: _wd,
                             count: 0,
+                            borderColor:Colors.green.shade900.value,
                             title: 'Recoverd Patients',
                           ),
                           StatisticCounter(
                             width: _wd,
                             count: 19,
+                            borderColor:Colors.orange.shade900.value,
                             title: 'Suspected Cases',
                           ),
                         ],
