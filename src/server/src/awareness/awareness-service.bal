@@ -43,7 +43,7 @@ service awareness on apiListener1 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var latestData = awarenessDS?.latestNews;
+		var latestData = awarenessDS?.latestnews;
 
 		// fill the repsonse payload with the new content
 		if (latestData is error) {
@@ -67,7 +67,7 @@ service awareness on apiListener1 {
 		http:Response defResp = new;
 
 		// pull the official virus definition data
-		var covidDefJson = awarenessDS?.virusDef;
+		var covidDefJson = awarenessDS?.virusdef;
 
 		if (covidDefJson is error) {
 			log:printError("An error occurred while pulling the virus definition data from awareness", err=covidDefJson);
@@ -149,6 +149,30 @@ service awareness on apiListener1 {
 
 			// send response to caller and log errors
 			var respResult = caller->respond(tipResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/facts"
+	}
+	resource function getMythsAndFacts(http:Caller caller, http:Request trReq) {
+		http:Response factResp = new;
+
+		// pull the facts
+		var factJson = awarenessDS?.facts;
+
+		if (factJson is error) {
+			log:printError("An error occurred while pulling the virus transmission info from awareness", err=factJson);
+		} else {
+			// fill the response payload with the new content
+			factResp.setJsonPayload(factJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(transResp);
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
 			}

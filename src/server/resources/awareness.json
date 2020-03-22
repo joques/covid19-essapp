@@ -1,7 +1,9 @@
 {
-	"latestNews: {""},
-	"virusDef": {["Also known as corona viruses (COV) or Corona Virus disease (COVID-19), is a new strain of the disease that was discovered in 2019. The corona virus is zoonotic, which means that transmission is between animals and humans.", "The COV comes from a large family of viruses that cause an illness similar to cold. Symptoms such as fever, cough, shortness of breath and breathing diffulties are the common signs of infection. In severee cases, it can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death."]},
+	"latestnews: {""},
+	"virusdef": {["Also known as corona viruses (COV) or Corona Virus disease (COVID-19), is a new strain of the disease that was discovered in 2019. The corona virus is zoonotic, which means that transmission is between animals and humans.", "The COV comes from a large family of viruses that cause an illness similar to cold. Symptoms such as fever, cough, shortness of breath and breathing diffulties are the common signs of infection. In severee cases, it can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death."]},
 	"transmission": {},
 	"treatment": {},
-	"tips": {["Please read sources that are approved by your medical board.", "Practice good hand hygiene.", "Try social distancing the protect yourself and others in your community", "Disinfect frequently used areas to prevent the spread of the virus"]}
+	"tips": {["Please read sources that are approved by your medical board.", "Practice good hand hygiene.", "Try social distancing the protect yourself and others in your community", "Disinfect frequently used areas to prevent the spread of the virus"]},
+	"facts": {["The corona virus can be transmitted in all areas regardless of climate such as a hot and humid climate or cold climate", ]},
+	"myths": {["Taking a hot bath (this can burn you) will not prevent you from catching the disease a normal body temperature i between 36.5 and 37C. The best way to protect yourself is by frequently cleaning your hands (washing with soap or sanitizing). By doing this you eliminate viruses that may be on your hands."]}
 }
