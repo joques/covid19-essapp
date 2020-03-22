@@ -54,7 +54,7 @@ service awareness on apiListener1 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var latestData = awarenessDS?.latest;
+		var latestData = awarenessDS?.latestnews;
 
 		// fill the repsonse payload with the new content
 		if (latestData is error) {
