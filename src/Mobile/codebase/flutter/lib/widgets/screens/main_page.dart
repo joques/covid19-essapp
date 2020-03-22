@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
     BottomNavigationBarItem(
         icon: Icon(LineIcons.home), title: Text('Information')),
     BottomNavigationBarItem(
-        icon: Icon(LineIcons.hospital_o), title: Text('Testing Centres')),
+        icon: Icon(LineIcons.hospital_o), title: Text('Centres')),
     BottomNavigationBarItem(
         icon: Icon(LineIcons.pie_chart), title: Text('Statistics')),
     BottomNavigationBarItem(
