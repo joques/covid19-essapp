@@ -54,7 +54,7 @@ service awareness on apiListener1 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var latestData = awarenessDS?.latestnews;
+		var latestData = awarenessDS?.latest;
 
 		// fill the repsonse payload with the new content
 		if (latestData is error) {
@@ -170,7 +170,7 @@ service awareness on apiListener1 {
 		methods: ["GET"],
 		path: "/facts"
 	}
-	resource function getMythsAndFacts(http:Caller caller, http:Request trReq) {
+	resource function getFacts(http:Caller caller, http:Request trReq) {
 		http:Response factResp = new;
 
 		// pull the facts
@@ -184,6 +184,54 @@ service awareness on apiListener1 {
 
 			// send the response to the caller
 			var respResult = caller->respond(factResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/measures"
+	}
+	resource function getMeasures(http:Caller caller, http:Request trReq) {
+		http:Response measureResp = new;
+
+		// pull the facts
+		var measureJson = awarenessDS?.measure;
+
+		if (measureJson is error) {
+			log:printError("An error occurred while pulling info related to the measures against the virus", err=measureJson);
+		} else {
+			// fill the response payload with the new content
+			measureResp.setJsonPayload(measureJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(measureResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/myths"
+	}
+	resource function getMyths(http:Caller caller, http:Request trReq) {
+		http:Response mythResp = new;
+
+		// pull the facts
+		var mythJson = awarenessDS?.myths;
+
+		if (mythJson is error) {
+			log:printError("An error occurred while pulling myths about the virus", err=mythJson);
+		} else {
+			// fill the response payload with the new content
+			mythResp.setJsonPayload(mythJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(mythResp);
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
 			}
