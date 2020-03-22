@@ -60,6 +60,7 @@ service awareness on apiListener1 {
 		if (latestData is error) {
 			log:printError("An error occurred while pulling the latest data from awareness", err=latestData);
 		} else {
+			io:println(latestData);
 			latestResp.setJsonPayload(latestData);
 
 			// send the response to the caller and log errors
