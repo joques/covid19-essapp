@@ -42,7 +42,7 @@ service awareness on apiListener2 {
 				}
 			}
 
-			io.println("about to print out the value of theLatest");
+			io:println("about to print out the value of theLatest");
 			io:println(theLatest);
 
 			latestResp.setJsonPayload(allData);
