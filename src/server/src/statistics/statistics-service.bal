@@ -37,10 +37,12 @@ service awareness on apiListener2 {
 			foreach var singleData in allData {
 				io:println(singleData);
 				if(theLatest == null) {
+					io:println("theLatest is null");
 					theLatest = singleData;
 				}
 			}
 
+			io.println("about to print out the value of theLatest");
 			io:println(theLatest);
 
 			latestResp.setJsonPayload(allData);
