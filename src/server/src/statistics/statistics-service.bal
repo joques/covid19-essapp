@@ -33,7 +33,7 @@ service awareness on apiListener2 {
 		var allData = dbClient->find("covidstats", ());
 
 		time:TimeZone noZoneValue = {id: ""};
-		time:Time? theLatestTime = time:currentTime();
+		time:Time theLatestTime = time:currentTime();
 
 		// fill the repsonse payload with the new content
 		if (allData is error) {
@@ -42,7 +42,7 @@ service awareness on apiListener2 {
 			json? theLatest = ();
 			foreach var singleData in allData {
 				io:println(singleData);
-				io:println(singleData.date);
+				time:Time singleDataTime = time:currentTime();
 				var theDate = singleData.date;
 				
 				if (theDate is error) {
@@ -55,36 +55,27 @@ service awareness on apiListener2 {
 					if (numDate is error) {
 						io:println("Spotted an error casting a string into an int");
 					} else {
-						theLatestTime = {time: numDate, zone: noZoneValue};
+						singleDataTime = {time: numDate, zone: noZoneValue};
 						io:println(theLatestTime);
+
+						if(theLatest == null) {
+							io:println("theLatest is null");
+							theLatest = singleData;
+							theLatestTime = singleDataTime;
+						} else {
+							if (singleDataTime.time > theLatestTime.time) {
+								theLatest = singleData;
+							}
+						}
 					}
-					//match numericDate {
-					//	int numVal => {
-					//		theLatestTime = {time: numVal, zone: noZoneValue};
-					//	}
-					//	error err => {
-					//		io:println("an error occurred during the type conversion";
-					//	}
-					//}
 				}
 
-				if(theLatest == null) {
-					io:println("theLatest is null");
-					theLatest = singleData;
-					//theLatestTime = {time: numericDate, zone: noZoneValue};
-				} else {
-					//time:Time singleDataTime = {time: singleData.date?.date, zone: noZoneValue};
-					//io:println("time at singleData");
-					//io:println(singleDataTime);
-					//io:println("time at theLatest");
-					//io:println(theLatestTime);
-				}
 			}
 
 			io:println("about to print out the value of theLatest");
 			io:println(theLatest);
 
-			latestResp.setJsonPayload(allData);
+			latestResp.setJsonPayload(theLatest);
 
 			// send the response to the caller and log errors
 			var respResult = caller->respond(latestResp);
