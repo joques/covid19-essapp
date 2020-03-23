@@ -2,6 +2,9 @@ import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
+import ballerina/time;
+import ballerina/lang.'int as langint;
+//import ballerina/lang.'string as strings;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "localhost",
@@ -29,6 +32,9 @@ service awareness on apiListener2 {
 		// pull the latest news data
 		var allData = dbClient->find("covidstats", ());
 
+		time:TimeZone noZoneValue = {id: ""};
+		time:Time theLatestTime = time:currentTime();
+
 		// fill the repsonse payload with the new content
 		if (allData is error) {
 			log:printError("An error occurred while pulling the latest statistics", err=allData);
@@ -36,16 +42,40 @@ service awareness on apiListener2 {
 			json? theLatest = ();
 			foreach var singleData in allData {
 				io:println(singleData);
-				if(theLatest == null) {
-					io:println("theLatest is null");
-					theLatest = singleData;
+				time:Time singleDataTime = time:currentTime();
+				var theDate = singleData.date;
+				
+				if (theDate is error) {
+					io:println("there seems to be an error with the date");
+				} else {
+					string dateString = theDate.toString();
+					string theSubstr = dateString.substring(6, dateString.length());
+					io:println(theSubstr);
+					int|error numDate = langint:fromString(theSubstr);
+					if (numDate is error) {
+						io:println("Spotted an error casting a string into an int");
+					} else {
+						singleDataTime = {time: numDate, zone: noZoneValue};
+						io:println(theLatestTime);
+
+						if(theLatest == null) {
+							io:println("theLatest is null");
+							theLatest = singleData;
+							theLatestTime = singleDataTime;
+						} else {
+							if (singleDataTime.time > theLatestTime.time) {
+								theLatest = singleData;
+							}
+						}
+					}
 				}
+
 			}
 
 			io:println("about to print out the value of theLatest");
 			io:println(theLatest);
 
-			latestResp.setJsonPayload(allData);
+			latestResp.setJsonPayload(theLatest);
 
 			// send the response to the caller and log errors
 			var respResult = caller->respond(latestResp);
