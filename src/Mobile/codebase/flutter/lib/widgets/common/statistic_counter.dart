@@ -5,14 +5,18 @@ class StatisticCounter extends StatefulWidget {
   final double width;
   final int count;
   final String title;
-  StatisticCounter({Key key, this.width, this.count, this.title})
+  final int borderColor;
+  StatisticCounter({Key key, this.width, this.count, this.title,this.borderColor})
       : super(key: key);
-
   @override
-  _StatisticCounterState createState() => _StatisticCounterState();
+  _StatisticCounterState createState() => _StatisticCounterState(this.borderColor);
 }
 
 class _StatisticCounterState extends State<StatisticCounter> {
+  int borderColor;
+  _StatisticCounterState(int bdColor){
+    this.borderColor = bdColor;
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,6 +25,7 @@ class _StatisticCounterState extends State<StatisticCounter> {
       decoration: BoxDecoration(
         color: AppColors.accentElement,
         borderRadius: BorderRadius.circular(9.0),
+        border: Border.all(width: 1.4, color: Color(this.borderColor))
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
