@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
+import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class InformationScreen extends StatefulWidget {
   final String title;
-
+  Future<Latest> latestInfo;
   InformationScreen({Key key, this.title}) : super(key: key);
 
   @override
@@ -14,6 +18,7 @@ class InformationScreen extends StatefulWidget {
 
 class _InformationScreenState extends State<InformationScreen> {
   List _slides = <Widget>[];
+  Future<Latest> latestInfo = fetchInfo();
   var title = {'1':'What is COVID-19?',
                '2':"Who is most at risk?",
                '3':"How is it transmited?",
@@ -25,7 +30,7 @@ class _InformationScreenState extends State<InformationScreen> {
                '3':"People can catch COVID-19 from others who have the virus. The disease can spread from person to person through small droplets from the nose or mouth which are spread when a person with COVID-19 coughs or exhales. These droplets land on objects and surfaces around the person. Other people then catch COVID-19 by touching these objects or surfaces, then touching their eyes, nose or mouth. People can also catch COVID-19 if they breathe in droplets from a person with COVID-19 who coughs out or exhales droplets. This is why it is important to stay more than 1 meter (3 feet) away from a person who is sick.",
                '4':"There is currently no vaccine nor any specific antiviral treatment against COVID-19. The best way to prevent infection is to take everyday preventive actions, like avoiding close contact with people who are sick and washing your hands often. ",
                '5':"Some patients have pneumonia in both lungs, multi-organ failure and in some cases death. "};
-
+  
   @override
   Widget build(BuildContext context) {
     double _wd = (MediaQuery.of(context).size.width / 2) - 50;
@@ -37,7 +42,15 @@ class _InformationScreenState extends State<InformationScreen> {
           ),
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
+        body: FutureBuilder(
+        future: fetchInfo(),
+        builder: (context, snapshot){
+          if (snapshot.hasData) {
+                debugPrint(snapshot.data.confirmed);
+              } else if (snapshot.hasError) {
+                debugPrint("${snapshot.error}");
+              }
+          SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -139,7 +152,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   ],
                 ),
                 Container(
-          
+                  
                   child: Column(
                     children: <Widget>[
                       SizedBox(
@@ -150,7 +163,7 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: 2,
+                            count: int.parse(fetchInfo().then((value) => {value.confirmed}).toString()),
                             borderColor:Colors.blue.shade800.value,
                             title: 'Confirmed Cases',
                           ),
@@ -188,6 +201,24 @@ class _InformationScreenState extends State<InformationScreen> {
               ],
             ),
           ),
-        ));
+        );
+        })
+        );
+  }
+}
+Future<Latest> fetchInfo() async {
+  //http://196.216.167.150:6549/covid/v1/statistics/latest');
+  final response = await http.get('http://196.216.167.150:6547/covid/v1/awareness/whatis');
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    debugPrint("Data=>"+response.body.toString());
+    return Latest.fromJson(json.decode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    debugPrint("HERE"+response.toString());
+    throw Exception('Failed to load latest info');
   }
 }

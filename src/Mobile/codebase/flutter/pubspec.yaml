@@ -29,7 +29,7 @@ dependencies:
   carousel_slider:
   flutter_svg:
   google_maps_flutter:
-
+  http:
 
 dev_dependencies:
   flutter_test:
