@@ -2,6 +2,7 @@ import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
+import ballerina/time;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "localhost",
@@ -29,6 +30,9 @@ service awareness on apiListener2 {
 		// pull the latest news data
 		var allData = dbClient->find("covidstats", ());
 
+		time:TimeZone noZoneValue = {id: ""};
+		time:Time? theLatestTime = time:currentTime();
+
 		// fill the repsonse payload with the new content
 		if (allData is error) {
 			log:printError("An error occurred while pulling the latest statistics", err=allData);
@@ -36,9 +40,17 @@ service awareness on apiListener2 {
 			json? theLatest = ();
 			foreach var singleData in allData {
 				io:println(singleData);
+				io:println(singleData.date?.date);
 				if(theLatest == null) {
 					io:println("theLatest is null");
 					theLatest = singleData;
+					//theLatestTime = {time: singleData.date?.date, zone: noZoneValue};
+				} else {
+					//time:Time singleDataTime = {time: singleData.date?.date, zone: noZoneValue};
+					//io:println("time at singleData");
+					//io:println(singleDataTime);
+					//io:println("time at theLatest");
+					//io:println(theLatestTime);
 				}
 			}
 
