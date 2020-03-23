@@ -238,4 +238,28 @@ service awareness on apiListener1 {
 			}
 		}
 	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/casedefs"
+	}
+	resource function getCaseDefinisions(http:Caller caller, http:Request trReq) {
+		http:Response caseResp = new;
+
+		// pull the facts
+		var caseJson = awarenessDS?.casedefs;
+
+		if (caseJson is error) {
+			log:printError("An error occurred while pulling case definitions about the virus", err=caseJson);
+		} else {
+			// fill the response payload with the new content
+			caseResp.setJsonPayload(caseJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(caseResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
 }
