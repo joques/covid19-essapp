@@ -1,6 +1,7 @@
 import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
+import ballerina/io;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "localhost",
@@ -33,6 +34,7 @@ service faq on apiListener3 {
 		if (faqData is error) {
 			log:printError("An error occurred while pulling frequently asked questions from the data store", err=faqData);
 		} else {
+			io:println(faqData);
 			faqResp.setJsonPayload(faqData);
 
 			// send the response to the caller and log errors
