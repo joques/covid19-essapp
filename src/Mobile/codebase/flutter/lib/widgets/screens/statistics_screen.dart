@@ -21,7 +21,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   bool consent = false;
 
   //View By Area Drop Down Value
-  var _value;
+  var _value = '0';
 
   //Drop Picker List items
   CupertinoPicker _regionsList() => CupertinoPicker(
@@ -30,7 +30,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         diameterRatio: 2,
         onSelectedItemChanged: (value) {
           setState(() {
-            _value = value;
+            _value = value.toString();
             print(_value);
           });
         },
