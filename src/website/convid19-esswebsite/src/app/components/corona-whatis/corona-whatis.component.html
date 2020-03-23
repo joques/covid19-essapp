@@ -1,5 +1,17 @@
-<div class="caption">
-    <h3>Start</h3>
-    <p>This initial step involves identification of the need for a new programme.</p>
+<div style="padding: 13px;">
+    <mat-spinner *ngIf="coronaInfo.length === 0"></mat-spinner>
 
+    <mat-card *ngFor="let corona of coronaInfo" style="margin-top:10px;">
+        <mat-card-header>
+            <mat-card-title>What is Corona Virus</mat-card-title>
+          
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{corona}}
+            </p>
+            
+        </mat-card-content>
+      
+    </mat-card>
 </div>

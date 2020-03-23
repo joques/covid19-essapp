@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { StatisticsLatestComponent } from './components/statistics-latest/statis
 import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
 import { CircularsComponent } from './components/circulars/circulars.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { CoronaWhatisService } from './services/corona-whatis.service';
 
 
 @NgModule({
@@ -49,9 +51,10 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [],
+  providers: [CoronaWhatisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
