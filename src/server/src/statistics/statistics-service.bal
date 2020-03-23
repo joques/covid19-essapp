@@ -3,6 +3,7 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/io;
 import ballerina/time;
+import ballerina/lang.'int as langint;
 //import ballerina/lang.'string as strings;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
@@ -50,12 +51,27 @@ service awareness on apiListener2 {
 					string dateString = theDate.toString();
 					string theSubstr = dateString.substring(6, dateString.length());
 					io:println(theSubstr);
+					int|error numDate = langint:fromString(theSubstr);
+					if (numDate is error) {
+						io:println("Spotted an error casting a string into an int");
+					} else {
+						theLatestTime = {time: numDate, zone: noZoneValue};
+						io:println(theLatestTime);
+					}
+					//match numericDate {
+					//	int numVal => {
+					//		theLatestTime = {time: numVal, zone: noZoneValue};
+					//	}
+					//	error err => {
+					//		io:println("an error occurred during the type conversion";
+					//	}
+					//}
 				}
 
 				if(theLatest == null) {
 					io:println("theLatest is null");
 					theLatest = singleData;
-					//theLatestTime = {time: singleData.date?.date, zone: noZoneValue};
+					//theLatestTime = {time: numericDate, zone: noZoneValue};
 				} else {
 					//time:Time singleDataTime = {time: singleData.date?.date, zone: noZoneValue};
 					//io:println("time at singleData");
