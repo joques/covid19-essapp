@@ -2,8 +2,7 @@ import 'package:covid_19_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class Region {
-  String name;
-
+  final String name;
   Region({
     @required this.name,
   });
@@ -57,22 +56,16 @@ class Region {
   //TODO: regions.sort((a, b) => a.name.compareTo(b.name))
   //List of Regions in the Drop Down list.
   static List items = Region.regions
-      .map((item) => DropdownMenuItem(
-            value: item.name,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  item.name,
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
-            ),
-          ))
+      .map(
+        (item) => Text(
+          item.name,
+          style: TextStyle(
+            color: AppColors.primaryText,
+            fontFamily: "Roboto",
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+          ),
+        ),
+      )
       .toList();
 }
