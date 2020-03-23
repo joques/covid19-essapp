@@ -40,7 +40,7 @@ service awareness on apiListener2 {
 			json? theLatest = ();
 			foreach var singleData in allData {
 				io:println(singleData);
-				io:println(singleData.date?.date);
+				io:println(singleData.date);
 				if(theLatest == null) {
 					io:println("theLatest is null");
 					theLatest = singleData;
