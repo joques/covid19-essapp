@@ -28,6 +28,7 @@ dependencies:
   line_icons:
   carousel_slider:
   flutter_svg:
+  google_maps_flutter:
 
 
 dev_dependencies:

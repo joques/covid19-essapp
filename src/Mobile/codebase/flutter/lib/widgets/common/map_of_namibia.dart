@@ -23,20 +23,20 @@ class NamibianMap extends StatefulWidget {
   final Color karasColor;
 
   //Regions By Name will be used to compare with var value
-  final String defaultLocation = 'All of Namibia';
-  final String kuneneRegion = 'Kunene Region';
-  final String omusatiRegion = 'Omusati Region';
-  final String oshanaRegion = 'Oshana Region';
-  final String ohangwenaRegion = 'Ohangwena Region';
-  final String oshikotoRegion = 'Oshikoto Region';
-  final String kavangoRegion = 'Kavango Region';
-  final String zambeziRegion = 'Zambezi Region';
-  final String erongoRegion = 'Erongo Region';
-  final String otjozondjupaRegion = 'Otjozondjupa Region';
-  final String omahekeRegion = 'Omaheke Region';
-  final String khomasRegion = 'Khomas Region';
-  final String hardapRegion = 'Hardap Region';
-  final String karasRegion = 'ǁKaras Region';
+  final String defaultLocation = '0';
+  final String kuneneRegion = '1';
+  final String omusatiRegion = '2';
+  final String oshanaRegion = '3';
+  final String ohangwenaRegion = '4';
+  final String oshikotoRegion = '5';
+  final String kavangoRegion = '6';
+  final String zambeziRegion = '7';
+  final String erongoRegion = '8';
+  final String otjozondjupaRegion = '9';
+  final String omahekeRegion = '10';
+  final String khomasRegion = '11';
+  final String hardapRegion = '12';
+  final String karasRegion = '13';
 
   NamibianMap(
       {Key key,
