@@ -1,7 +1,7 @@
 import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
-//import ballerina/io;
+import ballerina/io;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "localhost",
@@ -27,13 +27,17 @@ service awareness on apiListener2 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var latestData = dbClient->find("covidstats", ());
+		var allData = dbClient->find("covidstats", ());
 
 		// fill the repsonse payload with the new content
-		if (latestData is error) {
-			log:printError("An error occurred while pulling the latest statistics", err=latestData);
+		if (allData is error) {
+			log:printError("An error occurred while pulling the latest statistics", err=allData);
 		} else {
-			latestResp.setJsonPayload(latestData);
+			foreach var singleData in allData {
+				io:println(singleData);
+			}
+
+			latestResp.setJsonPayload(allData);
 
 			// send the response to the caller and log errors
 			var respResult = caller->respond(latestResp);
