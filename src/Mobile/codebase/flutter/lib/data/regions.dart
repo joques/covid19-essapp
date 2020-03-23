@@ -54,7 +54,7 @@ class Region {
   ];
 
   //TODO: regions.sort((a, b) => a.name.compareTo(b.name))
-  //List of Regions in the Drop Down list.
+  //List of Regions Names in the Picker list.
   static List items = Region.regions
       .map(
         (item) => Text(

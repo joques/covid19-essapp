@@ -52,7 +52,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           child: Column(
             children: <Widget>[
               Container(
-                height: 16,
+                height: 20,
                 margin: EdgeInsets.only(
                   left: 20,
                   right: 20,
@@ -64,7 +64,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   children: [
                     Container(
                       child: Text(
-                        "Statistics",
+                        "View By Region",
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: AppColors.primaryText,
@@ -89,40 +89,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     ),
                   ],
                 ),
-              ), // Statistics Heading
-              NamibianMap(
-                value: _value.toString(),
-                selectedColor: AppColors.secondaryText,
-                baseColor: AppColors.secondaryBackground,
-//                zambeziColor: , optional customisation
-              ), // Map
-              Container(
-                height: 16,
-                margin: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 30,
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        child: Text(
-                          "View By Region",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: AppColors.primaryText,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ), // View By Region Heading
+              ), // Region Heading
               Container(
                   height: 50,
                   margin: EdgeInsets.only(
@@ -143,7 +110,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       decoration: BoxDecoration(
                         color: AppColors.accentElement,
                       ),
-                      child: _regionsList())), // Drop Down Menu
+                      child: _regionsList())), // Picker Menu
+              NamibianMap(
+                value: _value.toString(),
+                selectedColor: AppColors.secondaryText,
+                baseColor: AppColors.secondaryBackground,
+//                zambeziColor: , optional customisation
+              ), // Map
               Container(
                 child: Column(
                   children: <Widget>[
