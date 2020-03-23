@@ -33,9 +33,15 @@ service awareness on apiListener2 {
 		if (allData is error) {
 			log:printError("An error occurred while pulling the latest statistics", err=allData);
 		} else {
+			json? theLatest = ();
 			foreach var singleData in allData {
 				io:println(singleData);
+				if(theLatest == null) {
+					theLatest = singleData;
+				}
 			}
+
+			io:println(theLatest);
 
 			latestResp.setJsonPayload(allData);
 
