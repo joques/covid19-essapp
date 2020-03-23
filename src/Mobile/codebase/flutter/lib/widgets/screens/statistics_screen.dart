@@ -27,7 +27,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   CupertinoPicker _regionsList() => CupertinoPicker(
         itemExtent: 28,
         backgroundColor: AppColors.accentElement,
-        diameterRatio: 19,
+        diameterRatio: 2,
         onSelectedItemChanged: (value) {
           setState(() {
             _value = value;
@@ -91,7 +91,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 ),
               ), // Region Heading
               Container(
-                  height: 50,
+                  height: 60,
                   margin: EdgeInsets.only(
                     left: 20,
                     right: 20,
@@ -113,7 +113,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       child: _regionsList())), // Picker Menu
               NamibianMap(
                 value: _value.toString(),
-                selectedColor: AppColors.secondaryText,
+                selectedColor: AppColors.primaryText,
                 baseColor: AppColors.secondaryBackground,
 //                zambeziColor: , optional customisation
               ), // Map
