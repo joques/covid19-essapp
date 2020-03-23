@@ -8,12 +8,14 @@ import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 })
 export class CoronaWhatisComponent implements OnInit {
   coronaInfo = [];
-  coronaService: any;
 
-  constructor(coronaService: CoronaWhatisService) { }
+
+  constructor(private coronaService: CoronaWhatisService) { }
 
   ngOnInit(): void {
+    console.log('We are here');
     this.coronaService.sendGetRequest().subscribe((data: any[]) => {
+      console.log('We are here');
       console.log(data);
       this.coronaInfo = data;
     });
