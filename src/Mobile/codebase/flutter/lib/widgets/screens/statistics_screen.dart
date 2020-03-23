@@ -14,8 +14,8 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
-  //Dummy Data
-  String refreshDate = "Thur, 19 March 2020, 7:30 am";
+  //Dummy Date Now
+  String refreshDate = DateTime.now().toUtc().toString();
 
   //Push Notification Consent
   bool consent = false;

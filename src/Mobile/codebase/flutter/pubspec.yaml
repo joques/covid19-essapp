@@ -30,6 +30,9 @@ dependencies:
   flutter_svg:
   google_maps_flutter:
   http:
+  geolocator:
+  url_launcher:
+
 
 dev_dependencies:
   flutter_test:

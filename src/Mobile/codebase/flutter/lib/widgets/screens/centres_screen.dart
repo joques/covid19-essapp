@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:covid_19_app/models/Centre.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -13,34 +14,77 @@ class CentresScreen extends StatefulWidget {
 
 class _CentresScreenState extends State<CentresScreen> {
   Completer<GoogleMapController> _controller = Completer();
+  GoogleMapController mapController;
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(-22.5666618, 17.0777174),
-    zoom: 18,
-  );
+  BitmapDescriptor pinCentreIcon;
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
+  void setCentrePin() async {
+    pinCentreIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 2.5),
+        'assets/images/markers/marker4.png');
+  }
+
+  List<Centre> _centres = List();
+
+  @override
+  void initState() {
+    super.initState();
+    setCentrePin();
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      mapController = controller;
+    });
+  }
+
+  static final CameraPosition _namibia = CameraPosition(
+      //bearing: 192.8334901395799,
       target: LatLng(-22.5666618, 17.0777174),
       tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+      zoom: 6);
   @override
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      
-    );
-  }
+    _centres.add(Centre(
+        name: 'Lady Pohamba Private Hospital',
+        about: 'Private hospital',
+        coordinates: LatLng(-22.6220078, 17.0930451)));
+    _centres.add(Centre(
+        name: 'Katutura State Hospital',
+        about: 'Public hospital',
+        coordinates: LatLng(-22.5346763, 17.0624753)));
+    _centres.add(Centre(
+        name: 'Robert Mugabe Clinic',
+        about: 'Public clinic',
+        coordinates: LatLng(-22.578527, 17.0637647)));
+    _centres.add(Centre(
+        name: 'Hakahana Clinic',
+        about: 'Public clinic',
+        coordinates: LatLng(-22.5969382, 17.0463872)));
+    _centres.add(Centre(
+        name: 'Oshakati State Hospital',
+        about: 'Public Hospital',
+        coordinates: LatLng(-17.7885692, 15.7045121)));
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+    Set<Marker> markers = Set();
+    _centres.forEach((centre) => markers.add(Marker(
+        position: centre.coordinates,
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+        infoWindow: InfoWindow(title: centre.name, snippet: centre.about),
+        markerId: MarkerId(centre.name))));
+
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: GoogleMap(
+        initialCameraPosition: _namibia,
+        onMapCreated: _onMapCreated,
+        mapType: MapType.normal,
+        markers: markers,
+      ),
+    );
   }
 }

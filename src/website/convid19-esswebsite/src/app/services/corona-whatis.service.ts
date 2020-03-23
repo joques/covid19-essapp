@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 })
 export class CoronaWhatisService {
 
-  private whatisApi = 'http://196.216.167.190:6547/codiv/v1/awareness/whatis';
+  private whatisApi = 'http://196.216.167.150:6547/covid/v1/awareness/whatis';
 
   constructor(private client: HttpClient) { }
 
