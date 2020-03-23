@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule,
+import {
+  MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatButtonModule,
-  MatProgressSpinnerModule } from '@angular/material';
+  MatButtonModule
+} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
@@ -63,7 +64,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule,
+    // MatProgressSpinnerModule,
     BrowserAnimationsModule
   ],
   providers: [CoronaWhatisService],
