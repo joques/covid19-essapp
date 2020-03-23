@@ -3,6 +3,7 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/io;
 import ballerina/time;
+//import ballerina/lang.'string as strings;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "localhost",
@@ -41,6 +42,16 @@ service awareness on apiListener2 {
 			foreach var singleData in allData {
 				io:println(singleData);
 				io:println(singleData.date);
+				var theDate = singleData.date;
+				
+				if (theDate is error) {
+					io:println("there seems to be an error with the date");
+				} else {
+					string dateString = theDate.toString();
+					string theSubstr = dateString.substring(6, dateString.length());
+					io:println(theSubstr);
+				}
+
 				if(theLatest == null) {
 					io:println("theLatest is null");
 					theLatest = singleData;
