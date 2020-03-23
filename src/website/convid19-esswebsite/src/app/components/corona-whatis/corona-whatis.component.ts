@@ -15,7 +15,7 @@ export class CoronaWhatisComponent implements OnInit {
   ngOnInit(): void {
     console.log('We are here');
     this.coronaService.sendGetRequest().subscribe((data: any[]) => {
-      console.log('We are here');
+      console.log('We are here 9999');
       console.log(data);
       this.coronaInfo = data;
     });
