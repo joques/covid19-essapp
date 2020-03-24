@@ -10,13 +10,18 @@
 .navb {
   font-family: karmina;
   font-size: 16px;
-  font-weight: bold;
+
 }
 
 .navfloat {
 float: inline-end;
 }
 
+
+img {
+  width: 40% !important;
+  height: 5% !important;
+}
 
 
 nav {
@@ -26,14 +31,14 @@ nav {
 .navbar .navbar-brand {
     text-decoration: none;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 46px;
     position: relative;
     left: 20px;
 }
 
 .navbar .nav-item .nav-link {
     color: rgba(255, 255, 255,0.7);
-    font-weight: 100;
+    /* font-weight: 100; */
 }
 .navbar .nav-item.active .nav-link{
     color: #fff;

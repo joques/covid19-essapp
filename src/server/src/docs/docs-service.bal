@@ -1,44 +1,20 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
+import ballerina/mongodb;
 
+
+mongodb:ClientEndpointConfig  mongoConfig = {
+        host: "localhost",
+        dbName: "covid-nam",
+        username: "",
+        password: "",
+        options: {sslEnabled: false, serverSelectionTimeout: 500}
+};
+
+mongodb:Client dbClient = check new (mongoConfig);
 
 listener http:Listener apilistener4 = new (6552);
-
-function loadDocMetadata(string metadataPath) returns @tainted json[] {
-	var rCSVChannel = io:openReadableCsvFile(metadataPath);
-	io:println("Start processing the CSV file from ", metadataPath);
-	
-	json[] loadResult = [];
-	
-	if (rCSVChannel is error) {
-		io:println("An error occurred with openning the channel to read CSV data");
-		io:println(rCSVChannel.reason());
-		return loadResult;
-	} else {
-		while (rCSVChannel.hasNext()) {
-			var curRec = rCSVChannel.getNext();
-		
-			if (curRec is string[]) {
-				io:println("printing current record");
-				io:println(curRec);
-			 } else {
-				io:println(curRec);
-			}
-		}
-	
-		var opResult = rCSVChannel.close();
-		if (opResult is error) {
-			io:println("an error occurred while closing the cvs channel");
-			return loadResult;
-		} else {
-			io:println("we are done loading the data...");
-			return loadResult;
-		}	
-	}	
-}
-
-json[] fileMetaData = <@untainted> loadDocMetadata("../../official-docs/doc-metadata.csv");
 
 
 @http: ServiceConfig {
@@ -53,11 +29,20 @@ service documents on apilistener4 {
 	resource function getAllMetadata(http:Caller caller, http:Request docReq){
 		http:Response allMetaResp = new;
 		
-		allMetaResp.setJsonPayload(fileMetaData);
-		var sendRes = caller->respond(allMetaResp);
+		//pull the official document metadata from the data store
+		var docuMetaData = dbClient -> find("ofdocus", ());
+
+		if (docuMetaData is error) {
+			log:printError("An error occurred while pulling document metadata from the data store", err=docuMetaData);
+		} else {
+			allMetaResp.setJsonPayload(docuMetaData);
+			var sendRes = caller->respond(allMetaResp);
+
+			io:println("sending the metadata out...");
 		
-		if (sendRes is error) {
-			log:printError(sendRes.reason(), sendRes);
-		}
+			if (sendRes is error) {
+				log:printError(sendRes.reason(), sendRes);
+			}
+		}	
 	}
 }
