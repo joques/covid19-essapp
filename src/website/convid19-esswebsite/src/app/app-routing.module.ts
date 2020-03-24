@@ -17,6 +17,8 @@ import { StatisticsPeriodicComponent } from './components/statistics-periodic/st
 import { CircularsComponent } from './components/circulars/circulars.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { FaqsComponent } from './components/faqs/faqs.component';
+import { FactsComponent } from './components/facts/facts.component';
+import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 
 const routes: Routes = [
 
@@ -37,6 +39,8 @@ const routes: Routes = [
   { path: 'app-statistics-periodic', component: StatisticsPeriodicComponent },
   { path: 'app-circulars', component: CircularsComponent },
   { path: 'app-statistics', component: StatisticsComponent },
+  { path: 'app-facts', component: FactsComponent },
+  { path: 'app-corona-general-info', component: CoronaGeneralInfoComponent },
 ];
 
 @NgModule({

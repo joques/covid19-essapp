@@ -8,7 +8,10 @@ import { map } from "rxjs/operators";
 })
 export class HttpserviceService {
 
+
   constructor(private http: HttpClient) { }
+
+ 
 
   getCirculars(): any {
     const httpOptions = {
@@ -141,7 +144,7 @@ export class HttpserviceService {
     };
 
     return this.http
-      .get('http://196.216.167.190/codiv/v1/faq/all', {
+      .get('http://196.216.167.150:6551/codiv/v1/faq/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));
