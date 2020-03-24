@@ -2,8 +2,7 @@
 title: CODIV Essential Information
 baseURI: http://196.216.167.150:{port}/codiv/v1
 version: v1
-port: 
-	enum: [6547 | 6549 | 6550 | 6551]
+port: [6547 | 6549 | 6550 | 6551]
 
 /awareness/latest:
     displayName: Latest information about the virus
@@ -183,8 +182,8 @@ port:
                                   }
                                 ]
 
-/circulars:
-    displayName: All official documents related to the virus
+/docs/description:
+    displayName: Provide metadata or general description about all documents 
         description:
             get:
                 description:
@@ -192,4 +191,27 @@ port:
                         200:
                             body:
                                 application/json:
-                                    {}
+                                  example: |
+                                    [{
+                                      docid: "offdoc001",
+                                      title: "Title 1",
+                                      pubdate: "2020-03-20",
+                                      author: "Ministry of Health",
+                                      source: ""
+                                    },
+                                    {
+                                      docid: "offdoc002",
+                                      title: "Title 2",
+                                      pubdate: "2020-03-12",
+                                      author: "Centre for Disease Control",
+                                      source: ""
+                                    }]
+/docs:
+  /{docid}:
+    description: returns a document attached to this document identifier
+    get:
+      responses:
+        200:
+          body:
+            application/pdf:
+              type: file
