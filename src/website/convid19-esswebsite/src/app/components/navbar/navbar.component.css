@@ -19,7 +19,7 @@ float: inline-end;
 
 
 img {
-  width: 45% !important;
+  width: 40% !important;
   height: 5% !important;
 }
 
@@ -28,13 +28,13 @@ nav {
     background-color: rgba(0, 0, 0, 0.9);
     transition-duration: 1.2s;
 }
-/* .navbar .navbar-brand {
+.navbar .navbar-brand {
     text-decoration: none;
     font-weight: bold;
     font-size: 46px;
     position: relative;
     left: 20px;
-} */
+}
 
 .navbar .nav-item .nav-link {
     color: rgba(255, 255, 255,0.7);
