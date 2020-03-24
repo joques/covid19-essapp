@@ -3,14 +3,14 @@
       <div class="img-container">
         <img src="../../../assets/img/virus-small.png" alt="profile">
       </div>
-      <h2 class="text-center">General<span> Information about Coronavirus</span></h2>
+      
 <div style="padding: 13px;">
     <mat-card-header>
-        <mat-card-title>What is Corona Virus</mat-card-title>
+        <mat-card-title>Myths and Facts</mat-card-title>
 
     </mat-card-header>
-    <mat-spinner *ngIf="coronaInfo.length === 0"></mat-spinner>
-    <mat-card *ngFor="let info of coronaInfo" style="margin-top:10px;">
+    <mat-spinner *ngIf="Facts.length === 0"></mat-spinner>
+    <mat-card *ngFor="let facts of Facts" style="margin-top:10px;">
 
 
         <!-- <mat-card-header>
@@ -19,7 +19,7 @@
         </mat-card-header> -->
         <mat-card-content>
             <p style="font-size:20px">
-                {{info}}
+                {{facts}}
             </p>
 
         </mat-card-content>

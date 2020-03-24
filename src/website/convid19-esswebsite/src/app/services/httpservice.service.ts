@@ -124,7 +124,7 @@ export class HttpserviceService {
     };
 
     return this.http
-      .get('http://196.216.167.190/codiv/v1/awareness/whatis', {
+      .get('https://cors-anywhere.herokuapp.com/http://196.216.167.150/covid/v1/awareness/whatis', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));
