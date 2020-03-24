@@ -21,6 +21,8 @@ function loadDocMetadata(string metadataPath) returns @tainted json[] {
 			if (curRec is string[]) {
 				io:println("printing current record");
 				io:println(curRec);
+			 } else {
+				io:println(curRec);
 			}
 		}
 	
