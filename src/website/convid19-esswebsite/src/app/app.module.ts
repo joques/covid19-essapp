@@ -32,6 +32,7 @@ import { CircularsComponent } from './components/circulars/circulars.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { CoronaWhatisService } from './services/corona-whatis.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FaqsComponent } from './components/faqs/faqs.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StatisticsLatestComponent,
     StatisticsPeriodicComponent,
     CircularsComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    FaqsComponent
   ],
   imports: [
     BrowserModule,
