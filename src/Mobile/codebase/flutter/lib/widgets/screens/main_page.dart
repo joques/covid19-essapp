@@ -1,4 +1,3 @@
-import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/screens/centres_screen.dart';
 import 'package:covid_19_app/widgets/screens/faq_screen.dart';
 import 'package:covid_19_app/widgets/screens/information_screen.dart';
@@ -38,7 +37,7 @@ class _MainPageState extends State<MainPage> {
     BottomNavigationBarItem(
         icon: Icon(LineIcons.home), title: Text('Information')),
     BottomNavigationBarItem(
-        icon: Icon(LineIcons.hospital_o), title: Text('Testing Centres')),
+        icon: Icon(LineIcons.hospital_o), title: Text('Centres')),
     BottomNavigationBarItem(
         icon: Icon(LineIcons.pie_chart), title: Text('Statistics')),
     BottomNavigationBarItem(
@@ -68,8 +67,8 @@ class _MainPageState extends State<MainPage> {
         onTap: _onTapped,
         items: _navItems,
         backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: AppColors.secondaryText,
-        selectedItemColor: AppColors.secondaryElement,
+        unselectedItemColor: Colors.amber,
+        selectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,
       ),
     );

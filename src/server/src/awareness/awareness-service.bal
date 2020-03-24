@@ -1,6 +1,17 @@
+import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
+
+mongodb:ClientEndpointConfig  mongoConfig = {
+	host: "localhost",
+	dbName: "covid-nam",
+	username: "",
+	password: "",
+	options: {sslEnabled: false, serverSelectionTimeout: 500}
+};
+
+mongodb:Client dbClient = check new (mongoConfig);
 
 listener http:Listener apiListener1 = new (6547);
 
@@ -43,12 +54,13 @@ service awareness on apiListener1 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var latestData = awarenessDS?.latestNews;
+		var latestData = awarenessDS?.latestnews;
 
 		// fill the repsonse payload with the new content
 		if (latestData is error) {
 			log:printError("An error occurred while pulling the latest data from awareness", err=latestData);
 		} else {
+			io:println(latestData);
 			latestResp.setJsonPayload(latestData);
 
 			// send the response to the caller and log errors
@@ -67,7 +79,7 @@ service awareness on apiListener1 {
 		http:Response defResp = new;
 
 		// pull the official virus definition data
-		var covidDefJson = awarenessDS?.virusDef;
+		var covidDefJson = awarenessDS?.virusdef;
 
 		if (covidDefJson is error) {
 			log:printError("An error occurred while pulling the virus definition data from awareness", err=covidDefJson);
@@ -149,6 +161,102 @@ service awareness on apiListener1 {
 
 			// send response to caller and log errors
 			var respResult = caller->respond(tipResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/facts"
+	}
+	resource function getFacts(http:Caller caller, http:Request trReq) {
+		http:Response factResp = new;
+
+		// pull the facts
+		var factJson = awarenessDS?.facts;
+
+		if (factJson is error) {
+			log:printError("An error occurred while pulling the virus transmission info from awareness", err=factJson);
+		} else {
+			// fill the response payload with the new content
+			factResp.setJsonPayload(factJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(factResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/measures"
+	}
+	resource function getMeasures(http:Caller caller, http:Request trReq) {
+		http:Response measureResp = new;
+
+		// pull the facts
+		var measureJson = awarenessDS?.measures;
+
+		if (measureJson is error) {
+			log:printError("An error occurred while pulling info related to the measures against the virus", err=measureJson);
+		} else {
+			// fill the response payload with the new content
+			measureResp.setJsonPayload(measureJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(measureResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/myths"
+	}
+	resource function getMyths(http:Caller caller, http:Request trReq) {
+		http:Response mythResp = new;
+
+		// pull the facts
+		var mythJson = awarenessDS?.myths;
+
+		if (mythJson is error) {
+			log:printError("An error occurred while pulling myths about the virus", err=mythJson);
+		} else {
+			// fill the response payload with the new content
+			mythResp.setJsonPayload(mythJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(mythResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/casedefs"
+	}
+	resource function getCaseDefinisions(http:Caller caller, http:Request trReq) {
+		http:Response caseResp = new;
+
+		// pull the facts
+		var caseJson = awarenessDS?.casedefs;
+
+		if (caseJson is error) {
+			log:printError("An error occurred while pulling case definitions about the virus", err=caseJson);
+		} else {
+			// fill the response payload with the new content
+			caseResp.setJsonPayload(caseJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(caseResp);
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
 			}

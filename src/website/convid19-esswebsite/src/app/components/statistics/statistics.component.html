@@ -1,10 +1,23 @@
-<div>
-    
-    <app-treatment></app-treatment>        
-       
-</div>
-<div>
-  
+<section class="stats-section">
+
+  <mat-card>
+    <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+      <agm-marker *ngIf="chosenLocation" [latitude]="latitude" [longitude]="longitude">
+      </agm-marker>
+    </agm-map>
+    <h5 class="text-center">Statistics as of {{datenow | date}}</h5>
+    <div class="buttons">
+      <button class="primary" mat-raised-button matBadge="20">Confirmed Cases</button>
+      <button class="danger" mat-raised-button matBadge="5">Confirmed Deaths</button>
+      <button class="warning" mat-raised-button matBadge="2">Recovered Patients</button>
+      <button class="success" mat-raised-button matBadge="10">Suspected Cases</button>
+    </div>
+  </mat-card>
+  <!-- <h1 class="text-center">Statistics</h1>
+  <div>
+    <app-corona-whatis></app-corona-whatis>
+  </div>
+  <div>
     <app-transmission></app-transmission>
-       
-</div>
+  </div> -->
+</section>
