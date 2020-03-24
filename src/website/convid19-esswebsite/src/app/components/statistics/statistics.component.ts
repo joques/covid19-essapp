@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticsComponent implements OnInit {
 
-  latitude = -22.967062;
+  latitude = -22.5628;
 
-  longitude = 18.4929993;
-  chosenLocation = false;
+  longitude = 17.0746;
+  chosenLocation = true;
   datenow: string;
   constructor() { }
 
