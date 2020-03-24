@@ -9,18 +9,23 @@ import { map } from "rxjs/operators";
 })
 export class CoronaWhatisService {
 
-  private whatisApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/whatis';
-  private transmissionApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/transmission';
-  private symptomsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/symptoms';
-  private treatmentApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/treatment';
-  private measuresApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/measures';
-  private factsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/facts';
-  private tipsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/tips';
+  private whatisApi = 'http://196.216.167.150:6547/covid/v1/awareness/whatis';
+  private transmissionApi = 'http://196.216.167.150:6547/covid/v1/awareness/transmission';
+  private symptomsApi = 'http://196.216.167.150:6547/covid/v1/awareness/symptoms';
+  private treatmentApi = 'http://196.216.167.150:6547/covid/v1/awareness/treatment';
+  private measuresApi = 'http://196.216.167.150:6547/covid/v1/awareness/measures';
+  private factsApi = 'http://196.216.167.150:6547/covid/v1/awareness/facts';
+  private tipsApi = 'http://196.216.167.150:6547/covid/v1/awareness/tips';
+  private faqsApi = 'http://196.216.167.150:6551/codiv/v1/faq/all';
 
   constructor(private client: HttpClient) { }
 
   public sendGetRequest() {
     return this.client.get(this.whatisApi);
+  }
+
+  public getFaqs() {
+    return this.client.get(this.faqsApi);
   }
 
   public Gettransmission() {

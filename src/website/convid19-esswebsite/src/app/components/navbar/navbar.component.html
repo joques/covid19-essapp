@@ -1,18 +1,35 @@
-
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color-dark fixed-top">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" style="color: azure;" [routerLink]="['/home']">COVID-19 Namibia</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" style="color: azure;" [routerLink]="['/home']">COVID-19 Namibia</a>
+  </mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-corona-general-info'"> General Info</a>
+      </li>
+      <!-- Dropdown
+
+  <mdb-navbar-brand>
+    <a class="navbar-brand waves-effect" [routerLink]="['/']">
+      <img class="d-none d-lg-block" src="../../../assets/img/rsz_1logo.jpg"  height="30" alt="">
+    </a>
+    <!-- <a class="navbar-brand" style="color: azure;  float: right;" [routerLink]="['/home']">COVID-19 Namibia</a> -->
+    </mdb-navbar-brand>
+
 
   <!-- Collapsible content -->
   <links>
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-corona-general-info'"> General Info</a>
-        </li>
-      <!-- Dropdown
+        </li> -->
+      <!-- Dropdown -->
       <li class="nav-item btn-group" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           General Info<span class="caret"></span></a>
@@ -27,24 +44,15 @@
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-tips']">Advice and Tips </a>
         </div>
       </li> -->
-
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Testing Centers</a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Statistics</a>
       </li>
 
-      <!-- <li class="nav-item btn-group" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Statistics<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-statistics-latest']">Latest Statistics</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Recovered</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Death cases</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Suspected cases</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Confirmed cases</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">World wide</a>
-        </div>
-      </li> -->
+
       <li class="nav-item btn-group">
         <a dropdownToggle mdbWavesEffect class="nav-link" [routerLink]="['/faq']" mdbWavesEffect>
           FAQ</a>
@@ -60,11 +68,10 @@
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Latest Discoveries</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Research/Publications</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Memos and Circulars</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Health Facilities</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/app-about-us']"> About Us</a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/app-about-us']"> About</a>
       </li>
     </ul>
 
