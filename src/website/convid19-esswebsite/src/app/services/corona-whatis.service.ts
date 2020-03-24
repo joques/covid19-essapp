@@ -15,6 +15,7 @@ export class CoronaWhatisService {
   private treatmentApi = 'http://196.216.167.150:6547/covid/v1/awareness/treatment';
   private measuresApi = 'http://196.216.167.150:6547/covid/v1/awareness/measures';
   private factsApi = 'http://196.216.167.150:6547/covid/v1/awareness/facts';
+  private tipsApi = 'http://196.216.167.150:6547/covid/v1/awareness/tips';
 
   constructor(private client: HttpClient) { }
 
@@ -36,5 +37,8 @@ export class CoronaWhatisService {
   }
   public getFacts() {
     return this.client.get(this.factsApi);
+  }
+  public getTips() {
+    return this.client.get(this.tipsApi);
   }
 }

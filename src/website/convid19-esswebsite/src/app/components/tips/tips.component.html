@@ -1,4 +1,28 @@
-<section class="stats-section">
-
-<app-corona-whatis></app-corona-whatis>
-</section>
+<div id="link1">
+    <mdb-card-body>
+      <div class="img-container">
+        <img src="../../../assets/img/virus-small.png" alt="profile">
+      </div>
+      
+  <div style="padding: 13px;">
+    <mat-card-header>
+        <mat-card-title>Advices and Tips</mat-card-title>
+  
+    </mat-card-header>
+    <mat-spinner *ngIf="Tips.length === 0"></mat-spinner>
+    <mat-card *ngFor="let tips of Tips" style="margin-top:10px;">
+  
+  
+        <!-- <mat-card-header>
+            <mat-card-title>What is Corona Virus</mat-card-title>
+          
+        </mat-card-header> -->
+        <mat-card-content>
+            <p style="font-size:20px">
+                {{tips}}
+            </p>
+  
+        </mat-card-content>
+  
+    </mat-card>
+  </div>
