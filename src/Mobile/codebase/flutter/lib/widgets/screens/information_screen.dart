@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class InformationScreen extends StatefulWidget {
   final String title;
-  Future<Latest> latestInfo;
+  
   InformationScreen({Key key, this.title}) : super(key: key);
 
   @override
@@ -18,7 +18,9 @@ class InformationScreen extends StatefulWidget {
 
 class _InformationScreenState extends State<InformationScreen> {
   List _slides = <Widget>[];
-  Future<Latest> latestInfo = fetchInfo();
+  Future<Latest> latestInfo;
+  int confirmed;
+  
   var title = {'1':'What is COVID-19?',
                '2':"Who is most at risk?",
                '3':"How is it transmited?",
@@ -33,6 +35,17 @@ class _InformationScreenState extends State<InformationScreen> {
   
   @override
   Widget build(BuildContext context) {
+    
+    @override
+    void initState(){
+      super.initState();
+      this.latestInfo = fetchInfo();
+      latestInfo.then((value) =>{
+        this.confirmed =int.parse(value.confirmed.toString())
+      });
+      debugPrint("CONFIRMED=>"+this.confirmed.toString());
+      // Additional initialization of the State
+    }
     double _wd = (MediaQuery.of(context).size.width / 2) - 50;
 
     return Scaffold(
@@ -42,14 +55,7 @@ class _InformationScreenState extends State<InformationScreen> {
           ),
           centerTitle: true,
         ),
-        body: FutureBuilder(
-        future: fetchInfo(),
-        builder: (context, snapshot){
-          if (snapshot.hasData) {
-                debugPrint(snapshot.data.confirmed);
-              } else if (snapshot.hasError) {
-                debugPrint("${snapshot.error}");
-              }
+        body: 
           SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -163,7 +169,7 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: int.parse(fetchInfo().then((value) => {value.confirmed}).toString()),
+                            count: 4,
                             borderColor:Colors.blue.shade800.value,
                             title: 'Confirmed Cases',
                           ),
@@ -183,7 +189,7 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: 0,
+                            count: 4,
                             borderColor:Colors.green.shade900.value,
                             title: 'Recoverd Patients',
                           ),
@@ -201,14 +207,14 @@ class _InformationScreenState extends State<InformationScreen> {
               ],
             ),
           ),
-        );
-        })
+        )
+        //})
         );
   }
 }
 Future<Latest> fetchInfo() async {
   //http://196.216.167.150:6549/covid/v1/statistics/latest');
-  final response = await http.get('http://196.216.167.150:6547/covid/v1/awareness/whatis');
+  final response = await http.get("http://196.216.167.150:6549/covid/v1/statistics/latest");
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,

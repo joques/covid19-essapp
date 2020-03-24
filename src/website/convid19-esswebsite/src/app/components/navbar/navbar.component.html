@@ -1,8 +1,18 @@
-
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color-dark fixed-top">
 
   <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" style="color: azure;" [routerLink]="['/home']">COVID-19 Namibia</a>
+  </mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-corona-general-info'"> General Info</a>
+      </li>
+      <!-- Dropdown
 
 
   <mdb-navbar-brand>
@@ -35,7 +45,9 @@
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-tips']">Advice and Tips </a>
         </div>
       </li> -->
-
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Testing Centers</a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Statistics</a>
@@ -57,7 +69,6 @@
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Latest Discoveries</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Research/Publications</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Memos and Circulars</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Health Facilities</a>
         </div>
       </li>
       <li class="nav-item">
