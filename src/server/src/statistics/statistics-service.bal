@@ -71,7 +71,7 @@ service awareness on apiListener2 {
 			io:println("about to print out the value of theLatest");
 			io:println(theLatest);
 			
-			string|error convertedDateToStr = time:format(theLatestTime, time:TIME_FORMAT_RFC_1123);
+			string|error convertedDateToStr = time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 			string dateStrCopy = "";
 			if (convertedDateToStr is error) {
 				io:println("the date cannot be converted into a string");
