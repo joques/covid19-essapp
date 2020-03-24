@@ -7,18 +7,18 @@ import { HttpserviceService } from 'src/app/services/httpservice.service';
   styleUrls: ['./corona-whatis.component.css']
 })
 export class CoronaWhatisComponent implements OnInit {
-  coronaInfo;
+  coronaInfo = [];
 
 
   constructor(private coronaService: CoronaWhatisService, private http: HttpserviceService) { }
 
   ngOnInit(): void {
     console.log('We are here');
-    this.coronaService.sendGetRequest().subscribe((data) => {
-    // this.http.getWhatIsInfo().subscribe((data) => {
+    this.coronaService.sendGetRequest().subscribe((data: []) => {
+      // this.http.getWhatIsInfo().subscribe((data) => {
       console.log('We are here 9999');
       console.log(data);
-      this.coronaInfo = data.toString;
+      this.coronaInfo = data;
     });
   }
 
