@@ -11,6 +11,7 @@ export class CoronaWhatisService {
 
   private whatisApi = 'http://196.216.167.150:6547/covid/v1/awareness/whatis';
   private transmissionApi = 'http://196.216.167.150:6547/covid/v1/awareness/transmission';
+  private symptomsApi = 'http://196.216.167.150:6547/covid/v1/awareness/symptoms';
 
   constructor(private client: HttpClient) { }
 
@@ -20,5 +21,8 @@ export class CoronaWhatisService {
 
   public Gettransmission() {
     return this.client.get(this.transmissionApi);
+  }
+  public getSymptoms() {
+    return this.client.get(this.symptomsApi);
   }
 }
