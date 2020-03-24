@@ -262,4 +262,28 @@ service awareness on apiListener1 {
 			}
 		}
 	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/symptoms"
+	}
+	resource function getInfectionSymptoms(http:Caller caller, http:Request trReq) {
+		http:Response sympResp = new;
+
+		// pull the facts
+		var sympJson = awarenessDS?.symptoms;
+
+		if (sympJson is error) {
+			log:printError("An error occurred while pulling case definitions about the virus", err=sympJson);
+		} else {
+			// fill the response payload with the new content
+			sympResp.setJsonPayload(sympJson);
+
+			// send the response to the caller
+			var respResult = caller->respond(sympResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
 }

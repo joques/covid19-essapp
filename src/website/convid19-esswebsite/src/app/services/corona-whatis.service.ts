@@ -16,11 +16,16 @@ export class CoronaWhatisService {
   private measuresApi = 'http://196.216.167.150:6547/covid/v1/awareness/measures';
   private factsApi = 'http://196.216.167.150:6547/covid/v1/awareness/facts';
   private tipsApi = 'http://196.216.167.150:6547/covid/v1/awareness/tips';
+  private faqsApi = 'http://196.216.167.150:6551/codiv/v1/faq/all';
 
   constructor(private client: HttpClient) { }
 
   public sendGetRequest() {
     return this.client.get(this.whatisApi);
+  }
+
+  public getFaqs() {
+    return this.client.get(this.faqsApi);
   }
 
   public Gettransmission() {
