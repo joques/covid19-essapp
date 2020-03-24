@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 })
 export class CoronaWhatisService {
 
-  private whatisApi = 'http://196.216.167.150:6547/covid/v1/awareness/whatis';
+  private whatisApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/whatis';
   private transmissionApi = 'http://196.216.167.150:6547/covid/v1/awareness/transmission';
   private symptomsApi = 'http://196.216.167.150:6547/covid/v1/awareness/symptoms';
   private treatmentApi = 'http://196.216.167.150:6547/covid/v1/awareness/treatment';
