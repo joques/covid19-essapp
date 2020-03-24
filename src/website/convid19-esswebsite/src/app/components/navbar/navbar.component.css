@@ -10,7 +10,7 @@
 .navb {
   font-family: karmina;
   font-size: 16px;
-  font-weight: bold;
+
 }
 
 .navfloat {
@@ -18,22 +18,27 @@ float: inline-end;
 }
 
 
+img {
+  width: 45% !important;
+  height: 5% !important;
+}
+
 
 nav {
     background-color: rgba(0, 0, 0, 0.9);
     transition-duration: 1.2s;
 }
-.navbar .navbar-brand {
+/* .navbar .navbar-brand {
     text-decoration: none;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 46px;
     position: relative;
     left: 20px;
-}
+} */
 
 .navbar .nav-item .nav-link {
     color: rgba(255, 255, 255,0.7);
-    font-weight: 100;
+    /* font-weight: 100; */
 }
 .navbar .nav-item.active .nav-link{
     color: #fff;
