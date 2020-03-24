@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { AgmCoreModule } from "@agm/core";
 
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -59,12 +61,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyANVw389Q10N46d9EvyUhbHwSP0KOycikY'
+    }),
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatBadgeModule
   ],
   providers: [CoronaWhatisService],
   bootstrap: [AppComponent]

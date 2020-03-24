@@ -1,14 +1,14 @@
 <div style="padding: 13px;">
-    <mat-spinner *ngIf="coronaInfo.length === 0"></mat-spinner>
+    <!-- <mat-spinner *ngIf="coronaInfo.length === 0"></mat-spinner> -->
 
-    <mat-card *ngFor="let corona of coronaInfo" style="margin-top:10px;">
+    <mat-card style="margin-top:10px;">
         <mat-card-header>
             <mat-card-title>What is Corona Virus</mat-card-title>
           
         </mat-card-header>
         <mat-card-content>
             <p>
-                {{corona}}
+                {{coronaInfo}}
             </p>
             
         </mat-card-content>
