@@ -13,6 +13,7 @@ function loadDocMetadata(string metadataPath) returns @tainted json[] {
 	
 	if (rCSVChannel is error) {
 		io:println("An error occurred with openning the channel to read CSV data");
+		io:println(rCSVChannel.reason());
 		return loadResult;
 	} else {
 		while (rCSVChannel.hasNext()) {
