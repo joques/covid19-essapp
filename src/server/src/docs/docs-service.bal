@@ -57,6 +57,12 @@ service documents on apilistener4 {
 		string filePath = "../../official-docs/" + docid + ".pdf";
 		
 		io:println("will send file ", filePath);
+
+		docResp.setFileAsPayload(<@untainte> filePath, docuContentType);
+		var sendRes1 = caller -> respond(docResp);
+		if (sendRes1 is error) {
+			io:println("there was an error sending the response");
+		}
 	}
 	
 }
