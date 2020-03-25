@@ -19,8 +19,9 @@ float: inline-end;
 
 
 img {
-  width: 40% !important;
-  height: 5% !important;
+  margin-top: 0.5rem;
+  width: 90px !important;
+  height: 50px !important;
 }
 
 
