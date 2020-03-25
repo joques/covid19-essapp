@@ -11,7 +11,7 @@
     <div *ngFor="let faqs of Faqs" style="margin-top:10px;">
 
         <ol>
-        <li>
+        <li *ngFor="let faqs of Faqs">
       <p style="font-size:20px; padding: 5rem; text-align: left;">
        
            <strong>{{ faqs.question}} </strong> 
