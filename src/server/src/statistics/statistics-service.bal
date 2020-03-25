@@ -53,14 +53,33 @@ service awareness on apiListener2 {
 					if (numDate is error) {
 						log:printError("An error occurred csting a string into int for date extraction", err=numDate);
 					} else {
-						singleDataTime = {time: numDate, zone: noZoneValue};
+						singleDataTime = {time: numDate, zone: noZoneValue};						
 
 						if(theLatest == null) {
 							theLatest = singleData;
 							theLatestTime = singleDataTime;
+							io:println("theLatest is null...\n");
 						} else {
+							io:println("theLatest is not null... We can do some comparisons here...");
+							io:println("singleData....");
+							io:println(singleData._id);
+							io:println(time:format(singleDataTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"));
+
+
+							io:println("The latest....");
+							io:println(theLatest._id);
+							io:println(time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"));
+
+							//io:println("object " + singleData._id + " with time " + time:format(singleDataTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"));
+
+							//io:println("object " + theLatest._id + " with time " + time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
+
 							if (singleDataTime.time > theLatestTime.time) {
+								io:println("singleData is newer than the latest... will update theLatest");
 								theLatest = singleData;
+								theLatestTime = singleDataTime; 
+								io:println(theLatest);
+								io:println(" ");
 							}
 						}
 					}
