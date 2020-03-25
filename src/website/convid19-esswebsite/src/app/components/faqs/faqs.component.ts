@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpserviceService} from 'src/app/services/httpservice.service';
+import { HttpserviceService } from 'src/app/services/httpservice.service';
 import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 
 @Component({
@@ -11,7 +11,8 @@ export class FaqsComponent implements OnInit {
   // data =  [];
   Faqs = [];
 
-  constructor(  private faqService: HttpserviceService, private coronaService: CoronaWhatisService ) { }
+  constructor(public q: string,
+              public ans: string, private faqService: HttpserviceService, private coronaService: CoronaWhatisService) { }
 
 
   ngOnInit(): void {
@@ -34,12 +35,12 @@ export class FaqsComponent implements OnInit {
   //       if (result.success) {
   //         // this.Users.push(result);
   //         result.faq.forEach(data => {
-           
+
   //           this.data.push(data);
   //           console.log(data)
   //         });
   //       }
-       
+
   //     });
   // }
 
