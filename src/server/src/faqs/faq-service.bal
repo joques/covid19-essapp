@@ -37,7 +37,7 @@ service faq on apiListener3 {
 		// pull the latest news data
 		//var faqData = dbClient->find("faqs", ());
 
-		json faqData = {"me":"You too"};
+		json|error faqData = {"me":"You too"};
 
 		// fill the repsonse payload with the new content
 		if (faqData is error) {
