@@ -1,0 +1,91 @@
+.testing-centres-section {
+    position: relative;
+    height: fit-content;
+    padding: 8rem;
+  }
+  
+  mat-card {
+    padding: 1rem;
+    margin: 0rem 3rem 0 3rem;
+  }
+  
+  agm-map {
+    height: 400px;
+  }
+  
+  h5 {
+    margin-top: 2rem;
+  }
+  
+  .buttons {
+    margin-top: 2rem;
+    margin-left: 12rem;
+  }
+  
+  button {
+    margin: 0 1.5rem;
+  }
+  
+  .primary {
+    background: #063bca;
+    color: rgb(255, 255, 255);
+  
+  }
+  
+  .success {
+    background: #1c8135;
+    color: rgb(255, 255, 255);
+  
+  }
+  
+  .danger {
+    background: #ca0606;
+    color: rgb(255, 255, 255);
+  }
+  
+  .warning {
+    background: #e9ab37;
+    color: rgb(255, 255, 255);
+  
+  }
+  
+  
+  @media only screen and (max-width: 1025px) {
+  
+  
+  
+    .buttons {
+      margin-top: 2rem;
+      margin-left: 3rem;
+    }
+  
+    button {
+      margin: 0.5rem;
+    }
+  
+  }
+  
+  @media only screen and (max-width: 500px) {
+  
+    .testing-centres-section {
+      padding: 2rem 0;
+    }
+  
+    mat-card {
+      padding: 1rem;
+      margin: 0.3rem;
+    }
+  
+  
+    .buttons {
+      margin-top: 2rem;
+      margin-left: 2rem;
+    }
+  
+    button {
+      margin: 0.5rem;
+      width: 85%;
+    }
+  
+  }
+  

@@ -1,0 +1,37 @@
+<section class="testing-centres-section">
+
+    <mat-card>
+      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+        <agm-marker *ngIf="centre" [latitude]="latitude" [longitude]="longitude">
+        </agm-marker>
+      </agm-map>
+      <h5 class="text-center">Testing Centres</h5>
+   
+    </mat-card>
+    <div >
+        <button style="padding: 3rem;" (mapClick)="onMapClick($event)" mat-raised-button > 
+            "Namibian Institute of Pathology (NIP)"
+             <!-- about: "NIP is the largest diagnostic pathology service provider in Namibia. <br>
+             For testing, Please bring along a doctor’s referral form. The test results will <br>
+             be forwarded to your doctor who will contact you within 48 hours with your results. <br>
+              Price N$ 1100.00.", -->
+            </button>
+        <button style="padding: 3rem;"  mat-raised-button> name: "Pathcare Namibia",
+            about: " PathCare Namibia is a private pathology practice which strives to promote the health of the population 
+            by providing accessible, affordable, appropriate and equitable quality pathology services to all Namibians. 
+            For testing, Please bring along a doctor’s referral form. The turnaround time range between 2 to 5 days for test done by Path-care.
+             Price N$ 1100.00",</button>
+        <button style="padding: 3rem;"  mat-raised-button >
+            name: "Robert Mugabe Clinic",
+            about: "Public healthcare organisation in Windhoek has commenced with the first screening of possible COVID-19 suspected cases.",
+        </button>
+ 
+      </div>
+    <!-- <h1 class="text-center">Statistics</h1>
+    <div>
+      <app-corona-whatis></app-corona-whatis>
+    </div>
+    <div>
+      <app-transmission></app-transmission>
+    </div> -->
+  </section>
