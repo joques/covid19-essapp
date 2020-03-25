@@ -36,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
+import { TestingCentresComponent } from './components/testing-centres/testing-centres.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { CoronaGeneralInfoComponent } from './components/corona-general-info/cor
     StatisticsComponent,
     FaqsComponent,
     FactsComponent,
-    CoronaGeneralInfoComponent
+    CoronaGeneralInfoComponent,
+    TestingCentresComponent
   ],
   imports: [
     BrowserModule,
