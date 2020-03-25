@@ -10,19 +10,18 @@
     <mat-spinner *ngIf="Faqs.length === 0"></mat-spinner>
     <div *ngFor="let faqs of Faqs" style="margin-top:10px;">
 
-      <ul>
-        <li>
+        
+        <li *ngFor="let faqs of Faqs">
       <p style="font-size:20px; padding: 5rem; text-align: left;">
        
            <strong>{{ faqs.question}} </strong> 
-            <br>
             <br>
             {{ faqs.answer}}
         
 
       </p>
     </li>
-    </ul>
+      
 
 
     </div>
