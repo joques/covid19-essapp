@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AgmCoreModule } from "@agm/core";
+import { MatSelectModule } from '@angular/material/select';
 
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -78,7 +79,8 @@ import { TestingCentresComponent } from './components/testing-centres/testing-ce
     MatCardModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSelectModule
   ],
   providers: [CoronaWhatisService],
   bootstrap: [AppComponent]
