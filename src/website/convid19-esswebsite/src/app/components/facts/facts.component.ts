@@ -13,6 +13,7 @@ export class FactsComponent implements OnInit {
   constructor(private coronaService: CoronaWhatisService) { }
 
   ngOnInit(): void {
+  
     console.log('We are here');
     this.coronaService.getFacts().subscribe((data: []) => {
       // this.http.getWhatIsInfo().subscribe((data) => {
@@ -21,5 +22,7 @@ export class FactsComponent implements OnInit {
       this.Facts = data;
     });
   }
+
+
 
 }

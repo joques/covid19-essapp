@@ -273,11 +273,11 @@ service awareness on apiListener1 {
 		// pull the facts
 		var sympJson = awarenessDS?.symptoms;
 
-		if (simpJson is error) {
+		if (sympJson is error) {
 			log:printError("An error occurred while pulling case definitions about the virus", err=sympJson);
 		} else {
 			// fill the response payload with the new content
-			sympResp.setJsonPayload(simpJson);
+			sympResp.setJsonPayload(sympJson);
 
 			// send the response to the caller
 			var respResult = caller->respond(sympResp);

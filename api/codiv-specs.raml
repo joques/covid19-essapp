@@ -1,7 +1,8 @@
 #%RAML 1.0
 title: CODIV Essential Information
-baseURI: http://196.216.167.150:6547/codiv/v1
+baseURI: http://196.216.167.150:{port}/codiv/v1
 version: v1
+port: [6547 | 6549 | 6550 | 6551]
 
 /awareness/latest:
     displayName: Latest information about the virus
@@ -120,15 +121,17 @@ version: v1
                     200:
                         body:
                             application/json:
-                                {
-                                    recovered: "",
-                                    dead: "",
-                                    suspected: "",
-                                    confirmed: ""
-                                    world-wide: ""
-                                }
+								example: |
+									{
+										date: "2020-03-23",
+										recovered: 400,
+                                    	dead: 123,
+                                    	suspected: 456,
+                                    	confirmed: 345, 
+                                    	worldwide: 45000
+                                	}
 
-/statistics/periodic:
+/statistics/all:
     displayName: Provide periodic statistics about the virus
     description:
         get:
@@ -137,18 +140,50 @@ version: v1
                     200:
                         body:
                             application/json:
-                                {
-                                    "20-03-2020": {
-                                        recovered: "",
-                                        dead: "",
-                                        suspected: "",
-                                        confirmed: ""
-                                        world-wide: ""
-                                    }
-                                }
+								example: |
+									[
+										{
+											date: "2020-03-23",
+											recovered: 400,
+											dead: 123,
+											suspected: 456,
+											confirmed: 345,
+											worldwide: 45000
+										},
+										{
+											date: "2020-03-23",
+											recovered: 400,
+											dead: 123,
+											suspected: 456,
+											confirmed: 345,
+											worldwide: 45000
+										}
+									]
 
-/circulars:
-    displayName: All official documents related to the virus
+
+/faqs/all:
+    displayName: Provide a collection of frequently asked questions and their answers
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                              example: |
+                                [
+                                  {
+											              question: "question 1",
+                                    answer: "answer 1"
+                                  ,
+                                  {
+                                    question: "question 2",
+                                    answer: "answer2"
+                                  }
+                                ]
+
+/docs/description:
+    displayName: Provide metadata or general description about all documents 
         description:
             get:
                 description:
@@ -156,4 +191,27 @@ version: v1
                         200:
                             body:
                                 application/json:
-                                    {}
+                                  example: |
+                                    [{
+                                      docid: "offdoc001",
+                                      title: "Title 1",
+                                      pubdate: "2020-03-20",
+                                      author: "Ministry of Health",
+                                      source: ""
+                                    },
+                                    {
+                                      docid: "offdoc002",
+                                      title: "Title 2",
+                                      pubdate: "2020-03-12",
+                                      author: "Centre for Disease Control",
+                                      source: ""
+                                    }]
+/docs/doc::
+  /{docid}:
+    description: returns a document attached to this document identifier
+    get:
+      responses:
+        200:
+          body:
+            application/pdf:
+              type: file
