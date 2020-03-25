@@ -1,0 +1,43 @@
+.testing-centres-section {
+    position: relative;
+    height: fit-content;
+    padding: 8rem;
+  }
+  
+  mat-card {
+    padding: 1rem;
+    margin: 0rem 3rem 0 3rem;
+  }
+  
+  agm-map {
+    height: 400px;
+  }
+  
+  h5 {
+    margin-top: 1rem;
+  }
+  
+
+  
+  
+  @media only screen and (max-width: 1025px) {
+  
+  
+  
+ 
+  
+  }
+  
+  @media only screen and (max-width: 500px) {
+  
+    .testing-centres-section {
+      padding: 1rem 0;
+    }
+  
+    mat-card {
+      padding: 1rem;
+      margin: 0.3rem;
+    }
+  
+  }
+  
