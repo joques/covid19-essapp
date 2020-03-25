@@ -11,8 +11,7 @@ export class FaqsComponent implements OnInit {
   // data =  [];
   Faqs = [];
 
-  constructor(public q: string,
-              public ans: string, private faqService: HttpserviceService, private coronaService: CoronaWhatisService) { }
+  constructor( private faqService: HttpserviceService, private coronaService: CoronaWhatisService) { }
 
 
   ngOnInit(): void {

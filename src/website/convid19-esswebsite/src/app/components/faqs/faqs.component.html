@@ -1,31 +1,27 @@
+<section class="faqs-section">
+  <div class="img-container">
+    <img src="../../../assets/img/virus-small.png" alt="profile">
+  </div>
 
-   <section class="faqs-section">
-      <div class="img-container">
-        <img src="../../../assets/img/virus-small.png" alt="profile">
-      </div>
-      
-<div style="padding: 13px;">
-   
-        <h5 style="text-align: center; font-weight: bold; font-size: 50px;">Frequently Asked Questions (FAQs)</h5>
+  <div style="padding: 13px;">
+
+    <h5 style="text-align: center; font-weight: bold; font-size: 50px;">Frequently Asked Questions (FAQs)</h5>
 
     <mat-spinner *ngIf="Faqs.length === 0"></mat-spinner>
     <div *ngFor="let faqs of Faqs" style="margin-top:10px;">
 
-      
-            <p style="font-size:20px; padding: 5rem; text-align: center;">
-                <ul>
-                    <li>
-                      {{ faqs.q }}
-                      {{ faqs.ans }}
-                    </li>
-                  </ul>
-              
-            </p>
+
+      <p style="font-size:20px; padding: 5rem; text-align: center;">
+        <ul>
+          <li>
+            {{ faqs.question}}
+            {{ faqs.answer}}
+          </li>
+        </ul>
+
+      </p>
 
 
-        </div>
-</div>
+    </div>
+  </div>
 </section>
-
-
-    
