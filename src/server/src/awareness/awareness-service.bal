@@ -45,8 +45,7 @@ json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.jso
 
 @docker:Config {
 	name: "awareness",
-	tag: "v1.0",
-	dockerHost: "localhost"
+	tag: "v1.0"
 }
 
 @http: ServiceConfig {
