@@ -58,7 +58,7 @@ service awareness on apiListener2 {
 						if(theLatest == null) {
 							theLatest = singleData;
 							theLatestTime = singleDataTime;
-							io:println("theLatest is null...");
+							io:println("theLatest is null...\n");
 						} else {
 							io:println("theLatest is not null... We can do some comparisons here...");
 							io:println("singleData....");
@@ -75,8 +75,10 @@ service awareness on apiListener2 {
 							//io:println("object " + theLatest._id + " with time " + time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
 
 							if (singleDataTime.time > theLatestTime.time) {
-								io:println("singleData is older than the latest...");
+								io:println("singleData is newer than the latest... will update theLatest");
 								theLatest = singleData;
+								io:println(theLatest);
+								io:println(" ");
 							}
 						}
 					}
