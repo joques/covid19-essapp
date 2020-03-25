@@ -35,7 +35,9 @@ service faq on apiListener3 {
 		http:Response faqResp = new;
 
 		// pull the latest news data
-		var faqData = dbClient->find("faqs", ());
+		//var faqData = dbClient->find("faqs", ());
+
+		json faqData = {};
 
 		// fill the repsonse payload with the new content
 		if (faqData is error) {
