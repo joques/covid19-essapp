@@ -5,7 +5,7 @@ import ballerina/io;
 import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "localhost",
+	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
 	username: "",
 	password: "",
@@ -44,7 +44,6 @@ function loadAwarenessData(string awarenessPath) returns @tainted json {
 json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
 
 @docker:Config {
-	registry: "docker.abc.com",
 	name: "awareness",
 	tag: "v1.0"
 }
