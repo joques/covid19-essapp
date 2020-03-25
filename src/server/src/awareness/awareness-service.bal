@@ -44,9 +44,9 @@ function loadAwarenessData(string awarenessPath) returns @tainted json {
 json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
 
 @docker:Config {
+	registry: "docker.abc.com",
 	name: "awareness",
-	tag: "v1.0",
-	dockerHost: "localhost"
+	tag: "v1.0"
 }
 
 @http: ServiceConfig {
