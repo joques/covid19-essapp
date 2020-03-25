@@ -77,6 +77,7 @@ service awareness on apiListener2 {
 							if (singleDataTime.time > theLatestTime.time) {
 								io:println("singleData is newer than the latest... will update theLatest");
 								theLatest = singleData;
+								theLatestTime = singleDataTime; 
 								io:println(theLatest);
 								io:println(" ");
 							}
