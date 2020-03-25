@@ -1,27 +1,26 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 <section class="home-section">
-  <div>
-    <section id="home" class="home">
-      <div class="trans-background">
-        <div class="welcome-message">
-          <span>Get your facts right about</span>
-          <h1>Covid-19</h1>
-          <p>Brought to you by MoHSS</p>
-        </div>
+  <section id="home" class="home">
+    <div class="trans-background">
+      <div class="welcome-message">
+        <span class="animated bounceInDown delay-2s">Get your facts right about</span>
+        <h1 class="animated bounceInDown delay-3s">Corona Virus : Covid-19</h1>
+        <p class="animated bounceInDown delay-5s">Brought to you by MoHSS</p>
       </div>
-      <div class="row" id="arrow-style" (click)="scroll(general)">
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-      </div>
-    </section>
-  </div>
+    </div>
+    <div class="row" id="arrow-style" (click)="scroll(general)">
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+    </div>
+  </section>
 
   <!--/.Navbar-->
 
-  <div #general class="scrollspy-example mt-4 px-5">
+  <div #general class="scrollspy-example">
     <div id="link_1">
       <mdb-card>
         <div id="general" class="general container">
@@ -122,7 +121,8 @@
                 </ul>
                 <div class="hr"></div>
                 <div class="about-footer">
-                  <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important; margin-top: 1.5rem;"
+                  <a class="btn btn-danger" block="true"
+                    style="outline-color: white; float: right !important; margin-top: 1.5rem;"
                     [routerLink]="['/app-symptoms']" target="blank">Read more
                   </a>
                 </div>

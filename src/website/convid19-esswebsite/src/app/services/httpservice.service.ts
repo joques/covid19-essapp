@@ -47,12 +47,12 @@ export class HttpserviceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Authorization': 'my-auth-token',
       })
     };
 
     return this.http
-      .get('http://196.216.167.190/codiv/v1/statistics/periodic', {
+      .get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6549/covid/v1/statistics/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));
@@ -62,7 +62,7 @@ export class HttpserviceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Authorization': 'my-auth-token',
       })
     };
 
