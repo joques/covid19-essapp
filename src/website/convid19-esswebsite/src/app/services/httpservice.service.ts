@@ -8,7 +8,10 @@ import { map } from "rxjs/operators";
 })
 export class HttpserviceService {
 
+
   constructor(private http: HttpClient) { }
+
+ 
 
   getCirculars(): any {
     const httpOptions = {
@@ -124,7 +127,24 @@ export class HttpserviceService {
     };
 
     return this.http
-      .get('http://196.216.167.190/codiv/v1/awareness/whatis', {
+      .get('https://cors-anywhere.herokuapp.com/http://196.216.167.150/covid/v1/awareness/whatis', {
+        headers: httpOptions.headers
+      })
+      .pipe(map(res => res));
+  }
+
+
+
+  getFaqAll(): any {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'my-auth-token'
+      })
+    };
+
+    return this.http
+      .get('http://196.216.167.150:6551/codiv/v1/faq/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));

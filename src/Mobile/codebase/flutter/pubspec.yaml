@@ -29,8 +29,10 @@ dependencies:
   carousel_slider:
   flutter_svg:
   google_maps_flutter:
+  http:
   geolocator:
   url_launcher:
+  dio:
 
 
 dev_dependencies:
