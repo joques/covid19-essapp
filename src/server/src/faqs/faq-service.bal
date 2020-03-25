@@ -5,7 +5,7 @@ import ballerina/io;
 import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "172.0.0.2:27017",
+	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
 	username: "",
 	password: "",
