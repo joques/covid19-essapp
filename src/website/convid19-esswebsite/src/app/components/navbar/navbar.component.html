@@ -2,39 +2,32 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color-dark fixed-top">
 
   <mdb-navbar-brand>
-    <a class="navbar-brand waves-effect" [routerLink]="['/']">
-      <img class="d-none d-lg-block" src="../../../assets/img/rsz_1logo.jpg"  height="40" alt="">
-    </a>
-     <!-- <a class="navbar-brand" style="color: azure;  float: right;" [routerLink]="['/home']">COVID-19 Namibia</a> --> -->
-    </mdb-navbar-brand>
+    <!-- <a class="navbar-brand waves-effect" [routerLink]="['/']">
+      <img class="d-none d-lg-block" src="../../../assets/img/rsz_1logo.jpg" height="40" alt="">
+    </a> -->
+    <a class="navbar-brand" style="color: azure;  float: right;" [routerLink]="['/home']">COVID-19 Namibia</a> -->
+   
+  </mdb-navbar-brand>
 
 
   <!-- Collapsible content -->
   <links>
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-corona-general-info'"> General Info</a>
+      </li>
 
-      <li class="nav-item btn-group" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          General Info<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-corona-latest-info']">Last Date Updated</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-corona-whatis']">What is Corona Virus?</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-transmission']">Transmission mode</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-symptoms']">Common symptoms</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-treatment']">Vaccine and treatment</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-measures']">Preventative measures</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Myths and Facts</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-tips']">Advice and Tips </a>
-        </div>
-      </li> -->
+      
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Statistics</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Testing Centers</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Statistics</a>
-      </li>
+
 
 
       <li class="nav-item btn-group">
@@ -55,7 +48,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/app-about-us']"> About</a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/app-about-us']"> About Us</a>
       </li>
     </ul>
 
