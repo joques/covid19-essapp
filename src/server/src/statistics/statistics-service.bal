@@ -75,6 +75,7 @@ service awareness on apiListener2 {
 							//io:println("object " + theLatest._id + " with time " + time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
 
 							if (singleDataTime.time > theLatestTime.time) {
+								io:println("singleData is older than the latest...");
 								theLatest = singleData;
 							}
 						}
