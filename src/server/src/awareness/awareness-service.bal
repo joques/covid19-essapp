@@ -43,6 +43,7 @@ function loadAwarenessData(string awarenessPath) returns @tainted json {
 // local store with all awareness info
 json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
 
+//adding docker confoguration
 @docker:Config {
 	name: "awareness",
 	tag: "v1.0"
