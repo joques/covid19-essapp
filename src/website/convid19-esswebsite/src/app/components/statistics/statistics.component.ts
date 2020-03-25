@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpserviceService } from 'src/app/services/httpservice.service';
 
 @Component({
   selector: 'app-statistics',
@@ -12,10 +13,14 @@ export class StatisticsComponent implements OnInit {
   longitude = 18.4929993;
   chosenLocation = false;
   datenow: string;
-  constructor() { }
+  constructor(
+    private service: HttpserviceService
+  ) { }
 
   ngOnInit(): void {
     this.datenow = new Date().toLocaleString();
+    this.service.getPeriodicStats()
+      .subscribe(res => console.log(res))
   }
 
   onMapClick(event) {
