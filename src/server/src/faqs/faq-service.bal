@@ -37,8 +37,6 @@ service faq on apiListener3 {
 		// pull the latest news data
 		var faqData = dbClient->find("faqs", ());
 
-		//json|error faqData = {"me":"You too"};
-
 		// fill the repsonse payload with the new content
 		if (faqData is error) {
 			log:printError("An error occurred while pulling frequently asked questions from the data store", err=faqData);
