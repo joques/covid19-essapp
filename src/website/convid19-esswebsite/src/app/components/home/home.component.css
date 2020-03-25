@@ -46,7 +46,7 @@
   padding: 50px 0;
   color: #fff;
   position: relative;
-  top: 25%;
+  top: 15%;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -58,6 +58,12 @@
 
 .welcome-message h1 {
   font-size: 38px;
+  color: #DC3545;
+  font-weight: bold;
+}
+
+.welcome-message h2 {
+  font-size: 22px;
   color: #DC3545;
   font-weight: bold;
 }
