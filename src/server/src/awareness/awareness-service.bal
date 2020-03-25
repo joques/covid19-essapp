@@ -41,12 +41,16 @@ function loadAwarenessData(string awarenessPath) returns @tainted json {
 }
 
 // local store with all awareness info
-json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
+json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 
 //adding docker confoguration
 @docker:Config {
 	name: "awareness",
 	tag: "v1.0"
+}
+
+@docker:CopyFiles{
+	{sourceFile: "../../resources/awareness.json", target: "/home/ballerina/data/awareness.json"}
 }
 
 @http: ServiceConfig {
