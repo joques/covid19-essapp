@@ -18,6 +18,7 @@ mongodb:Client dbClient = check new (mongoConfig);
 listener http:Listener apiListener3 = new (6551);
 
 @docker:Config {
+	buildImage: false,
 	name: "faq",
 	tag: "v1.0"
 }
