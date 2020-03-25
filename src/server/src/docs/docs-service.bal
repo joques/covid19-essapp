@@ -61,7 +61,7 @@ service documents on apilistener4 {
 		docResp.setFileAsPayload(<@untainte> filePath, docuContentType);
 		var sendRes1 = caller -> respond(docResp);
 		if (sendRes1 is error) {
-			io:println("there was an error sending the response");
+			io:println("there was an error sending the response ", sendRes1.reason());
 		}
 	}
 	
