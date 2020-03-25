@@ -11,3 +11,11 @@ footer {
     justify-content:flex-start;
     margin-bottom: 2rem;
   }
+
+  .img-container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    margin-bottom: 2rem;
+  }
