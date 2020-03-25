@@ -3,3 +3,19 @@
   
     /* padding-top: 2rem; */
   }
+  .img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  #link1 {
+    padding: 0 6rem;
+    display: flex;
+    height: 300px;
+    background-color: #ADD8E6;
+    justify-content: center;
+    
+      /* padding-top: 2rem; */
+    }

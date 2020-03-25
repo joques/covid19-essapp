@@ -9,7 +9,7 @@
         <mat-card-title>Advices and Tips</mat-card-title>
   
     </mat-card-header>
-    <mat-spinner *ngIf="Tips.length === 0"></mat-spinner>
+    <mat-spinner *ngIf="Tips?.length"></mat-spinner>
     <mat-card *ngFor="let tips of Tips" style="margin-top:10px;">
   
   

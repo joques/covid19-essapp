@@ -32,6 +32,7 @@ import { CircularsComponent } from './components/circulars/circulars.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { CoronaWhatisService } from './services/corona-whatis.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 
@@ -56,6 +57,7 @@ import { CoronaGeneralInfoComponent } from './components/corona-general-info/cor
     StatisticsPeriodicComponent,
     CircularsComponent,
     StatisticsComponent,
+    FaqsComponent,
     FactsComponent,
     CoronaGeneralInfoComponent
   ],

@@ -16,6 +16,7 @@ import { StatisticsLatestComponent } from './components/statistics-latest/statis
 import { StatisticsPeriodicComponent } from './components/statistics-periodic/statistics-periodic.component';
 import { CircularsComponent } from './components/circulars/circulars.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'faq', component: FaqsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'general', component: GeneralInfoComponent },
   { path: 'app-about-us', component: AboutUsComponent },
