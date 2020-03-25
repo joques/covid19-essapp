@@ -50,7 +50,7 @@ json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 }
 
 @docker:CopyFiles{
-	{sourceFile: "../../resources/awareness.json", target: "/home/ballerina/data/awareness.json"}
+	files;[sourceFile: "../../resources/awareness.json", target: "/home/ballerina/data/awareness.json"}]
 }
 
 @http: ServiceConfig {
