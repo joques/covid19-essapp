@@ -15,7 +15,7 @@ export class StatisticsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.datejhjdjhfnow = new Date().toLocaleString();
+    this.datenow = new Date().toLocaleString();
   }
 
   onMapClick(event) {
