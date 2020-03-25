@@ -3,3 +3,11 @@ footer {
     bottom: 0;
     padding-top: 0.5rem;
   }
+
+  .img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content:flex-start;
+    margin-bottom: 2rem;
+  }
