@@ -33,6 +33,7 @@ dependencies:
   geolocator:
   url_launcher:
   dio:
+  intl:
 
 
 dev_dependencies:
