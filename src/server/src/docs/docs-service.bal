@@ -22,6 +22,20 @@ listener http:Listener apilistener4 = new (6552);
 	tag: "v1.0"
 }
 
+@docker:CopyFiles {
+	files: [
+		{sourceFile: "../../official-docs/offdoc001.pdf", target: "/home/ballerina/data/official-docs/offdoc001.pdf"},
+		{sourceFile: "../../official-docs/offdoc002.pdf", target: "/home/ballerina/data/official-docs/offdoc002.pdf"},
+		{sourceFile: "../../official-docs/offdoc003.pdf", target: "/home/ballerina/data/official-docs/offdoc003.pdf"},
+		{sourceFile: "../../official-docs/offdoc004.pdf", target: "/home/ballerina/data/official-docs/offdoc004.pdf"},
+		{sourceFile: "../../official-docs/offdoc005.pdf", target: "/home/ballerina/data/official-docs/offdoc005.pdf"},
+		{sourceFile: "../../official-docs/offdoc006.pdf", target: "/home/ballerina/data/official-docs/offdoc006.pdf"},
+		{sourceFile: "../../official-docs/offdoc007.pdf", target: "/home/ballerina/data/official-docs/offdoc007.pdf"},
+		{sourceFile: "../../official-docs/offdoc008.pdf", target: "/home/ballerina/data/official-docs/offdoc008.pdf"},
+		{sourceFile: "../../official-docs/offdoc009.pdf", target: "/home/ballerina/data/official-docs/offdoc009.pdf"}
+	]
+}
+
 @http: ServiceConfig {
 	basePath: "/covid/v1/docs"
 }
@@ -59,7 +73,7 @@ service documents on apilistener4 {
 		http:Response docResp = new;
 	
 		string docuContentType = "application/pdf";
-		string filePath = "../../official-docs/" + docid + ".pdf";
+		string filePath = "./data/official-docs/" + docid + ".pdf";
 		
 		io:println("will send file ", filePath);
 

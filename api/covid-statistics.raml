@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: CODIV Essential Information -- Periodic statistics about the virus
+baseURI: http://196.216.167.150:6549/covid/{version}
+version: v1
+
+/statistics/latest:
+    displayName: Provide latest statistics about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+								example: |
+									{
+										date: "2020-03-23",
+										recovered: 400,
+                                    	dead: 123,
+                                    	suspected: 456,
+                                    	confirmed: 345, 
+                                    	worldwide: 45000
+                                	}
+
+/statistics/all:
+    displayName: Provide periodic statistics about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+								example: |
+									[
+										{
+											date: "2020-03-23",
+											recovered: 400,
+											dead: 123,
+											suspected: 456,
+											confirmed: 345,
+											worldwide: 45000
+										},
+										{
+											date: "2020-03-23",
+											recovered: 400,
+											dead: 123,
+											suspected: 456,
+											confirmed: 345,
+											worldwide: 45000
+										}
+									] 
