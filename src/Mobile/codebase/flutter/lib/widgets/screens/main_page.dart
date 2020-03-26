@@ -1,7 +1,7 @@
 import 'package:covid_19_app/widgets/screens/centres_screen.dart';
 import 'package:covid_19_app/widgets/screens/faq_screen.dart';
 import 'package:covid_19_app/widgets/screens/information_screen.dart';
-import 'package:covid_19_app/widgets/screens/news_screen.dart';
+import 'package:covid_19_app/widgets/screens/officialC&M_screen.dart';
 import 'package:covid_19_app/widgets/screens/statistics_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
     StatisticsScreen(
       title: 'Statistics',
     ),
-    NewsScreen(
+    OfficalCMScreen(
       title: 'Official Circulars & Memos',
     ),
     FAQScreen(

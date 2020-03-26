@@ -2,9 +2,10 @@ import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
+import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "localhost",
+	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
 	username: "",
 	password: "",
@@ -13,6 +14,7 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 
 mongodb:Client dbClient = check new (mongoConfig);
 
+@docker:Expose {}
 listener http:Listener apiListener1 = new (6547);
 
 function loadAwarenessData(string awarenessPath) returns @tainted json {
@@ -39,7 +41,17 @@ function loadAwarenessData(string awarenessPath) returns @tainted json {
 }
 
 // local store with all awareness info
-json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
+json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
+
+//adding docker confoguration
+@docker:Config {
+	name: "awareness",
+	tag: "v1.0"
+}
+
+@docker:CopyFiles{
+	files: [{sourceFile: "../../resources/awareness.json", target: "/home/ballerina/data/awareness.json"}]
+}
 
 @http: ServiceConfig {
 	basePath: "/covid/v1/awareness"

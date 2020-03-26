@@ -1,0 +1,43 @@
+<section class="testing-centres-section">
+    <h5 style="font-weight: bold; font-size: 25px;" class="text-center">Testing Centres</h5>
+   
+    <div >
+        <ol>
+        <p style="padding: 0.5rem;"> 
+           <li style="font-size: 20px; font-weight: bold;">Namibian Institute of Pathology (NIP)</li>
+             NIP is the largest diagnostic pathology service provider in Namibia. 
+             For testing, Please bring along a doctor’s referral form. The test results will 
+             be forwarded to your doctor who will contact you within 48 hours with your results. 
+              Price N$ 1100.00.",
+            </p>
+        <p style="padding: 0.5rem;">
+            <li style="font-size: 20px; font-weight: bold;"> Pathcare Namibia</li>
+             PathCare Namibia is a private pathology practice which strives to promote the health of the population 
+            by providing accessible, affordable, appropriate and equitable quality pathology services to all Namibians. 
+            For testing, Please bring along a doctor’s referral form. The turnaround time range between 2 to 5 days for test done by Path-care.
+             Price N$ 1100.00.</p>
+        <p style="padding: 0.5rem;"  mat-raised-button >
+            <li style="font-size: 20px; font-weight: bold;">Robert Mugabe Clinic</li>
+            Public healthcare organisation in Windhoek has commenced with the first screening of possible COVID-19 suspected cases.
+        </p>
+    </ol>
+ 
+      </div>
+        <!-- <label >Select a Testing centre to view on the map</label>
+        <select (change)="setTestingCentres()" placeholder="testing centre" >
+          <option>Namibian Institute of Pathology (NIP)</option>
+          <option>Pathcare Namibia</option>
+          <option>Robert Mugabe Clinic</option>
+        </select> -->
+       
+
+
+      <mat-card>
+        <agm-map (change)="setTestingCentres()" [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+          <agm-marker (change)="setTestingCentres()" *ngIf="centre" [latitude]="latitude" [longitude]="longitude">
+          </agm-marker>
+        </agm-map>
+       
+     
+      </mat-card>
+  </section>

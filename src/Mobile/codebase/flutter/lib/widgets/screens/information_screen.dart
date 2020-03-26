@@ -24,6 +24,7 @@ class _InformationScreenState extends State<InformationScreen> {
   Future<Latest> latestInfo;
 
   int confirmed;
+<<<<<<< HEAD
   @override
   void initState() {
     if (latestStats.length == 0) this.latestInfo = fetchInfo();
@@ -33,6 +34,8 @@ class _InformationScreenState extends State<InformationScreen> {
     // Additional initialization of the State
     super.initState();
   }
+=======
+>>>>>>> 725bf05fb993633e21f5ee063b3e066abce1dadf
 
   var title = {
     '1': 'What is COVID-19?',
