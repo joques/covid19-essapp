@@ -63,7 +63,7 @@ class API {
       print('getting stats from: ' + url);
 
       final _stat = json.decode(res.body);
-      stat = Statistic.map(stat);
+      stat = Statistic.map(_stat);
     } catch (err) {
       debugPrint(err.toString());
     }
