@@ -5,7 +5,7 @@ import 'dart:convert';
 
 class FAQScreen extends StatefulWidget {
   final String title;
-  
+
   FAQScreen({Key key, this.title}) : super(key: key);
 
   @override
@@ -54,6 +54,7 @@ class _FAQScreenState extends State<FAQScreen> {
     _future = fetchFAQ();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<dynamic>(
@@ -117,29 +118,38 @@ class _FAQScreenState extends State<FAQScreen> {
 
 fetchFAQ() async {
   //http://196.216.167.150:6549/covid/v1/statistics/latest');
-  final response =
-      await http.get("http://196.216.167.150:6551/covid/v1/faq/all");
+  try {
+    final response =
+        await http.get("http://196.216.167.150:6551/covid/v1/faq/all");
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    List<FAQ> faqList = (json.decode(response.body) as List)
-        .map((i) => FAQ.fromJson(i))
-        .toList();
-  
-    //Only update data if server has new info
-    if (_data.length == 0 || _data.length != faqList.length ) {
-      _data = new List(faqList.length);
-      for (var i = 0; i < faqList.length; i++) {
-        _data[i] = faqList[i];
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      List<FAQ> faqList = (json.decode(response.body) as List)
+          .map((i) => FAQ.fromJson(i))
+          .toList();
+
+      //Only update data if server has new info
+      if (_data.length == 0 || _data.length != faqList.length) {
+        _data = new List(faqList.length);
+        for (var i = 0; i < faqList.length; i++) {
+          _data[i] = faqList[i];
+        }
       }
+      return faqList; //return future instance of the data
+
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      debugPrint("HERE" + response.toString());
+      throw Exception('Failed to load latest info');
     }
-    return faqList;//return future instance of the data
-    
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    debugPrint("HERE" + response.toString());
-    throw Exception('Failed to load latest info');
+  } on Exception catch (exception) {
+    debugPrint(exception.toString());
+    _data = generateItems(9);
+    //return Future.error("This is the error", StackTrace.fromString("This is its trace"));
+    //throw ("Unexpected Error occured "); // only executed if error is of type Exception
+  } catch (error) {
+    throw ("Unexpected Error occured "); // executed for errors of all types other than Exception
   }
 }

@@ -33,6 +33,10 @@ dependencies:
   geolocator:
   url_launcher:
   dio:
+  intl:
+  auto_size_text:
+  google_fonts:
+  
 
 
 dev_dependencies:

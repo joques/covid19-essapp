@@ -1,0 +1,25 @@
+#%RAML 1.0
+title: CODIV Essential Information -- Frequently asked question service
+baseURI: http://196.216.167.150:6551/codiv/{version}
+version: v1
+
+/faqs/all:
+    displayName: Provide a collection of frequently asked questions and their answers
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                              example: |
+                                [
+                                  {
+											              question: "question 1",
+                                    answer: "answer 1"
+                                  ,
+                                  {
+                                    question: "question 2",
+                                    answer: "answer2"
+                                  }
+                                ]
