@@ -2,7 +2,7 @@
   position: relative;
   height: fit-content;
   min-height: 100vh;
-  padding: 2rem 8rem 3rem 8rem;
+  padding: 5rem 8rem 3rem 8rem;
 }
 
 h5 {
@@ -21,7 +21,7 @@ h5 {
   width: inherit;
   border-radius: 25rem;
   height: 40px;
-  padding: 0.5rem;
+  padding: 20px;
   border: none;
   box-shadow: 5px 5px 15px 3px #c9c9c9;
   outline-style: none;
