@@ -50,3 +50,14 @@ version: v1
 											worldwide: 45000
 										}
 									] 
+/statistics/regional/{regionid}:
+    displayName: Provide latest statistics for a given region
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json
+                                example:
+                                    {}
