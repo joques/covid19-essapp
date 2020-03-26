@@ -32,7 +32,7 @@ class API {
     return list;
   }
 
-  /// Get testing centres
+  /// Get testing faqs
   Future<List<FAQ>> getFaqs() async {
     List<FAQ> list = List();
     try {
