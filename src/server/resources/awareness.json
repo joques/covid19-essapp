@@ -12,7 +12,12 @@
 	"casedefs": [{"Case A": "A patient with acute respiratory illness (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness of breath), AND with no other aetiology that fully explains the clinical presentation AND a history of travel to or residence in a country/area or territory reporting local transmission (See situation report) of COVID-19 disease during the 14 days prior to symptom onset."}, {"Case B": "A patient with any acute respiratory illness AND having been in contact with a confirmed or probable COVID19 case (see definition of contact) in the last 14 days prior to onset of symptoms;"}, {"Case C": "A patient with severe acute respiratory infection (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness breath) AND requiring hospitalization AND with no other aetiology that fully explains the clinical presentation."}]
 =======
 	"casedefs": [{"Caase A": "A patient with acute respiratory illness (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness of breath), AND with no other aetiology that fully explains the clinical presentation AND a history of travel to or residence in a country/area or territory reporting local transmission (See situation report) of COVID-19 disease during the 14 days prior to symptom onset."}, {"Case B": "A patient with any acute respiratory illness AND having been in contact with a confirmed or probable COVID19 case (see definition of contact) in the last 14 days prior to onset of symptoms;"}, {"Case C": "A patient with severe acute respiratory infection (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness breath) AND requiring hospitalization AND with no other aetiology that fully explains the clinical presentation."}],
+<<<<<<< "HEAD"
 		"symptoms": ["Reported symptoms include fever, coughing and shortness of breath.", "The symptoms generally appear 2 to 14 days after being exposed to the virus"],
 	   "oldnews": []
 >>>>>>> 92768dad85701f3032b2971b42a03ffbac7ca82a
+=======
+    "symptoms": ["Reported symptoms include fever, coughing and shortness of breath.", "The symptoms generally appear 2 to 14 days after being exposed to the virus"],
+    "oldnews": []
+>>>>>>> 7cb87f442e5bc54c6a509cab9c7d66d76b7c8543
 }
