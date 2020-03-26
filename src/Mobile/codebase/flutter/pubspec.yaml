@@ -34,6 +34,7 @@ dependencies:
   url_launcher:
   auto_size_text:
   google_fonts:
+  
 
 
 dev_dependencies:
