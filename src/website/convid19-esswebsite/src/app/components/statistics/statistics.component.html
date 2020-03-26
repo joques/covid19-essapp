@@ -15,7 +15,8 @@
       <button class="primary" mat-raised-button matBadge="{{selected.recovered}}">Confirmed Cases</button>
       <button class="danger" mat-raised-button matBadge="{{selected.confirmed}}">Confirmed Deaths</button>
       <button class="warning" mat-raised-button matBadge="{{selected.dead}}">Recovered Patients</button>
-      <button class="success" mat-raised-button matBadge="{{selected.suspected}}">Suspected Cases</button>
+      <!-- <button class="success" mat-raised-button matBadge="{{selected.suspected}}">Suspected Cases</button> -->
+      <button class="success" mat-raised-button >Suspected Cases</button>
     </div>
     <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
       <agm-marker *ngIf="chosenLocation" [latitude]="latitude" [longitude]="longitude">

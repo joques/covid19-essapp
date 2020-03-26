@@ -1,13 +1,63 @@
 .faqs-section {
-    position: relative;
-    height: fit-content;
-    padding: 5rem;
+  position: relative;
+  height: fit-content;
+  min-height: 100vh;
+  padding: 2rem 8rem 3rem 8rem;
+}
+
+h5 {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 2rem;
+}
+
+.search-form {
+  width: 100%;
+  padding: 0 10rem;
+  margin: auto;
+}
+
+.search-form input {
+  width: inherit;
+  border-radius: 25rem;
+  height: 40px;
+  padding: 0.5rem;
+  border: none;
+  box-shadow: 5px 5px 15px 3px #c9c9c9;
+  outline-style: none;
+}
+
+.prgress {
+  position: relative;
+  width: 100%;
+  padding: 3.5rem 0 0 0;
+}
+
+mat-accordion {
+  padding: 3rem;
+}
+
+@media only screen and (max-width: 770px) {
+  h5 {
+    font-size: 30px;
   }
 
-  .img-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
+  .faqs-section {
+    padding: 0 5rem 3rem 5rem;
   }
+}
+
+@media only screen and (max-width: 500px) {
+  h5 {
+    font-size: 15px;
+  }
+
+  .faqs-section {
+    padding: 0 1rem 3rem 1rem;
+  }
+
+  .search-form {
+    padding: 0 3rem;
+  }
+  
+}

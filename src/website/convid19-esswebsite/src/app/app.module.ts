@@ -14,6 +14,10 @@ import { HomeComponent } from './components/home/home.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AgmCoreModule } from "@agm/core";
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -68,7 +72,10 @@ import { TestingCentresComponent } from './components/testing-centres/testing-ce
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatExpansionModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
+    MatProgressBarModule,
     MDBBootstrapModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyANVw389Q10N46d9EvyUhbHwSP0KOycikY'

@@ -3,26 +3,17 @@
     <div class="img-container">
       <img src="../../../assets/img/virus-small.png" alt="profile">
     </div>
-    
-<div style="padding: 13px;">
-  <mat-card-header>
-      <mat-card-title>Transmission</mat-card-title>
-
-  </mat-card-header>
-  <mat-spinner *ngIf="Transmission .length === 0"></mat-spinner>
-  <mat-card *ngFor="let transmission of Transmission" style="margin-top:10px;">
-
-
-      <!-- <mat-card-header>
-          <mat-card-title>What is Corona Virus</mat-card-title>
-        
-      </mat-card-header> -->
-      <mat-card-content>
+    <div style="padding: 13px;">
+      <mat-card-header>
+        <mat-card-title style="text-align: center;">Transmission</mat-card-title>
+      </mat-card-header>
+      <mat-card *ngFor="let transmission of Transmission" style="margin-top:10px;">
+        <mat-card-content>
           <p style="font-size:20px">
-              {{transmission}}
+            {{transmission}}
           </p>
-
-      </mat-card-content>
-
-  </mat-card>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mdb-card-body>
 </div>
