@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+// import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CoronaLatestInfoComponent } from './components/corona-latest-info/corona-latest-info.component';
 import { CoronaWhatisComponent } from './components/corona-whatis/corona-whatis.component';
@@ -19,6 +19,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
+import {TestingCentresComponent} from './components/testing-centres/testing-centres.component';
 
 const routes: Routes = [
 
@@ -27,7 +28,7 @@ const routes: Routes = [
   { path: 'faq', component: FaqsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'general', component: GeneralInfoComponent },
-  { path: 'app-about-us', component: AboutUsComponent },
+  // { path: 'app-about-us', component: AboutUsComponent },
   { path: 'app-corona-latest-info', component: CoronaLatestInfoComponent },
   { path: 'app-corona-whatis', component: CoronaWhatisComponent },
   { path: 'app-transmission', component: TransmissionComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'app-statistics', component: StatisticsComponent },
   { path: 'app-facts', component: FactsComponent },
   { path: 'app-corona-general-info', component: CoronaGeneralInfoComponent },
+  { path: 'app-testing-centres', component: TestingCentresComponent },
 ];
 
 @NgModule({

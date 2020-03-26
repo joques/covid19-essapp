@@ -132,11 +132,15 @@ class _InformationScreenState extends State<InformationScreen> {
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(16))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/symptoms');
+                      },
                       child: Text('Symptoms'.toUpperCase()),
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/symptoms');
+                      },
                       color: AppColors.ternaryBackground,
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.only(

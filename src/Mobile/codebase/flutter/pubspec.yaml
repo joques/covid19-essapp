@@ -32,7 +32,9 @@ dependencies:
   http:
   geolocator:
   url_launcher:
-  dio:
+  auto_size_text:
+  google_fonts:
+  
 
 
 dev_dependencies:

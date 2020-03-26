@@ -4,9 +4,10 @@ import ballerina/log;
 import ballerina/io;
 import ballerina/time;
 import ballerina/lang.'int as langint;
+import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "localhost",
+	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
 	username: "",
 	password: "",
@@ -15,7 +16,14 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 
 mongodb:Client dbClient = check new (mongoConfig);
 
+
+@docker:Expose {}
 listener http:Listener apiListener2 = new (6549);
+
+@docker:Config {
+	name: "stats",
+	tag: "v1.0"
+}
 
 @http: ServiceConfig {
 	basePath: "/covid/v1/statistics"
