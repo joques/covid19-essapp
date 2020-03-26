@@ -36,6 +36,7 @@ dependencies:
   intl:
   auto_size_text:
   google_fonts:
+  expandable: ^4.1.2
   
 
 
