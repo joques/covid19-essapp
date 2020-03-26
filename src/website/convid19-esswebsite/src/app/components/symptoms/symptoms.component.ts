@@ -12,9 +12,9 @@ export class SymptomsComponent implements OnInit {
   constructor(private coronaService: CoronaWhatisService) { }
 
   ngOnInit(): void {
-    console.log('We are here');
+   
     this.coronaService.getSymptoms().subscribe((data: []) => {
-      // this.http.getWhatIsInfo().subscribe((data) => {
+
       console.log('We are here 9999');
       console.log(data);
       this.Symptoms = data;

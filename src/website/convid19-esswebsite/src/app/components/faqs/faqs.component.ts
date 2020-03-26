@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpserviceService } from 'src/app/services/httpservice.service';
 import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-faqs',
@@ -10,37 +11,23 @@ import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 export class FaqsComponent implements OnInit {
   // data =  [];
   Faqs = [];
+  showprogress: boolean;
+  
+  searchForm: FormGroup;
 
-  constructor( private faqService: HttpserviceService, private coronaService: CoronaWhatisService) { }
+  search;
 
+  constructor(private coronaService: CoronaWhatisService) { }
 
   ngOnInit(): void {
 
-    // this.getFaqs();
+    this.searchForm = new FormGroup({ searchInput: new FormControl('', Validators.required) });
 
-    console.log('We are here');
+    this.showprogress = true;
     this.coronaService.getFaqs().subscribe((data: []) => {
-      // this.http.getWhatIsInfo().subscribe((data) => {
-      console.log('We are here 9999');
-      console.log(data);
       this.Faqs = data;
+      this.showprogress = false;
     });
-
   }
-
-  // getFaqs() {
-  //   this.faqService.getFaqAll()
-  //     .subscribe((result: any) => {
-  //       if (result.success) {
-  //         // this.Users.push(result);
-  //         result.faq.forEach(data => {
-
-  //           this.data.push(data);
-  //           console.log(data)
-  //         });
-  //       }
-
-  //     });
-  // }
 
 }
