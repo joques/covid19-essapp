@@ -15,7 +15,7 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 mongodb:Client dbClient = check new (mongoConfig);
 
 @docker:Expose {}
-listener http:Listener apiListener3 = new (6551);
+listener http:Listener apiListener3 = new (6550);
 
 @docker:Config {
 	name: "centre",
