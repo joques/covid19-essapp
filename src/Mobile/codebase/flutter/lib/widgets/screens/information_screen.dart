@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:covid_19_app/widgets/common/statistical_data.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -78,6 +79,7 @@ class _InformationScreenState extends State<InformationScreen> {
                     return Builder(
                       builder: (BuildContext context) {
                         return Card(
+                          color: Theme.of(context).primaryColor,
                           elevation: 5,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0)),
@@ -89,10 +91,12 @@ class _InformationScreenState extends State<InformationScreen> {
                               children: <Widget>[
                                 Text(
                                   title['$i'],
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
                                   style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w900,
-                                      color: AppColors.secondaryText),
+                                      color: Colors.white),
                                   textAlign: TextAlign.start,
                                 ),
                                 SizedBox(
@@ -100,12 +104,13 @@ class _InformationScreenState extends State<InformationScreen> {
                                 ),
                                 Text(
                                   summary1['$i'],
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .body2
+                                      .bodyText2
                                       .copyWith(
-                                          color: AppColors.primaryText,
-                                          fontSize: 16),
+                                          color: Colors.white, fontSize: 16),
                                 )
                               ],
                             ),
