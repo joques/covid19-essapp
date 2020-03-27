@@ -1,5 +1,6 @@
+import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/styles/colors.dart';
-import 'package:covid_19_app/data/regions.dart';
 import 'package:covid_19_app/widgets/common/map_of_namibia.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class StatisticsScreen extends StatefulWidget {
   final String title;
+
   StatisticsScreen({Key key, this.title}) : super(key: key);
 
   @override
@@ -23,8 +25,18 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   //View By Area Drop Down Value
   var _value = '0';
 
+  List<Region> _regions;
+  Region selectedRegion;
+
+  @override
+  void initState() {
+    super.initState();
+    _regions = API().getRegionalData();
+    selectedRegion = _regions[0];
+  }
+
   //Drop Picker List items
-  CupertinoPicker _regionsList() => CupertinoPicker(
+  /* CupertinoPicker _regionsList() => CupertinoPicker(
         itemExtent: 28,
         backgroundColor: AppColors.accentElement,
         diameterRatio: 2,
@@ -36,7 +48,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         },
         children: Region.items,
         looping: true,
-      );
+      );*/
 
   @override
   Widget build(BuildContext context) {
@@ -90,27 +102,39 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   ],
                 ),
               ), // Region Heading
-              Container(
-                  height: 60,
-                  margin: EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                    top: 15,
-                    bottom: 15,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.accentElement,
-                    borderRadius: BorderRadius.circular(9.0),
-                  ),
-                  child: Container(
-                      margin: EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.accentElement,
-                      ),
-                      child: _regionsList())), // Picker Menu
+              ActionChip(
+                onPressed: () => showDialog(
+                    context: context,
+                    builder: (
+                      BuildContext context,
+                    ) {
+                      return SimpleDialog(
+                          // contentPadding: EdgeInsets.all(10),
+                          title: const Text('Select a region'),
+                          children: List.generate(_regions.length, (index) {
+                            Region region = _regions[index];
+                            return SimpleDialogOption(
+                              onPressed: () {
+                                setState(() {
+                                  selectedRegion = region;
+                                  _value = index.toString();
+                                  Navigator.pop(context);
+                                });
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 8, bottom: 8),
+                                child: Text(
+                                  region.name,
+                                  style: TextStyle(fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            );
+                          }));
+                    }),
+                avatar: Icon(Icons.arrow_drop_down),
+                label: Text('${selectedRegion.name}'),
+              ),
               NamibianMap(
                 value: _value.toString(),
                 selectedColor: AppColors.primaryText,
@@ -128,14 +152,14 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       children: <Widget>[
                         StatisticCounter(
                           width: _wd,
-                          count: 0,
-                          borderColor: Colors.blue.shade900.value,
+                          count: selectedRegion.statistics.confirmed,
+                          borderColor: Colors.blue.shade800.value,
                           title: 'Confirmed Cases',
                         ),
                         StatisticCounter(
                           width: _wd,
-                          count: 0,
-                          borderColor: Colors.red.shade800.value,
+                          count: selectedRegion.statistics.dead,
+                          borderColor: Colors.red.shade900.value,
                           title: 'Confirmed Deaths',
                         ),
                       ],
@@ -148,17 +172,20 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       children: <Widget>[
                         StatisticCounter(
                           width: _wd,
-                          count: 0,
+                          count: selectedRegion.statistics.recovered,
                           borderColor: Colors.green.shade900.value,
                           title: 'Recoverd Patients',
                         ),
                         StatisticCounter(
                           width: _wd,
-                          count: 19,
+                          count: selectedRegion.statistics.suspected,
                           borderColor: Colors.orange.shade900.value,
                           title: 'Suspected Cases',
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 16,
                     ),
                   ],
                 ),

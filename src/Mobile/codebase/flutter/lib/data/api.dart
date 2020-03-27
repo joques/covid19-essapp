@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covid_19_app/data/constants.dart';
 import 'package:covid_19_app/models/centre.dart';
 import 'package:covid_19_app/models/faq.dart';
+import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -69,5 +70,61 @@ class API {
     }
 
     return stat;
+  }
+
+  List<Region> getRegionalData() {
+    List<Region> regions = [
+      Region(
+        name: 'All of Namibia',
+      ),
+      Region(
+        name: 'Kunene Region',
+      ),
+      Region(
+        name: 'Omusati Region',
+      ),
+      Region(
+        name: 'Oshana Region',
+      ),
+      Region(
+        name: 'Ohangwena Region',
+      ),
+      Region(
+        name: 'Kavango Region',
+      ),
+      Region(
+        name: 'Zambezi Region',
+      ),
+      Region(
+        name: 'Oshikoto Region',
+      ),
+      Region(
+        name: 'Erongo Region',
+      ),
+      Region(
+        name: 'Otjozondjupa Region',
+      ),
+      Region(
+        name: 'Omaheke Region',
+      ),
+      Region(
+        name: 'Khomas Region',
+      ),
+      Region(
+        name: 'Hardap Region',
+      ),
+      Region(
+        name: 'ǁKaras Region',
+      )
+    ];
+
+    regions.forEach((reg) => reg.statistics = Statistic(
+        timestamp: DateTime.now(),
+        confirmed: 0,
+        dead: 0,
+        suspected: 0,
+        recovered: 0));
+
+    return regions;
   }
 }
