@@ -17,6 +17,7 @@ export class CoronaWhatisService {
   private factsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/facts';
   private tipsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/tips';
   private faqsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6551/covid/v1/faq/all';
+  private circulars = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6552/covid/v1/docs/doc';
 
   constructor(private client: HttpClient) { }
 
@@ -45,5 +46,9 @@ export class CoronaWhatisService {
   }
   public getTips() {
     return this.client.get(this.tipsApi);
+  }
+
+  public getCirculars() {
+    return this.client.get(this.circulars);
   }
 }

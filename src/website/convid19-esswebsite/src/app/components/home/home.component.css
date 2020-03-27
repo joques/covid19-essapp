@@ -11,6 +11,7 @@
   height: 100hv;
 }
 
+
 .scrollspy-example {
   padding: 5rem 10rem;
 }
@@ -22,6 +23,13 @@
   justify-content: center;
   margin-bottom: 2rem;
 }
+
+.img-container img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+
 
 .home-main {
   height: 100%;
@@ -57,13 +65,13 @@
 }
 
 .welcome-message h1 {
-  font-size: 38px;
+  font-size: 30px !important;
   color: #DC3545;
   font-weight: bold;
 }
 
 .welcome-message h2 {
-  font-size: 22px;
+  font-size: 15px;
   color: #DC3545;
   font-weight: bold;
 }
@@ -253,7 +261,7 @@
 }
 
 .img-container-1 img {
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 
