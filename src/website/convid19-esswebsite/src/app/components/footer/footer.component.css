@@ -23,4 +23,9 @@ footer {
     width: 60%;
     height: 30%;
   }
+
+  .img-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
