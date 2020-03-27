@@ -1,12 +1,41 @@
 .about-us-section {
-    position: relative;
-    height: fit-content;
-    padding: 5rem;
+  position: relative;
+  height: fit-content;
+  padding: 5rem;
 }
+
+#link1 {
+  padding: 0 6rem;
+}
+
 .img-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 770px) {
+
+  .about-us-section {
+    padding: 3rem;
   }
+
+  #link1 {
+    padding: 0 1rem;
+
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  .about-us-section {
+    padding: 0.5rem;
+  }
+
+  #link1 {
+    padding: 0 1rem;
+
+  }
+}

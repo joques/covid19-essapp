@@ -285,6 +285,9 @@ service awareness on apiListener1 {
 		// pull the facts
 		var sympJson = awarenessDS?.symptoms;
 
+        io:println(sympJson);
+
+
 		if (sympJson is error) {
 			log:printError("An error occurred while pulling case definitions about the virus", err=sympJson);
 		} else {

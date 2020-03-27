@@ -11,6 +11,10 @@
   height: 100hv;
 }
 
+.img-container {
+
+}
+
 .scrollspy-example {
   padding: 5rem 10rem;
 }
@@ -22,6 +26,13 @@
   justify-content: center;
   margin-bottom: 2rem;
 }
+
+.img-container img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+
 
 .home-main {
   height: 100%;

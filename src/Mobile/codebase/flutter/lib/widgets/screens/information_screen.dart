@@ -1,12 +1,12 @@
-import 'dart:convert';
-
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:timeago/timeago.dart' as timeago;
 
 class InformationScreen extends StatefulWidget {
   final String title;
@@ -21,6 +21,12 @@ class _InformationScreenState extends State<InformationScreen> {
   List _slides = <Widget>[];
   Future<Latest> latestInfo;
   int confirmed;
+  Statistic latestStat = Statistic(
+      confirmed: 0,
+      dead: 0,
+      suspected: 0,
+      recovered: 0,
+      timestamp: DateTime.now());
 
   var title = {
     '1': 'What is COVID-19?',
@@ -44,17 +50,25 @@ class _InformationScreenState extends State<InformationScreen> {
   };
 
   @override
-  Widget build(BuildContext context) {
-    @override
-    void initState() {
-      super.initState();
-      this.latestInfo = fetchInfo();
-      latestInfo.then(
-          (value) => {this.confirmed = int.parse(value.confirmed.toString())});
-      debugPrint("CONFIRMED=>" + this.confirmed.toString());
-      // Additional initialization of the State
-    }
+  void initState() {
+    super.initState();
+    fetchLatestStats();
+  }
 
+  fetchLatestStats() async {
+    try {
+      API().getLatestStatistics().then((value) {
+        setState(() {
+          latestStat = value;
+        });
+      });
+    } catch (err) {
+      print(err.toString());
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     double _wd = (MediaQuery.of(context).size.width / 2) - 50;
 
     return Scaffold(
@@ -81,8 +95,9 @@ class _InformationScreenState extends State<InformationScreen> {
                         return Card(
                           color: Theme.of(context).primaryColor,
                           elevation: 5,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0)),
+                          shape: BeveledRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(15))),
                           child: Padding(
                             padding: const EdgeInsets.all(16),
                             child: Column(
@@ -164,12 +179,27 @@ class _InformationScreenState extends State<InformationScreen> {
                   children: <Widget>[
                     Text(
                       'Statistics',
-                      style: Theme.of(context).textTheme.headline,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
-                    Text(
-                      'As of Thur, 19 March 2020, 7:30am',
-                      style: Theme.of(context).textTheme.overline,
-                    )
+                    Row(
+                      children: <Widget>[
+                        Text('Updated:',
+                            style: Theme.of(context)
+                                .textTheme
+                                .overline
+                                .copyWith(
+                                    color: AppColors.primaryElement,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 18)),
+                        Text(
+                          timeago.format(latestStat.timestamp),
+                          style: Theme.of(context).textTheme.overline.copyWith(
+                              color: AppColors.primaryElement,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
+                        )
+                      ],
+                    ),
                   ],
                 ),
                 Container(
@@ -183,13 +213,13 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: 4,
+                            count: latestStat.confirmed,
                             borderColor: Colors.blue.shade800.value,
                             title: 'Confirmed Cases',
                           ),
                           StatisticCounter(
                             width: _wd,
-                            count: 0,
+                            count: latestStat.dead,
                             borderColor: Colors.red.shade900.value,
                             title: 'Confirmed Deaths',
                           ),
@@ -203,13 +233,13 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: 4,
+                            count: latestStat.recovered,
                             borderColor: Colors.green.shade900.value,
                             title: 'Recoverd Patients',
                           ),
                           StatisticCounter(
                             width: _wd,
-                            count: 19,
+                            count: latestStat.suspected,
                             borderColor: Colors.orange.shade900.value,
                             title: 'Suspected Cases',
                           ),
@@ -224,23 +254,5 @@ class _InformationScreenState extends State<InformationScreen> {
         )
         //})
         );
-  }
-}
-
-Future<Latest> fetchInfo() async {
-  //http://196.216.167.150:6549/covid/v1/statistics/latest');
-  final response =
-      await http.get("http://196.216.167.150:6549/covid/v1/statistics/latest");
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    debugPrint("Data=>" + response.body.toString());
-    return Latest.fromJson(json.decode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    debugPrint("HERE" + response.toString());
-    throw Exception('Failed to load latest info');
   }
 }

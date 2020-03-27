@@ -1,54 +1,34 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 /// name : "Lady Pohamba Private Hospital"
 /// about : "Private hospital"
 /// coordinates : {"lat":-22.6220078,"lng":17.0930451}
 
 class Centre {
-  String _name;
-  String _about;
-  CoordinatesBean _coordinates;
+  String name;
+  String about;
+  LatLng coordinates;
 
-  String get name => _name;
-  String get about => _about;
-  CoordinatesBean get coordinates => _coordinates;
-
-  Centre(this._name, this._about, this._coordinates);
+  Centre(this.name, this.about, this.coordinates);
 
   Centre.map(dynamic obj) {
-    this._name = obj["name"];
-    this._about = obj["about"];
-    this._coordinates = CoordinatesBean.map(obj["coordinates"]);
+    Map<String, dynamic> latLng = obj["coordinates"];
+    print(latLng);
+
+    this.name = obj["name"];
+    this.about = obj["about"];
+    this.coordinates = LatLng(latLng['latitude'], latLng['longitude']);
+    print(latLng);
   }
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
-    map["name"] = _name;
-    map["about"] = _about;
-    map["coordinates"] = _coordinates;
-    return map;
-  }
-}
-
-/// lat : -22.6220078
-/// lng : 17.0930451
-
-class CoordinatesBean {
-  double _lat;
-  double _lng;
-
-  double get lat => _lat;
-  double get lng => _lng;
-
-  CoordinatesBean(this._lat, this._lng);
-
-  CoordinatesBean.map(dynamic obj) {
-    this._lat = obj["lat"];
-    this._lng = obj["lng"];
-  }
-
-  Map<String, dynamic> toMap() {
-    var map = new Map<String, dynamic>();
-    map["lat"] = _lat;
-    map["lng"] = _lng;
+    map["name"] = name;
+    map["about"] = about;
+    map["coordinates"] = {
+      'latitude': coordinates.latitude,
+      'longitude': coordinates.longitude
+    };
     return map;
   }
 }
