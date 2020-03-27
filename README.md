@@ -1,9 +1,8 @@
-# covid19-essapp
-General information about COVID 19
+# Overview
+The COVID-19 Essential Application aims to provide awareness information, safety tips and new developments about the COVID-19 virus in Namibia, the SADEC region and worldwide. The application is part of the efforts under the virtual hackathon taking place during the lock-down period. The application exists in two formats: a *web application* and a *mobile application* (running on both _Android_ and _iOS_).
 
-The app will focus on providing essential information about the virus. This includes:
+# Contributors
+coming soon
 
-  * Awareness information
-  * Safety tips and general advice
-  * Important memos and circulars
-  * Nearest testing centers
+# Sponsors and Partners
+coming soon
