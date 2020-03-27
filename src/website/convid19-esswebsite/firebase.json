@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/convid19-esswebsite",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "dist/index.html"
       }
     ]
   }
