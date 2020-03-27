@@ -4,9 +4,13 @@
 
 <section class="home-section">
   <section id="home" class="home">
+
     <div class="trans-background">
 
       <div class="welcome-message">
+        <div ng-controller="MyCtrl" class="maq" >
+          <marquee vspace = "20" direction = "right" style="animation: maq 5s ease-out;"><span>Latest News:</span> Khomas And Erongo Regions Covid-19 Lockdown Starts on <span class="text-danger"> Friday 27 March 2020.</span></marquee>
+          </div>
         <div class="img-container-1">
           <img src="../../../assets/Logos/min.jpg" alt="profile">
         </div>
@@ -19,6 +23,7 @@
 
         <h2 class="animated heartBeat delay-3s"> MoHSS COVID-19 hotline at 0800 100 100.
         </h2>
+
       </div>
     </div>
 
@@ -36,12 +41,13 @@
       <div id="general" class="general container">
         <div id="link1">
           <mdb-card-body>
+            <h1 class="text-center">Latest<span> News:</span></h1>
             <div class="img-container">
               <img src="../../../assets/Logos/lockdown.jpg" alt="profile">
             </div>
             <mdb-card-text>
-              <h1 class="text-center">Information<span> Coming Soon</span></h1>
-              <h2 class="text-center"> KHOMAS AND ERONGO REGIONS COVID-19 LOCKDOWN INFORMATION<span> COMING SOON</span></h2>
+
+              <h2 class="text-center"> Khomas And Erongo Regions Covid-19 Lockdown Starts on <span class="text-danger"> Friday 27 March 2020.</span></h2>
 
                 <div class="about-footer">
                   <!-- <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
@@ -109,6 +115,34 @@
                 <a class="btn btn-danger" block="true"
                   style="outline-color: white; float: right !important; margin-top: 1.5rem;"
                   [routerLink]="['/app-corona-general-info']">Read more
+                </a>
+              </div>
+              <div class="hr"></div>
+            </mdb-card-text>
+          </mdb-card-body>
+        </div>
+      </div>
+    </mdb-card>
+
+    <mdb-card>
+      <div id="general" class="general container">
+        <div id="link3">
+          <mdb-card-body>
+            <div class="img-container">
+              <img src="../../../assets/img/virus-small.png" alt="profile">
+            </div>
+            <mdb-card-text>
+              <h2 class="text-center">Testing Centres</h2>
+              <p>You can get tested at the following centers:</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Robert Mugabe Clinic</li>
+                <li class="list-group-item">Namibia Institute of Pathology</li>
+                </ul>
+              <div class="hr"></div>
+              <div class="about-footer">
+                <a class="btn btn-danger" block="true"
+                  style="outline-color: white; float: right !important; margin-top: 1.5rem;"
+                  [routerLink]="['/app-testing-centres']">Read more
                 </a>
               </div>
               <div class="hr"></div>
