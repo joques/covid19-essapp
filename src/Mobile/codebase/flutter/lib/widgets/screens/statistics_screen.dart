@@ -133,7 +133,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                           }));
                     }),
                 avatar: Icon(Icons.arrow_drop_down),
-                label: Text('Select a region'),
+                label: Text('${selectedRegion.name}'),
               ),
               NamibianMap(
                 value: _value.toString(),

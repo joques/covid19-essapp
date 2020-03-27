@@ -3,6 +3,7 @@ import ballerina/log;
 import ballerina/io;
 import ballerina/mongodb;
 import ballerina/docker;
+import ballerina/file;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 		host: "172.17.0.1:27017",
@@ -33,8 +34,18 @@ listener http:Listener apilistener4 = new (6552);
 		{sourceFile: "../../official-docs/offdoc007.pdf", target: "/home/ballerina/data/official-docs/offdoc007.pdf"},
 		{sourceFile: "../../official-docs/offdoc008.pdf", target: "/home/ballerina/data/official-docs/offdoc008.pdf"},
 		{sourceFile: "../../official-docs/offdoc009.pdf", target: "/home/ballerina/data/official-docs/offdoc009.pdf"},
-        {sourceFile: "../../official-docs/offdoc010.pdf", target: "/home/ballerina/data/official-docs/offdoc010.pdf"}
-        {sourceFile: "../../official-docs/offdoc011.pdf", target: "/home/ballerina/data/official-docs/offdoc011.pdf"}
+        {sourceFile: "../../official-docs/offdoc010.pdf", target: "/home/ballerina/data/official-docs/offdoc010.pdf"},
+        {sourceFile: "../../official-docs/offdoc011.pdf", target: "/home/ballerina/data/official-docs/offdoc011.pdf"},
+		{sourceFile: "../../official-docs/offdoc012.pdf", target: "/home/ballerina/data/official-docs/offdoc012.pdf"},
+		{sourceFile: "../../official-docs/offdoc013.pdf", target: "/home/ballerina/data/official-docs/offdoc013.pdf"},
+		{sourceFile: "../../official-docs/offdoc014.pdf", target: "/home/ballerina/data/official-docs/offdoc014.pdf"},
+		{sourceFile: "../../official-docs/offdoc015.jpeg", target: "/home/ballerina/data/official-docs/offdoc015.jpeg"},
+		{sourceFile: "../../official-docs/offdoc016.jpeg", target: "/home/ballerina/data/official-docs/offdoc016.jpeg"},
+		{sourceFile: "../../official-docs/offdoc017.jpeg", target: "/home/ballerina/data/official-docs/offdoc017.jpeg"},
+		{sourceFile: "../../official-docs/offdoc018.jpeg", target: "/home/ballerina/data/official-docs/offdoc018.jpeg"},
+		{sourceFile: "../../official-docs/offdoc019.jpeg", target: "/home/ballerina/data/official-docs/offdoc019.jpeg"},
+		{sourceFile: "../../official-docs/offdoc020.jpeg", target: "/home/ballerina/data/official-docs/offdoc020.jpeg"},
+		{sourceFile: "../../official-docs/offdoc021.jpeg", target: "/home/ballerina/data/official-docs/offdoc021.jpeg"}
 	]
 }
 
@@ -73,17 +84,26 @@ service documents on apilistener4 {
 	}
 	resource function getCircularFile(http:Caller caller, http:Request docReq, string docid){
 		http:Response docResp = new;
-	
-		string docuContentType = "application/pdf";
-		string filePath = "./data/official-docs/" + docid + ".pdf";
+		string pdfDocuContentType = "application/pdf";
+		string jpegDocuContentType = "application/jpeg";
 		
-		io:println("will send file ", filePath);
-
-		docResp.setFileAsPayload(<@untainte> filePath, docuContentType);
+		string pdfFilePath = "./data/official-docs/" + docid + ".pdf";
+		
+		if (file:exists(<@untainted> pdfFilePath)) {
+			docResp.setFileAsPayload(<@untainted> pdfFilePath, pdfDocuContentType);
+		} else {
+			string jpegFilePath = "./data/official-docs/" + docid + ".jpeg";
+			if (file:exists(<@untainted> jpegFilePath)) {
+				docResp.setFileAsPayload(<@untainted> jpegFilePath, jpegDocuContentType);
+			} else {
+				string noFileInfo = "No File with Document ID " + docid;
+				docResp.setJsonPayload(<@untainted> noFileInfo);
+			}
+		}
+		
 		var sendRes1 = caller -> respond(docResp);
 		if (sendRes1 is error) {
 			io:println("there was an error sending the response ", sendRes1.reason());
 		}
 	}
-	
 }
