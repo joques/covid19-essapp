@@ -13,17 +13,17 @@ export class StatisticsComponent implements OnInit {
     {
       lat: -22.575224324350007,
       lng: 17.08553119601639
-    },{
+    }, {
       lat: -23.920876916085312,
       lng: 18.06606098117264
 
-    },{
+    }, {
       lat: -22.64675073724474,
       lng: 14.595686021333671
-    },{
+    }, {
       lat: -20.489839878217655,
       lng: 16.67759520102117
-    },{
+    }, {
       lat: -22.442920657272868,
       lng: 18.5031611607708
     }, {
@@ -52,15 +52,16 @@ export class StatisticsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.datenow = new Date().toLocaleDateString();
     // get the data from the api
     this.service.getPeriodicStats()
       .subscribe(res =>
-        res.forEach(data => {
+        res.forEach((data, i) => {
           let date = `${new Date(data.date).getMonth()}/${new Date(data.date).getDate()}/${new Date(data.date).getFullYear()}`;
           if (date === new Date().toLocaleDateString()) {
             this.datenow = date;
           }
+
           let value = {
             date: date,
             recovered: data.recovered,
@@ -69,10 +70,39 @@ export class StatisticsComponent implements OnInit {
             confirmed: data.confirmed,
             worldwide: data.worldwide
           }
+
+          //pushing values to the data array
           this.data.push(value);
+
+          // summing up all the values
+          let newval = {
+            recovered: +(this.data[i].recovered += this.data[i].recovered),
+            dead: +(this.data[i].dead += this.data[i].dead),
+            suspected: +(this.data[i].suspected += this.data[i].suspected),
+            confirmed: +(this.data[i].confirmed += this.data[i].confirmed),
+            worldwide: +(this.data[i].worldwide += this.data[i].worldwide)
+          }
+    
+          //assinging it to the selected object
+          this.selected = newval;
         })
       );
+
+    for (let i: number = 0; i < this.data.length; i++) {
+      let value = {
+        recovered: this.data[i].recovered += this.data[i].recovered,
+        dead: this.data[i].dead += this.data[i].dead,
+        suspected: this.data[i].suspected += this.data[i].suspected,
+        confirmed: this.data[i].confirmed += this.data[i].confirmed,
+        worldwide: this.data[i].worldwide += this.data[i].worldwide
+      }
+
+      this.selected = value;
+
+      console.log(value)
+    }
   }
+
 
   // draw a marker on the map
   onMapClick(event): void {

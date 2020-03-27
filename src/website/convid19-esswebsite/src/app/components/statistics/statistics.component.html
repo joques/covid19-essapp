@@ -1,15 +1,15 @@
 <section class="stats-section">
 
   <mat-card>
-    <h5 class="text-center">Statistics as of {{datenow | date}} &nbsp;
-      <mat-form-field>
+    <h5 class="text-center" style="margin-bottom: 1rem;">Statistics as of {{datenow | date}} &nbsp;
+      <!-- <mat-form-field>
         <mat-label> Select date </mat-label>
         <mat-select>
           <mat-option *ngFor="let data of data" [value]="data.date" (onSelectionChange)="select(data.date)">
             {{data.date | date}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </h5>
     <div class="buttons">
       <button class="primary" mat-raised-button matBadge="{{selected.recovered}}">Confirmed Cases</button>
