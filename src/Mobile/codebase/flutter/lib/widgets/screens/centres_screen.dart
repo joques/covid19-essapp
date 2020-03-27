@@ -40,8 +40,7 @@ class _CentresScreenState extends State<CentresScreen> {
         .then((list) => setState(() {
               _centres = list;
               list.forEach((centre) => markers.add(Marker(
-                  position:
-                      LatLng(centre.coordinates.lat, centre.coordinates.lng),
+                  position: centre.coordinates,
                   icon: BitmapDescriptor.defaultMarkerWithHue(
                       BitmapDescriptor.hueBlue),
                   infoWindow:
@@ -49,7 +48,7 @@ class _CentresScreenState extends State<CentresScreen> {
                   markerId: MarkerId(centre.name))));
             }))
         .catchError((err) {
-      debugPrint(err);
+      debugPrint(err.toString());
     });
   }
 

@@ -12,7 +12,7 @@
 }
 
 .scrollspy-example {
-  padding:  5rem 10rem;
+  padding: 5rem 10rem;
 }
 
 .img-container {
@@ -46,7 +46,7 @@
   padding: 50px 0;
   color: #fff;
   position: relative;
-  top: 25%;
+  top: 15%;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -58,6 +58,12 @@
 
 .welcome-message h1 {
   font-size: 38px;
+  color: #DC3545;
+  font-weight: bold;
+}
+
+.welcome-message h2 {
+  font-size: 22px;
   color: #DC3545;
   font-weight: bold;
 }
@@ -245,6 +251,11 @@
   }
 
 }
+
+.img-container-1 img {
+  border-radius: 50%;
+}
+
 
 @media screen and (min-width: 1200px) {
   .general-body h2 {
@@ -456,32 +467,40 @@ mdb-card {
 
 }
 
-@media only screen and (max-width:500px) {
-  #link1 {
-    padding: 0 0.5rem;
-  
-    /* padding-top: 2rem; */
-  }
-  
-  #link2 {
-    padding: 0 0.5rem;
-  }
-  
-  #link3 {
-    padding: 0 0.5rem;
-  
-    /* padding-top: 2rem; */
-  }
-  .scrollspy-example {
-    padding:  1rem;
-  }
-}
 
 @media only screen and (max-width: 770px) {
   .scrollspy-example {
-    padding:  5rem 6rem;
+    padding: 5rem 6rem;
   }
 }
+
+
+@media only screen and (max-width:500px) {
+  .scrollspy-example {
+    padding: 5rem 1rem;
+  }
+
+  #link1 {
+    padding: 0 0.5rem;
+
+    /* padding-top: 2rem; */
+  }
+
+  #link2 {
+    padding: 0 0.5rem;
+  }
+
+  #link3 {
+    padding: 0 0.5rem;
+
+    /* padding-top: 2rem; */
+  }
+
+  .scrollspy-example {
+    padding: 5rem 1.5rem;
+  }
+}
+
 
 @keyframes fadeIn {
   from {

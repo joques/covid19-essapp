@@ -27,7 +27,7 @@
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Statistics</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect [routerLink]=""> Testing Centers</a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-testing-centres'"> Testing Centres</a>
       </li>
 
 
@@ -37,6 +37,7 @@
         <a dropdownToggle mdbWavesEffect class="nav-link" [routerLink]="['/faq']" mdbWavesEffect>
           FAQ</a>
       </li>
+
       <!-- <li class="nav-item btn-group">
         <a dropdownToggle mdbWavesEffect class="nav-link" [routerLink]="['/contact']" mdbWavesEffect>
           Contact</a>
@@ -47,7 +48,9 @@
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Latest Discoveries</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Research/Publications</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-circulars']">Memos and Circulars</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Memos and Circulars</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-about-us']" routerLinkActive="active">About Us</a>
         </div>
       </li>
       <!-- <li class="nav-item">

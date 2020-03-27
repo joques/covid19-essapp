@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: CODIV Essential Information -- Access to official documents and circulars
+baseURI: http://196.216.167.150:6552/covid/{version}
+version: v1
+
+/docs/description:
+    displayName: Provide metadata or general description about all documents 
+        description:
+            get:
+                description:
+                    responses:
+                        200:
+                            body:
+                                application/json:
+                                  example: |
+                                    [{
+                                      docid: "offdoc001",
+                                      title: "Title 1",
+                                      pubdate: "2020-03-20",
+                                      author: "Ministry of Health",
+                                      source: ""
+                                    },
+                                    {
+                                      docid: "offdoc002",
+                                      title: "Title 2",
+                                      pubdate: "2020-03-12",
+                                      author: "Centre for Disease Control",
+                                      source: ""
+                                    }]
+/docs/doc::
+  /{docid}:
+    description: returns a document attached to this document identifier
+    get:
+      responses:
+        200:
+          body:
+            application/pdf:
+              type: file

@@ -1,0 +1,31 @@
+#%RAML 1.0
+title: CODIV Essential Information -- Quick description on testing centres
+baseURI: http://196.216.167.150:6550/covid/{version}
+version: v1
+
+/centre/all:
+    displayName: Provide a collection of frequently asked questions and their answers
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                              example: |
+                                [
+                                  {
+											              name: "Designation of centre 1",
+                                    about: "Description of centre 1",
+                                    coordinates:
+                                      latitude: -22.552113,
+                                      longitude: 17.079843
+                                  },
+                                  {
+											              name: "Designation of centre 2",
+                                    about: "Description of centre 2",
+                                    coordinates:
+                                      latitude: -22.550549,
+                                      longitude: 17.090783
+                                  }
+                                ]

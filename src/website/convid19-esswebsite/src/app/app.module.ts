@@ -14,6 +14,10 @@ import { HomeComponent } from './components/home/home.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AgmCoreModule } from "@agm/core";
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -36,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
+import { TestingCentresComponent } from './components/testing-centres/testing-centres.component';
 
 
 @NgModule({
@@ -60,13 +65,17 @@ import { CoronaGeneralInfoComponent } from './components/corona-general-info/cor
     StatisticsComponent,
     FaqsComponent,
     FactsComponent,
-    CoronaGeneralInfoComponent
+    CoronaGeneralInfoComponent,
+    TestingCentresComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatExpansionModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
+    MatProgressBarModule,
     MDBBootstrapModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyANVw389Q10N46d9EvyUhbHwSP0KOycikY'

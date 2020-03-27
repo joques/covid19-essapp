@@ -3,3 +3,66 @@
 
 
   }
+
+  .services {
+    padding: 40px 0 30px;
+    background-color: #F1F1F1;
+    text-align: center;
+}
+
+.circular h3 {
+    color: #343A40;
+}
+
+.services-body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0 15px;
+}
+
+.circular {
+    padding: 10px;
+    line-height: 25px;
+    margin: 20px 0;
+    transition: all .8s ease-out;
+    cursor: pointer;
+}
+
+.circular * {
+    margin-bottom: 15px;
+}
+
+.circular p {
+    margin-bottom: 0;
+}
+
+.circular .icon {
+    font-size: 30px;
+    color: #DC3545;
+    transition: all .8s ease-out;
+}
+
+.circular p {
+    color: rgb(85, 85, 85);
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.circular:hover {
+    background-color: #fff;
+}
+
+.circular:hover .icon {
+    transform: scale(1.3);
+}
+
+/* SERVICES MEDIA QUERIES */
+
+@media screen and (min-width: 768px) {
+    .services-head h2 {
+        font-size: 40px;
+    }
+
+    .circular h3 {
+        font-size: 24px;
+    }
+}

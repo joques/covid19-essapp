@@ -5,7 +5,7 @@ import ballerina/io;
 import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "196.216.167.150:27017",
+	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
 	username: "",
 	password: "",
@@ -18,7 +18,6 @@ mongodb:Client dbClient = check new (mongoConfig);
 listener http:Listener apiListener3 = new (6551);
 
 @docker:Config {
-	buildImage: false,
 	name: "faq",
 	tag: "v1.0"
 }

@@ -33,6 +33,13 @@ dependencies:
   geolocator:
   url_launcher:
   dio:
+  intl:
+  auto_size_text:
+  google_fonts:
+  expandable: ^4.1.2
+  shimmer:
+  timeago:
+
 
 
 dev_dependencies:
@@ -53,6 +60,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/symptomsIcons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

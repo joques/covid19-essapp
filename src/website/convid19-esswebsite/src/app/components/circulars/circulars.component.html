@@ -1,21 +1,28 @@
 
 <section class="circulars">
 <h5 style="text-align: center; font-weight: bold; font-size: 40px;">Circulars<span> and Memos</span></h5>
+<section id="services" class="services">
+  <div class="container">
+      <div class="row">
+          <div class="col">
 
-<mat-card *ngFor="let info of data" style="margin-top:10px;">
-
-
-  <!-- <mat-card-header>
-      <mat-card-title>What is Corona Virus</mat-card-title>
-
-  </mat-card-header> -->
-  <mat-card-content>
-      <p style="font-size:20px">
-          {{info}}
-      </p>
-
-  </mat-card-content>
-
-</mat-card>
-
+          </div>
+      </div>
+      <div *ngIf="data" class="row">
+          <div *ngFor="let doc of data" class="col-lg-3 col-md-6 col-sm-12">
+              <div  class="circular" (click)="download(doc.docid)">
+                  <i class="fas fa-file-pdf icon"></i>
+                  <h3> {{doc.title}}</h3>
+                  <p>Document id: {{doc.docid}}</p>
+                  <p>Publication Date: {{doc.pubdate}}</p>
+                  <p>Author: {{doc.author}}</p>
+                  <p>Source: {{doc.source}}</p>
+              </div>
+          </div>
+<br>
+      </div>
+      <!--row-->
+  </div>
+  <!--container-->
+</section>
 </section>

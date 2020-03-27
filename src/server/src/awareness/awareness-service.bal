@@ -5,7 +5,7 @@ import ballerina/io;
 import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "localhost",
+	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
 	username: "",
 	password: "",
@@ -41,12 +41,16 @@ function loadAwarenessData(string awarenessPath) returns @tainted json {
 }
 
 // local store with all awareness info
-json awarenessDS = <@untainted> loadAwarenessData("../../resources/awareness.json");
+json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 
+//adding docker confoguration
 @docker:Config {
-	registry: "docker.abc.com",
 	name: "awareness",
 	tag: "v1.0"
+}
+
+@docker:CopyFiles{
+	files: [{sourceFile: "../../resources/awareness.json", target: "/home/ballerina/data/awareness.json"}]
 }
 
 @http: ServiceConfig {
@@ -280,6 +284,9 @@ service awareness on apiListener1 {
 
 		// pull the facts
 		var sympJson = awarenessDS?.symptoms;
+
+        io:println(sympJson);
+
 
 		if (sympJson is error) {
 			log:printError("An error occurred while pulling case definitions about the virus", err=sympJson);

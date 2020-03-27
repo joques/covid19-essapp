@@ -1,5 +1,6 @@
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/screens/main_page.dart';
+import 'package:covid_19_app/widgets/screens/symptoms_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'COVID-19',
+      routes: <String, WidgetBuilder>{
+        '/symptoms': (BuildContext context) => SymptomsScreen(
+              title: 'Symptoms',
+            ),
+      },
       theme: ThemeData(
           //primarySwatch: AppColors.primaryElement,
           accentColor: AppColors.accentElement,

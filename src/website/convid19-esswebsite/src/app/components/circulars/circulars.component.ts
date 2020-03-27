@@ -11,24 +11,28 @@ export class CircularsComponent implements OnInit {
   constructor(private http: HttpserviceService) { }
 
   data = [];
-
+  public circulars = [];
+memo = [];
   ngOnInit(): void {
 
-    this.http.getCirculars()
-      .subscribe(res =>
-        res.forEach(data => {
+    this.http.getCirculars().subscribe((res : any[])=>{
+      console.log(res);
+      res.forEach(data => {
+        this.data = res as string [];
+        this.circulars.push(res);
+        localStorage.setItem('memos', JSON.stringify(this.circulars[0]));
+        // console.log(res[1]);
+      })
 
-          let value = {
+  });
+  const memos = JSON.parse(localStorage.getItem('memos'));
 
-            id: data.docid,
-            title: data.title,
-            pubdate: data.pubdate,
-            author: data.author,
-            source: data.source
-          }
-          this.data.push(value);
-        })
-      );
+  }
+
+download(docid: string):  void {
+  console.log(docid);
+  console.log('im here');
+    this.http.downloadCirculars(docid);
   }
 
 }

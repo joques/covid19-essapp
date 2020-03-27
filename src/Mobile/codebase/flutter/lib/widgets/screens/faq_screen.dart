@@ -1,24 +1,24 @@
+import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/models/faq.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:covid_19_app/styles/colors.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class FAQScreen extends StatefulWidget {
   final String title;
-  
+
   FAQScreen({Key key, this.title}) : super(key: key);
 
   @override
   _FAQScreenState createState() => _FAQScreenState();
 }
 
-class FAQ {
-  FAQ({
+/*class FAQ {
+ */ /* FAQ({
     this.question,
     this.answer,
     this.id,
     this.isExpanded = false,
-  });
+  });*/ /*
 
   String question;
   String answer;
@@ -31,115 +31,157 @@ class FAQ {
       answer: json['answer'],
     );
   }
-}
+}*/
 
 List<FAQ> _data = new List(0);
 //var getFAQ = fetchFAQ();
 //var myData = jsonDecode(snapshot.data);
 
-List<FAQ> generateItems(int numberOfItems) {
-  return List.generate(numberOfItems, (int index) {
-    return FAQ(
-      question: 'Question  $index ?',
-      answer:
-          'This is the answer for $index \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean neque massa, rhoncus non quam mattis.',
-    );
-  });
-}
-
 class _FAQScreenState extends State<FAQScreen> {
-  Future<dynamic> _future;
   @override
   void initState() {
-    _future = fetchFAQ();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<dynamic>(
-      future: _future, // function where you call your api
-      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        // AsyncSnapshot<Your object type>
-        if (snapshot.connectionState == ConnectionState.waiting &&
-            _data.length == 0) {
-          return Center(child: Text('LOADING PLEASE WAIT...'));
-        } else {
-          if (snapshot.hasError)
-            return Center(child: Text('Error: ${snapshot.error}'));
-          else
-            return Scaffold(
-                appBar: AppBar(
-                  title: Text(
-                    widget.title,
-                  ),
-                  centerTitle: true,
-                ),
-                body: SingleChildScrollView(
-                  child: Container(
-                    child: _buildPanel(),
-                  ),
-                )); // snapshot.data  :- get your object which is pass from your downloadData() function
-        }
-      },
-    );
-  }
-
-  Widget _buildPanel() {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _data[index].isExpanded = !isExpanded;
-        });
-      },
-      children: _data.map<ExpansionPanel>((FAQ item) {
-        return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              leading: Icon(Icons.question_answer),
-              title: Text(item.question,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.primaryText),
-                  textAlign: TextAlign.start),
-            );
-          },
-          body: ListTile(
-            leading: Icon(Icons.lightbulb_outline),
-            title: Text(item.answer),
-          ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: FutureBuilder<List<FAQ>>(
+          future: API().getFaqs(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView(
+                children: List.generate(
+                    snapshot.data.length,
+                    (index) => ExpandableNotifier(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Card(
+                            shape: BeveledRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(16))),
+                            color: Theme.of(context).primaryColor,
+                            clipBehavior: Clip.antiAlias,
+                            child: Column(
+                              children: <Widget>[
+                                /*SizedBox(
+                                  height: 150,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.orange,
+                                      shape: BoxShape.rectangle,
+                                    ),
+                                  ),
+                                ),*/
+                                ScrollOnExpand(
+                                  scrollOnExpand: true,
+                                  scrollOnCollapse: false,
+                                  child: ExpandablePanel(
+                                    theme: const ExpandableThemeData(
+                                      iconColor: Colors.white,
+                                      headerAlignment:
+                                          ExpandablePanelHeaderAlignment.center,
+                                      tapBodyToCollapse: true,
+                                    ),
+                                    header: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Text(
+                                          snapshot.data[index].question,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6
+                                              .copyWith(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w900),
+                                        )),
+                                    collapsed: Text(
+                                      snapshot.data[index].answer,
+                                      softWrap: true,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1
+                                          .copyWith(
+                                              fontWeight: FontWeight.w200,
+                                              fontSize: 18,
+                                              color: Colors.white),
+                                    ),
+                                    expanded: Padding(
+                                        padding: EdgeInsets.only(
+                                            bottom: 16, top: 16),
+                                        child: Text(
+                                          snapshot.data[index].answer,
+                                          softWrap: true,
+                                          overflow: TextOverflow.fade,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1
+                                              .copyWith(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 18,
+                                                  color: Colors.white),
+                                        )),
+                                    builder: (_, collapsed, expanded) {
+                                      return Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10, right: 10, bottom: 10),
+                                        child: Expandable(
+                                          collapsed: collapsed,
+                                          expanded: expanded,
+                                          theme: const ExpandableThemeData(
+                                              crossFadePoint: 0),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ))),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error getting data!'),
+              );
+            }
+            return CircularProgressIndicator();
+          }),
     );
   }
 }
 
-fetchFAQ() async {
-  //http://196.216.167.150:6549/covid/v1/statistics/latest');
-  final response =
-      await http.get("http://196.216.167.150:6551/covid/v1/faq/all");
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    List<FAQ> faqList = (json.decode(response.body) as List)
-        .map((i) => FAQ.fromJson(i))
-        .toList();
-  
-    //Only update data if server has new info
-    if (_data.length == 0 || _data.length != faqList.length ) {
-      _data = new List(faqList.length);
-      for (var i = 0; i < faqList.length; i++) {
-        _data[i] = faqList[i];
-      }
-    }
-    return faqList;//return future instance of the data
-    
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    debugPrint("HERE" + response.toString());
-    throw Exception('Failed to load latest info');
-  }
-}
+/// SingleChildScrollView(
+//                child: ExpansionPanelList(
+//                  expansionCallback: (int index, bool isExpanded) {
+//                    /*setState(() {
+//                //_data[index].isExpanded = !isExpanded;
+//              });*/
+//                  },
+//                  children: List.generate(snapshot.data.length, (index) {
+//                    return ExpansionPanel(
+//                      headerBuilder: (BuildContext context, bool isExpanded) {
+//                        return ListTile(
+//                          leading: Icon(Icons.question_answer),
+//                          title: Text(snapshot.data[index].question,
+//                              style: TextStyle(
+//                                  fontSize: 18,
+//                                  fontWeight: FontWeight.w700,
+//                                  color: AppColors.primaryText),
+//                              textAlign: TextAlign.start),
+//                        );
+//                      },
+//                      body: ListTile(
+//                        leading: Icon(Icons.lightbulb_outline),
+//                        title: Text(snapshot.data[index].answer),
+//                      ),
+//                      isExpanded: false,
+//                    );
+//                  }),
+//                ),
+//              )

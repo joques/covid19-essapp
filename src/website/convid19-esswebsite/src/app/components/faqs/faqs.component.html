@@ -1,29 +1,24 @@
+<div class="prgress">
+  <mat-progress-bar mode="indeterminate" *ngIf="showprogress"></mat-progress-bar>
+</div>
 <section class="faqs-section">
-  <div class="img-container">
-    <img src="../../../assets/img/virus-small.png" alt="profile">
-  </div>
-
   <div style="padding: 13px;">
+    <h5>Frequently Asked Questions
+      (FAQs)</h5>
 
-    <h5 style="text-align: center; font-weight: bold; font-size: 50px;">Frequently Asked Questions (FAQs)</h5>
+    <form [formGroup]="searchForm" class="search-form">
+        <input placeholder="Seach question here" class="fo==" [(ngModel)]="search" formControlName="searchInput">
+    </form>
 
-    <mat-spinner *ngIf="Faqs.length === 0"></mat-spinner>
-    <div *ngFor="let faqs of Faqs" style="margin-top:10px;">
-
-        
-        <li *ngFor="let faqs of Faqs">
-      <p style="font-size:20px; padding: 5rem; text-align: left;">
-       
-           <strong>{{ faqs.question}} </strong> 
-            <br>
-            {{ faqs.answer}}
-        
-
-      </p>
-    </li>
-      
-
-
-    </div>
+    <mat-accordion *ngFor="let faqs of Faqs | filter:search">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong > {{ faqs.question}}</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ faqs.answer}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </section>

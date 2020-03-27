@@ -1,0 +1,112 @@
+#%RAML 1.0
+title: CODIV Essential Information -- Awareness service
+baseURI: http://196.216.167.150:6547/covid/{version}
+version: v1
+
+/awareness/latest:
+    displayName: Latest information about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["latest11", "latest2", "latest3",..., "latestn"]
+
+/awareness/whatis:
+    displayName: Attempt a general explanation on the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["def-part1", "def=-part22", "def-part3",..., "def-partn"]
+
+/awareness/transmission:
+    displayName: Summarise the transmission mode of the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+							text/plain:
+								example: |
+									["transmission1", "trasnmission2", ..., "transmissionn"]
+
+/awareness/symptoms:
+    displayName: Present the common symptoms after contamination
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["symptom1", "symptom2", ..., "symptomn"]
+
+/awareness/treatment:
+    displayName: Provide information about treatment and prevention
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["treatment1", "treatment2", ..., "treatmentn"]
+
+/awareness/measures:
+    displayName: Quick info about preventative measures
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["measure1", "measure2", ..., "measuren"]
+
+/awareness/tips:
+    displayName: Advanced safety tips about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["tip1", "tip2", ..., "tipn"]
+
+/awareness/facts:
+	displayName: Advanced safety tips about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["fact1", "fact2", ..., "factn"]
+
+/awareness/casedefs:
+	displayName: Present the case definition for the virus
+	description:
+		get:
+			description:
+				responses:
+					200:
+						body:
+							text/plain:
+								example: |
+									["case1", "case2", ..., "casen"]

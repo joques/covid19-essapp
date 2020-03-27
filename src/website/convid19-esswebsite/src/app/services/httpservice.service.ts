@@ -9,23 +9,20 @@ import { map } from "rxjs/operators";
 export class HttpserviceService {
 
 
+
   constructor(private http: HttpClient) { }
 
 
 
-  getCirculars(): any {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
-      })
-    };
+  getCirculars() {
+    return this.http.get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6552/covid/v1/docs/description');
+  }
 
-    return this.http
-      .get('http://196.216.167.150:6551/covid/v1/docs/doc', {
-        headers: httpOptions.headers
-      })
-      .pipe(map(res => res));
+  downloadCirculars(docid) {
+    console.log(docid);
+    this.http.get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6552/covid/v1/docs/doc' + '/' + docid, { responseType: 'blob'}).subscribe(res => {
+      window.open(window.URL.createObjectURL(res));
+    });
   }
 
   getLatestInfo(): any {
@@ -144,7 +141,7 @@ export class HttpserviceService {
     };
 
     return this.http
-      .get('http://196.216.167.150:6551/codiv/v1/faq/all', {
+      .get('http://196.216.167.150:6551/covid/v1/faq/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));
