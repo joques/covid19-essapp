@@ -152,14 +152,14 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       children: <Widget>[
                         StatisticCounter(
                           width: _wd,
-                          count: 0,
-                          borderColor: Colors.blue.shade900.value,
+                          count: selectedRegion.statistics.confirmed,
+                          borderColor: Colors.blue.shade800.value,
                           title: 'Confirmed Cases',
                         ),
                         StatisticCounter(
                           width: _wd,
-                          count: 0,
-                          borderColor: Colors.red.shade800.value,
+                          count: selectedRegion.statistics.dead,
+                          borderColor: Colors.red.shade900.value,
                           title: 'Confirmed Deaths',
                         ),
                       ],
@@ -172,17 +172,20 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       children: <Widget>[
                         StatisticCounter(
                           width: _wd,
-                          count: 0,
+                          count: selectedRegion.statistics.recovered,
                           borderColor: Colors.green.shade900.value,
                           title: 'Recoverd Patients',
                         ),
                         StatisticCounter(
                           width: _wd,
-                          count: 19,
+                          count: selectedRegion.statistics.suspected,
                           borderColor: Colors.orange.shade900.value,
                           title: 'Suspected Cases',
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 16,
                     ),
                   ],
                 ),
