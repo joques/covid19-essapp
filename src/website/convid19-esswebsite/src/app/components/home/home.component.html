@@ -8,7 +8,7 @@
     <div class="trans-background">
 
       <div class="welcome-message">
-        <div ng-controller="MyCtrl" class="maq" (click)="scroll(general)">
+        <div ng-controller="MyCtrl" class="maq" >
           <marquee vspace = "20" direction = "right" style="animation: maq 5s ease-out;" ><span>Latest News:</span> Khomas And Erongo Regions Covid-19 Lockdown Starts on <span class="text-danger"> Friday, 27 March 2020.</span></marquee>
           </div>
         <div class="img-container-1">
@@ -17,7 +17,7 @@
 
         <span class="animated bounceInDown delay-2s">Get your facts right about</span>
         <h1 class="animated bounceInDown delay-4s">Coronavirus disease(COVID-19)</h1>
-        <br>
+
         <span class="animated bounceInDown delay-2s">Brought to you by Namibia virtual hackathon for COVID-19</span>
 
 
@@ -63,25 +63,11 @@
     </mdb-card>
     <mdb-card>
       <div id="general" class="general container">
-        <div id="link2">
-          <mdb-card-body>
-            <div class="img-container">
-              <img src="../../../assets/img/person-small.png" alt="profile">
-            </div>
+          <div id="link3">
+              <mdb-card-body>
+
             <mdb-card-text>
-              <h2 class="text-center">Preventative <span>Measures</span></h2>
-              <h3 style="float:left !important;">Take steps to protect yourself</h3>
-              <!-- <h4 style="float:left !important; text-align: left !important;">Clean your hands often</h4> -->
-              <p style="float:left !important; text-align: left !important;"><strong>Wash your hands</strong>
-                often with soap and water for at least 20 seconds especially after you have been in a public
-                place, or after blowing your nose, coughing, or sneezing.<br>
-                <br> If soap and water are not readily available, <strong>use a hand sanitizer that contains at
-                  least 60% alcohol</strong>. Cover all surfaces of your hands and rub them together until they
-                feel dry.<br>
-                <br>
-                <strong>Avoid touching your eyes, nose, and mouth</strong> with unwashed hands. <br>
-                <br>
-              </p>
+              <app-measures></app-measures>
               <div class="about-footer">
                 <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
                   [routerLink]="['/app-corona-general-info']">Read more
@@ -98,18 +84,9 @@
       <div id="general" class="general container">
         <div id="link3">
           <mdb-card-body>
-            <div class="img-container">
-              <img src="../../../assets/img/symtom-small.png" alt="profile">
-            </div>
+
             <mdb-card-text>
-              <h2 class="text-center">Symptoms</h2>
-              <h4>If you are infected you may experience the following symptoms</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cough</li>
-                <li class="list-group-item">Fever</li>
-                <li class="list-group-item">Tiredness</li>
-                <li class="list-group-item">Difficulty breathing </li>
-              </ul>
+            <app-symptoms></app-symptoms>
               <div class="hr"></div>
               <div class="about-footer">
                 <a class="btn btn-danger" block="true"
@@ -135,7 +112,7 @@
               <h2 class="text-center">Testing Centres</h2>
               <p>You can get tested at the following centers:</p>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Robert Mugabe Clinic</li>
+                <!-- <li class="list-group-item">Robert Mugabe Clinic</li> -->
                 <li class="list-group-item">Namibia Institute of Pathology</li>
                 </ul>
               <div class="hr"></div>
