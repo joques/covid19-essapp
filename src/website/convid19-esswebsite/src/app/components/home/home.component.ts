@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit {
   }
 
   scroll($element: HTMLElement): void {
-    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    // $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

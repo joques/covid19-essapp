@@ -2,5 +2,20 @@
 <section class="circulars">
 <h5 style="text-align: center; font-weight: bold; font-size: 40px;">Circulars<span> and Memos</span></h5>
 
+<mat-card *ngFor="let info of data" style="margin-top:10px;">
+
+
+  <!-- <mat-card-header>
+      <mat-card-title>What is Corona Virus</mat-card-title>
+
+  </mat-card-header> -->
+  <mat-card-content>
+      <p style="font-size:20px">
+          {{info}}
+      </p>
+
+  </mat-card-content>
+
+</mat-card>
 
 </section>

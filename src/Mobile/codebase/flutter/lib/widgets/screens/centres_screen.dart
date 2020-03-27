@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:covid_19_app/models/Centre.dart';
+import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/models/centre.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -25,11 +26,31 @@ class _CentresScreenState extends State<CentresScreen> {
   }
 
   List<Centre> _centres = List();
-
+  Set<Marker> markers = Set();
   @override
   void initState() {
     super.initState();
     setCentrePin();
+    fetchCentres();
+  }
+
+  fetchCentres() {
+    API()
+        .getCentres()
+        .then((list) => setState(() {
+              _centres = list;
+              list.forEach((centre) => markers.add(Marker(
+                  position:
+                      LatLng(centre.coordinates.lat, centre.coordinates.lng),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                      BitmapDescriptor.hueBlue),
+                  infoWindow:
+                      InfoWindow(title: centre.name, snippet: centre.about),
+                  markerId: MarkerId(centre.name))));
+            }))
+        .catchError((err) {
+      debugPrint(err);
+    });
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -46,34 +67,6 @@ class _CentresScreenState extends State<CentresScreen> {
   @override
   @override
   Widget build(BuildContext context) {
-    _centres.add(Centre(
-        name: 'Lady Pohamba Private Hospital',
-        about: 'Private hospital',
-        coordinates: LatLng(-22.6220078, 17.0930451)));
-    _centres.add(Centre(
-        name: 'Katutura State Hospital',
-        about: 'Public hospital',
-        coordinates: LatLng(-22.5346763, 17.0624753)));
-    _centres.add(Centre(
-        name: 'Robert Mugabe Clinic',
-        about: 'Public clinic',
-        coordinates: LatLng(-22.578527, 17.0637647)));
-    _centres.add(Centre(
-        name: 'Hakahana Clinic',
-        about: 'Public clinic',
-        coordinates: LatLng(-22.5969382, 17.0463872)));
-    _centres.add(Centre(
-        name: 'Oshakati State Hospital',
-        about: 'Public Hospital',
-        coordinates: LatLng(-17.7885692, 15.7045121)));
-
-    Set<Marker> markers = Set();
-    _centres.forEach((centre) => markers.add(Marker(
-        position: centre.coordinates,
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-        infoWindow: InfoWindow(title: centre.name, snippet: centre.about),
-        markerId: MarkerId(centre.name))));
-
     return new Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
