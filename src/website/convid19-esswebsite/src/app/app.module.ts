@@ -41,6 +41,7 @@ import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 import { TestingCentresComponent } from './components/testing-centres/testing-centres.component';
+import { CommingComponent } from './components/comming/comming.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { TestingCentresComponent } from './components/testing-centres/testing-ce
     FaqsComponent,
     FactsComponent,
     CoronaGeneralInfoComponent,
-    TestingCentresComponent
+    TestingCentresComponent,
+    CommingComponent
   ],
   imports: [
     BrowserModule,
