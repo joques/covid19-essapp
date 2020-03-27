@@ -46,6 +46,9 @@ button {
 
 }
 
+.buttons {
+  margin-top: 1rem;
+}
 
 @media only screen and (max-width: 1025px) {
 
