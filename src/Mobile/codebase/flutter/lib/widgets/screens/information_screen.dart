@@ -95,8 +95,9 @@ class _InformationScreenState extends State<InformationScreen> {
                         return Card(
                           color: Theme.of(context).primaryColor,
                           elevation: 5,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0)),
+                          shape: BeveledRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(15))),
                           child: Padding(
                             padding: const EdgeInsets.all(16),
                             child: Column(
@@ -180,10 +181,25 @@ class _InformationScreenState extends State<InformationScreen> {
                       'Statistics',
                       style: Theme.of(context).textTheme.headline5,
                     ),
-                    Text(
-                      'Updated: ' + timeago.format(latestStat.timestamp),
-                      style: Theme.of(context).textTheme.overline,
-                    )
+                    Row(
+                      children: <Widget>[
+                        Text('Updated:',
+                            style: Theme.of(context)
+                                .textTheme
+                                .overline
+                                .copyWith(
+                                    color: AppColors.primaryElement,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 18)),
+                        Text(
+                          timeago.format(latestStat.timestamp),
+                          style: Theme.of(context).textTheme.overline.copyWith(
+                              color: AppColors.primaryElement,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
+                        )
+                      ],
+                    ),
                   ],
                 ),
                 Container(
