@@ -25,6 +25,7 @@ memo = [];
       })
 
   });
+  
   const memos = JSON.parse(localStorage.getItem('memos'));
 
   }
