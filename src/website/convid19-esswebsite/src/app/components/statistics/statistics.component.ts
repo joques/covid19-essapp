@@ -72,20 +72,19 @@ export class StatisticsComponent implements OnInit {
           }
 
           //pushing values to the data array
-          this.data.push(value);
+          this.selected = value;
 
-          console.log(value)
           // summing up all the values
-          let newval = {
-            recovered: +(this.data[i].recovered += this.data[i].recovered),
-            dead: +(this.data[i].dead += this.data[i].dead),
-            suspected: +(this.data[i].suspected += this.data[i].suspected),
-            confirmed: +(this.data[i].confirmed += this.data[i].confirmed),
-            worldwide: +(this.data[i].worldwide += this.data[i].worldwide)
-          }
+          // let newval = {
+          //   recovered: +(this.data[i].recovered += this.data[i].recovered),
+          //   dead: +(this.data[i].dead += this.data[i].dead),
+          //   suspected: +(this.data[i].suspected += this.data[i].suspected),
+          //   confirmed: +(this.data[i].confirmed += this.data[i].confirmed),
+          //   worldwide: +(this.data[i].worldwide += this.data[i].worldwide)
+          // }
     
-          //assinging it to the selected object
-          this.selected = newval;
+          // //assinging it to the selected object
+          // this.selected = newval;
         })
       );
 
