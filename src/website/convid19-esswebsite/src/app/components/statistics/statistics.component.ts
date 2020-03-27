@@ -74,6 +74,7 @@ export class StatisticsComponent implements OnInit {
           //pushing values to the data array
           this.data.push(value);
 
+          console.log(value)
           // summing up all the values
           let newval = {
             recovered: +(this.data[i].recovered += this.data[i].recovered),
