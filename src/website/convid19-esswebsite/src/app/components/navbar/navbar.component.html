@@ -6,7 +6,7 @@
       <img class="d-none d-lg-block" src="../../../assets/img/rsz_1logo.jpg" height="40" alt="">
     </a> -->
     <a class="navbar-brand" style="color: azure;  float: right;" [routerLink]="['/home']">COVID-19 Namibia</a> -->
-   
+
   </mdb-navbar-brand>
 
 
@@ -14,7 +14,7 @@
   <links>
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-      
+
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/home'">Home</a>
       </li>
@@ -22,7 +22,7 @@
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-corona-general-info'"> General Info</a>
       </li>
 
-      
+
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="'/app-statistics'"> Statistics</a>
       </li>
@@ -45,9 +45,9 @@
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           More<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Latest Discoveries</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Research/Publications</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Memos and Circulars</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/coming']">Latest Discoveries</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/coming']">Research/Publications</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/coming']">Memos and Circulars</a>
         </div>
       </li>
       <!-- <li class="nav-item">

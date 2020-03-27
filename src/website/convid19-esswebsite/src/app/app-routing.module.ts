@@ -20,11 +20,13 @@ import { FaqsComponent } from './components/faqs/faqs.component';
 import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 import {TestingCentresComponent} from './components/testing-centres/testing-centres.component';
+import { CommingComponent } from './components/comming/comming.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'coming', component: CommingComponent },
   { path: 'faq', component: FaqsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'general', component: GeneralInfoComponent },

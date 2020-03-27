@@ -9,7 +9,7 @@
             {{data.date | date}}
           </mat-option>
         </mat-select>
-      </mat-form-field> 
+      </mat-form-field>
     </h5>
     <div class="buttons">
       <button class="primary" mat-raised-button matBadge="{{selected.recovered}}">Confirmed Cases</button>
@@ -21,6 +21,12 @@
     <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
       <agm-marker *ngIf="chosenLocation" [latitude]="latitude" [longitude]="longitude">
       </agm-marker>
+      <div *ngIf="places">
+        <div *ngFor="let coors of places;">
+          <agm-marker [latitude]="coors.lat" [longitude]="coors.lng">
+          </agm-marker>
+        </div>
+      </div>
     </agm-map>
 
   </mat-card>

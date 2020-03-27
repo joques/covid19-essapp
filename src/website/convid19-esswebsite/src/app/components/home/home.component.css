@@ -57,13 +57,13 @@
 }
 
 .welcome-message h1 {
-  font-size: 38px;
+  font-size: 30px !important;
   color: #DC3545;
   font-weight: bold;
 }
 
 .welcome-message h2 {
-  font-size: 22px;
+  font-size: 15px;
   color: #DC3545;
   font-weight: bold;
 }
@@ -253,7 +253,7 @@
 }
 
 .img-container-1 img {
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 
