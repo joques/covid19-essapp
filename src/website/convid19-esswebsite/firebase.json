@@ -11,6 +11,12 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "redirects": [ {
+      "source": "https://convid19esswebsite.firebaseapp.com/home"
+      "destination": "https://namcovid19info.firebaseapp.com/home"
+      "type": 301
+    }]
+
   }
 }
