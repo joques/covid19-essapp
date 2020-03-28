@@ -6,7 +6,7 @@ The COVID-19 Essential Application aims to provide awareness information, safety
 * Holger José Estevão António
 * Tinashe Chifamba
 * Herman Kandjimi
-* Pemphero Daniel Magawi
+* Pemphero Daniel Mgawi
 * Josephina Muntuumo
 * Nidinelago T. Nashandi
 * Anicia Peters
