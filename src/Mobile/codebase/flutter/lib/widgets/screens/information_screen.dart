@@ -123,7 +123,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                   maxLines: 5,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .body2
                                       .copyWith(
                                           color: Colors.white, fontSize: 16),
                                 )
@@ -179,7 +179,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   children: <Widget>[
                     Text(
                       'Statistics',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headline,
                     ),
                     Row(
                       children: <Widget>[
