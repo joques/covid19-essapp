@@ -92,7 +92,9 @@ export class HomeComponent implements OnInit {
       this.localData = JSON.parse(this.dataString);
       console.log("i am in home");
      
-    console.log(this.localData);
+    console.log(JSON.parse(JSON.stringify(this.localData)).date);
+
+
     }
   }
 
