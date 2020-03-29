@@ -49,15 +49,6 @@ listener http:Listener apilistener4 = new (6552);
 	]
 }
 
-// local mapping between document id and external url
-json docURLs = {
-  "offdoc001": "shortURL.at/emFOP",
-  "offdoc002": "shortURL.at/emFOP",
-  "offdoc003": "shortURL.at/emFOP",
-  "offdoc004": "shortURL.at/emFOP",
-  "offdoc005": "shortURL.at/emFOP"
-};
-
 @http: ServiceConfig {
 	basePath: "/covid/v1/docs"
 }
@@ -92,6 +83,8 @@ service documents on apilistener4 {
 		path: "/mobile/description"
 	}
 	resource function getAllMetadataForMobile(http:Caller caller, http:Request docReq){
+		// local mapping between document id and external url
+        json docURLs = {"offdoc001": "shortURL.at/emFOP", "offdoc002": "shortURL.at/emFOP", "offdoc003": "shortURL.at/emFOP", "offdoc004": "shortURL.at/emFOP", "offdoc005": "shortURL.at/emFOP"};
 		http:Response allMetaResp = new;
 		
 		//pull the official document metadata from the data store
@@ -100,7 +93,51 @@ service documents on apilistener4 {
 		if (docuMetaData is error) {
 			log:printError("An error occurred while pulling document metadata from the data store", err=docuMetaData);
 		} else {
-			allMetaResp.setJsonPayload(docuMetaData);
+			json[] finalDocuData = [];
+			
+			foreach var singleDocuItem in docuMetaData {
+				string finalDocId = "";
+				string finalTitle = "";
+				string finalPubDate = "";
+				string finalAuthor = "";
+				string finalSource  = "";
+				string finalUrl = "";
+				
+				var exDocID = singleDocuItem.docid;
+				if (exDocID is string) {
+					finalDocId = exDocID;
+					var docUrl = docURLs.exDocID;
+					if (docUrl is string) {
+						finalUrl = docUrl;
+					}
+				}
+				
+				var exDocTitle = singleDocuItem.title;
+				if (exDocTitle is string) {
+					finalTitle = exDocTitle;
+				}
+				
+				var exDocPubDate = singleDocuItem.pubdate;
+				if (exDocPubDate is string) {
+					finalPubDate = exDocPubDate;
+				}
+				
+				var exDocAuthor = singleDocuItem.author;
+				if (exDocAuthor is string) {
+					finalAuthor = exDocAuthor;
+				}
+				
+				var exDocSource = singleDocuItem.docsource;
+				if (exDocSource is string) {
+					finalSource = exDocSource;
+				}
+				
+				json docuSample = {"docid": finalDocId, "title": finalTitle, "pubdate": finalPubDate, "author": finalAuthor, "source": finalSource, "docurl": finalUrl};
+				
+				finalDocuData.push(docuSample);
+			}
+			
+			allMetaResp.setJsonPayload(finalDocuData);			
 			var sendRes = caller->respond(allMetaResp);
 
 			io:println("sending the metadata out...");
