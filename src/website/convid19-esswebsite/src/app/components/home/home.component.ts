@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
           if (date === new Date().toLocaleDateString()) {
             this.datenow = date;
           }
-          console.log("i am in home 44444444");
+          console.log("i am in home 44");
           let value = {
             date: date,
             recovered: data.recovered,
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
           //pushing values to the data array
           this.selected = value;
-          console.log("i am in home 222222");
+          console.log("i am in home 2");
           // summing up all the values
           // let newval = {
           //   recovered: +(this.data[i].recovered += this.data[i].recovered),
@@ -58,9 +58,9 @@ export class HomeComponent implements OnInit {
 
           // //assinging it to the selected object
           // this.selected = newval;
-          console.log("i am in home 333333");
+          console.log("i am in home kk");
           this.selected = value;
-          console.log("i am in home 555555");
+          console.log("i am in home 88");
           localStorage.setItem('data', JSON.stringify(value));
     
           console.log(value);
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
       this.localData = JSON.parse(this.dataString);
       console.log("i am in home");
      
-    console.log(JSON.parse(JSON.stringify(this.localData)).date);
+      console.log("DATE=>");
 
 
     }
