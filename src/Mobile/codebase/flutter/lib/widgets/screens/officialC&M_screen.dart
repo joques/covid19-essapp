@@ -1,5 +1,4 @@
-import 'package:covid_19_app/widgets/screens/circulars_screen.dart';
-import 'package:covid_19_app/widgets/screens/memos_screen.dart';
+import 'package:covid_19_app/widgets/screens/circulars_and_memos_screen.dart';
 import 'package:covid_19_app/widgets/screens/news_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,21 +11,17 @@ class OfficalCMScreen extends StatefulWidget {
 }
 
 class _OfficialCMScreenState extends State<OfficalCMScreen> {
-  //Dummy Date Now
-  String refreshDate = DateTime.now().toUtc().toString();
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             title: Text(widget.title),
             bottom: TabBar(
               tabs: <Widget>[
                 Tab(text: 'News'),
-                Tab(text: 'Memos'),
-                Tab(text: 'Circulars'),
+                Tab(text: 'Circulars and Memos'),
               ],
             ),
           ),
@@ -35,11 +30,8 @@ class _OfficialCMScreenState extends State<OfficalCMScreen> {
               NewsScreen(
                 title: 'News',
               ),
-              MemosScreen(
-                title: 'Memos',
-              ),
-              CircularsScreen(
-                title: 'Circulars',
+              CircularsAndMemosScreen(
+                title: 'Circulars & Memos',
               )
             ],
           ),

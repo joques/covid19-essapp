@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-corona-general-info',
   templateUrl: './corona-general-info.component.html',

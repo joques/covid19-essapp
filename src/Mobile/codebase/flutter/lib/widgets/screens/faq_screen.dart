@@ -93,7 +93,7 @@ class _FAQScreenState extends State<FAQScreen> {
                                           snapshot.data[index].question,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline6
+                                              .headline
                                               .copyWith(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w900),
@@ -105,7 +105,7 @@ class _FAQScreenState extends State<FAQScreen> {
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1
+                                          .body1
                                           .copyWith(
                                               fontWeight: FontWeight.w200,
                                               fontSize: 18,
@@ -120,7 +120,7 @@ class _FAQScreenState extends State<FAQScreen> {
                                           overflow: TextOverflow.fade,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodyText1
+                                              .body1
                                               .copyWith(
                                                   fontWeight: FontWeight.w300,
                                                   fontSize: 18,

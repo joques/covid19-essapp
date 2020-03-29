@@ -1,2 +1,2 @@
 1 - add an api call to return a condensed awareness data (could be useful for the mobile team)
-2 - add an api call for regional statistics
+2 - add an api call for regional statistics - Done
