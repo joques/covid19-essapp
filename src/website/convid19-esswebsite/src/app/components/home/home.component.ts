@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(private service: HttpserviceService) { }
 
   ngOnInit(): void {
+    console.log("i am in home");
     this.datenow = new Date().toLocaleDateString();
     // get the data from the api
     this.service.getPeriodicStats()
