@@ -58,6 +58,18 @@ export class HomeComponent implements OnInit {
 
           // //assinging it to the selected object
           // this.selected = newval;
+          console.log("i am in home 333333");
+          this.selected = value;
+          console.log("i am in home 555555");
+          localStorage.setItem('data', JSON.stringify(value));
+    
+          console.log(value);
+          this.dataString = localStorage.getItem('data');
+          // retrieving our data and converting it back into an array
+          this.localData = JSON.parse(this.dataString);
+          console.log("i am in home");
+         
+        console.log(this.localData);
         })
       );
 
