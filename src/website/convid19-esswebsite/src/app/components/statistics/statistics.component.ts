@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from 'src/app/services/httpservice.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 
 @Component({
@@ -8,6 +9,11 @@ import { HttpserviceService } from 'src/app/services/httpservice.service';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
+  suspectedCount:number = 0;
+  confirmedCount:number = 0;
+  deathCount:number = 0;
+  recoveredCount:number = 0;
+  updated:Date = new Date();
 
   places = [
     {
@@ -52,11 +58,14 @@ export class StatisticsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.suspectedCount =0;
     this.datenow = new Date().toLocaleDateString();
     // get the data from the api
-    this.service.getPeriodicStats()
+    this.service.getLatestStats()
       .subscribe(res =>
         res.forEach((data, i) => {
+          this.startCounter(res);
+          
           let date = `${new Date(data.date).getMonth()}/${new Date(data.date).getDate()}/${new Date(data.date).getFullYear()}`;
           if (date === new Date().toLocaleDateString()) {
             this.datenow = date;
@@ -66,41 +75,17 @@ export class StatisticsComponent implements OnInit {
             date: date,
             recovered: data.recovered,
             dead: data.dead,
-            suspected: data.suspected,
+            suspected: Number(data.suspected),
             confirmed: data.confirmed,
             worldwide: data.worldwide
           }
 
           //pushing values to the data array
           this.selected = value;
-
-          // summing up all the values
-          // let newval = {
-          //   recovered: +(this.data[i].recovered += this.data[i].recovered),
-          //   dead: +(this.data[i].dead += this.data[i].dead),
-          //   suspected: +(this.data[i].suspected += this.data[i].suspected),
-          //   confirmed: +(this.data[i].confirmed += this.data[i].confirmed),
-          //   worldwide: +(this.data[i].worldwide += this.data[i].worldwide)
-          // }
-    
-          // //assinging it to the selected object
-          // this.selected = newval;
+          console.log("INIT..."+this.selected.confirmed)
+        
         })
       );
-
-    for (let i: number = 0; i < this.data.length; i++) {
-      let value = {
-        recovered: this.data[i].recovered += this.data[i].recovered,
-        dead: this.data[i].dead += this.data[i].dead,
-        suspected: this.data[i].suspected += this.data[i].suspected,
-        confirmed: this.data[i].confirmed += this.data[i].confirmed,
-        worldwide: this.data[i].worldwide += this.data[i].worldwide
-      }
-
-      this.selected = value;
-
-      console.log(value)
-    }
   }
 
 
@@ -115,7 +100,38 @@ export class StatisticsComponent implements OnInit {
     // this.places.forEach(coords => {this.latitude = coords.lat; this.longitude = coords.lng})
 
   };
-
+  
+  startCounter(data){
+    this.selected = data[0];
+    this.updated = new Date(Date.parse(data[0].date));
+          //console.log(this.updated.toLocaleDateString(""));
+    let Count = 0;
+    let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
+    let theLoop: (i: number,type:string) => void = (i: number,type:string) => {
+      setTimeout(() => {
+        //metronome.play();
+        if (i>0) {
+          theLoop(--i,type);
+          if(type === "suspected"){
+            this.suspectedCount++;
+          }else if(type === "confirmed"){
+            this.confirmedCount++;
+          }else if(type === "death"){
+            this.deathCount++;
+          }else if(type === "recovered"){
+            this.recoveredCount++;
+          }
+            
+          console.log(i+"=>"+this.suspectedCount)
+        }
+      }, 8);
+    };
+    theLoop(data[0].suspected,"suspected");
+    theLoop(data[0].dead,"death");
+    theLoop(data[0].confirmed,"confirmed");
+    theLoop(data[0].recovered,"recovered");
+  }
+  
   drawMark(): void {
 
   };
@@ -127,7 +143,7 @@ export class StatisticsComponent implements OnInit {
         let value = {
           recovered: data.recovered,
           dead: data.dead,
-          suspected: data.suspected,
+          suspected: parseInt(data.suspected),
           confirmed: data.confirmed,
           worldwide: data.worldwide
         }

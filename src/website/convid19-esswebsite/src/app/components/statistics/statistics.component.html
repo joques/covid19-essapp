@@ -1,7 +1,7 @@
 <section class="stats-section">
 
   <mat-card>
-    <h5 class="text-center" style="margin-bottom: 1rem;">Statistics as of {{datenow | date}} &nbsp;
+    <!-- <h5 class="text-center" style="margin-bottom: 1rem;">Statistics as of {{datenow | date}} -->
       <!-- <mat-form-field>
         <mat-label> Select date </mat-label>
         <mat-select>
@@ -11,15 +11,57 @@
         </mat-select>
       </mat-form-field> -->
       <!-- </mat-form-field> -->
-    </h5>
+    <!-- </h5> -->
+    <!-- Counter test-->
+    <div class="container">
+      <div class="row" >
+        <br />
+        <div class="col text-center">
+          <h2>Namibian Statistics updated on {{updated | date:'EEEE, MMMM d, y, H:mm:ss'}} </h2>
+          <p> &nbsp; &nbsp;</p>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md">
+          <div class="counter bg-info">
+            <!-- <i class="fa fa-code fa-2x"></i> -->
+            <img src="../../../assets/img/confirm_stats.png" style="height: 64px" class="img-fluid" alt="Responsive image">
+            <h2 class="count-title">{{ this.confirmedCount }}</h2>
+            <p class="count-text ">Confirmed Cases</p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="counter bg-success">
+            <img src="../../../assets/img/recover_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image">
+            <h2 class="count-title">{{ this.recoveredCount }}</h2>
+            <p class="count-text ">Recovered Patients</p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="counter bg-danger">
+            <img src="../../../assets/img/dead_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image">
+            <h2 class="count-title">{{ this.deathCount }}</h2>
+            <p class="count-text ">Confirmed Deaths</p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="counter bg-warning">
+            <img src="../../../assets/img/suspected_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image">
+            <h2 class="count-title">{{ this.suspectedCount }}</h2>
+            <p class="count-text ">Suspected Cases</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--End Counter test-->
     <div class="buttons">
-      <button class="danger" mat-raised-button matBadge="{{selected.confirmed}}">Confirmed Cases</button>
+      <!-- <button class="danger" mat-raised-button matBadge="{{selected.confirmed}}">Confirmed Cases</button>
       <button class="primary" mat-raised-button matBadge="{{selected.recovered}}">Recovered Patients</button>
       <button class="warning" mat-raised-button matBadge="{{selected.dead}}">Confirmed Deaths</button>
-      <button class="success" mat-raised-button matBadge="{{selected.suspected}}">Suspected Cases</button>
+      <button class="success" mat-raised-button matBadge="{{selected.suspected}}">Suspected Cases</button> -->
       <!-- <button class="success" mat-raised-button >Suspected Cases</button> -->
     </div>
-    <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+    <agm-map style="height: 680px;padding-top: 30px;" [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
       <agm-marker *ngIf="chosenLocation" [latitude]="latitude" [longitude]="longitude">
       </agm-marker>
       <div *ngIf="places">

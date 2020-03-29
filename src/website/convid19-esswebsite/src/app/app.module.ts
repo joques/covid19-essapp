@@ -42,7 +42,10 @@ import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 import { TestingCentresComponent } from './components/testing-centres/testing-centres.component';
 import { CommingComponent } from './components/comming/comming.component';
+import {MatListModule} from '@angular/material/list';
 
+
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,8 @@ import { CommingComponent } from './components/comming/comming.component';
     AppRoutingModule,
     ReactiveFormsModule,
     MatExpansionModule,
+    MatListModule,
+    //ngCountTo,
     HttpClientModule,
     Ng2SearchPipeModule,
     MatProgressBarModule,
@@ -94,4 +99,4 @@ import { CommingComponent } from './components/comming/comming.component';
   providers: [CoronaWhatisService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
