@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
           //pushing values to the data array
           this.selected = value;
-
+          console.log("i am in home 222222");
           // summing up all the values
           // let newval = {
           //   recovered: +(this.data[i].recovered += this.data[i].recovered),
