@@ -49,6 +49,15 @@ listener http:Listener apilistener4 = new (6552);
 	]
 }
 
+// local mapping between document id and external url
+json docURLs = {
+  "offdoc001": "shortURL.at/emFOP",
+  "offdoc002": "shortURL.at/emFOP",
+  "offdoc003": "shortURL.at/emFOP",
+  "offdoc004": "shortURL.at/emFOP",
+  "offdoc005": "shortURL.at/emFOP"
+};
+
 @http: ServiceConfig {
 	basePath: "/covid/v1/docs"
 }
@@ -59,6 +68,30 @@ service documents on apilistener4 {
 		path: "/description"
 	}
 	resource function getAllMetadata(http:Caller caller, http:Request docReq){
+		http:Response allMetaResp = new;
+		
+		//pull the official document metadata from the data store
+		var docuMetaData = dbClient -> find("ofdocus", ());
+
+		if (docuMetaData is error) {
+			log:printError("An error occurred while pulling document metadata from the data store", err=docuMetaData);
+		} else {
+			allMetaResp.setJsonPayload(docuMetaData);
+			var sendRes = caller->respond(allMetaResp);
+
+			io:println("sending the metadata out...");
+		
+			if (sendRes is error) {
+				log:printError(sendRes.reason(), sendRes);
+			}
+		}	
+	}
+	
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/mobile/description"
+	}
+	resource function getAllMetadataForMobile(http:Caller caller, http:Request docReq){
 		http:Response allMetaResp = new;
 		
 		//pull the official document metadata from the data store
