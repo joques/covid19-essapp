@@ -9,7 +9,7 @@ import { HttpserviceService } from 'src/app/services/httpservice.service';
 export class HomeComponent implements OnInit {
   datenow: string;
   data = [];
-  localData = JSON;
+  localData:JSON;
   localValue = [];
   dataString: string;
   
