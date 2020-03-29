@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
           if (date === new Date().toLocaleDateString()) {
             this.datenow = date;
           }
-
+          console.log("i am in home 44444444");
           let value = {
             date: date,
             recovered: data.recovered,
