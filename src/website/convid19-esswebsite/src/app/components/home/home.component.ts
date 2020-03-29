@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
         confirmed: this.data[i].confirmed += this.data[i].confirmed,
         worldwide: this.data[i].worldwide += this.data[i].worldwide
       }
-
+      console.log("i am in home 333333");
       this.selected = value;
       console.log("i am in home 555555");
       localStorage.setItem('data', JSON.stringify(value));
