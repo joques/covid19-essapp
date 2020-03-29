@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
       }
 
       this.selected = value;
+      console.log("i am in home 555555");
       localStorage.setItem('data', JSON.stringify(value));
 
       console.log(value);
