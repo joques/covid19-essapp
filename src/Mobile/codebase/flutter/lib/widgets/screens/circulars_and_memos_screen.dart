@@ -1,20 +1,17 @@
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/news_article.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewsScreen extends StatefulWidget {
+class CircularsAndMemosScreen extends StatefulWidget {
   final String title;
-  NewsScreen({Key key, this.title}) : super(key: key);
+  CircularsAndMemosScreen({Key key, this.title}) : super(key: key);
 
   @override
-  _NewsScreenState createState() => _NewsScreenState();
+  _CircularsAndMemosScreenState createState() =>
+      _CircularsAndMemosScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
-  //Dummy Date Now
-  String refreshDate = DateTime.now().toUtc().toString();
-
+class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,11 +20,9 @@ class _NewsScreenState extends State<NewsScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            height: 25,
+            height: 50,
             margin: EdgeInsets.only(
               left: 25,
-              top: 20,
-              bottom: 5,
               right: 20,
             ),
             child: Row(
@@ -35,7 +30,7 @@ class _NewsScreenState extends State<NewsScreen> {
               children: [
                 Container(
                   child: Text(
-                    "Recent News",
+                    "Most Recent",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: AppColors.primaryText,
@@ -44,12 +39,20 @@ class _NewsScreenState extends State<NewsScreen> {
                       fontSize: 19,
                     ),
                   ),
-                  margin: EdgeInsets.only(bottom: 5),
+                  margin: EdgeInsets.only(bottom: 5, top: 20),
                 ),
               ],
             ),
           ), // Latest News
           Divider(),
+          NewsArticle(
+            title: 'What is Coronavirus?',
+            author: 'The World Health Organization',
+            source:
+                'https://www.who.int/docs/default-source/inaugural-who-partners-forum/coronavirus-poster-english-srilanka.pdf?sfvrsn=289dedc3_0',
+            pubdate: 'Mar 20, 2020',
+            docid: 'Mar 20, 2020',
+          ),
           NewsArticle(
             title: 'What is Coronavirus?',
             author: 'The World Health Organization',

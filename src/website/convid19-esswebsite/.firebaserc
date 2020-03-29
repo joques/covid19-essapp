@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "namcovid19info"
+    "default": "convid19esswebsite",
+    "version2": "namcovid19info"
   }
 }
