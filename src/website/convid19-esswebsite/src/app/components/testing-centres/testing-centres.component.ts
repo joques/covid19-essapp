@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 
 @Component({
   selector: 'app-testing-centres',
@@ -48,9 +49,17 @@ export class TestingCentresComponent implements OnInit {
 
   centre = false;
   
-  constructor() { }
-
+  constructor(private coronaService: CoronaWhatisService) { }
+  Testing = [];
   ngOnInit(): void {
+    console.log('We are here');
+    this.coronaService.Gettransmission().subscribe((data: []) => {
+      // this.http.getWhatIsInfo().subscribe((data) => {
+      console.log('We are here 9999');
+      console.log(data);
+      this.Testing = data;
+    });
+
   }
 
   onMapClick(event) {
