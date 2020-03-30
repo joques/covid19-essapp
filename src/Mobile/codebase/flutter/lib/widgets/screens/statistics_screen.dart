@@ -34,7 +34,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   void initState() {
     super.initState();
     _regions = API().getRegionalData();
-    selectedRegion = _regions[0];
+    debugPrint("done");
+    selectedRegion = _regions[1];
   }
 
   //Drop Picker List items
@@ -54,7 +55,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double _wd = (MediaQuery.of(context).size.width / 2) - 50;
+    double _wd = (MediaQuery.of(context).size.width / 2) - 45;
     return Scaffold(
         appBar: AppBar(
           title: Text(

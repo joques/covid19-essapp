@@ -92,10 +92,30 @@ class API {
     return stat;
   }
 
+  /// Get statistics per regional stats latest
+  Future<Statistic> getRegionalStatistics(String region) async {
+    Statistic stat;
+    try {
+      final url = (_baseUrl + API_STAT_REGION+REGION_IDS[region])
+          .replaceAll('{port}', API_PORTS['stats'].toString());
+      final res = await http.get(url);
+
+      print('getting stats from: ' + url);
+
+      final _stat = json.decode(res.body);
+      stat = Statistic.map(_stat);
+    } catch (err) {
+      debugPrint(err.toString());
+    }
+
+    return stat;
+  }
+
   List<Region> getRegionalData() {
-    List<Region> regions = [
+    List <Region> regions=[
       Region(
         name: 'All of Namibia',
+        //statistics:await getRegionalStatistics('All of Namibia')
       ),
       Region(
         name: 'Kunene Region',
@@ -140,6 +160,15 @@ class API {
         name: 'Kavango West Region',
       ),
     ];
+    
+    
+    regions.forEach((reg) => {
+      
+      getRegionalStatistics(reg.name).then((value) => {
+        //debugPrint(value.confirmed.toString()),
+        reg.statistics = value,
+      })
+    }); 
 
     regions.forEach((reg) => reg.statistics = Statistic(
         timestamp: DateTime.now(),
@@ -147,7 +176,7 @@ class API {
         dead: 0,
         suspected: 0,
         recovered: 0));
-
+    
     return regions;
   }
 }
