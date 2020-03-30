@@ -21,6 +21,7 @@ import { FactsComponent } from './components/facts/facts.component';
 import { CoronaGeneralInfoComponent } from './components/corona-general-info/corona-general-info.component';
 import {TestingCentresComponent} from './components/testing-centres/testing-centres.component';
 import { CommingComponent } from './components/comming/comming.component';
+import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 
 const routes: Routes = [
 
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'app-facts', component: FactsComponent },
   { path: 'app-corona-general-info', component: CoronaGeneralInfoComponent },
   { path: 'app-testing-centres', component: TestingCentresComponent },
+  { path: 'app-latest-news', component: LatestNewsComponent},
 ];
 
 @NgModule({
