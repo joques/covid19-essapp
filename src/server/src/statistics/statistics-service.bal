@@ -223,7 +223,7 @@ service statistics on apiListener2 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var allData = dbClient->find("covidstats", ({level: "regional", region: regionid}));
+		var allData = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
 
 		time:TimeZone noZoneValue = {id: ""};
 		time:Time theLatestTime = time:currentTime();

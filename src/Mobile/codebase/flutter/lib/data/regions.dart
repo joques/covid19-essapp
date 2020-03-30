@@ -25,13 +25,13 @@ class Region {
       name: 'Ohangwena Region',
     ),
     Region(
-      name: 'Kavango Region',
+      name: 'Oshikoto Region',
+    ),
+    Region(
+      name: 'Kavango East Region',
     ),
     Region(
       name: 'Zambezi Region',
-    ),
-    Region(
-      name: 'Oshikoto Region',
     ),
     Region(
       name: 'Erongo Region',
@@ -50,7 +50,10 @@ class Region {
     ),
     Region(
       name: 'ǁKaras Region',
-    )
+    ),
+    Region(
+      name: 'Kavango West Region',
+    ),
   ];
 
   //TODO: regions.sort((a, b) => a.name.compareTo(b.name))
