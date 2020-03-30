@@ -39,6 +39,7 @@ dependencies:
   expandable: ^4.1.2
   advance_pdf_viewer:
   timeago:
+  webview_flutter:
 
 
 

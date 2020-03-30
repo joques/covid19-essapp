@@ -1,3 +1,4 @@
+import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:covid_19_app/widgets/screens/centres_screen.dart';
 import 'package:covid_19_app/widgets/screens/faq_screen.dart';
 import 'package:covid_19_app/widgets/screens/information_screen.dart';
@@ -61,6 +62,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: AppColors.primaryElement,
+      //drawer: NavDrawer(),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

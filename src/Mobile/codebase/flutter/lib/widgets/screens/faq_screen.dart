@@ -1,5 +1,6 @@
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/faq.dart';
+import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +47,7 @@ class _FAQScreenState extends State<FAQScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,

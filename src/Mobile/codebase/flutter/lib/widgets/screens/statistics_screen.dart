@@ -2,6 +2,7 @@ import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/map_of_namibia.dart';
+import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   void initState() {
     super.initState();
     _regions = API().getRegionalData();
-    selectedRegion = _regions[0];
+    debugPrint("done");
+    selectedRegion = _regions[1];
   }
 
   //Drop Picker List items
@@ -53,7 +55,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double _wd = (MediaQuery.of(context).size.width / 2) - 50;
+    double _wd = (MediaQuery.of(context).size.width / 2) - 45;
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -61,6 +63,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           ),
           centerTitle: true,
         ),
+        drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
