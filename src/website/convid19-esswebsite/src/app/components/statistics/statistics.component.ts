@@ -70,6 +70,8 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
     this.suspectedCount =0;
     this.datenow = new Date().toLocaleDateString();
+    //if(this.localData['']
+    this.startCounter();
     // // get the data from the api
     // this.service.getPeriodicStats()
     //   .subscribe(res =>
@@ -123,7 +125,7 @@ export class StatisticsComponent implements OnInit {
     // retrieving our data and converting it back into an array
     this.localData = JSON.parse(this.dataString);
     console.log("i am in stats");
-
+    this.startCounter();
     
   
   console.log(this.localData["date"].toString());
@@ -143,19 +145,19 @@ export class StatisticsComponent implements OnInit {
 
   };
   
-  startCounter(data){
-    this.selected = data[0];
+  startCounter(){
     
-    this.updated = new Date(Date.parse(data[0].date));
-    console.log(data[0].suspected);
     let Count = 0;
-    let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
+    //let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
     let theLoop: (i: number,type:string,first:boolean) => void = (i: number,type:string,first:boolean) => {
       if(first===true){
-        console.log("Here");
+        console.log("Here Count ..");
         this.suspectedCount = 0;
-
+        this.confirmedCount = 0;
+        this.recoveredCount = 0;
+        this.deathCount = 0;
       }
+      console.log(i.toString());
       setTimeout(() => {
         //metronome.play();
         if (i>0) {
@@ -174,10 +176,11 @@ export class StatisticsComponent implements OnInit {
         }
       }, 8);
     };
-    theLoop(data[0].suspected,"suspected",true);
-    theLoop(data[0].dead,"death",true);
-    theLoop(data[0].confirmed,"confirmed",true);
-    theLoop(data[0].recovered,"recovered",true);
+
+    theLoop(Number.parseInt(this.localData['suspected']),"suspected",true);
+    theLoop(Number.parseInt(this.localData['dead']),"death",true);
+    theLoop(Number.parseInt(this.localData['confirmed']),"confirmed",true);
+    theLoop(Number.parseInt(this.localData['recovered']),"recovered",true);
   }
   
   drawMark(): void {
