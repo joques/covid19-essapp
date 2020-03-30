@@ -53,7 +53,7 @@ export class TestingCentresComponent implements OnInit {
   Testing = [];
   ngOnInit(): void {
     console.log('We are here');
-    this.coronaService.Gettransmission().subscribe((data: []) => {
+    this.coronaService.getTestingCentres().subscribe((data: []) => {
       // this.http.getWhatIsInfo().subscribe((data) => {
       console.log('We are here 9999');
       console.log(data);
