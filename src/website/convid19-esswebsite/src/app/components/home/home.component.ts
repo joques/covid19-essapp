@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     confirmed: 0,
     worldwide: 0
   };
-  constructor(private service: HttpserviceService, http: CoronaWhatisService) { }
+  constructor(private service: HttpserviceService, private http: CoronaWhatisService) { }
 
   ngOnInit(): void {
     console.log("i am in home");
