@@ -96,6 +96,8 @@ service awareness on apiListener1 {
 		if (covidDefJson is error) {
 			log:printError("An error occurred while pulling the virus definition data from awareness", err=covidDefJson);
 		} else {
+			io:println("the def is here ...");
+			io:println(covidDefJson);
 			// fill the response payload with the new content
 			defResp.setJsonPayload(covidDefJson);
 
