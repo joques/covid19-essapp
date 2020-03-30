@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from 'src/app/services/httpservice.service';
 import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
