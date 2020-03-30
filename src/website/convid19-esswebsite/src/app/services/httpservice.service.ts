@@ -38,7 +38,7 @@ export class HttpserviceService {
     };
 
     return this.http
-      .get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6549/covid/v1/statistics/all', {
+      .get('http://cors-anywhere.herokuapp.com/http://196.216.167.150:6549/covid/v1/statistics/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));
