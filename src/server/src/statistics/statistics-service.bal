@@ -105,6 +105,37 @@ service statistics on apiListener2 {
 			}
 		}
 	}
+	
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/regions"
+	}
+	resource function getLatestAllLatestRegional(http:Caller caller, http:Request hReq) {
+		string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
+		
+		map<json> regionStats = {};
+		
+		foreach var regionid in regionids {
+			var regStats = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
+			if (regStats is error) {
+				log:printError(regStats.reason(), regStats);
+				io:println("There was an error pulling stats for region ", regionid);
+			} else {
+				json curRegStat = processLatestStat(regStats);
+				regionStats[regionid] = curRegStat;
+			}
+		}
+		io:println("showing the result...");
+		io:println(regionStats);
+		
+		http:Response regResp = new;
+		regResp.setJsonPayload(regionStats);
+		
+		var respResult = caller->respond(regResp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
+		}
+	}
 }
 
 function processLatestStat(json[] allData) returns json {
