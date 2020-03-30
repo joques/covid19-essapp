@@ -1,5 +1,6 @@
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/screens/main_page.dart';
+import 'package:covid_19_app/widgets/screens/prevention_screen.dart';
 import 'package:covid_19_app/widgets/screens/symptoms_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/symptoms': (BuildContext context) => SymptomsScreen(
               title: 'Symptoms',
+            ),
+            '/preventions': (BuildContext context) => PrevetionsScreen(
+              title: 'Preventions',
             ),
       },
       theme: ThemeData(
