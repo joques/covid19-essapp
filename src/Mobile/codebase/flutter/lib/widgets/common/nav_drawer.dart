@@ -13,9 +13,9 @@ class NavDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             decoration: BoxDecoration(
-                color: Colors.green,
+                color: Colors.white,
                 image: DecorationImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.fitHeight,
                     image: AssetImage('assets/images/logo.jpeg'))),
           ),
           ListTile(
@@ -36,7 +36,7 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.border_color),
             title: Text('Feedback'),
-            onTap: () => { },
+            onTap: () => {},
           ),
           ListTile(
             leading: Icon(Icons.card_membership),

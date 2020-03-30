@@ -1,0 +1,21 @@
+<div id="link1">
+    <mdb-card-body>
+      <div class="img-container">
+        <img src="../../../assets/Logos/news.jpg" alt="profile">
+      </div>
+  
+      <div style="padding: 13px;">
+        <mat-card-header>
+          <mat-card-title style="text-align: center;">Advices and Tips</mat-card-title>
+        </mat-card-header>
+        <mat-card *ngFor="let news of News" style="margin-top:10px;">
+          <mat-card-content>
+            <p style="font-size:20px">
+              {{news}}
+            </p>
+  
+          </mat-card-content>
+  
+        </mat-card>
+      </div>
+  

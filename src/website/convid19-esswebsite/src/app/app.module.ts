@@ -46,6 +46,7 @@ import {MatListModule} from '@angular/material/list';
 
 
 import { from } from 'rxjs';
+import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { from } from 'rxjs';
     FactsComponent,
     CoronaGeneralInfoComponent,
     TestingCentresComponent,
-    CommingComponent
+    CommingComponent,
+    LatestNewsComponent
   ],
   imports: [
     BrowserModule,
