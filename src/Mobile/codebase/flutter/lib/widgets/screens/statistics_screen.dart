@@ -5,6 +5,7 @@ import 'package:covid_19_app/widgets/common/map_of_namibia.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class StatisticsScreen extends StatefulWidget {
   final String title;
@@ -90,7 +91,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 3),
                       child: Text(
-                        "As of $refreshDate",
+                        "As of ${timeago.format(_regions[0].statistics.timestamp)}",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: AppColors.secondaryText,
