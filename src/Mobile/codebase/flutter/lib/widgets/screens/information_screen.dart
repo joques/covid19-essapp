@@ -7,6 +7,7 @@ import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class InformationScreen extends StatefulWidget {
@@ -250,6 +251,38 @@ class _InformationScreenState extends State<InformationScreen> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 7),
+                  child: Wrap(
+                    children: <Widget>[
+                      Text(
+                        "Data is provided by: Ministry of Health and Social Services Namibia (MHSS)",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.secondaryText,
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+//                Container(
+//                  margin: EdgeInsets.only(top: 3),
+//                  child: Text(
+//                    "As of ${timeago.format(_regions[0].statistics.timestamp)}",
+//                    textAlign: TextAlign.center,
+//                    style: TextStyle(
+//                      color: AppColors.secondaryText,
+//                      fontWeight: FontWeight.w400,
+//                      fontSize: 13,
+//                    ),
+//                  ),
+//                ),
               ],
             ),
           ),

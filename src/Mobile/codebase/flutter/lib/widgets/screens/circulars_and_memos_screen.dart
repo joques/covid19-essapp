@@ -43,7 +43,11 @@ class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
                   child: Text('Error getting data!'),
                 );
               }
-              return CircularProgressIndicator();
+              return Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: AppColors.primaryBackground,
+                ),
+              );
             }));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/faq.dart';
+import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +153,11 @@ class _FAQScreenState extends State<FAQScreen> {
                 child: Text('Error getting data!'),
               );
             }
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: AppColors.primaryBackground,
+              ),
+            );
           }),
     );
   }
