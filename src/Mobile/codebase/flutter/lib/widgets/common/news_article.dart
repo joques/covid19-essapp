@@ -42,11 +42,11 @@ class _NewsArticleState extends State<NewsArticle> {
           title: AutoSizeText(
             widget.title,
             textAlign: TextAlign.left,
-            maxLines: 2,
-            style: GoogleFonts.lora(
+            maxLines: 3,
+            style:GoogleFonts.lora(
               color: AppColors.primaryText,
               letterSpacing: 2.0,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w800,
               fontSize: 16,
             ),
           ),

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
@@ -69,7 +70,7 @@ class _InformationScreenState extends State<InformationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double _wd = (MediaQuery.of(context).size.width / 2) - 50;
+    double _wd = (MediaQuery.of(context).size.width / 2) - 45;
 
     return Scaffold(
         appBar: AppBar(
@@ -78,6 +79,7 @@ class _InformationScreenState extends State<InformationScreen> {
           ),
           centerTitle: true,
         ),
+        drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),

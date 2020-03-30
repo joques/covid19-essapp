@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covid_19_app/data/constants.dart';
 import 'package:covid_19_app/models/centre.dart';
 import 'package:covid_19_app/models/faq.dart';
+import 'package:covid_19_app/models/memos.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:flutter/foundation.dart';
@@ -32,7 +33,26 @@ class API {
 
     return list;
   }
+/// Get testing centres
+  Future<List<Memo>> getMemos() async {
+    List<Memo> list = List();
+    try {
+      final url = (_baseUrl + API_MEMOS)
+          .replaceAll('{port}', API_PORTS['memos'].toString());
 
+      final res = await http.get(url);
+
+      print('getting memos from: ' + url);
+
+      final data = json.decode(res.body) as List;
+      list = data.map((json) => Memo.map(json)).toList();
+    } catch (err) {
+      debugPrint(err.toString());
+    }
+
+    return list;
+  }
+  
   /// Get testing faqs
   Future<List<FAQ>> getFaqs() async {
     List<FAQ> list = List();
@@ -72,10 +92,30 @@ class API {
     return stat;
   }
 
+  /// Get statistics per regional stats latest
+  Future<Statistic> getRegionalStatistics(String region) async {
+    Statistic stat;
+    try {
+      final url = (_baseUrl + API_STAT_REGION+REGION_IDS[region])
+          .replaceAll('{port}', API_PORTS['stats'].toString());
+      final res = await http.get(url);
+
+      print('getting stats from: ' + url);
+
+      final _stat = json.decode(res.body);
+      stat = Statistic.map(_stat);
+    } catch (err) {
+      debugPrint(err.toString());
+    }
+
+    return stat;
+  }
+
   List<Region> getRegionalData() {
-    List<Region> regions = [
+    List <Region> regions=[
       Region(
         name: 'All of Namibia',
+        //statistics:await getRegionalStatistics('All of Namibia')
       ),
       Region(
         name: 'Kunene Region',
@@ -120,6 +160,15 @@ class API {
         name: 'Kavango West Region',
       ),
     ];
+    
+    
+    regions.forEach((reg) => {
+      
+      getRegionalStatistics(reg.name).then((value) => {
+        //debugPrint(value.confirmed.toString()),
+        reg.statistics = value,
+      })
+    }); 
 
     regions.forEach((reg) => reg.statistics = Statistic(
         timestamp: DateTime.now(),
@@ -127,7 +176,7 @@ class API {
         dead: 0,
         suspected: 0,
         recovered: 0));
-
+    
     return regions;
   }
 }
