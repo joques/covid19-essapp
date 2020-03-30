@@ -224,88 +224,14 @@ service statistics on apiListener2 {
 
 		// pull the latest news data
 		var allData = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
-
-		time:TimeZone noZoneValue = {id: ""};
-		time:Time theLatestTime = time:currentTime();
-
-		// fill the repsonse payload with the new content
+		
 		if (allData is error) {
+			io:println("there was an error pulling the data from the statistics store...");
 			log:printError("An error occurred while pulling the latest statistics", err=allData);
 		} else {
-			json theLatest = ();
-			foreach var singleData in allData {
-				time:Time singleDataTime = time:currentTime();
-				var theDate = singleData.date;
-				
-				if (theDate is error) {
-					log:printError("An error occurred extracting a date from the mongodb document", err=theDate);
-				} else {
-					string dateString = theDate.toString();
-					string theSubstr = dateString.substring(6, dateString.length());
-					int|error numDate = langint:fromString(theSubstr);
-					if (numDate is error) {
-						log:printError("An error occurred csting a string into int for date extraction", err=numDate);
-					} else {
-						singleDataTime = {time: numDate, zone: noZoneValue};						
-
-						if(theLatest == null) {
-							theLatest = singleData;
-							theLatestTime = singleDataTime;
-						} else {
-							if (singleDataTime.time > theLatestTime.time) {
-								theLatest = singleData;
-								theLatestTime = singleDataTime; 
-							}
-						}
-					}
-				}
-			}
-
+			json respContent = processLatestStat(allData);
 			
-			string|error convertedDateToStr = time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-			string dateStrCopy = "";
-			if (convertedDateToStr is error) {
-				io:println("the date cannot be converted into a string");
-			} else {
-				dateStrCopy = convertedDateToStr;
-			}
-			
-			io:println("printing latest data before sending...");
-
-			int finalRecovered = 0;
-			var recoveredVar = theLatest.recovered;
-			if (recoveredVar is int) {
-				finalRecovered = recoveredVar;
-			}
-
-			int finalDead = 0;
-			var deadVar = theLatest.dead;
-			if (deadVar is int) {
-				finalDead = deadVar;
-			}
-			
-			int finalSuspected = 0;
-			var suspectedVar = theLatest.suspected;
-			if (suspectedVar is int) {
-				finalSuspected = suspectedVar;
-			}
-			
-			int finalConfirmed = 0;
-			var confirmedVar = theLatest.confirmed;
-			if (confirmedVar is int) {
-				finalConfirmed = confirmedVar;
-			}
-
-			int finalWorldwide = 0;
-			var worldwideVar = theLatest.worldwide;
-			if (worldwideVar is int) {
-				finalWorldwide = worldwideVar;
-			}
-
-			json latestCopy = {"date": dateStrCopy, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide};
-			io:println(latestCopy);
-
-			latestResp.setJsonPayload(latestCopy);
+			latestResp.setJsonPayload(respContent);
 
 			// send the response to the caller and log errors
 			var respResult = caller->respond(latestResp);
@@ -314,4 +240,84 @@ service statistics on apiListener2 {
 			}
 		}
 	}
+}
+
+function processLatestStat(json[] allData) returns json {
+	time:TimeZone noZoneValue = {id: ""};
+	time:Time theLatestTime = time:currentTime();
+	
+	json theLatest = ();
+	
+	foreach var singleData in allData {
+		time:Time singleDataTime = time:currentTime();
+		var theDate = singleData.date;
+		
+		if (theDate is error) {
+			log:printError("An error occurred extracting a date from the mongodb document", err=theDate);
+		} else {
+			string dateString = theDate.toString();
+			string theSubstr = dateString.substring(6, dateString.length());
+			int|error numDate = langint:fromString(theSubstr);
+			if (numDate is error) {
+				log:printError("An error occurred csting a string into int for date extraction", err=numDate);
+			} else {
+				singleDataTime = {time: numDate, zone: noZoneValue};						
+
+				if(theLatest == null) {
+					theLatest = singleData;
+					theLatestTime = singleDataTime;
+				} else {
+					if (singleDataTime.time > theLatestTime.time) {
+						theLatest = singleData;
+						theLatestTime = singleDataTime; 
+					}
+				}
+			}
+		}
+	}
+	
+	string|error convertedDateToStr = time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+	string dateStrCopy = "";
+	if (convertedDateToStr is error) {
+		io:println("the date cannot be converted into a string");
+	} else {
+		dateStrCopy = convertedDateToStr;
+	}
+	
+	io:println("printing latest data before sending...");
+	
+	int finalRecovered = 0;
+	var recoveredVar = theLatest.recovered;
+	if (recoveredVar is int) {
+		finalRecovered = recoveredVar;
+	}
+	
+	int finalDead = 0;
+	var deadVar = theLatest.dead;
+	if (deadVar is int) {
+		finalDead = deadVar;
+	}
+	
+	int finalSuspected = 0;
+	var suspectedVar = theLatest.suspected;
+	if (suspectedVar is int) {
+		finalSuspected = suspectedVar;
+	}
+	
+	int finalConfirmed = 0;
+	var confirmedVar = theLatest.confirmed;
+	if (confirmedVar is int) {
+		finalConfirmed = confirmedVar;
+	}
+	
+	int finalWorldwide = 0;
+	var worldwideVar = theLatest.worldwide;
+	if (worldwideVar is int) {
+		finalWorldwide = worldwideVar;
+	}
+	
+	json latestCopy = {"date": dateStrCopy, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide};
+	io:println(latestCopy);
+	
+	return latestCopy;
 }
