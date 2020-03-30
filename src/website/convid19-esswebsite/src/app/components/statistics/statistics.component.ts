@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from 'src/app/services/httpservice.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { localeData } from 'moment';
 
 
 @Component({
@@ -126,7 +127,7 @@ export class StatisticsComponent implements OnInit {
     this.localData = JSON.parse(this.dataString);
     console.log("i am in stats");
     this.startCounter();
-    
+  //  updated= this.localData["date"].toString();
   
   console.log(this.localData["date"].toString());
   
