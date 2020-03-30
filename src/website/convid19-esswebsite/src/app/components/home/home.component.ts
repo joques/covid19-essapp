@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
           }
           console.log("i am in home 44");
           let value = {
-            date: date,
+            date: data.date,
             recovered: data.recovered,
             dead: data.dead,
             suspected: data.suspected,

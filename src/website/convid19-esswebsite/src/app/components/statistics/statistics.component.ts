@@ -72,7 +72,7 @@ export class StatisticsComponent implements OnInit {
     this.suspectedCount =0;
     this.datenow = new Date().toLocaleDateString();
     //if(this.localData['']
-    this.startCounter();
+    //this.startCounter();
     // // get the data from the api
     // this.service.getPeriodicStats()
     //   .subscribe(res =>
@@ -129,7 +129,7 @@ export class StatisticsComponent implements OnInit {
     this.startCounter();
   //  updated= this.localData["date"].toString();
   
-  console.log(this.localData["date"].toString());
+  console.log("DATE=>"+this.localData["date"].toString());
   
   }
 
@@ -173,9 +173,9 @@ export class StatisticsComponent implements OnInit {
             this.recoveredCount++;
           }
             
-          console.log(i+"=>"+this.suspectedCount)
+          //console.log(i+"=>"+this.suspectedCount)
         }
-      }, 8);
+      }, 5);
     };
 
     theLoop(Number.parseInt(this.localData['suspected']),"suspected",true);

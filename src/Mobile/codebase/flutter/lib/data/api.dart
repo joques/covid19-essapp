@@ -163,12 +163,15 @@ class API {
     
     
     regions.forEach((reg) => {
-      
       getRegionalStatistics(reg.name).then((value) => {
         //debugPrint(value.confirmed.toString()),
         reg.statistics = value,
+        
       })
     }); 
+    getLatestStatistics().then((value) => {
+      regions[0].statistics = value,
+    });
 
     regions.forEach((reg) => reg.statistics = Statistic(
         timestamp: DateTime.now(),

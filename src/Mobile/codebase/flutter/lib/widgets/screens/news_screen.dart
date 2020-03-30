@@ -21,14 +21,13 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         body: WebView(
-          initialUrl: "https://live.namibian.com.na",
-          javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller.complete(webViewController);
-          },
-        ));
+      initialUrl: "https://live.namibian.com.na",
+      javascriptMode: JavascriptMode.unrestricted,
+      onWebViewCreated: (WebViewController webViewController) {
+        _controller.complete(webViewController);
+      },
+    ));
   }
   // Widget build(BuildContext context) {
   //   return SingleChildScrollView(

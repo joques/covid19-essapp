@@ -35,7 +35,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     super.initState();
     _regions = API().getRegionalData();
     debugPrint("done");
-    selectedRegion = _regions[1];
+    selectedRegion = _regions[0];
   }
 
   //Drop Picker List items

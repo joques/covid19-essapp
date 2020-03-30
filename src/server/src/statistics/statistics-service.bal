@@ -59,7 +59,7 @@ service statistics on apiListener2 {
 		methods: ["GET"],
 		path: "/all"
 	}
-	resource function getAllStatistics(http:Caller caller, http:Request defReq) {
+	resource function getAllNationalStatistics(http:Caller caller, http:Request defReq) {
 		http:Response allStatResp = new;
 
 		// pull the official virus definition data
@@ -68,70 +68,9 @@ service statistics on apiListener2 {
 		if (allStatData is error) {
 			log:printError("An error occurred while pulling all statistics", err=allStatData);
 		} else {
-			// fill the response payload with the new content
-			//will cleanup the date and 
-			json[] finalStatData = [];
-			time:TimeZone noZoneValue = {id: ""};
+			json[] respContent = processAllStats(allStatData);
 			
-			foreach var singleItem in allStatData {
-				string finalDateStr = "";
-				int finalRecovered = 0;
-				int finalDead = 0;
-				int finalSuspected = 0;
-				int finalConfirmed = 0;
-				int finalWorldwide = 0;
-				
-
-				var recoveredVar = singleItem.recovered;
-				if (recoveredVar is int) {
-					finalRecovered = recoveredVar;
-				}	
-
-				var deadVar = singleItem.dead;
-				if (deadVar is int) {
-					finalDead = deadVar;
-				}	
-			
-				var suspectedVar = singleItem.suspected;
-				if (suspectedVar is int) {
-					finalSuspected = suspectedVar;
-				}
-			
-				var confirmedVar = singleItem.confirmed;
-				if (confirmedVar is int) {
-					finalConfirmed = confirmedVar;
-				}
-
-				var worldwideVar = singleItem.worldwide;
-				if (worldwideVar is int) {
-					finalWorldwide = worldwideVar;
-				}
-
-				var theDate = singleItem.date;
-
-				if (theDate is error) {
-					log:printError("An error occurred extracting the date from a data item", err=theDate);
-				} else {
-					string dateString = theDate.toString();
-					string theSubstr = dateString.substring(6, dateString.length());
-					int|error numDate = langint:fromString(theSubstr);
-					if (numDate is error) {
-						log:printError("An error occurred csting a string into int for date extraction", err=numDate);
-					} else {
-						string|error convertedDateToStr = time:format({time: numDate, zone: noZoneValue}, "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-						if (convertedDateToStr is error) {
-							io:println("the date cannot be converted into a string");
-						} else {
-							finalDateStr = convertedDateToStr;
-						}
-					}
-				}
-				
-				json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide}; 
-				
-				finalStatData.push(singleItemData); 
-			}
-			allStatResp.setJsonPayload(finalStatData);
+			allStatResp.setJsonPayload(respContent);
 
 			// send the response to the caller and log errors
 			var respResult = caller->respond(allStatResp);
@@ -164,6 +103,37 @@ service statistics on apiListener2 {
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
 			}
+		}
+	}
+	
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/regions"
+	}
+	resource function getLatestAllLatestRegional(http:Caller caller, http:Request hReq) {
+		string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
+		
+		map<json> regionStats = {};
+		
+		foreach var regionid in regionids {
+			var regStats = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
+			if (regStats is error) {
+				log:printError(regStats.reason(), regStats);
+				io:println("There was an error pulling stats for region ", regionid);
+			} else {
+				json curRegStat = processLatestStat(regStats);
+				regionStats[regionid] = curRegStat;
+			}
+		}
+		io:println("showing the result...");
+		io:println(regionStats);
+		
+		http:Response regResp = new;
+		regResp.setJsonPayload(regionStats);
+		
+		var respResult = caller->respond(regResp);
+		if (respResult is error) {
+			log:printError(respResult.reason(), respResult);
 		}
 	}
 }
@@ -246,4 +216,70 @@ function processLatestStat(json[] allData) returns json {
 	io:println(latestCopy);
 	
 	return latestCopy;
+}
+
+function processAllStats(json[] allStatData) returns json[] {
+	json[] finalStatData = [];
+	time:TimeZone noZoneValue = {id: ""};
+	
+	
+	foreach var singleItem in allStatData {
+		string finalDateStr = "";
+		int finalRecovered = 0;
+		int finalDead = 0;
+		int finalSuspected = 0;
+		int finalConfirmed = 0;
+		int finalWorldwide = 0;		
+
+		var recoveredVar = singleItem.recovered;
+		if (recoveredVar is int) {
+			finalRecovered = recoveredVar;
+		}	
+
+		var deadVar = singleItem.dead;
+		if (deadVar is int) {
+			finalDead = deadVar;
+		}	
+		
+		var suspectedVar = singleItem.suspected;
+		if (suspectedVar is int) {
+			finalSuspected = suspectedVar;
+		}
+		
+		var confirmedVar = singleItem.confirmed;
+		if (confirmedVar is int) {
+			finalConfirmed = confirmedVar;
+		}
+
+		var worldwideVar = singleItem.worldwide;
+		if (worldwideVar is int) {
+			finalWorldwide = worldwideVar;
+		}
+
+		var theDate = singleItem.date;
+
+		if (theDate is error) {
+			log:printError("An error occurred extracting the date from a data item", err=theDate);
+		} else {
+			string dateString = theDate.toString();
+			string theSubstr = dateString.substring(6, dateString.length());
+			int|error numDate = langint:fromString(theSubstr);
+			if (numDate is error) {
+				log:printError("An error occurred csting a string into int for date extraction", err=numDate);
+			} else {
+				string|error convertedDateToStr = time:format({time: numDate, zone: noZoneValue}, "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+				if (convertedDateToStr is error) {
+					io:println("the date cannot be converted into a string");
+				} else {
+					finalDateStr = convertedDateToStr;
+				}
+			}
+		}
+				
+		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide}; 
+				
+		finalStatData.push(singleItemData); 
+	}
+	
+	return finalStatData;
 }
