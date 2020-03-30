@@ -13,7 +13,7 @@ export class LatestNewsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('We are here: latest news');
-    this.coronaService.getTips().subscribe((data: []) => {
+    this.coronaService.getLatestNews().subscribe((data: []) => {
       // this.http.getWhatIsInfo().subscribe((data) => {
       console.log('We are here news');
       console.log(data);
