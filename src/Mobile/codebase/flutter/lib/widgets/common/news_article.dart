@@ -36,6 +36,7 @@ class _NewsArticleState extends State<NewsArticle> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       child: ListTile(
           contentPadding: EdgeInsets.all(20),
           title: AutoSizeText(
