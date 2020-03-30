@@ -12,7 +12,9 @@
         <mat-card *ngFor="let testing of Testing" style="margin-top:10px;">
           <mat-card-content>
             <p style="font-size:20px">
-              {{testing}}
+              {{testing.name}}
+              <br>
+              {{testing.about}}
             </p>
           </mat-card-content>
         </mat-card>
