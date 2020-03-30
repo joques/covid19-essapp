@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covid_19_app/data/constants.dart';
 import 'package:covid_19_app/models/centre.dart';
 import 'package:covid_19_app/models/faq.dart';
+import 'package:covid_19_app/models/memos.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:flutter/foundation.dart';
@@ -32,7 +33,26 @@ class API {
 
     return list;
   }
+/// Get testing centres
+  Future<List<Memo>> getMemos() async {
+    List<Memo> list = List();
+    try {
+      final url = (_baseUrl + API_MEMOS)
+          .replaceAll('{port}', API_PORTS['memos'].toString());
 
+      final res = await http.get(url);
+
+      print('getting memos from: ' + url);
+
+      final data = json.decode(res.body) as List;
+      list = data.map((json) => Memo.map(json)).toList();
+    } catch (err) {
+      debugPrint(err.toString());
+    }
+
+    return list;
+  }
+  
   /// Get testing faqs
   Future<List<FAQ>> getFaqs() async {
     List<FAQ> list = List();

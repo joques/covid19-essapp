@@ -103,15 +103,21 @@ export class StatisticsComponent implements OnInit {
   
   startCounter(data){
     this.selected = data[0];
+    
     this.updated = new Date(Date.parse(data[0].date));
-          //console.log(this.updated.toLocaleDateString(""));
+    console.log(data[0].suspected);
     let Count = 0;
     let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
-    let theLoop: (i: number,type:string) => void = (i: number,type:string) => {
+    let theLoop: (i: number,type:string,first:boolean) => void = (i: number,type:string,first:boolean) => {
+      if(first===true){
+        console.log("Here");
+        this.suspectedCount = 0;
+
+      }
       setTimeout(() => {
         //metronome.play();
         if (i>0) {
-          theLoop(--i,type);
+          theLoop(--i,type,false);
           if(type === "suspected"){
             this.suspectedCount++;
           }else if(type === "confirmed"){
@@ -126,10 +132,10 @@ export class StatisticsComponent implements OnInit {
         }
       }, 8);
     };
-    theLoop(data[0].suspected,"suspected");
-    theLoop(data[0].dead,"death");
-    theLoop(data[0].confirmed,"confirmed");
-    theLoop(data[0].recovered,"recovered");
+    theLoop(data[0].suspected,"suspected",true);
+    theLoop(data[0].dead,"death",true);
+    theLoop(data[0].confirmed,"confirmed",true);
+    theLoop(data[0].recovered,"recovered",true);
   }
   
   drawMark(): void {

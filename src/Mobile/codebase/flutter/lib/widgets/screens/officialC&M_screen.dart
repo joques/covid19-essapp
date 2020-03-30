@@ -1,3 +1,4 @@
+import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:covid_19_app/widgets/screens/circulars_and_memos_screen.dart';
 import 'package:covid_19_app/widgets/screens/news_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _OfficialCMScreenState extends State<OfficalCMScreen> {
               ],
             ),
           ),
+          drawer: NavDrawer(),
           body: TabBarView(
             children: [
               NewsScreen(

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/centre.dart';
+import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -71,6 +72,7 @@ class _CentresScreenState extends State<CentresScreen> {
         title: Text(widget.title),
         centerTitle: true,
       ),
+      drawer: NavDrawer(),
       body: GoogleMap(
         initialCameraPosition: _namibia,
         onMapCreated: _onMapCreated,
