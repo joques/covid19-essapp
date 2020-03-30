@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from 'src/app/services/httpservice.service';
+import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
     confirmed: 0,
     worldwide: 0
   };
-  constructor(private service: HttpserviceService) { }
+  constructor(private service: HttpserviceService, http: CoronaWhatisService) { }
 
   ngOnInit(): void {
     console.log("i am in home");
