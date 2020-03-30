@@ -26,7 +26,7 @@
           <div class="counter bg-info">
             <!-- <i class="fa fa-code fa-2x"></i> -->
             <img src="../../../assets/img/confirm_stats.png" style="height: 64px" class="img-fluid" alt="Responsive image">
-            <h2 class="count-title">{{ this.confirmedCount }}</h2>
+            <h2 class="count-title">{{ this.localData['confirmed'].toString() }}</h2>
             <p class="count-text ">Confirmed Cases</p>
           </div>
         </div>
@@ -55,7 +55,7 @@
     </div>
 <!--End Counter test-->
     <div class="buttons">
-      <button class="danger" mat-raised-button matBadge="{{this.localData['onfirmed'].toString()}}">Confirmed Cases</button>
+      <button class="danger" mat-raised-button matBadge="{{this.localData['confirmed'].toString()}}">Confirmed Cases</button>
       <button class="primary" mat-raised-button matBadge="{{this.localData['recovered'].toString()}}">Recovered Patients</button>
       <button class="warning" mat-raised-button matBadge="{{this.localData['dead'].toString()}}">Confirmed Deaths</button>
       <button class="success" mat-raised-button matBadge="{{this.localData['suspected'].toString()}}">Suspected Cases</button>
