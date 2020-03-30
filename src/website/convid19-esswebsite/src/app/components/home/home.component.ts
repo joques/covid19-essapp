@@ -67,9 +67,9 @@ export class HomeComponent implements OnInit {
           this.dataString = localStorage.getItem('data');
           // retrieving our data and converting it back into an array
           this.localData = JSON.parse(this.dataString);
-          console.log("i am in home");
+          console.log("i am in home NEWWWWW");
          
-        console.log(this.localData);
+          console.log(this.localData["date"].toString());
         })
       );
 
@@ -81,19 +81,7 @@ export class HomeComponent implements OnInit {
         confirmed: this.data[i].confirmed += this.data[i].confirmed,
         worldwide: this.data[i].worldwide += this.data[i].worldwide
       }
-      console.log("i am in home 333333");
-      this.selected = value;
-      console.log("i am in home 555555");
-      localStorage.setItem('data', JSON.stringify(value));
-
-      console.log(value);
-      this.dataString = localStorage.getItem('data');
-      // retrieving our data and converting it back into an array
-      this.localData = JSON.parse(this.dataString);
-      console.log("i am in home");
-     
-      console.log("DATE=>");
-
+      
 
     }
   }

@@ -47,6 +47,12 @@ export class StatisticsComponent implements OnInit {
     worldwide: 0
   };
 
+    recovered: string;
+    dead: string;
+    suspected: string;
+    confirmed: string;
+    worldwide: string;
+
   localData = JSON;
   localValue = [];
   dataString: string;
@@ -110,8 +116,10 @@ export class StatisticsComponent implements OnInit {
     // retrieving our data and converting it back into an array
     this.localData = JSON.parse(this.dataString);
     console.log("i am in stats");
-     
-  console.log(this.localData);
+
+    
+  
+  console.log(this.localData["date"].toString());
   
   }
 
