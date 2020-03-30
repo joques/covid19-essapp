@@ -1,13 +1,78 @@
 {
-    "latestnews": ["COVID-19 LOCKDOWN","Things to know", "Travel restriction in Khomas and Erongo regions","Excluding goods, services and trade", "From Friday 27th March (Midnight) to 16th April 2020 (midnight)","HKIA","Namibian citizens and permanent resident may return","14 days mandatory supervision quarantine at own cost","Agreed, essential supplies from South Africa and other neighboring countries will not be affected ","Nationwide","GRN, SOE and private sector employees to work from home if possible, for 14 days","Excluding essentials/critical services","Avoid all public gatherings","All bars/cuca shops close at 8:00","To be enforced by the police","Daily updates by government","Immediate reporting of all suspected cases & test results", "Parliament to resume on 15th April 2020","Tabling of budget postponed ","All measures subject to review"],
-    "virusdef": ["Also known as coronaviruses (COV) or CoronaVirus disease (COVID-19), is a new strain of the disease that was discovered in 2019. The Coronavirus is zoonotic, which means that transmission is between animals and humans.", "The COV comes from a large family of viruses that cause an illness similar to cold. Symptoms such as fever, cough, shortness of breath and breathing diffulties are the common signs of infection. In severe cases, it can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death.", "source: https://www.who-int/health-topics/coronavirus"],
-    "transmission": ["The virus spreads through person-to-person contacts such as touch an infected person's hand or face.", "Standing too close to an infected person (less than one meter).", "When an infected person sneezes and coughs, the droplets landing in mouth and nose of a non-infected  person  can be inhaled into the lungs resulting in a possible infection.", "Touching objects, surfaces and doorknobs that an infected person has touched.", "source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/transmission.html"],
-    "measures": ["The best way to prevent illness is to take preventative measures such as: Washing your hands regularly with soap and water for at least 20 seconds.", "Make use of hand sanitizers containing 60% alcohol if water and soap are not available.", "Avoid touching your eyes, nose and mouth with unwashed hands.", "When coughing or sneezing cover your mouth with a tissue or use the inside of your elbow.", "Dispose of the used tissue into the trash – wash your hands immediately.", "Avoid close contact, self-quarantine when sick and practice social distancing.", "Wear a facemask if you are sick.", "Clean and disinfect frequently used surfaces (tables, doorknobs, handles, phones, keyboard, toilets, sinks etc).", "source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html"],
-    "treatment": ["There is currently no vaccine to prevent the Coronavirus disease (COVID-19) and many patients are being treated as per the patient’s clinical conditions.", "The best way to prevent illness is to avoid being exposed to the virus by social distancing, sanitizing, clean and disinfecting frequently touched surfaces.", "source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html"],
-    "tips": ["Please read sources that are approved by your medical board.", "Practice good hand hygiene.", "Try social distancing the protect yourself and others in your community", "Disinfect frequently used areas to prevent the spread of the virus","Whatever your generic, mucus thinning cough medicine of choice is", "(check the label and make sure you're not doubling up on Paracetamol).","Honey and lemon can work just as well!","humidifier would be a good thing to buy and use in your room when you go to bed overnight","(You can also just turn the shower on hot and sit in the bathroom breathing in the steam)","If you have a history of asthma and you have a prescription inhaler, make sure the one you have isnít expired and refill it/get a new one if necessary.","This is also a good time to meal prep: make a big batch of your favorite soup to freeze and have on hand.","Stock up on whatever  your favorite clear fluids are to drink - though plenty of water is fine!","Hydrate (drink!) hydrate, hydrate!","For symptom management and a fever over 38∞c, take Paracetamol rather than Ibuprofen.", "Rest lots.","If you have a pre-existing lung condition (COPD, emphysema, lung cancer) or are on immune suppressants, now is a great time to talk to your Doctor or specialist about what they would like you to do if you get sick.","Be calm, prepare rationally and everything will be fine.", "source: https://www.who-int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"],
-    "facts": ["The corona virus can be transmitted in all areas regardless of climate such as a hot and humid climate or cold climate", "source: https://www.who-int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters"],
-    "myths": ["Taking a hot bath (this can burn you) will not prevent you from catching the disease a normal body temperature i between 36.5 and 37C.", "The best way to protect yourself is by frequently cleaning your hands (washing with soap or sanitizing).", "By doing this you eliminate viruses that may be on your hands.", "source: https://www.who-int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters"],
-    "casedefs": [{"Case A": "A patient with acute respiratory illness (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness of breath), AND with no other aetiology that fully explains the clinical presentation AND a history of travel to or residence in a country/area or territory reporting local transmission (See situation report) of COVID-19 disease during the 14 days prior to symptom onset."}, {"Case B": "A patient with any acute respiratory illness AND having been in contact with a confirmed or probable COVID19 case (see definition of contact) in the last 14 days prior to onset of symptoms;"}, {"Case C": "A patient with severe acute respiratory infection (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness breath) AND requiring hospitalization AND with no other aetiology that fully explains the clinical presentation."}],
-    "symptoms": ["Reported symptoms include fever, coughing and shortness of breath.", "The symptoms generally appear 2 to 14 days after being exposed to the virus", "source: https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html"],
-    "oldnews": ["Vaccine development is under way", "Two confirmed cases of COVID-19 were reported from Windhoek district to MoHSS National level on 13/03/2020. They are a 35-years-old, male and 25 years-old female Romanians who have permanent residence in Spain, with a travel history from Madrid, Spain, and arrived in Windhoek, Namibia through Doha, Qatar air on 11th March 2020. Samples were taken and sent through Pathcare (private laboratory) to the Regional Reference Laboratory, National Institute of Communicable Diseases (NICD), South Africa."]
-}
+   "latestnews":[
+      "The regulations on the state of emergency - COVID-19 No.9 of 28  became effective at 14:00 on 28 March 2020."
+   ],
+   "virusdef":[
+      "Also known as coronaviruses (COV) or CoronaVirus disease (COVID-19), is a new strain of the disease that was discovered in 2019. The Coronavirus is zoonotic, which means that transmission is between animals and humans.",
+      "The COV comes from a large family of viruses that cause an illness similar to cold. Symptoms such as fever, cough, shortness of breath and breathing diffulties are the common signs of infection. In severe cases, it can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death.",
+      "Source: https://www.who-int/health-topics/coronavirus"
+   ],
+   "transmission":[
+      "The virus spreads through person-to-person contacts such as touching an infected person's hand or face.",
+      "Standing too close to an infected person (less than one meter).",
+      "When an infected person sneezes and coughs, the droplets that may land in mouth and nose of a non-infected person can be inhaled into the lungs resulting in a possible infection.",
+      "Touching objects, surfaces and doorknobs that an infected person has touched.",
+      "Source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/transmission.html",
+      "Date updated: "
+   ],
+   "measures":[
+      "The best way to prevent illness is to take preventative measures such as: Washing your hands regularly with soap and water for at least 20 seconds.",
+      "Make use of hand sanitizers containing 60% alcohol if water and soap are not available.",
+      "Avoid touching your eyes, nose and mouth with unwashed hands.",
+      "When coughing or sneezing, cover your mouth with a tissue or cough into the inside of your elbow.",
+      "Dispose of the used tissue into the trash and wash your hands immediately.",
+      "Avoid close contact, self-quarantine when sick and practice social distancing.",
+      "Wear a face mask if you are sick especially.",
+      "Clean and disinfect frequently used surfaces (tables, doorknobs, handles, phones, keyboard, toilets, sinks etc).",
+      "Source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html"
+   ],
+   "treatment":[
+      "There is currently no vaccine to prevent the Coronavirus disease (COVID-19) and many patients are being treated as per the patient’s clinical conditions.",
+      "The best way to prevent illness is to avoid being exposed to the virus by social distancing, sanitizing, clean and disinfecting frequently touched surfaces.",
+      "Source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html"
+   ],
+   "tips":[
+	  "Maintain social distancing by keeping at least a 1 meter distance between yourself and anyone who is coughing or sneezing.",
+      "Wash your hands frequently with soap and water or wash them witn an alcohol-based hand rub.",
+      "Avoid touching your eyes, nose and mouth.",
+      "Practice respiratory hygiene. This means covering your mouth and nose with your bent/flexed elbow or use a tissue when you cough or sneeze. Then dispose of the used tissue immediately.",
+      "Wear a face mask if you are sick especially if you are coughing and sneezing.",
+      "If you have fever, cough and difficulty breathing, seek medical care early.",
+      "Wash your hands frequently with an alcohol-based hand rub or wash them with soap and water.",
+      "Stay informed and follow advice given by your healthcare provider and the Ministry of Health and Social Services.",
+            "Stay home"
+      "Source: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
+   ],
+   "facts":[
+      "The corona virus can be transmitted in all areas regardless of climate such as a hot and humid climate or cold climate.",
+      "Source: https://www.who-int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters"
+   ],
+   "myths":[
+      "Taking a hot bath will not prevent you from catching the disease.",
+      "The new coronavirus CANNOT be transmitted through mosquito bites.",
+      "COVID-19 virus can be transmitted in areas with hot and humid climates as well as cold or dry climates.",
+      "Hand dryers are NOT effective in killing the new coronavirus.",
+      "Ultraviolet disinfection lamps should NOT be used to try and kill the new coronavirus.",
+      "Thermal scanners are only useful in detecting people infected with the new coronavirus if they have currently a fever. It is possible to have the virus and not have a fever yet.",
+      "Spraying alcohol or chlorine all over your body will NOT kill the new coronavirus.",
+      "Vaccines against pneumonia DO NOT protect you against the new coronavirus.",
+      "There is no evidence that eating garlic would prevent infection with the new coronavirus.",
+      "Source: https://www.who-int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters"
+   ],
+   "casedefs":[
+      {
+         "Case A":"A patient with acute respiratory illness (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness of breath), AND with no other symptoms that fully explain the clinical presentation AND a history of travel to or residence in a country/area or territory reporting local transmission (See situation report) of COVID-19 disease during the 14 days prior to symptom onset."
+      },
+      {
+         "Case B":"A patient with any acute respiratory illness AND having been in contact with a confirmed or probable COVID19 case (see definition of contact) in the last 14 days prior to onset of symptoms;"
+      },
+      {
+         "Case C":"A patient with severe acute respiratory infection (fever and at least one sign/symptom of respiratory disease (e.g., cough, shortness breath) AND requiring hospitalization AND with no other aetiology that fully explains the clinical presentation."
+      }
+   ],
+   "symptoms":[
+      "Reported symptoms include fever, coughing and shortness of breath.",
+      "The symptoms generally appear 2 to 14 days after being exposed to the virus",
+      "Source: https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html"
+   ]
+   }

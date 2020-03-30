@@ -110,13 +110,13 @@ class API {
         name: 'Ohangwena Region',
       ),
       Region(
-        name: 'Kavango Region',
+        name: 'Oshikoto Region',
+      ),
+      Region(
+        name: 'Kavango East Region',
       ),
       Region(
         name: 'Zambezi Region',
-      ),
-      Region(
-        name: 'Oshikoto Region',
       ),
       Region(
         name: 'Erongo Region',
@@ -135,7 +135,10 @@ class API {
       ),
       Region(
         name: 'ǁKaras Region',
-      )
+      ),
+      Region(
+        name: 'Kavango West Region',
+      ),
     ];
 
     regions.forEach((reg) => reg.statistics = Statistic(

@@ -13,7 +13,8 @@ class NamibianMap extends StatefulWidget {
   final Color oshanaColor;
   final Color ohangwenaColor;
   final Color oshikotoColor;
-  final Color kavangoColor;
+  final Color kavangoEastColor;
+  final Color kavangoWestColor;
   final Color zambeziColor;
   final Color erongoColor;
   final Color otjozondjupaColor;
@@ -29,7 +30,7 @@ class NamibianMap extends StatefulWidget {
   final String oshanaRegion = '3';
   final String ohangwenaRegion = '4';
   final String oshikotoRegion = '5';
-  final String kavangoRegion = '6';
+  final String kavangoEastRegion = '6';
   final String zambeziRegion = '7';
   final String erongoRegion = '8';
   final String otjozondjupaRegion = '9';
@@ -37,6 +38,7 @@ class NamibianMap extends StatefulWidget {
   final String khomasRegion = '11';
   final String hardapRegion = '12';
   final String karasRegion = '13';
+  final String kavangoWestRegion = '14';
 
   NamibianMap(
       {Key key,
@@ -48,7 +50,8 @@ class NamibianMap extends StatefulWidget {
       this.oshanaColor,
       this.ohangwenaColor,
       this.oshikotoColor,
-      this.kavangoColor,
+      this.kavangoEastColor,
+      this.kavangoWestColor,
       this.zambeziColor,
       this.erongoColor,
       this.otjozondjupaColor,
@@ -209,19 +212,22 @@ class _NamibianMapState extends State<NamibianMap> {
                               child: Container(
                                 width: 50,
                                 height: 28,
-                                margin: EdgeInsets.only(right: 1.5),
+                                margin: EdgeInsets.only(
+                                  right: 10.8,
+                                ),
                                 child: SvgPicture.asset(
-                                  "assets/images/kavangoRegion.svg",
-                                  color: widget.value == widget.kavangoRegion ||
+                                  "assets/images/kavangoWestRegion.svg",
+                                  color: widget.value ==
+                                              widget.kavangoWestRegion ||
                                           widget.value == widget.defaultLocation
-                                      ? widget.kavangoColor == null
+                                      ? widget.kavangoWestColor == null
                                           ? widget.selectedColor
-                                          : widget.kavangoColor
+                                          : widget.kavangoWestColor
                                       : widget.baseColor,
                                   fit: BoxFit.none,
                                 ),
                               ),
-                            ), //TODO: kavangoRegion
+                            ), //TODO: kavangoWestRegion
                           ],
                         ),
                       ),
@@ -297,27 +303,44 @@ class _NamibianMapState extends State<NamibianMap> {
                           ),
                         ),
                       ), //TODO: oshikotoRegion
-                      Spacer(),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Container(
-                          margin: EdgeInsets.only(right: 3, bottom: 16),
-                          width: 64,
-                          height: 16,
+                          width: 56,
+                          height: 28,
+                          margin: EdgeInsets.only(left: 13.7),
                           child: SvgPicture.asset(
-                            'assets/images/zambeziRegion.svg',
-                            color: widget.value == widget.zambeziRegion ||
+                            "assets/images/kavangoEastRegion.svg",
+                            color: widget.value == widget.kavangoEastRegion ||
                                     widget.value == widget.defaultLocation
-                                ? widget.zambeziColor == null
+                                ? widget.kavangoEastColor == null
                                     ? widget.selectedColor
-                                    : widget.zambeziColor
+                                    : widget.kavangoEastColor
                                 : widget.baseColor,
+                            fit: BoxFit.none,
                           ),
                         ),
-                      ), //TODO: zambeziRegion
+                      ), //TODO: kavangoWestRegion
                     ],
                   ),
                 ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    margin: EdgeInsets.only(left: 157, top: 8),
+                    width: 80,
+                    height: 16,
+                    child: SvgPicture.asset(
+                      'assets/images/zambeziRegion.svg',
+                      color: widget.value == widget.zambeziRegion ||
+                              widget.value == widget.defaultLocation
+                          ? widget.zambeziColor == null
+                              ? widget.selectedColor
+                              : widget.zambeziColor
+                          : widget.baseColor,
+                    ),
+                  ),
+                ), //TODO: zambeziRegion
               ],
             ),
           ),
