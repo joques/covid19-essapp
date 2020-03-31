@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 export class HttpserviceService {
 
 
-  apiURL: string = 'http://196.216.167.150:6552/covid/v1';
+  apiURL: string = 'http://196.216.167.150:6549/covid/v1';
   constructor(private http: HttpClient) { }
 
 
@@ -36,9 +36,10 @@ export class HttpserviceService {
         'Authorization': 'my-auth-token',
       })
     };
-
+    httpOptions.headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
+    httpOptions.headers.append('Access-Control-Allow-Credentials', 'true');
     return this.http
-      .get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6549/covid/v1/statistics/all', {
+      .get('http://196.216.167.150:6549/covid/v1/statistics/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));
@@ -52,6 +53,8 @@ export class HttpserviceService {
       })
     };
 
+    httpOptions.headers.append('Access-Control-Allow-Origin', '**');
+    httpOptions.headers.append('Access-Control-Allow-Credentials', 'true');
     return this.http
       .get('http://196.216.167.150:6549/covid/v1/statistics/all', {
         headers: httpOptions.headers

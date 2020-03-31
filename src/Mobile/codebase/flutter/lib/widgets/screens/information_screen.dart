@@ -157,7 +157,7 @@ class _InformationScreenState extends State<InformationScreen> {
                     ),
                     RaisedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/symptoms');
+                        Navigator.of(context).pushNamed('/preventions');
                       },
                       color: AppColors.ternaryBackground,
                       shape: BeveledRectangleBorder(
@@ -198,8 +198,8 @@ class _InformationScreenState extends State<InformationScreen> {
                           timeago.format(latestStat.timestamp),
                           style: Theme.of(context).textTheme.overline.copyWith(
                               color: AppColors.primaryElement,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 16),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18),
                         )
                       ],
                     ),
