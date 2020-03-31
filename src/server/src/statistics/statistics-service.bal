@@ -4,7 +4,7 @@ import ballerina/log;
 import ballerina/io;
 import ballerina/time;
 import ballerina/lang.'int as langint;
-//import ballerina/docker;
+import ballerina/docker;
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "172.17.0.1:27017",
@@ -16,34 +16,32 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 
 mongodb:Client dbClient = check new (mongoConfig);
 
-
-http:ListenerConfiguration lisConf = {
-    secureSocket: {
+@docker:Expose {}
+listener http:Listener apiListener2 = new (6549, config = {
+	secureSocket: {
         keyStore: {
             path: "../../resources/cov19cert.p12",
             password: "covpass91"
         }
     }
-};
+});
 
-//@docker:Expose {}
-listener http:Listener apiListener2 = new (6549, config = lisConf);
-
-//@docker:Config {
-//	name: "stats",
-//	tag: "v1.0"
-//}
+@docker:Config {
+	name: "stats",
+	tag: "v1.0"
+}
 
 //@docker:CopyFiles{
 //	files: [{sourceFile: "../../resources/cov19cert.p12", target: "/home/ballerina/security/cov19cert.p12"}]
 //}
 
 @http: ServiceConfig {
+	basePath: "/covid/v1/statistics",
 	cors: {
         allowOrigins: ["*"],
         allowHeaders: ["*"]
-    },
-	basePath: "/covid/v1/statistics"
+        maxAge: 84900
+    }
 }
 service statistics on apiListener2 {
 	@http: ResourceConfig {
