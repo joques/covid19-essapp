@@ -60,7 +60,7 @@ class _PreventionsScreenState extends State<PrevetionsScreen> {
                   ),
                 ),
                 secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/mask-wearing.svg",
+                  "assets/images/preventIcons/cleaning.svg",
                   color: AppColors.primaryElement,
                   fit: BoxFit.none,
                 ),
