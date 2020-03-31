@@ -20,7 +20,7 @@ mongodb:Client dbClient = check new (mongoConfig);
 http:ListenerConfiguration lisConf = {
     secureSocket: {
         keyStore: {
-            path: "./security/cov19cert.p12",
+            path: "../../resources/cov19cert.p12",
             password: "covpass91"
         }
     }
