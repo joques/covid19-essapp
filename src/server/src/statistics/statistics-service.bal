@@ -26,6 +26,13 @@ listener http:Listener apiListener2 = new (6549);
 }
 
 @http: ServiceConfig {
+	cors: {
+        allowOrigins: ["https://convid19esswebsite.firebaseapp.com", "https://namcovid19info.firebaseapp.com"],
+        allowCredentials: false,
+        allowHeaders: ["CORELATION_ID"],
+        exposeHeaders: ["X-CUSTOM-HEADER"],
+        maxAge: 84900
+    },
 	basePath: "/covid/v1/statistics"
 }
 service statistics on apiListener2 {
