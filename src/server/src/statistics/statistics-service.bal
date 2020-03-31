@@ -17,12 +17,25 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 mongodb:Client dbClient = check new (mongoConfig);
 
 
-@docker:Expose {}
-listener http:Listener apiListener2 = new (6549);
+http:ListenerConfiguration lisConf = {
+    secureSocket: {
+        keyStore: {
+            path: "./security/cov19cert.p12",
+            password: "covpass91"
+        }
+    }
+};
+
+//@docker:Expose {}
+listener http:Listener apiListener2 = new (6549, config = lisConf);
 
 @docker:Config {
 	name: "stats",
 	tag: "v1.0"
+}
+
+@docker:CopyFiles{
+	files: [{sourceFile: "../../resources/cov19cert.p12", target: "/home/ballerina/security/cov19cert.p12"}]
 }
 
 @http: ServiceConfig {
