@@ -60,7 +60,7 @@ class _PreventionsScreenState extends State<PrevetionsScreen> {
                   ),
                 ),
                 secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/mask-wearing.svg",
+                  "assets/images/preventIcons/cleaning.svg",
                   color: AppColors.primaryElement,
                   fit: BoxFit.none,
                 ),
@@ -71,7 +71,7 @@ class _PreventionsScreenState extends State<PrevetionsScreen> {
                 value: symptom2,
                 onChanged: _symptom2Changed,
                 title: Text(
-                  "Is Your Temperature 38ºC and Above",
+                  "Is Your Temperature 38ºC and Above nbvmnn",
                   style: TextStyle(
                     color: AppColors.primaryText,
                     fontFamily: "2",
