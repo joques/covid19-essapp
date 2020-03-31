@@ -51,5 +51,4 @@ service faq on apiListener3 {
 			}
 		}
 	}
-
 }
