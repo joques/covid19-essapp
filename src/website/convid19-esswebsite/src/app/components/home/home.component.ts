@@ -24,56 +24,53 @@ export class HomeComponent implements OnInit {
     worldwide: 0
   };
   constructor(private service: HttpserviceService, private http: CoronaWhatisService) { }
-
+  Statistics = [];
   ngOnInit(): void {
-    console.log("i am in home");
-    this.datenow = new Date().toLocaleDateString();
-    // get the data from the api
-    this.service.getPeriodicStats()
-      .subscribe(res =>
-        res.forEach((data, i) => {
-          let date = `${new Date(data.date).getMonth()}/${new Date(data.date).getDate()}/${new Date(data.date).getFullYear()}`;
-          if (date === new Date().toLocaleDateString()) {
-            this.datenow = date;
-          }
-          console.log("i am in home 44");
-          let value = {
-            date: data.date,
-            recovered: data.recovered,
-            dead: data.dead,
-            suspected: data.suspected,
-            confirmed: data.confirmed,
-            worldwide: data.worldwide
-          }
 
-          //pushing values to the data array
-          this.selected = value;
-          console.log("i am in home 2");
-          // summing up all the values
-          // let newval = {
-          //   recovered: +(this.data[i].recovered += this.data[i].recovered),
-          //   dead: +(this.data[i].dead += this.data[i].dead),
-          //   suspected: +(this.data[i].suspected += this.data[i].suspected),
-          //   confirmed: +(this.data[i].confirmed += this.data[i].confirmed),
-          //   worldwide: +(this.data[i].worldwide += this.data[i].worldwide)
-          // }
+    console.log('We are here');
+    this.http.getStats().subscribe((data: []) => {
+      // this.http.getWhatIsInfo().subscribe((data) => {
+      console.log('We are here 9999');
+      console.log(data);
+      this.Statistics = data;
+      console.log("i am in home 88");
+      localStorage.setItem('data', JSON.stringify(this.Statistics));
 
+      console.log(this.Statistics);
+      this.dataString = localStorage.getItem('data');
+      // retrieving our data and converting it back into an array
+      this.localData = JSON.parse(this.dataString);
+      console.log("i am in home NEWWWWW");
+     
+      console.log(this.localData["date"].toString());
+    });
+    // console.log("i am in home");
+    // this.datenow = new Date().toLocaleDateString();
+    // // get the data from the api
+    // this.service.getPeriodicStats()
+    //   .subscribe(res =>
+    //     res.forEach((data, i) => {
+    //       let date = `${new Date(data.date).getMonth()}/${new Date(data.date).getDate()}/${new Date(data.date).getFullYear()}`;
+    //       if (date === new Date().toLocaleDateString()) {
+    //         this.datenow = date;
+    //       }
+    //       console.log("i am in home 44");
+    //       let value = {
+    //         date: data.date,
+    //         recovered: data.recovered,
+    //         dead: data.dead,
+    //         suspected: data.suspected,
+    //         confirmed: data.confirmed,
+    //         worldwide: data.worldwide
+    //       }
+
+    //       //pushing values to the data array
+    //       this.selected = value;
+    //       console.log("i am in home 2");
+        
           // //assinging it to the selected object
           // this.selected = newval;
-          console.log("i am in home kk");
-          this.selected = value;
-          console.log("i am in home 88");
-          localStorage.setItem('data', JSON.stringify(value));
-    
-          console.log(value);
-          this.dataString = localStorage.getItem('data');
-          // retrieving our data and converting it back into an array
-          this.localData = JSON.parse(this.dataString);
-          console.log("i am in home NEWWWWW");
-         
-          console.log(this.localData["date"].toString());
-        })
-      );
+       
 
     for (let i: number = 0; i < this.data.length; i++) {
       let value = {
