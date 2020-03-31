@@ -39,7 +39,7 @@ listener http:Listener apiListener2 = new (6549, config = {
 	basePath: "/covid/v1/statistics",
 	cors: {
         allowOrigins: ["*"],
-        allowHeaders: ["*"]
+        allowHeaders: ["*"],
         maxAge: 84900
     }
 }
