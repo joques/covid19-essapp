@@ -28,9 +28,7 @@ listener http:Listener apiListener2 = new (6549);
 @http: ServiceConfig {
 	cors: {
         allowOrigins: ["*"],
-        allowCredentials: false,
-        allowHeaders: ["*"],
-        maxAge: 84900
+        allowHeaders: ["*"]
     },
 	basePath: "/covid/v1/statistics"
 }
