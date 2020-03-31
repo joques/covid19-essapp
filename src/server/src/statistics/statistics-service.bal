@@ -27,7 +27,7 @@ http:ListenerConfiguration lisConf = {
 };
 
 //@docker:Expose {}
-listener http:Listener apiListener2 = new (6549);
+listener http:Listener apiListener2 = new (6549, config = lisConf);
 
 //@docker:Config {
 //	name: "stats",
