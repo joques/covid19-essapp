@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:covid_19_app/data/constants.dart';
 import 'package:covid_19_app/models/centre.dart';
@@ -6,8 +7,10 @@ import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/models/memos.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/models/statistic.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+//import 'package:http/h'
 
 /// The API provider
 /// client
@@ -33,7 +36,8 @@ class API {
 
     return list;
   }
-/// Get testing centres
+
+  /// Get testing centres
   Future<List<Memo>> getMemos() async {
     List<Memo> list = List();
     try {
@@ -52,7 +56,7 @@ class API {
 
     return list;
   }
-  
+
   /// Get testing faqs
   Future<List<FAQ>> getFaqs() async {
     List<FAQ> list = List();
@@ -76,15 +80,27 @@ class API {
   /// Get testing statistics - latest
   Future<Statistic> getLatestStatistics() async {
     Statistic stat;
+    var _stat;
     try {
+      HttpClient client = HttpClient()
+        ..badCertificateCallback =
+            ((X509Certificate cert, String host, int port) => true);
       final url = (_baseUrl + API_STAT_LATEST)
           .replaceAll('{port}', API_PORTS['stats'].toString());
-      final res = await http.get(url);
-
-      print('getting stats from: ' + url);
-
-      final _stat = json.decode(res.body);
-      stat = Statistic.map(_stat);
+      // Make the call
+      var request = await client.getUrl(Uri.parse(url));
+      var response = await request.close();
+      if (response.statusCode == HttpStatus.OK) {
+        var res = await response.transform(utf8.decoder).join();
+        // Decode the json response
+        var data = json.decode(res);
+        // Get the result list
+        stat = Statistic.map(data);
+        // Print the results.
+        debugPrint("Data=>" + stat.toString());
+      } else {
+        print("Failed http call.");
+      }
     } catch (err) {
       debugPrint(err.toString());
     }
@@ -96,7 +112,7 @@ class API {
   Future<Statistic> getRegionalStatistics(String region) async {
     Statistic stat;
     try {
-      final url = (_baseUrl + API_STAT_REGION+REGION_IDS[region])
+      final url = (_baseUrl + API_STAT_REGION + REGION_IDS[region])
           .replaceAll('{port}', API_PORTS['stats'].toString());
       final res = await http.get(url);
 
@@ -112,7 +128,7 @@ class API {
   }
 
   List<Region> getRegionalData() {
-    List <Region> regions=[
+    List<Region> regions = [
       Region(
         name: 'All of Namibia',
         //statistics:await getRegionalStatistics('All of Namibia')
@@ -160,18 +176,16 @@ class API {
         name: 'Kavango West Region',
       ),
     ];
-    
-    
+
     regions.forEach((reg) => {
-      getRegionalStatistics(reg.name).then((value) => {
-        //debugPrint(value.confirmed.toString()),
-        reg.statistics = value,
-        
-      })
-    }); 
+          getRegionalStatistics(reg.name).then((value) => {
+                //debugPrint(value.confirmed.toString()),
+                reg.statistics = value,
+              })
+        });
     getLatestStatistics().then((value) => {
-      regions[0].statistics = value,
-    });
+          regions[0].statistics = value,
+        });
 
     regions.forEach((reg) => reg.statistics = Statistic(
         timestamp: DateTime.now(),
@@ -179,7 +193,7 @@ class API {
         dead: 0,
         suspected: 0,
         recovered: 0));
-    
+
     return regions;
   }
 }
