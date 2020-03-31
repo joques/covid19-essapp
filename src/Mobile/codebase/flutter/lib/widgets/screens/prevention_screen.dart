@@ -71,7 +71,7 @@ class _PreventionsScreenState extends State<PrevetionsScreen> {
                 value: symptom2,
                 onChanged: _symptom2Changed,
                 title: Text(
-                  "Is Your Temperature 38ºC and Above",
+                  "Is Your Temperature 38ºC and Above nbvmnn",
                   style: TextStyle(
                     color: AppColors.primaryText,
                     fontFamily: "2",
