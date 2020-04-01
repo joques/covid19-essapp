@@ -69,7 +69,7 @@ class _FAQScreenState extends State<FAQScreen> {
                             shape: BeveledRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(16))),
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).dialogBackgroundColor,
                             clipBehavior: Clip.antiAlias,
                             child: Column(
                               children: <Widget>[
@@ -87,7 +87,7 @@ class _FAQScreenState extends State<FAQScreen> {
                                   scrollOnCollapse: false,
                                   child: ExpandablePanel(
                                     theme: const ExpandableThemeData(
-                                      iconColor: Colors.white,
+                                      iconColor:  AppColors.primaryElement,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.center,
                                       tapBodyToCollapse: true,
@@ -100,8 +100,8 @@ class _FAQScreenState extends State<FAQScreen> {
                                               .textTheme
                                               .headline
                                               .copyWith(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900),
+                                                  color:  AppColors.primaryElement,
+                                                  fontWeight: FontWeight.w700),
                                         )),
                                     collapsed: Text(
                                       snapshot.data[index].answer,
@@ -112,9 +112,9 @@ class _FAQScreenState extends State<FAQScreen> {
                                           .textTheme
                                           .body1
                                           .copyWith(
-                                              fontWeight: FontWeight.w200,
+                                              fontWeight: FontWeight.w400,
                                               fontSize: 18,
-                                              color: Colors.white),
+                                              color:  AppColors.primaryElement),
                                     ),
                                     expanded: Padding(
                                         padding: EdgeInsets.only(
@@ -127,9 +127,9 @@ class _FAQScreenState extends State<FAQScreen> {
                                               .textTheme
                                               .body1
                                               .copyWith(
-                                                  fontWeight: FontWeight.w300,
+                                                  fontWeight: FontWeight.w400,
                                                   fontSize: 18,
-                                                  color: Colors.white),
+                                                  color:  AppColors.primaryElement),
                                         )),
                                     builder: (_, collapsed, expanded) {
                                       return Padding(
