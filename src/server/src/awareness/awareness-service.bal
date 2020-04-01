@@ -54,7 +54,12 @@ json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 }
 
 @http: ServiceConfig {
-	basePath: "/covid/v1/awareness"
+	basePath: "/covid/v1/awareness",
+	cors: {
+        allowOrigins: ["*"],
+        allowHeaders: ["*"],
+        maxAge: 84900
+    }
 }
 
 service awareness on apiListener1 {
