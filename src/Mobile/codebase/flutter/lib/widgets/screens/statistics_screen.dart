@@ -82,12 +82,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       child: Text(
                         "View By Region",
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                        ),
+                        style: Theme.of(context).textTheme.headline.copyWith(
+                            color: AppColors.primaryElement,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16),
                       ),
                     ),
                     Spacer(),
@@ -96,11 +94,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       child: Text(
                         "As of ${timeago.format(_regions[0].statistics.timestamp)}",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppColors.secondaryText,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13,
-                        ),
+                        style: Theme.of(context).textTheme.overline.copyWith(
+                            color: AppColors.secondaryText,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13),
                       ),
                     ),
                   ],

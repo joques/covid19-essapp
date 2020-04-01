@@ -1,3 +1,4 @@
+import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -28,38 +29,39 @@ class _StatisticCounterState extends State<StatisticCounter> {
           color: AppColors.accentElement,
           borderRadius: BorderRadius.circular(9.0),
           border: Border.all(width: 1.4, color: Color(this.borderColor))),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-            child: Center(
-              child: Text(
-                //TODO: Resize Text After 100000
-                widget.count.toString(),
+      child: Container(
+        margin: EdgeInsets.all(5.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Expanded(
+                child: AutoSizeText(
+              //TODO: Resize Text After 100000
+              widget.count.toString(),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              style: TextStyle(
+                color: AppColors.primaryText,
+                fontWeight: FontWeight.w900,
+                fontSize: 36,
+              ),
+            )),
+            Expanded(
+              child: AutoSizeText(
+                widget.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: AppColors.primaryText,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 38,
+                  color: AppColors.secondaryText,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
                 ),
               ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10, right: 10, bottom: 11),
-            child: Text(
-              widget.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: AppColors.secondaryText,
-                fontWeight: FontWeight.w700,
-                fontSize: 13,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
