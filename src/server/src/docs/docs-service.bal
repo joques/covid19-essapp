@@ -27,6 +27,7 @@ listener http:Listener apilistener4 = new (6552);
 	files: [
 		{sourceFile: "../../official-docs/offdoc001.pdf", target: "/home/ballerina/data/official-docs/offdoc001.pdf"},
 		{sourceFile: "../../official-docs/offdoc002.pdf", target: "/home/ballerina/data/official-docs/offdoc002.pdf"},
+		{sourceFile: "../../official-docs/offdoc003.pdf", target: "/home/ballerina/data/official-docs/offdoc003.pdf"},
 		{sourceFile: "../../official-docs/offdoc004.pdf", target: "/home/ballerina/data/official-docs/offdoc004.pdf"},
 		{sourceFile: "../../official-docs/offdoc005.pdf", target: "/home/ballerina/data/official-docs/offdoc005.pdf"},
 		{sourceFile: "../../official-docs/offdoc006.pdf", target: "/home/ballerina/data/official-docs/offdoc006.pdf"},
@@ -36,7 +37,6 @@ listener http:Listener apilistener4 = new (6552);
         {sourceFile: "../../official-docs/offdoc010.pdf", target: "/home/ballerina/data/official-docs/offdoc010.pdf"},
         {sourceFile: "../../official-docs/offdoc011.pdf", target: "/home/ballerina/data/official-docs/offdoc011.pdf"},
 		{sourceFile: "../../official-docs/offdoc012.pdf", target: "/home/ballerina/data/official-docs/offdoc012.pdf"},
-		{sourceFile: "../../official-docs/offdoc013.pdf", target: "/home/ballerina/data/official-docs/offdoc013.pdf"},
 		{sourceFile: "../../official-docs/offdoc014.pdf", target: "/home/ballerina/data/official-docs/offdoc014.pdf"},
 		{sourceFile: "../../official-docs/offdoc015.jpeg", target: "/home/ballerina/data/official-docs/offdoc015.jpeg"},
 		{sourceFile: "../../official-docs/offdoc016.jpeg", target: "/home/ballerina/data/official-docs/offdoc016.jpeg"},
