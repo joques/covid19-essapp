@@ -30,148 +30,157 @@ class _PreventionsScreenState extends State<PrevetionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
+        appBar: AppBar(
+          title: Text(
+            widget.title,
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: <Widget>[
-          //TODO: Add Sliding Counsel
-          Container(
-            height: 200,
-            color: AppColors.accentElement,
-          ),
-          Divider(),
-          Wrap(
-            runSpacing: 25.0,
-            children: [
-              CheckboxListTile(
-                value: symptom1,
-                onChanged: _symptom1Changed,
-                title: Text(
-                  "Do You Have A Dry cough?",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                  ),
-                ),
-                secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/mask-wearing.svg",
-                  color: AppColors.primaryElement,
-                  fit: BoxFit.none,
-                ),
-                controlAffinity: ListTileControlAffinity.trailing,
-                activeColor: AppColors.primaryElement,
-              ), // Symptom 1
-              CheckboxListTile(
-                value: symptom2,
-                onChanged: _symptom2Changed,
-                title: Text(
-                  "Is Your Temperature 38ºC and Above",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "2",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                  ),
-                ),
-                secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/headache.svg",
-                  color: AppColors.primaryElement,
-                  fit: BoxFit.none,
-                ),
-                controlAffinity: ListTileControlAffinity.trailing,
-                activeColor: AppColors.primaryElement,
-              ), // Symptom 2
-              CheckboxListTile(
-                value: symptom3,
-                onChanged: _symptom3Changed,
-                title: Text(
-                  "Do you have A Difficulty Breathing?",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                  ),
-                ),
-                secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/pneumonia-lung.svg",
-                  color: AppColors.primaryElement,
-                  fit: BoxFit.none,
-                ),
-                controlAffinity: ListTileControlAffinity.trailing,
-                activeColor: AppColors.primaryElement,
-              ), // Symptom 3
-            ],
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Expanded(
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              children: [
-                symptom1 &&
-                        symptom2 &&
-                        symptom3 ==
-                            true //if All Three Symptoms are checked show the call button.
-                    ? Wrap(
-                        alignment: WrapAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: 350,
-                            height: 50,
-                            child: FlatButton(
-                              onPressed: () => UrlLauncher.launch(
-                                  '$tollFreeNumber'), //TODO: import urlLauncher to Make a call
-                              color: AppColors.primaryElement,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                              textColor: Color.fromARGB(255, 255, 255, 255),
-                              padding: EdgeInsets.all(15),
-                              child: Text(
-                                "Call Help Line".toUpperCase(),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 60,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 3, bottom: 3),
-                            height: 45,
-                            width: 320,
-                            child: Text(
-                              consentText,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: AppColors.secondaryText,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ), //Consent
-                        ],
-                      )
-                    : Container(),
-              ],
+        body:ListView(
+          children: ListTile.divideTiles(
+          context: context,
+          tiles: <Widget>[
+            //TODO: Add Sliding Counsel
+            // SizedBox(
+            //   height: 15,
+            // ),
+            Text(
+              "Vaccine and Treament ",
+              style: TextStyle(
+                color: AppColors.primaryText,
+                fontFamily: "Roboto",
+                fontWeight: FontWeight.w800,
+                fontSize: 22,
+              ),textAlign: TextAlign.center,
             ),
-          ), // Symptom Consent
-        ],
-      ),
-    );
+            ListTile(
+              
+              leading: SvgPicture.asset(
+                "assets/images/preventIcons/vaccine.svg",
+                color: AppColors.primaryElement,
+                fit: BoxFit.contain,
+              ),
+              title: Text(
+                "There is currently no vaccine to prevent the Coronavirus disease (COVID-19) and many patients are being treated as per the patient’s clinical conditions.",
+                style: TextStyle(
+                  color: AppColors.primaryText,
+                  fontFamily: "Roboto",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+
+            //Divider(),
+            Text(
+              "Prevention measures ",
+              style: TextStyle(
+                color: AppColors.primaryText,
+                fontFamily: "Roboto",
+                fontWeight: FontWeight.w800,
+                fontSize: 22,
+              ),textAlign: TextAlign.center,
+            ),
+
+                ListTile(
+                    title: Text(
+                      "Social distancing",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                      ),
+                    ),
+                    leading: SvgPicture.asset(
+                      "assets/images/preventIcons/distancing.svg",
+                      color: AppColors.primaryElement,
+                      fit: BoxFit.contain,
+                    ),
+                    subtitle: Text(
+                      "Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    )), // Symptom 1
+                ListTile(
+                    title: Text(
+                      "Clean and disinfect",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                      ),
+                    ),
+                    leading: SvgPicture.asset(
+                      "assets/images/preventIcons/cleaning.svg",
+                      color: AppColors.primaryElement,
+                      fit: BoxFit.contain,
+                    ),
+                    subtitle: Text(
+                      "Clean and disinfect frequently touched surfaces daily. This includes tables, doorknobs, light switches, countertops, handles, desks, phones, keyboards, toilets, faucets, and sinks.",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    )),
+                ListTile(
+                    title: Text(
+                      "Clean your hands often",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                      ),
+                    ),
+                    leading: SvgPicture.asset(
+                      "assets/images/preventIcons/hygiene.svg",
+                      color: AppColors.primaryElement,
+                      fit: BoxFit.contain,
+                    ),
+                    subtitle: Text(
+                      "Wash your hands often with soap and water for at least 20 seconds especially after you have been in a public place, or after blowing your nose, coughing, or sneezing.",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    )),
+                ListTile(
+                    title: Text(
+                      "Avoid touching eyes, nose and mouth",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18,
+                      ),
+                    ),
+                    leading: SvgPicture.asset(
+                      "assets/images/preventIcons/face.svg",
+                      color: AppColors.primaryElement,
+                      fit: BoxFit.contain,
+                    ),
+                    subtitle: Text(
+                      "Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and can make you sick.",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    )),
+              ],
+            ).toList(),
+            )
+        );
   }
 }

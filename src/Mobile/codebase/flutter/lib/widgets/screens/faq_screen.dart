@@ -1,6 +1,7 @@
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/common/loading_faq.dart';
 import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class _FAQScreenState extends State<FAQScreen> {
     super.initState();
   }
 
+  //TODO: Attempting to check internet connection state, then show a place holding loading widget (reviewing needed).
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,15 +151,17 @@ class _FAQScreenState extends State<FAQScreen> {
                         ))),
               );
             } else if (snapshot.hasError) {
-              return Center(
-                child: Text('Error getting data!'),
-              );
+              return LoadingFaq();
+//                Center(
+//                child: Text('Error getting data!'),
+//              );
             }
-            return Center(
-              child: CircularProgressIndicator(
-                backgroundColor: AppColors.primaryBackground,
-              ),
-            );
+            return LoadingFaq();
+//              Center(
+//              child: CircularProgressIndicator(
+//                backgroundColor: AppColors.primaryBackground,
+//              ),
+//            );
           }),
     );
   }

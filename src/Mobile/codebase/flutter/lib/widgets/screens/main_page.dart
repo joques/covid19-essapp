@@ -1,11 +1,4 @@
-import 'package:covid_19_app/widgets/common/nav_drawer.dart';
-import 'package:covid_19_app/widgets/screens/centres_screen.dart';
-import 'package:covid_19_app/widgets/screens/faq_screen.dart';
-import 'package:covid_19_app/widgets/screens/information_screen.dart';
-import 'package:covid_19_app/widgets/screens/officialC&M_screen.dart';
-import 'package:covid_19_app/widgets/screens/statistics_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:covid_19_app/data/packages.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
