@@ -297,7 +297,7 @@ function processAllStats(json[] allStatData) returns json[] {
 	}
 	
 	io:println("printing the result for all before sending...");
-	io:println(singleItemData);
+	io:println(finalStatData);
 	
 	return finalStatData;
 }
