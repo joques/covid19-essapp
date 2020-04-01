@@ -7,7 +7,6 @@ import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/models/memos.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/models/statistic.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 //import 'package:http/h'

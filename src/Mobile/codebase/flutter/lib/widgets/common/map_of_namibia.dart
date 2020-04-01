@@ -90,7 +90,7 @@ class _NamibianMapState extends State<NamibianMap> {
                           width: 75,
                           height: 67,
                           child: SvgPicture.asset(
-                            'assets/images/kuneneRegion.svg',
+                            'assets/images/regions/kuneneRegion.svg',
                             color: widget.value == widget.kuneneRegion ||
                                     widget.value == widget.defaultLocation
                                 ? widget.kuneneColor == null
@@ -107,7 +107,7 @@ class _NamibianMapState extends State<NamibianMap> {
                           height: 66,
                           margin: EdgeInsets.only(left: 46.6, top: 62.6),
                           child: SvgPicture.asset(
-                            "assets/images/karasRegion.svg",
+                            "assets/images/regions/karasRegion.svg",
                             color: widget.value == widget.karasRegion ||
                                     widget.value == widget.defaultLocation
                                 ? widget.karasColor == null
@@ -125,7 +125,7 @@ class _NamibianMapState extends State<NamibianMap> {
                   left: 41,
                   top: 99.3,
                   child: SvgPicture.asset(
-                    "assets/images/hardapRegion.svg",
+                    "assets/images/regions/hardapRegion.svg",
                     color: widget.value == widget.hardapRegion ||
                             widget.value == widget.defaultLocation
                         ? widget.hardapColor == null
@@ -139,7 +139,7 @@ class _NamibianMapState extends State<NamibianMap> {
                   left: 60.4,
                   top: 75.5,
                   child: SvgPicture.asset(
-                    "assets/images/khomasRegion.svg",
+                    "assets/images/regions/khomasRegion.svg",
                     color: widget.value == widget.khomasRegion ||
                             widget.value == widget.defaultLocation
                         ? widget.khomasColor == null
@@ -153,7 +153,7 @@ class _NamibianMapState extends State<NamibianMap> {
                   left: 29,
                   top: 55.9,
                   child: SvgPicture.asset(
-                    "assets/images/erongoRegion.svg",
+                    "assets/images/regions/erongoRegion.svg",
                     color: widget.value == widget.erongoRegion ||
                             widget.value == widget.defaultLocation
                         ? widget.erongoColor == null
@@ -167,7 +167,7 @@ class _NamibianMapState extends State<NamibianMap> {
                   left: 58.6,
                   top: 28.6,
                   child: SvgPicture.asset(
-                    "assets/images/otjozondjupaRegion.svg",
+                    "assets/images/regions/otjozondjupaRegion.svg",
                     color: widget.value == widget.otjozondjupaRegion ||
                             widget.value == widget.defaultLocation
                         ? widget.otjozondjupaColor == null
@@ -195,7 +195,7 @@ class _NamibianMapState extends State<NamibianMap> {
                                 width: 23,
                                 height: 32,
                                 child: SvgPicture.asset(
-                                  "assets/images/omusatiRegion.svg",
+                                  "assets/images/regions/omusatiRegion.svg",
                                   color: widget.value == widget.omusatiRegion ||
                                           widget.value == widget.defaultLocation
                                       ? widget.omusatiColor == null
@@ -216,7 +216,7 @@ class _NamibianMapState extends State<NamibianMap> {
                                   right: 10.8,
                                 ),
                                 child: SvgPicture.asset(
-                                  "assets/images/kavangoWestRegion.svg",
+                                  "assets/images/regions/kavangoWestRegion.svg",
                                   color: widget.value ==
                                               widget.kavangoWestRegion ||
                                           widget.value == widget.defaultLocation
@@ -238,7 +238,7 @@ class _NamibianMapState extends State<NamibianMap> {
                           height: 58,
                           margin: EdgeInsets.only(top: 13.3, right: 4.2),
                           child: SvgPicture.asset(
-                            "assets/images/omahekeRegion.svg",
+                            "assets/images/regions/omahekeRegion.svg",
                             color: widget.value == widget.omahekeRegion ||
                                     widget.value == widget.defaultLocation
                                 ? widget.omahekeColor == null
@@ -256,7 +256,7 @@ class _NamibianMapState extends State<NamibianMap> {
                   left: 54,
                   top: 11.8,
                   child: SvgPicture.asset(
-                    "assets/images/oshanaRegion.svg",
+                    "assets/images/regions/oshanaRegion.svg",
                     color: widget.value == widget.oshanaRegion ||
                             widget.value == widget.defaultLocation
                         ? widget.oshanaColor == null
@@ -270,7 +270,7 @@ class _NamibianMapState extends State<NamibianMap> {
                   left: 58.7,
                   top: 7,
                   child: SvgPicture.asset(
-                    "assets/images/ohangwenaRegion.svg",
+                    "assets/images/regions/ohangwenaRegion.svg",
                     color: widget.value == widget.ohangwenaRegion ||
                             widget.value == widget.defaultLocation
                         ? widget.ohangwenaColor == null
@@ -293,7 +293,7 @@ class _NamibianMapState extends State<NamibianMap> {
                           height: 29,
                           margin: EdgeInsets.only(top: 4),
                           child: SvgPicture.asset(
-                            'assets/images/oshikotoRegion.svg',
+                            'assets/images/regions/oshikotoRegion.svg',
                             color: widget.value == widget.oshikotoRegion ||
                                     widget.value == widget.defaultLocation
                                 ? widget.oshikotoColor == null
@@ -310,7 +310,7 @@ class _NamibianMapState extends State<NamibianMap> {
                           height: 28,
                           margin: EdgeInsets.only(left: 13.7),
                           child: SvgPicture.asset(
-                            "assets/images/kavangoEastRegion.svg",
+                            "assets/images/regions/kavangoEastRegion.svg",
                             color: widget.value == widget.kavangoEastRegion ||
                                     widget.value == widget.defaultLocation
                                 ? widget.kavangoEastColor == null
@@ -331,7 +331,7 @@ class _NamibianMapState extends State<NamibianMap> {
                     width: 80,
                     height: 16,
                     child: SvgPicture.asset(
-                      'assets/images/zambeziRegion.svg',
+                      'assets/images/regions/zambeziRegion.svg',
                       color: widget.value == widget.zambeziRegion ||
                               widget.value == widget.defaultLocation
                           ? widget.zambeziColor == null
