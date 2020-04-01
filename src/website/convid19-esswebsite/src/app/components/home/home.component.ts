@@ -11,10 +11,10 @@ import { HttpHeaders } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   datenow: string;
   data = [];
-  localData:JSON;
+  localData: JSON;
   localValue = [];
   dataString: string;
-  
+
 
   selected = {
     recovered: 0,
@@ -23,26 +23,28 @@ export class HomeComponent implements OnInit {
     confirmed: 0,
     worldwide: 0
   };
-  constructor(private service: HttpserviceService, private http: CoronaWhatisService) { }
   Statistics = [];
+  constructor(private service: HttpserviceService, private http: CoronaWhatisService) { }
+
   ngOnInit(): void {
 
-    console.log('We are here');
+    console.log('We are here home 1mmmI ');
     this.http.getStats().subscribe((data: []) => {
       // this.http.getWhatIsInfo().subscribe((data) => {
-      console.log('We are here 9999');
+      console.log('We are here after request');
       console.log(data);
       this.Statistics = data;
-      console.log("i am in home 88");
+      console.log('Starts');
       localStorage.setItem('data', JSON.stringify(this.Statistics));
 
       console.log(this.Statistics);
       this.dataString = localStorage.getItem('data');
       // retrieving our data and converting it back into an array
       this.localData = JSON.parse(this.dataString);
-      console.log("i am in home NEWWWWW");
-     
-      console.log(this.localData["date"].toString());
+      console.log('i am in home NEWWWWW');
+       
+      console.log(this.localData['date'].toString());
+      console.log(this.localData['recovered']);
     });
     // console.log("i am in home");
     // this.datenow = new Date().toLocaleDateString();
@@ -67,10 +69,10 @@ export class HomeComponent implements OnInit {
     //       //pushing values to the data array
     //       this.selected = value;
     //       console.log("i am in home 2");
-        
-          // //assinging it to the selected object
-          // this.selected = newval;
-       
+
+    // //assinging it to the selected object
+    // this.selected = newval;
+
 
     for (let i: number = 0; i < this.data.length; i++) {
       let value = {
@@ -80,7 +82,7 @@ export class HomeComponent implements OnInit {
         confirmed: this.data[i].confirmed += this.data[i].confirmed,
         worldwide: this.data[i].worldwide += this.data[i].worldwide
       }
-      
+
 
     }
   }

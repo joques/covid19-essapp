@@ -62,6 +62,6 @@ export class CoronaWhatisService {
   }
   public getStats() {
     return this.client.get(this.statisticsApi);
-  }
 
+}
 }
