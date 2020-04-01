@@ -3,6 +3,7 @@
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/memos.dart';
 import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/common/loading_faq.dart';
 import 'package:covid_19_app/widgets/common/news_article.dart';
 import 'package:flutter/material.dart';
 
@@ -39,15 +40,17 @@ class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
                               docid: data[index].title,
                             )));
               } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error getting data!'),
-                );
+                return LoadingFaq();
+//                  Center(
+//                  child: Text('Error getting data!'),
+//                );
               }
-              return Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: AppColors.primaryBackground,
-                ),
-              );
+              return LoadingFaq();
+//              Center(
+//                child: CircularProgressIndicator(
+//                  backgroundColor: AppColors.primaryBackground,
+//                ),
+//              );
             }));
   }
 }

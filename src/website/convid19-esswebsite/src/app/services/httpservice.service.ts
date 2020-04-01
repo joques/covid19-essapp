@@ -3,14 +3,19 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from "rxjs/operators";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class HttpserviceService {
+ headers;
 
+  apiURL: string = 'http://196.216.167.150:6552/covid/v1';
+  constructor(private http: HttpClient) { 
 
-  apiURL: string = 'http://196.216.167.150:6549/covid/v1';
-  constructor(private http: HttpClient) { }
+    this.headers = new HttpHeaders();
+    this.headers.append('Access-Control-Allow-Headers', 'Authorization');
+  }
 
 
 
@@ -41,7 +46,8 @@ export class HttpserviceService {
     return this.http
       .get('http://196.216.167.150:6549/covid/v1/statistics/all', {
         headers: httpOptions.headers
-      })
+      }
+        )
       .pipe(map(res => res));
   }
 
@@ -56,7 +62,7 @@ export class HttpserviceService {
     httpOptions.headers.append('Access-Control-Allow-Origin', '**');
     httpOptions.headers.append('Access-Control-Allow-Credentials', 'true');
     return this.http
-      .get('http://196.216.167.150:6549/covid/v1/statistics/all', {
+      .get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6549/covid/v1/statistics/all', {
         headers: httpOptions.headers
       })
       .pipe(map(res => res));

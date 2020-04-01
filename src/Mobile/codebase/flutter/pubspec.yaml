@@ -32,7 +32,6 @@ dependencies:
   http:
   geolocator:
   url_launcher:
-  dio:
   intl:
   auto_size_text:
   google_fonts:
@@ -40,6 +39,7 @@ dependencies:
   advance_pdf_viewer:
   timeago:
   webview_flutter:
+  shimmer:
 
 
 
@@ -63,6 +63,7 @@ flutter:
     - assets/images/
     - assets/images/symptomsIcons/
     - assets/images/preventIcons/
+    - assets/images/regions/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,5 +1,5 @@
 /// API
-const String API_BASE_URL = 'http://196.216.167.150:{port}/covid/v1/';
+const String API_BASE_URL = 'https://196.216.167.150:{port}/covid/v1/';
 const Map<String, int> API_PORTS = {
   'centres': 6550,
   'stats': 6549,
