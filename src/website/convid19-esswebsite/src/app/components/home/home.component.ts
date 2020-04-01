@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
       this.localData = JSON.parse(this.dataString);
       console.log('i am in home NEWWWWW');
        
-      console.log(this.localData['date'].toString());
-      console.log(this.localData['recovered']);
+      console.log(this.localData[this.data.length-1]['date'].toString());
+      console.log(this.localData[this.data.length-1]['recovered']);
     });
     // console.log("i am in home");
     // this.datenow = new Date().toLocaleDateString();

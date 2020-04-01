@@ -122,10 +122,15 @@ export class StatisticsComponent implements OnInit {
 
     //   console.log(value)
     // }
+    
     this.dataString = localStorage.getItem('data');
     // retrieving our data and converting it back into an array
     this.localData = JSON.parse(this.dataString);
-    console.log("i am in stats");
+    var length = Object.keys(this.localData).length;
+    for (let index = 0; index < length; index++) {
+      this.data[index] = localStorage[index];
+    }
+    console.log("i am in stats ,count ="+length);
     this.startCounter();
   //  updated= this.localData["date"].toString();
   
@@ -177,11 +182,12 @@ export class StatisticsComponent implements OnInit {
         }
       }, 5);
     };
-
-    theLoop(Number.parseInt(this.localData['suspected']),"suspected",true);
-    theLoop(Number.parseInt(this.localData['dead']),"death",true);
-    theLoop(Number.parseInt(this.localData['confirmed']),"confirmed",true);
-    theLoop(Number.parseInt(this.localData['recovered']),"recovered",true);
+    var length = Object.keys(this.localData).length;
+    console.log("ALL items =>"+length);
+    theLoop(Number.parseInt(this.localData[length-1]['suspected']),"suspected",true);
+    theLoop(Number.parseInt(this.localData[length-1]['dead']),"death",true);
+    theLoop(Number.parseInt(this.localData[length-1]['confirmed']),"confirmed",true);
+    theLoop(Number.parseInt(this.localData[length-1]['recovered']),"recovered",true);
   }
   
   drawMark(): void {

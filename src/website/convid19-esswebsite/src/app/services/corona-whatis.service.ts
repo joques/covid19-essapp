@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpHandler } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from "rxjs/operators";
 
@@ -21,7 +21,12 @@ export class CoronaWhatisService {
   private newsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/latest';
   private centresApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6550/covid/v1/centre/all';
   private statisticsApi = 'https://196.216.167.150:6549/covid/v1/statistics/all';
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient) {
+//     var handler = new ();
+// handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+// handler.SslProtocols = SslProtocols.Tls12;
+// handler.ClientCertificates.Add(new X509Certificate2("cert.crt"));
+   }
 
   public sendGetRequest() {
     return this.client.get(this.whatisApi);
@@ -61,6 +66,8 @@ export class CoronaWhatisService {
     return this.client.get(this.centresApi);
   }
   public getStats() {
+    //this.client.
+    
     return this.client.get(this.statisticsApi);
 
 }
