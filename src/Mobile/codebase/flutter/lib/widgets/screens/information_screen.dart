@@ -21,7 +21,6 @@ class InformationScreen extends StatefulWidget {
 }
 
 class _InformationScreenState extends State<InformationScreen> {
-  static var thisInstant = new DateTime.now();
   List _slides = <Widget>[];
   Future<Latest> latestInfo;
   int confirmed;
@@ -30,7 +29,7 @@ class _InformationScreenState extends State<InformationScreen> {
       dead: 0,
       suspected: 0,
       recovered: 0,
-      timestamp: thisInstant);
+      timestamp: DateTime.now());
 
   var title = {
     '1': 'What is COVID-19?',
@@ -87,12 +86,14 @@ class _InformationScreenState extends State<InformationScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 CarouselSlider(
                   height: 200,
                   viewportFraction: 1.0,
                   aspectRatio: 2.0,
                   autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 30),
                   enlargeCenterPage: false,
                   items: [1, 2, 3, 4, 5].map((i) {
                     return Builder(
@@ -122,15 +123,17 @@ class _InformationScreenState extends State<InformationScreen> {
                                 SizedBox(
                                   height: 16,
                                 ),
-                                Text(
-                                  summary1['$i'],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 5,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .body2
-                                      .copyWith(
-                                          color: Colors.white, fontSize: 16),
+                                Expanded(
+                                  child: AutoSizeText(
+                                    summary1['$i'],
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 15,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .body2
+                                        .copyWith(
+                                            color: Colors.white, fontSize: 16),
+                                  ),
                                 )
                               ],
                             ),
@@ -173,14 +176,18 @@ class _InformationScreenState extends State<InformationScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
                 Divider(),
                 SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Wrap(
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.spaceBetween,
+                  spacing: 100,
+                  runSpacing: 10,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: <Widget>[
                     Text(
                       'Statistics',
@@ -189,18 +196,21 @@ class _InformationScreenState extends State<InformationScreen> {
                           fontWeight: FontWeight.w700,
                           fontSize: 16),
                     ),
-                    SizedBox(
-                      width: 25.0,
-                    ),
-                    Text(
-                      'Updated: ' + timeago.format(latestStat.timestamp),
-                      style: Theme.of(context).textTheme.overline.copyWith(
-                          color: AppColors.secondaryText,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13),
-                    )
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: <Widget>[
+                        Icon(LineIcons.clock_o),
+                        Text(
+                          'Updated: ' + timeago.format(latestStat.timestamp),
+                          style: Theme.of(context).textTheme.overline.copyWith(
+                              color: AppColors.secondaryText,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12),
+                        )
+                      ],
+                    ), //Updated Time
                   ],
-                ),
+                ), //Stats Heading
                 Container(
                   child: Column(
                     children: <Widget>[
