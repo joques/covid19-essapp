@@ -31,10 +31,6 @@ listener http:Listener apiListener2 = new (6549, config = {
 	tag: "v1.0"
 }
 
-//@docker:CopyFiles{
-//	files: [{sourceFile: "../../resources/cov19cert.p12", target: "/home/ballerina/security/cov19cert.p12"}]
-//}
-
 @http: ServiceConfig {
 	basePath: "/covid/v1/statistics",
 	cors: {
@@ -291,10 +287,13 @@ function processAllStats(json[] allStatData) returns json[] {
 			}
 		}
 				
-		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide}; 
+		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide};
 				
 		finalStatData.push(singleItemData); 
 	}
+	
+	io:println("printing the result for all before sending...");
+	io:println(finalStatData);
 	
 	return finalStatData;
 }

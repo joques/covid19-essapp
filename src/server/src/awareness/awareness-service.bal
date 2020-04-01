@@ -15,7 +15,14 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 mongodb:Client dbClient = check new (mongoConfig);
 
 @docker:Expose {}
-listener http:Listener apiListener1 = new (6547);
+listener http:Listener apiListener1 = new (6547, config = {
+	secureSocket: {
+        keyStore: {
+            path: "../../resources/cov19cert.p12",
+            password: "covpass91"
+        }
+    }
+});
 
 function loadAwarenessData(string awarenessPath) returns @tainted json {
 	var rbc = io:openReadableFile(awarenessPath);
@@ -54,7 +61,12 @@ json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 }
 
 @http: ServiceConfig {
-	basePath: "/covid/v1/awareness"
+	basePath: "/covid/v1/awareness",
+	cors: {
+        allowOrigins: ["*"],
+        allowHeaders: ["*"],
+        maxAge: 84900
+    }
 }
 
 service awareness on apiListener1 {

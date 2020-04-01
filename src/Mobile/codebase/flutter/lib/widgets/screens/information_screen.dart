@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/nav_drawer.dart';
@@ -20,6 +21,7 @@ class InformationScreen extends StatefulWidget {
 }
 
 class _InformationScreenState extends State<InformationScreen> {
+  static var thisInstant = new DateTime.now();
   List _slides = <Widget>[];
   Future<Latest> latestInfo;
   int confirmed;
@@ -28,7 +30,7 @@ class _InformationScreenState extends State<InformationScreen> {
       dead: 0,
       suspected: 0,
       recovered: 0,
-      timestamp: DateTime.now());
+      timestamp: thisInstant);
 
   var title = {
     '1': 'What is COVID-19?',
@@ -182,27 +184,21 @@ class _InformationScreenState extends State<InformationScreen> {
                   children: <Widget>[
                     Text(
                       'Statistics',
-                      style: Theme.of(context).textTheme.headline,
+                      style: Theme.of(context).textTheme.headline.copyWith(
+                          color: AppColors.primaryElement,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
                     ),
-                    Row(
-                      children: <Widget>[
-                        Text('Updated:',
-                            style: Theme.of(context)
-                                .textTheme
-                                .overline
-                                .copyWith(
-                                    color: AppColors.primaryElement,
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 18)),
-                        Text(
-                          timeago.format(latestStat.timestamp),
-                          style: Theme.of(context).textTheme.overline.copyWith(
-                              color: AppColors.primaryElement,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18),
-                        )
-                      ],
+                    SizedBox(
+                      width: 25.0,
                     ),
+                    Text(
+                      'Updated: ' + timeago.format(latestStat.timestamp),
+                      style: Theme.of(context).textTheme.overline.copyWith(
+                          color: AppColors.secondaryText,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13),
+                    )
                   ],
                 ),
                 Container(
@@ -218,13 +214,13 @@ class _InformationScreenState extends State<InformationScreen> {
                             width: _wd,
                             count: latestStat.confirmed,
                             borderColor: Colors.blue.shade800.value,
-                            title: 'Confirmed Cases',
+                            title: 'Confirmed cases',
                           ),
                           StatisticCounter(
                             width: _wd,
                             count: latestStat.dead,
                             borderColor: Colors.red.shade900.value,
-                            title: 'Confirmed Deaths',
+                            title: 'Confirmed deaths',
                           ),
                         ],
                       ),
@@ -238,13 +234,13 @@ class _InformationScreenState extends State<InformationScreen> {
                             width: _wd,
                             count: latestStat.recovered,
                             borderColor: Colors.green.shade900.value,
-                            title: 'Recoverd Patients',
+                            title: 'Recovered patients',
                           ),
                           StatisticCounter(
                             width: _wd,
                             count: latestStat.suspected,
                             borderColor: Colors.orange.shade900.value,
-                            title: 'Suspected Cases',
+                            title: 'Suspected cases',
                           ),
                         ],
                       ),
@@ -252,22 +248,34 @@ class _InformationScreenState extends State<InformationScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 18,
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 7),
-                  child: Wrap(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Data is provided by: Ministry of Health and Social Services Namibia (MHSS)",
+                        "Data is provided by:",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: AppColors.secondaryText,
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Image.asset(
+                        'assets/images/sponsors/liberity.png',
+                        height: 50,
+                      ),
+//                      SvgPicture.asset(
+//                        'assets/images/sponsors/NamibiaEmblem-01.svg',
+//                        color: AppColors.secondaryText,
+//                        height: 70,
+//                      ),
                     ],
                   ),
                 ),
