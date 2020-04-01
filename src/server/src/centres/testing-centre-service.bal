@@ -15,7 +15,14 @@ mongodb:ClientEndpointConfig  mongoConfig = {
 mongodb:Client dbClient = check new (mongoConfig);
 
 @docker:Expose {}
-listener http:Listener apiListener3 = new (6550);
+listener http:Listener apiListener3 = new (6550, config = {
+	secureSocket: {
+        keyStore: {
+            path: "../../resources/cov19cert.p12",
+            password: "covpass91"
+        }
+    }
+});
 
 @docker:Config {
 	name: "centre",
@@ -23,7 +30,12 @@ listener http:Listener apiListener3 = new (6550);
 }
 
 @http: ServiceConfig {
-	basePath: "/covid/v1/centre"
+	basePath: "/covid/v1/centre",
+	cors: {
+        allowOrigins: ["*"],
+        allowHeaders: ["*"],
+        maxAge: 84900
+    }
 }
 
 service faq on apiListener3 {
