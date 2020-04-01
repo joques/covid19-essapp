@@ -291,10 +291,13 @@ function processAllStats(json[] allStatData) returns json[] {
 			}
 		}
 				
-		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide}; 
+		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide};
 				
 		finalStatData.push(singleItemData); 
 	}
+	
+	io:println("printing the result for all before sending...");
+	io:println(finalStatData);
 	
 	return finalStatData;
 }
