@@ -103,7 +103,7 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                     isThreeLine: true,
                     title: Container(
                       child: Text(
-                        "Ministry of Health and Social Services, MHSSm - Namibia",
+                        "Ministry of Health and Social Services, MOHSS - Namibia",
                         style: TextStyle(
                           color: AppColors.primaryText,
                           fontFamily: "Roboto",
@@ -126,34 +126,34 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                 SizedBox(
                   height: 25,
                 ),
-                Image.asset(
-                  'assets/images/sponsors/UNDP Logo 2020.jpg',
-                  height: 120,
-                ),
-                ListTile(
-                    isThreeLine: true,
-                    title: Container(
-                      child: Text(
-                        "UNDP Namibia",
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.w800,
-                          fontSize: 18,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      margin: EdgeInsets.all(10.0),
-                    ),
-                    subtitle: Text(
-                      "UNDP is the UN’s global development network, advocating for change and connecting countries to knowledge, experience and resources to help people build a better life. We are on the ground in 177 countries, working with them on their own solutions to global and national development challenges.",
-                      style: TextStyle(
-                        color: AppColors.secondaryText,
-                        fontFamily: "Roboto",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                      ),
-                    )),
+                // Image.asset(
+                //   'assets/images/sponsors/UNDP Logo 2020.jpg',
+                //   height: 120,
+                // ),
+                // ListTile(
+                //     isThreeLine: true,
+                //     title: Container(
+                //       child: Text(
+                //         "UNDP Namibia",
+                //         style: TextStyle(
+                //           color: AppColors.primaryText,
+                //           fontFamily: "Roboto",
+                //           fontWeight: FontWeight.w800,
+                //           fontSize: 18,
+                //         ),
+                //         textAlign: TextAlign.center,
+                //       ),
+                //       margin: EdgeInsets.all(10.0),
+                //     ),
+                //     subtitle: Text(
+                //       "UNDP is the UN’s global development network, advocating for change and connecting countries to knowledge, experience and resources to help people build a better life. We are on the ground in 177 countries, working with them on their own solutions to global and national development challenges.",
+                //       style: TextStyle(
+                //         color: AppColors.secondaryText,
+                //         fontFamily: "Roboto",
+                //         fontWeight: FontWeight.w400,
+                //         fontSize: 16,
+                //       ),
+                //     )),
               ],
             ),
           ),
