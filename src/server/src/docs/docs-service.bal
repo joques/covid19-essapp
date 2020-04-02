@@ -119,9 +119,6 @@ service documents on apilistener4 {
 		path: "/mobile/description"
 	}
 	resource function getAllMetadataForMobile(http:Caller caller, http:Request docReq){
-		io:println("showing the content of docURLs...");
-		io:println(docURLs);
-        
 		http:Response allMetaResp = new;
 		
 		//pull the official document metadata from the data store
@@ -144,15 +141,10 @@ service documents on apilistener4 {
 				if (exDocID is string) {
 					finalDocId = exDocID;
 					var docUrl = docURLs[exDocID];
-					io:println("this is docURL coming from json ", docUrl);
-					//finalUrl = docUrl;
 					if (docUrl is string) {
 						finalUrl = docUrl.toJsonString();
 					}
 				}
-				
-				io:println(exDocID);
-				io:println(finalUrl);
 				
 				var exDocTitle = singleDocuItem.title;
 				if (exDocTitle is string) {
