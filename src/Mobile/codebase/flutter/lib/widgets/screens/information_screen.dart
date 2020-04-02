@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/nav_drawer.dart';
@@ -85,12 +86,14 @@ class _InformationScreenState extends State<InformationScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 CarouselSlider(
                   height: 200,
                   viewportFraction: 1.0,
                   aspectRatio: 2.0,
                   autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 30),
                   enlargeCenterPage: false,
                   items: [1, 2, 3, 4, 5].map((i) {
                     return Builder(
@@ -120,15 +123,17 @@ class _InformationScreenState extends State<InformationScreen> {
                                 SizedBox(
                                   height: 16,
                                 ),
-                                Text(
-                                  summary1['$i'],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 5,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .body2
-                                      .copyWith(
-                                          color: Colors.white, fontSize: 16),
+                                Expanded(
+                                  child: AutoSizeText(
+                                    summary1['$i'],
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 15,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .body2
+                                        .copyWith(
+                                            color: Colors.white, fontSize: 16),
+                                  ),
                                 )
                               ],
                             ),
@@ -171,40 +176,41 @@ class _InformationScreenState extends State<InformationScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
                 Divider(),
                 SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Wrap(
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.spaceBetween,
+                  spacing: 100,
+                  runSpacing: 10,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: <Widget>[
                     Text(
                       'Statistics',
-                      style: Theme.of(context).textTheme.headline,
+                      style: Theme.of(context).textTheme.headline.copyWith(
+                          color: AppColors.primaryElement,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
                     ),
-                    Row(
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: <Widget>[
-                        Text('Updated:',
-                            style: Theme.of(context)
-                                .textTheme
-                                .overline
-                                .copyWith(
-                                    color: AppColors.primaryElement,
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 18)),
+                        Icon(LineIcons.clock_o),
                         Text(
-                          timeago.format(latestStat.timestamp),
+                          'Updated: ' + timeago.format(latestStat.timestamp),
                           style: Theme.of(context).textTheme.overline.copyWith(
-                              color: AppColors.primaryElement,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18),
+                              color: AppColors.secondaryText,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12),
                         )
                       ],
-                    ),
+                    ), //Updated Time
                   ],
-                ),
+                ), //Stats Heading
                 Container(
                   child: Column(
                     children: <Widget>[
@@ -218,13 +224,13 @@ class _InformationScreenState extends State<InformationScreen> {
                             width: _wd,
                             count: latestStat.confirmed,
                             borderColor: Colors.blue.shade800.value,
-                            title: 'Confirmed Cases',
+                            title: 'Confirmed cases',
                           ),
                           StatisticCounter(
                             width: _wd,
                             count: latestStat.dead,
                             borderColor: Colors.red.shade900.value,
-                            title: 'Confirmed Deaths',
+                            title: 'Confirmed deaths',
                           ),
                         ],
                       ),
@@ -238,13 +244,13 @@ class _InformationScreenState extends State<InformationScreen> {
                             width: _wd,
                             count: latestStat.recovered,
                             borderColor: Colors.green.shade900.value,
-                            title: 'Recoverd Patients',
+                            title: 'Recovered patients',
                           ),
                           StatisticCounter(
                             width: _wd,
                             count: latestStat.suspected,
                             borderColor: Colors.orange.shade900.value,
-                            title: 'Suspected Cases',
+                            title: 'Suspected cases',
                           ),
                         ],
                       ),
@@ -252,22 +258,34 @@ class _InformationScreenState extends State<InformationScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 18,
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 7),
-                  child: Wrap(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Data is provided by: Ministry of Health and Social Services Namibia (MHSS)",
+                        "Data is provided by:",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: AppColors.secondaryText,
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Image.asset(
+                        'assets/images/sponsors/liberity.png',
+                        height: 50,
+                      ),
+//                      SvgPicture.asset(
+//                        'assets/images/sponsors/NamibiaEmblem-01.svg',
+//                        color: AppColors.secondaryText,
+//                        height: 70,
+//                      ),
                     ],
                   ),
                 ),

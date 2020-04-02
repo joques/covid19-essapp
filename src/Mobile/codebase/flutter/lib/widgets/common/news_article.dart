@@ -36,14 +36,17 @@ class _NewsArticleState extends State<NewsArticle> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.only(bottomRight: Radius.circular(16))),
+      color: Theme.of(context).dialogBackgroundColor,
+      clipBehavior: Clip.antiAlias,
       child: ListTile(
           contentPadding: EdgeInsets.all(20),
           title: AutoSizeText(
             widget.title,
             textAlign: TextAlign.left,
             maxLines: 3,
-            style:GoogleFonts.lora(
+            style: GoogleFonts.lora(
               color: AppColors.primaryText,
               letterSpacing: 2.0,
               fontWeight: FontWeight.w800,

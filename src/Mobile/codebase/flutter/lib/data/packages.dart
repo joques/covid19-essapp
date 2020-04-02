@@ -45,3 +45,4 @@ export 'package:covid_19_app/widgets/screens/faq_screen.dart';
 export 'package:covid_19_app/widgets/screens/information_screen.dart';
 export 'package:covid_19_app/widgets/screens/officialC&M_screen.dart';
 export 'package:covid_19_app/widgets/screens/statistics_screen.dart';
+export 'package:covid_19_app/widgets/screens/sponsors_screen.dart';

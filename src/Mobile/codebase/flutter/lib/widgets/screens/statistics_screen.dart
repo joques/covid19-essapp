@@ -1,4 +1,5 @@
 import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/map_of_namibia.dart';
@@ -65,86 +66,116 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         ),
         drawer: NavDrawer(),
         body: SingleChildScrollView(
+            child: Padding(
+          padding: const EdgeInsets.all(16),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                height: 20,
+                height: 50,
                 margin: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
                   top: 15,
                   bottom: 15,
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: Text(
-                        "View By Region",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
+                    Wrap(
+                      direction: Axis.horizontal,
+                      alignment: WrapAlignment.spaceAround,
+                      spacing: 100,
+                      runSpacing: 10,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Select a Region',
+                          style: Theme.of(context).textTheme.headline.copyWith(
+                              color: AppColors.primaryElement,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16),
                         ),
-                      ),
-                    ),
-                    Spacer(),
-                    Container(
-                      margin: EdgeInsets.only(top: 3),
-                      child: Text(
-                        "As of ${timeago.format(_regions[0].statistics.timestamp)}",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppColors.secondaryText,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                        ActionChip(
+                          onPressed: () => showDialog(
+                              context: context,
+                              builder: (
+                                BuildContext context,
+                              ) {
+                                return SimpleDialog(
+                                    // contentPadding: EdgeInsets.all(10),
+                                    title: const Text('Select a region'),
+                                    children:
+                                        List.generate(_regions.length, (index) {
+                                      Region region = _regions[index];
+                                      return SimpleDialogOption(
+                                        onPressed: () {
+                                          setState(() {
+                                            selectedRegion = region;
+                                            _value = index.toString();
+                                            Navigator.pop(context);
+                                          });
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 8, bottom: 8),
+                                          child: Text(
+                                            region.name,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w900),
+                                          ),
+                                        ),
+                                      );
+                                    }));
+                              }),
+                          avatar: Icon(Icons.arrow_drop_down),
+                          label: Text('${selectedRegion.name}'),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
               ), // Region Heading
-              ActionChip(
-                onPressed: () => showDialog(
-                    context: context,
-                    builder: (
-                      BuildContext context,
-                    ) {
-                      return SimpleDialog(
-                          // contentPadding: EdgeInsets.all(10),
-                          title: const Text('Select a region'),
-                          children: List.generate(_regions.length, (index) {
-                            Region region = _regions[index];
-                            return SimpleDialogOption(
-                              onPressed: () {
-                                setState(() {
-                                  selectedRegion = region;
-                                  _value = index.toString();
-                                  Navigator.pop(context);
-                                });
-                              },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, bottom: 8),
-                                child: Text(
-                                  region.name,
-                                  style: TextStyle(fontWeight: FontWeight.w900),
-                                ),
-                              ),
-                            );
-                          }));
-                    }),
-                avatar: Icon(Icons.arrow_drop_down),
-                label: Text('${selectedRegion.name}'),
-              ),
               NamibianMap(
                 value: _value.toString(),
                 selectedColor: AppColors.primaryText,
                 baseColor: AppColors.secondaryBackground,
 //                zambeziColor: , optional customisation
               ), // Map
+              Divider(),
+              SizedBox(
+                height: 8,
+              ),
+              Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.spaceBetween,
+                spacing: 100,
+                runSpacing: 10,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Statistics',
+                    style: Theme.of(context).textTheme.headline.copyWith(
+                        color: AppColors.primaryElement,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16),
+                  ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: <Widget>[
+                      Icon(LineIcons.clock_o),
+                      Text(
+                        'Updated: ' +
+                            timeago.format(_regions[0].statistics.timestamp),
+                        style: Theme.of(context).textTheme.overline.copyWith(
+                            color: AppColors.secondaryText,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12),
+                      )
+                    ],
+                  )
+                ],
+              ),
               Container(
                 child: Column(
                   children: <Widget>[
@@ -158,13 +189,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                           width: _wd,
                           count: selectedRegion.statistics.confirmed,
                           borderColor: Colors.blue.shade800.value,
-                          title: 'Confirmed Cases',
+                          title: 'Confirmed cases',
                         ),
                         StatisticCounter(
                           width: _wd,
                           count: selectedRegion.statistics.dead,
                           borderColor: Colors.red.shade900.value,
-                          title: 'Confirmed Deaths',
+                          title: 'Confirmed deaths',
                         ),
                       ],
                     ),
@@ -178,23 +209,52 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                           width: _wd,
                           count: selectedRegion.statistics.recovered,
                           borderColor: Colors.green.shade900.value,
-                          title: 'Recoverd Patients',
+                          title: 'Recovered patients',
                         ),
                         StatisticCounter(
                           width: _wd,
                           count: selectedRegion.statistics.suspected,
                           borderColor: Colors.orange.shade900.value,
-                          title: 'Suspected Cases',
+                          title: 'Suspected cases',
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
                   ],
                 ),
-              ), // Statistics Data
-              Divider(),
+              ),
+              SizedBox(
+                height: 18,
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "Data is provided by:",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: AppColors.secondaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Image.asset(
+                      'assets/images/sponsors/liberity.png',
+                      height: 50,
+                    ),
+//                      SvgPicture.asset(
+//                        'assets/images/sponsors/NamibiaEmblem-01.svg',
+//                        color: AppColors.secondaryText,
+//                        height: 70,
+//                      ),
+                  ],
+                ),
+              ),
+
               Container(
                 height: 75, //TODO: Fix Overflow
                 margin: EdgeInsets.only(
@@ -256,6 +316,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               ), // Push Notifications Consent
             ],
           ),
-        ));
+        )));
   }
 }

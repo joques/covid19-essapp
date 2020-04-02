@@ -31,10 +31,6 @@ listener http:Listener apiListener2 = new (6549, config = {
 	tag: "v1.0"
 }
 
-//@docker:CopyFiles{
-//	files: [{sourceFile: "../../resources/cov19cert.p12", target: "/home/ballerina/security/cov19cert.p12"}]
-//}
-
 @http: ServiceConfig {
 	basePath: "/covid/v1/statistics",
 	cors: {

@@ -1,4 +1,5 @@
 import 'package:covid_19_app/data/packages.dart';
+import 'package:covid_19_app/data/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,14 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'COVID-19',
-      routes: <String, WidgetBuilder>{
-        '/symptoms': (BuildContext context) => SymptomsScreen(
-              title: 'Symptoms',
-            ),
-        '/preventions': (BuildContext context) => PrevetionsScreen(
-              title: 'Preventions',
-            ),
-      },
+      routes: routes,
       theme: ThemeData(
           //primarySwatch: AppColors.primaryElement,
           accentColor: AppColors.accentElement,

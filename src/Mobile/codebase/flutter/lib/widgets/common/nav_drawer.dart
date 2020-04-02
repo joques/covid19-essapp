@@ -18,30 +18,30 @@ class NavDrawer extends StatelessWidget {
                     fit: BoxFit.fitHeight,
                     image: AssetImage('assets/images/logo.jpeg'))),
           ),
-          ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
-            onTap: () => {},
-          ),
+//          ListTile(
+//            leading: Icon(Icons.input),
+//            title: Text('Welcome'),
+//            onTap: () => {},
+//          ),
+//          ListTile(
+//            leading: Icon(Icons.verified_user),
+//            title: Text('Profile'),
+//            onTap: () => {},
+//          ),
+//          ListTile(
+//            leading: Icon(Icons.settings),
+//            title: Text('Settings'),
+//            onTap: () => {},
+//          ),
+//          ListTile(
+//            leading: Icon(Icons.border_color),
+//            title: Text('Feedback'),
+//            onTap: () => {},
+//          ),
           ListTile(
             leading: Icon(Icons.card_membership),
             title: Text('Sponsors'),
-            onTap: () => {},
+            onTap: () => Navigator.of(context).pushNamed('/sponsors'),
           ),
         ],
       ),

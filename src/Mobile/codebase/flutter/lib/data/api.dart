@@ -79,27 +79,17 @@ class API {
   /// Get testing statistics - latest
   Future<Statistic> getLatestStatistics() async {
     Statistic stat;
-    var _stat;
     try {
-      HttpClient client = HttpClient()
-        ..badCertificateCallback =
-            ((X509Certificate cert, String host, int port) => true);
       final url = (_baseUrl + API_STAT_LATEST)
           .replaceAll('{port}', API_PORTS['stats'].toString());
-      // Make the call
-      var request = await client.getUrl(Uri.parse(url));
-      var response = await request.close();
-      if (response.statusCode == HttpStatus.OK) {
-        var res = await response.transform(utf8.decoder).join();
-        // Decode the json response
-        var data = json.decode(res);
-        // Get the result list
-        stat = Statistic.map(data);
-        // Print the results.
-        debugPrint("Data=>" + stat.toString());
-      } else {
-        print("Failed http call.");
-      }
+      final res = await http.get(url);
+      print('getting stats from: ' + url);
+
+      final _stat = json.decode(res.body);
+      stat = Statistic.map(_stat);
+      // } else {
+      //   print("Failed http call.");
+      // }
     } catch (err) {
       debugPrint(err.toString());
     }

@@ -327,7 +327,7 @@ class _NamibianMapState extends State<NamibianMap> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.only(left: 157, top: 8),
+                    margin: EdgeInsets.only(left: 160, top: 6),
                     width: 80,
                     height: 16,
                     child: SvgPicture.asset(
