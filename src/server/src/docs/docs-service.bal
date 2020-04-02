@@ -126,6 +126,9 @@ service documents on apilistener4 {
 					}
 				}
 				
+				io:println(exDocID);
+				io:println(finalUrl);
+				
 				var exDocTitle = singleDocuItem.title;
 				if (exDocTitle is string) {
 					finalTitle = exDocTitle;
