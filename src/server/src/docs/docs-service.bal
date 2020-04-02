@@ -97,7 +97,8 @@ service documents on apilistener4 {
 		path: "/mobile/description"
 	}
 	resource function getAllMetadataForMobile(http:Caller caller, http:Request docReq){
-		// local mapping between document id and external url
+		io:println("showing the content of docURLs...");
+		io:println(docURLs);
         
 		http:Response allMetaResp = new;
 		
