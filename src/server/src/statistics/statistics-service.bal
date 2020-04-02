@@ -186,7 +186,6 @@ function pullRegionalStatistics() returns map<json> {
 }
 
 
-
 function processLatestStat(json[] allData) returns json {
 	time:TimeZone noZoneValue = {id: ""};
 	time:Time theLatestTime = time:currentTime();
