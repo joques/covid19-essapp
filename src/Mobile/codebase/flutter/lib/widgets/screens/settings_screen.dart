@@ -64,6 +64,50 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onTap: () => Navigator.of(context).pushNamed('/profile'),
               ), //TODO: Profile Feature
               ListTile(
+                leading: Icon(LineIcons.info_circle),
+                trailing: Icon(Icons.arrow_forward_ios),
+                subtitle: Text(
+                  "Coming Soon",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontSize: 13,
+                  ),
+                ),
+                title: Text(
+                  'About Us',
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pushNamed('/feedback'),
+              ), //TODO: About Us Feature
+              ListTile(
+                leading: Icon(LineIcons.pencil_square),
+                trailing: Icon(Icons.arrow_forward_ios),
+                subtitle: Text(
+                  "Coming Soon",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontSize: 13,
+                  ),
+                ),
+                title: Text(
+                  'Privacy Policy',
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pushNamed('/feedback'),
+              ), //TODO: Private Policy Feature
+              ListTile(
                 leading: Icon(LineIcons.comment),
                 trailing: Icon(Icons.arrow_forward_ios),
                 subtitle: Text(

@@ -97,6 +97,43 @@ class API {
     return stat;
   }
 
+/// Get national and regional statistics - latest
+  Future<List<Region>> getAggregateStatistics() async {
+    List<Region> statList = new List();
+    try {
+      final url = (_baseUrl + API_STAT_AGG)
+          .replaceAll('{port}', API_PORTS['stats'].toString());
+      final res = await http.get(url);
+      print('getting stats from: ' + url);
+
+      final jsonAll = json.decode(res.body);
+      statList = getRegionalData();
+      for (var reg in statList) {
+        var id = REGION_IDS[reg.name];
+        if( id != 'all' ){
+          debugPrint(reg.name+"=>"+jsonAll['regions'][id].toString());
+          reg.statistics = Statistic.map(jsonAll['regions'][id]);
+        }else{
+          debugPrint(reg.name+"=>"+Statistic.map(jsonAll['national']).toString());
+          reg.statistics = Statistic.map(jsonAll['national']);
+        }
+      }
+      //final list = data.map((json) => Statistic.map(json)).toList();
+    
+      //debugPrint("ALL=>"+statList[1].suspected.toString());
+      //final _stat = json.decode(res.body);
+      
+      //stat = Statistic.map(_stat.regions);
+
+      // } else {
+      //   print("Failed http call.");
+      // }
+    } catch (err) {
+      debugPrint(err.toString());
+    }
+
+    return statList;
+  }
   /// Get statistics per regional stats latest
   Future<Statistic> getRegionalStatistics(String region) async {
     Statistic stat;
@@ -166,15 +203,15 @@ class API {
       ),
     ];
 
-    regions.forEach((reg) => {
-          getRegionalStatistics(reg.name).then((value) => {
-                //debugPrint(value.confirmed.toString()),
-                reg.statistics = value,
-              })
-        });
-    getLatestStatistics().then((value) => {
-          regions[0].statistics = value,
-        });
+    // regions.forEach((reg) => {
+    //       getRegionalStatistics(reg.name).then((value) => {
+    //             //debugPrint(value.confirmed.toString()),
+    //             reg.statistics = value,
+    //           })
+    //     });
+    // getLatestStatistics().then((value) => {
+    //       regions[0].statistics = value,
+    //     });
 
     regions.forEach((reg) => reg.statistics = Statistic(
         timestamp: DateTime.now(),
