@@ -1,10 +1,4 @@
-import 'dart:async';
-
-import 'package:covid_19_app/data/api.dart';
-import 'package:covid_19_app/models/centre.dart';
-import 'package:covid_19_app/widgets/common/nav_drawer.dart';
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:covid_19_app/data/packages.dart';
 
 class CentresScreen extends StatefulWidget {
   final String title;
@@ -68,17 +62,98 @@ class _CentresScreenState extends State<CentresScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
-      drawer: NavDrawer(),
-      body: GoogleMap(
-        initialCameraPosition: _namibia,
-        onMapCreated: _onMapCreated,
-        mapType: MapType.normal,
-        markers: markers,
-      ),
-    );
+        appBar: AppBar(
+          title: Text(widget.title),
+          centerTitle: true,
+        ),
+//      drawer: NavDrawer(),
+        body: Padding(
+          padding: EdgeInsets.all(
+            15.0,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: GoogleMap(
+                    initialCameraPosition: _namibia,
+                    onMapCreated: _onMapCreated,
+                    mapType: MapType.normal,
+                    markers: markers,
+                    mapToolbarEnabled: true,
+                    myLocationButtonEnabled: true,
+                  ),
+                  height: 300,
+                ),
+                Divider(),
+                Container(
+                  margin: EdgeInsets.all(
+                    4.0,
+                  ),
+                  child: Text(
+                    'List of centres',
+                    style: Theme.of(context).textTheme.headline.copyWith(
+                        color: AppColors.primaryElement,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16),
+                  ),
+                ),
+                Container(
+                  height: 500,
+                  child: ListView.builder(
+                    itemCount: _centres.length,
+                    itemBuilder: (BuildContext ctxt, int index) {
+                      return Card(
+                        shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(16))),
+                        color: Theme.of(context).dialogBackgroundColor,
+                        clipBehavior: Clip.antiAlias,
+                        child: Padding(
+                          padding: EdgeInsets.all(
+                            15.0,
+                          ),
+                          child: ListTile(
+                            isThreeLine: true,
+                            title: Container(
+                              margin: EdgeInsets.only(bottom: 5.0),
+                              child: AutoSizeText(
+                                _centres[index].name,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline
+                                    .copyWith(
+                                      color: AppColors.primaryElement,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 18,
+                                    ),
+                              ),
+                            ),
+                            subtitle: AutoSizeText(
+                              _centres[index].about,
+                              softWrap: true,
+                              maxLines: 5,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context).textTheme.body1.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    color: AppColors.secondaryText,
+                                  ),
+                            ),
+                            leading: Icon(
+                              LineIcons.hospital_o,
+                              size: 40.0,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

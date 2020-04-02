@@ -14,9 +14,6 @@ class _MainPageState extends State<MainPage> {
     InformationScreen(
       title: 'General Information',
     ),
-    CentresScreen(
-      title: 'Testing Centres',
-    ),
     StatisticsScreen(
       title: 'Statistics',
     ),
@@ -25,19 +22,22 @@ class _MainPageState extends State<MainPage> {
     ),
     FAQScreen(
       title: 'FAQ',
+    ),
+    SettingsScreen(
+      title: 'Settings',
     )
   ];
   List<BottomNavigationBarItem> _navItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
         icon: Icon(LineIcons.home), title: Text('Information')),
     BottomNavigationBarItem(
-        icon: Icon(LineIcons.hospital_o), title: Text('Centres')),
-    BottomNavigationBarItem(
         icon: Icon(LineIcons.pie_chart), title: Text('Statistics')),
     BottomNavigationBarItem(
         icon: Icon(LineIcons.info_circle), title: Text('News')),
     BottomNavigationBarItem(
         icon: Icon(LineIcons.question_circle), title: Text('FAQ')),
+    BottomNavigationBarItem(
+        icon: Icon(LineIcons.gear), title: Text('Settings')),
   ];
 
   _onTapped(index) {

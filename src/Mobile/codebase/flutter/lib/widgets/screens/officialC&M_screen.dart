@@ -17,26 +17,28 @@ class _OfficialCMScreenState extends State<OfficalCMScreen> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-            bottom: TabBar(
-              tabs: <Widget>[
-                Tab(text: 'News'),
-                Tab(text: 'Circulars and Memos'),
-              ],
+            appBar: AppBar(
+              title: Text(widget.title),
+//            bottom: TabBar(
+//              tabs: <Widget>[
+//                Tab(text: 'News'),
+//                Tab(text: 'Circulars and Memos'),
+//              ],
+//            ),
             ),
-          ),
-          drawer: NavDrawer(),
-          body: TabBarView(
-            children: [
-              NewsScreen(
-                title: 'News',
-              ),
-              CircularsAndMemosScreen(
-                title: 'Circulars & Memos',
-              )
-            ],
-          ),
-        ));
+//          drawer: NavDrawer(),
+//          body: TabBarView(
+//            children: [
+//              NewsScreen(
+//                title: 'News',
+//              ),
+//              CircularsAndMemosScreen(
+//                title: 'Circulars & Memos',
+//              )
+//            ],
+//          ),
+            body: CircularsAndMemosScreen(
+              title: 'Circulars & Memos',
+            )));
   }
 }

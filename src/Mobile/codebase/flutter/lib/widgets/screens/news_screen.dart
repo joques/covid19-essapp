@@ -23,6 +23,7 @@ class _NewsScreenState extends State<NewsScreen> {
     return Scaffold(
         body: WebView(
       initialUrl: "https://live.namibian.com.na",
+      gestureNavigationEnabled: true,
       javascriptMode: JavascriptMode.unrestricted,
       onWebViewCreated: (WebViewController webViewController) {
         _controller.complete(webViewController);
