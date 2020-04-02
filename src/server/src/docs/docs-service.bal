@@ -122,8 +122,9 @@ service documents on apilistener4 {
 				if (exDocID is string) {
 					finalDocId = exDocID;
 					var docUrl = docURLs.exDocID;
-					if (docUrl is string) {
-						finalUrl = docUrl;
+					io:println("this is docURL coming from json ", docUrl);
+					if (docUrl is json) {
+						finalUrl = docUrl.toJsonString();
 					}
 				}
 				
