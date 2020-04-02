@@ -50,7 +50,7 @@ class _FAQScreenState extends State<FAQScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavDrawer(),
+//      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
@@ -87,7 +87,7 @@ class _FAQScreenState extends State<FAQScreen> {
                                   scrollOnCollapse: false,
                                   child: ExpandablePanel(
                                     theme: const ExpandableThemeData(
-                                      iconColor:  AppColors.primaryElement,
+                                      iconColor: AppColors.primaryElement,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.center,
                                       tapBodyToCollapse: true,
@@ -100,8 +100,10 @@ class _FAQScreenState extends State<FAQScreen> {
                                               .textTheme
                                               .headline
                                               .copyWith(
-                                                  color:  AppColors.primaryElement,
-                                                  fontWeight: FontWeight.w700),
+                                                color: AppColors.primaryElement,
+                                                fontWeight: FontWeight.w800,
+                                                fontSize: 18,
+                                              ),
                                         )),
                                     collapsed: Text(
                                       snapshot.data[index].answer,
@@ -112,9 +114,10 @@ class _FAQScreenState extends State<FAQScreen> {
                                           .textTheme
                                           .body1
                                           .copyWith(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 18,
-                                              color:  AppColors.primaryElement),
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 16,
+                                            color: AppColors.secondaryText,
+                                          ),
                                     ),
                                     expanded: Padding(
                                         padding: EdgeInsets.only(
@@ -129,7 +132,8 @@ class _FAQScreenState extends State<FAQScreen> {
                                               .copyWith(
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 18,
-                                                  color:  AppColors.primaryElement),
+                                                  color:
+                                                      AppColors.primaryElement),
                                         )),
                                     builder: (_, collapsed, expanded) {
                                       return Padding(

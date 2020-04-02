@@ -3,7 +3,7 @@ import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
-import 'package:covid_19_app/widgets/common/nav_drawer.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
@@ -74,6 +74,8 @@ class _InformationScreenState extends State<InformationScreen> {
   Widget build(BuildContext context) {
     double _wd = (MediaQuery.of(context).size.width / 2) - 45;
 
+    final String tollFreeNumber = "tel://+264800 100 100";
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -81,7 +83,12 @@ class _InformationScreenState extends State<InformationScreen> {
           ),
           centerTitle: true,
         ),
-        drawer: NavDrawer(),
+//        floatingActionButton: FloatingActionButton(
+//          onPressed: () => UrlLauncher.launch(
+//              '$tollFreeNumber'), //TODO: import urlLauncher to Make a call,
+//          child: Icon(LineIcons.phone),
+//        ),
+//        drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -146,37 +153,70 @@ class _InformationScreenState extends State<InformationScreen> {
                 SizedBox(
                   height: 16,
                 ),
+                RaisedButton.icon(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/centres');
+                  },
+                  color: AppColors.primaryElement,
+                  shape: BeveledRectangleBorder(
+                      borderRadius:
+                          BorderRadius.only(bottomRight: Radius.circular(16))),
+                  label: Text(
+                    'Testing Centres'.toUpperCase(),
+                    style: TextStyle(color: AppColors.accentElement),
+                  ),
+                  icon: Padding(
+                    padding: EdgeInsets.all(
+                      4.0,
+                    ),
+                    child: Icon(
+                      LineIcons.map_o,
+                      color: AppColors.accentElement,
+                    ),
+                  ),
+                ),
                 ButtonBar(
                   alignment: MainAxisAlignment.spaceBetween,
                   buttonMinWidth: (MediaQuery.of(context).size.width / 2) - 32,
                   children: <Widget>[
-                    RaisedButton(
-                      color: Theme.of(context).primaryColor,
+                    RaisedButton.icon(
+                      color: AppColors.secondaryText,
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(16))),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/symptoms');
                       },
-                      child: Text('Symptoms'.toUpperCase()),
+                      label: Text(
+                        'Symptoms'.toUpperCase(),
+                      ),
+                      icon: Padding(
+                        padding: EdgeInsets.all(
+                          4.0,
+                        ),
+                        child: Icon(LineIcons.info),
+                      ),
                     ),
-                    RaisedButton(
+                    RaisedButton.icon(
                       onPressed: () {
                         Navigator.of(context).pushNamed('/preventions');
                       },
-                      color: AppColors.ternaryBackground,
+                      color: AppColors.secondaryBackground,
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(16))),
-                      child: Text(
+                      icon: Padding(
+                        padding: EdgeInsets.all(
+                          4.0,
+                        ),
+                        child: Icon(LineIcons.info),
+                      ),
+                      label: Text(
                         'Prevention'.toUpperCase(),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: AppColors.primaryText),
                       ),
                     ),
                   ],
-                ),
-                SizedBox(
-                  height: 8,
                 ),
                 Divider(),
                 SizedBox(

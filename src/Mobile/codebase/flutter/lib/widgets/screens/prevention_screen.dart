@@ -1,3 +1,4 @@
+import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +39,8 @@ class _PreventionsScreenState extends State<PreventionsScreen> {
       ),
       body: SingleChildScrollView(
         child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.start,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.center,
           children: ListTile.divideTiles(
             context: context,
             tiles: <Widget>[
@@ -61,6 +63,9 @@ class _PreventionsScreenState extends State<PreventionsScreen> {
               ),
               ListTile(
                 isThreeLine: true,
+                contentPadding: EdgeInsets.all(
+                  15.0,
+                ),
                 leading: SvgPicture.asset(
                   "assets/images/preventIcons/vaccine.svg",
                   color: AppColors.primaryElement,
@@ -100,6 +105,9 @@ class _PreventionsScreenState extends State<PreventionsScreen> {
                         fontSize: 18,
                       )),
                   isThreeLine: true,
+                  contentPadding: EdgeInsets.all(
+                    15.0,
+                  ),
                   leading: SvgPicture.asset(
                     "assets/images/preventIcons/distancing.svg",
                     color: AppColors.primaryElement,
@@ -124,6 +132,9 @@ class _PreventionsScreenState extends State<PreventionsScreen> {
                       fontWeight: FontWeight.w800,
                       fontSize: 18,
                     ),
+                  ),
+                  contentPadding: EdgeInsets.all(
+                    15.0,
                   ),
                   leading: SvgPicture.asset(
                     "assets/images/preventIcons/cleaning.svg",
@@ -150,6 +161,9 @@ class _PreventionsScreenState extends State<PreventionsScreen> {
                       fontSize: 18,
                     ),
                   ),
+                  contentPadding: EdgeInsets.all(
+                    15.0,
+                  ),
                   leading: SvgPicture.asset(
                     "assets/images/preventIcons/hygiene.svg",
                     color: AppColors.primaryElement,
@@ -174,6 +188,9 @@ class _PreventionsScreenState extends State<PreventionsScreen> {
                       fontWeight: FontWeight.w800,
                       fontSize: 18,
                     ),
+                  ),
+                  contentPadding: EdgeInsets.all(
+                    15.0,
                   ),
                   leading: SvgPicture.asset(
                     "assets/images/preventIcons/face.svg",

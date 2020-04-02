@@ -7,7 +7,7 @@ final routes = {
       PreventionsScreen(title: 'Preventions'),
   '/sponsors': (BuildContext context) =>
       SponsorsScreen(title: 'Sponsors and Partners'),
-//  '/settings': (BuildContext context) => SettingsScreen(title: 'Settings'),
+  '/centres': (BuildContext context) => CentresScreen(title: 'Testing Centres'),
 //  '/feedback': (BuildContext context) => FeedbackScreen(title: 'Feedback'),
 //  '/privacy': (BuildContext context) => PrivacyScreen(title: 'Privacy'),
 };
