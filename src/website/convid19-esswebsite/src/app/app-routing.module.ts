@@ -22,6 +22,7 @@ import { CoronaGeneralInfoComponent } from './components/corona-general-info/cor
 import {TestingCentresComponent} from './components/testing-centres/testing-centres.component';
 import { CommingComponent } from './components/comming/comming.component';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
+import { TechResponseComponent } from './components/tech-response/tech-response.component';
 
 const routes: Routes = [
 
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'app-corona-general-info', component: CoronaGeneralInfoComponent },
   { path: 'app-testing-centres', component: TestingCentresComponent },
   { path: 'app-latest-news', component: LatestNewsComponent},
+  { path: 'app-tech-response', component: TechResponseComponent},
 ];
 
 @NgModule({
