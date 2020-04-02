@@ -5,6 +5,30 @@ import ballerina/mongodb;
 import ballerina/docker;
 import ballerina/file;
 
+final map<string> docURLs = {
+	offdoc001: "https://bit.ly/2WTtLry", 
+	offdoc002: "https://bit.ly/2UsxNFr", 
+	offdoc003: "shortURL.at/emFOP", 
+	offdoc004: "https://bit.ly/3bBkHf0", 
+	offdoc005: "https://bit.ly/2UFK08M", 
+	offdoc006: "https://bit.ly/2Jl4LkX", 
+	offdoc007: "https://bit.ly/3at2bFr", 
+	offdoc008: "https://bit.ly/2UqmjSQ", 
+	offdoc009: "https://bit.ly/3aw8VT4", 
+	offdoc010: "https://bit.ly/3aw8VT4", 
+	offdoc011: "https://bit.ly/3aw8VT4", 
+	offdoc012: "https://bit.ly/3aw8VT4", 
+	offdoc013: "https://bit.ly/3aw8VT4", 
+	offdoc014: "https://bit.ly/3aw8VT4", 
+	offdoc015: "https://bit.ly/3dApPSt", 
+	offdoc016: "https://bit.ly/3bC0Oo4", 
+	offdoc017: "https://bit.ly/3dDOBB3", 
+	offdoc018: "https://bit.ly/3bDOX98", 
+	offdoc019: "https://bit.ly/2URpQJc", 
+	offdoc020: "https://bit.ly/3aoM1wG", 
+	offdoc021: "https://bit.ly/39r5T0T"
+};
+
 mongodb:ClientEndpointConfig  mongoConfig = {
 		host: "172.17.0.1:27017",
         dbName: "covid-nam",
@@ -95,8 +119,6 @@ service documents on apilistener4 {
 		path: "/mobile/description"
 	}
 	resource function getAllMetadataForMobile(http:Caller caller, http:Request docReq){
-		// local mapping between document id and external url
-        json docURLs = {"offdoc001": "shortURL.at/emFOP", "offdoc002": "shortURL.at/emFOP", "offdoc003": "shortURL.at/emFOP", "offdoc004": "shortURL.at/emFOP", "offdoc005": "shortURL.at/emFOP"};
 		http:Response allMetaResp = new;
 		
 		//pull the official document metadata from the data store
@@ -118,9 +140,9 @@ service documents on apilistener4 {
 				var exDocID = singleDocuItem.docid;
 				if (exDocID is string) {
 					finalDocId = exDocID;
-					var docUrl = docURLs.exDocID;
+					var docUrl = docURLs[exDocID];
 					if (docUrl is string) {
-						finalUrl = docUrl;
+						finalUrl = docUrl.toJsonString();
 					}
 				}
 				

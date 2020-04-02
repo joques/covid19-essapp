@@ -6,6 +6,8 @@ import ballerina/time;
 import ballerina/lang.'int as langint;
 import ballerina/docker;
 
+final string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
+
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "172.17.0.1:27017",
 	dbName: "covid-nam",
@@ -52,7 +54,7 @@ service statistics on apiListener2 {
 		
 		// fill the repsonse payload with the new content
 		if (allData is error) {
-			log:printError("An error occurred while pulling the latest statistics", err=allData);
+			log:printError("An error occurred while pulling the statistics", err=allData);
 		} else {
 			json respContent = processLatestStat(allData);
 
@@ -122,20 +124,8 @@ service statistics on apiListener2 {
 		path: "/regions"
 	}
 	resource function getLatestAllLatestRegional(http:Caller caller, http:Request hReq) {
-		string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
+		map<json> regionStats = pullRegionalStatistics();
 		
-		map<json> regionStats = {};
-		
-		foreach var regionid in regionids {
-			var regStats = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
-			if (regStats is error) {
-				log:printError(regStats.reason(), regStats);
-				io:println("There was an error pulling stats for region ", regionid);
-			} else {
-				json curRegStat = processLatestStat(regStats);
-				regionStats[regionid] = curRegStat;
-			}
-		}
 		io:println("showing the result...");
 		io:println(regionStats);
 		
@@ -147,7 +137,54 @@ service statistics on apiListener2 {
 			log:printError(respResult.reason(), respResult);
 		}
 	}
+	
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/aggregate"
+	}
+	resource function getLatestAggregate(http:Caller caller, http:Request hReq) {
+		map<json> regionStats = pullRegionalStatistics();
+		http:Response aggResp = new;
+		
+		var natData = dbClient->find("covidstats", ({level: "national"}));
+		if (natData is error) {
+			log:printError("An error occurred while pulling the national statistics", err=natData);
+		} else {
+			json natStats = processLatestStat(natData);
+			map<json> aggStats = {};
+			aggStats["national"] = natStats;
+			aggStats["regions"] = regionStats;
+			
+			aggResp.setJsonPayload(aggStats);
+			
+			var respResult = caller -> respond(aggResp);
+			
+			if (respResult is error) {
+				io:println("an error occurred while sending the aggregate stats response");
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
 }
+
+
+function pullRegionalStatistics() returns map<json> {
+	map<json> regionStats = {};
+		
+	foreach var regionid in regionids {
+		var regStats = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
+		if (regStats is error) {
+			log:printError(regStats.reason(), regStats);
+			io:println("There was an error pulling stats for region ", regionid);
+		} else {
+			json curRegStat = processLatestStat(regStats);
+			regionStats[regionid] = curRegStat;
+		}
+	}
+	
+	return regionStats;
+}
+
 
 function processLatestStat(json[] allData) returns json {
 	time:TimeZone noZoneValue = {id: ""};

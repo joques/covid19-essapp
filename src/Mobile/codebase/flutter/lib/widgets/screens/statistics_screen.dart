@@ -19,12 +19,6 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
-  //Dummy Date Now
-  String refreshDate = DateTime.now().toUtc().toString();
-
-  //Push Notification Consent
-  bool consent = false;
-
   //View By Area Drop Down Value
   var _value = '0';
 
@@ -64,7 +58,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           ),
           centerTitle: true,
         ),
-        drawer: NavDrawer(),
+//        drawer: NavDrawer(),
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.all(16),
@@ -85,9 +79,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     Wrap(
                       direction: Axis.horizontal,
                       alignment: WrapAlignment.spaceAround,
-                      spacing: 100,
+                      spacing: 50,
                       runSpacing: 10,
-                      crossAxisAlignment: WrapCrossAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.start,
                       children: <Widget>[
                         Text(
                           'Select a Region',
@@ -96,46 +90,45 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               fontWeight: FontWeight.w700,
                               fontSize: 16),
                         ),
-                        ActionChip(
-                          onPressed: () => showDialog(
-                              context: context,
-                              builder: (
-                                BuildContext context,
-                              ) {
-                                return SimpleDialog(
-                                    // contentPadding: EdgeInsets.all(10),
-                                    title: const Text('Select a region'),
-                                    children:
-                                        List.generate(_regions.length, (index) {
-                                      Region region = _regions[index];
-                                      return SimpleDialogOption(
-                                        onPressed: () {
-                                          setState(() {
-                                            selectedRegion = region;
-                                            _value = index.toString();
-                                            Navigator.pop(context);
-                                          });
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 8, bottom: 8),
-                                          child: Text(
-                                            region.name,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w900),
-                                          ),
-                                        ),
-                                      );
-                                    }));
-                              }),
-                          avatar: Icon(Icons.arrow_drop_down),
-                          label: Text('${selectedRegion.name}'),
-                        ),
                       ],
                     ),
                   ],
                 ),
               ), // Region Heading
+
+              ActionChip(
+                onPressed: () => showDialog(
+                    context: context,
+                    builder: (
+                      BuildContext context,
+                    ) {
+                      return SimpleDialog(
+                          // contentPadding: EdgeInsets.all(10),
+                          title: const Text('Select a region'),
+                          children: List.generate(_regions.length, (index) {
+                            Region region = _regions[index];
+                            return SimpleDialogOption(
+                              onPressed: () {
+                                setState(() {
+                                  selectedRegion = region;
+                                  _value = index.toString();
+                                  Navigator.pop(context);
+                                });
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 8, bottom: 8),
+                                child: Text(
+                                  region.name,
+                                  style: TextStyle(fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            );
+                          }));
+                    }),
+                avatar: Icon(Icons.arrow_drop_down),
+                label: Text('${selectedRegion.name}'),
+              ),
               NamibianMap(
                 value: _value.toString(),
                 selectedColor: AppColors.primaryText,
@@ -254,66 +247,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   ],
                 ),
               ),
-
-              Container(
-                height: 75, //TODO: Fix Overflow
-                margin: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 15,
-                  bottom: 15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Container(
-                      height: 40,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Push Notifications",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Spacer(),
-                          Container(
-                            width: 52,
-                            height: 45,
-                            child: Switch(
-                              value: consent,
-                              inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
-                              onChanged: (value) {
-                                setState(() {
-                                  consent = value;
-                                  print(consent);
-                                });
-                              },
-                              activeColor: AppColors.primaryElement,
-                              activeTrackColor: AppColors.primaryElement,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Spacer(),
-                    Container(
-                      margin: EdgeInsets.only(right: 66),
-                      child: Text(
-                        "By Enabling this option you will receive the latest notifications as they happen.",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: AppColors.secondaryText,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ), // Push Notifications Consent
             ],
           ),
         )));

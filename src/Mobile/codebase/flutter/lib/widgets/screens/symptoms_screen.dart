@@ -36,141 +36,132 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: <Widget>[
-          //TODO: Add Sliding Counsel
-          Container(
-            height: 200,
-            color: AppColors.accentElement,
-          ),
-          Divider(),
-          Wrap(
-            runSpacing: 25.0,
-            children: [
-              CheckboxListTile(
-                value: symptom1,
-                onChanged: _symptom1Changed,
-                title: Text(
-                  "Do You Have A Dry cough?",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
+      body: SingleChildScrollView(
+        child: Wrap(
+          runSpacing: 30,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.center,
+          children: <Widget>[
+            Divider(),
+            Wrap(
+              runSpacing: 25,
+              children: <Widget>[
+                CheckboxListTile(
+                  value: symptom1,
+                  onChanged: _symptom1Changed,
+                  title: Text(
+                    "Do You Have A Dry cough?",
+                    style: TextStyle(
+                      color: AppColors.primaryText,
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/mask-wearing.svg",
-                  color: AppColors.primaryElement,
-                  fit: BoxFit.none,
-                ),
-                controlAffinity: ListTileControlAffinity.trailing,
-                activeColor: AppColors.primaryElement,
-              ), // Symptom 1
-              CheckboxListTile(
-                value: symptom2,
-                onChanged: _symptom2Changed,
-                title: Text(
-                  "Is Your Temperature 38ºC and Above",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "2",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
+                  secondary: SvgPicture.asset(
+                    "assets/images/symptomsIcons/mask-wearing.svg",
+                    color: AppColors.primaryElement,
+                    fit: BoxFit.contain,
                   ),
-                ),
-                secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/headache.svg",
-                  color: AppColors.primaryElement,
-                  fit: BoxFit.none,
-                ),
-                controlAffinity: ListTileControlAffinity.trailing,
-                activeColor: AppColors.primaryElement,
-              ), // Symptom 2
-              CheckboxListTile(
-                value: symptom3,
-                onChanged: _symptom3Changed,
-                title: Text(
-                  "Do you have A Difficulty Breathing?",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  activeColor: AppColors.primaryElement,
+                ), // Symptom 1
+                CheckboxListTile(
+                  value: symptom2,
+                  onChanged: _symptom2Changed,
+                  title: Text(
+                    "Is Your Temperature 38ºC and Above",
+                    style: TextStyle(
+                      color: AppColors.primaryText,
+                      fontFamily: "2",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                secondary: SvgPicture.asset(
-                  "assets/images/symptomsIcons/pneumonia-lung.svg",
-                  color: AppColors.primaryElement,
-                  fit: BoxFit.none,
-                ),
-                controlAffinity: ListTileControlAffinity.trailing,
-                activeColor: AppColors.primaryElement,
-              ), // Symptom 3
-            ],
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Expanded(
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              children: [
-                symptom1 &&
-                        symptom2 &&
-                        symptom3 ==
-                            true //if All Three Symptoms are checked show the call button.
-                    ? Wrap(
-                        alignment: WrapAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: 350,
-                            height: 50,
-                            child: FlatButton(
-                              onPressed: () => UrlLauncher.launch(
-                                  '$tollFreeNumber'), //TODO: import urlLauncher to Make a call
-                              color: AppColors.primaryElement,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                              textColor: Color.fromARGB(255, 255, 255, 255),
-                              padding: EdgeInsets.all(15),
-                              child: Text(
-                                "Call Help Line".toUpperCase(),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 60,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 3, bottom: 3),
-                            height: 45,
-                            width: 320,
-                            child: Text(
-                              consentText,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: AppColors.secondaryText,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ), //Consent
-                        ],
-                      )
-                    : Container(),
+                  secondary: SvgPicture.asset(
+                    "assets/images/symptomsIcons/headache.svg",
+                    color: AppColors.primaryElement,
+                    fit: BoxFit.contain,
+                  ),
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  activeColor: AppColors.primaryElement,
+                ), // Symptom 2
+                CheckboxListTile(
+                  value: symptom3,
+                  onChanged: _symptom3Changed,
+                  title: Text(
+                    "Do you have A Difficulty Breathing?",
+                    style: TextStyle(
+                      color: AppColors.primaryText,
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
+                  ),
+                  secondary: SvgPicture.asset(
+                    "assets/images/symptomsIcons/pneumonia-lung.svg",
+                    color: AppColors.primaryElement,
+                    fit: BoxFit.contain,
+                  ),
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  activeColor: AppColors.primaryElement,
+                ), // Symptom 3
               ],
             ),
-          ), // Symptom Consent
-        ],
+            SizedBox(
+              height: 25,
+            ),
+            symptom1 &&
+                    symptom2 &&
+                    symptom3 ==
+                        true //if All Three Symptoms are checked show the call button.
+                ? Column(
+                    children: <Widget>[
+                      Container(
+                        width: 350,
+                        height: 50,
+                        child: FlatButton(
+                          onPressed: () => UrlLauncher.launch(
+                              '$tollFreeNumber'), //TODO: import urlLauncher to Make a call
+                          color: AppColors.primaryElement,
+                          shape: BeveledRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(16))),
+                          textColor: Color.fromARGB(255, 255, 255, 255),
+                          padding: EdgeInsets.all(15),
+                          child: Text(
+                            "Call Help Line".toUpperCase(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 3, bottom: 3),
+                        height: 45,
+                        width: 320,
+                        child: Text(
+                          consentText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: AppColors.secondaryText,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ), //Consent
+                    ],
+                  )
+                : Container(),
+          ],
+        ),
       ),
     );
   }

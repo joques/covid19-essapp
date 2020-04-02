@@ -45,13 +45,12 @@ class _NewsArticleState extends State<NewsArticle> {
           title: AutoSizeText(
             widget.title,
             textAlign: TextAlign.left,
-            maxLines: 3,
-            style: GoogleFonts.lora(
-              color: AppColors.primaryText,
-              letterSpacing: 2.0,
-              fontWeight: FontWeight.w800,
-              fontSize: 16,
-            ),
+            maxLines: 2,
+            style: Theme.of(context).textTheme.headline.copyWith(
+                  color: AppColors.primaryElement,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 16,
+                ),
           ),
           trailing: Icon(Icons.arrow_forward_ios),
           subtitle: Container(

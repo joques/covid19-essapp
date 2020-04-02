@@ -33,12 +33,14 @@ export 'package:line_icons/line_icons.dart';
 export 'package:covid_19_app/widgets/common/map_of_namibia.dart';
 export 'package:covid_19_app/widgets/common/nav_drawer.dart';
 export 'package:covid_19_app/widgets/common/statistic_counter.dart';
+export 'package:covid_19_app/widgets/common/loading_faq.dart';
 
 // Screens
 export 'package:covid_19_app/widgets/screens/circulars_and_memos_screen.dart';
 export 'package:covid_19_app/widgets/screens/news_screen.dart';
 export 'package:covid_19_app/widgets/screens/main_page.dart';
 export 'package:covid_19_app/widgets/screens/prevention_screen.dart';
+export 'package:covid_19_app/widgets/screens/settings_screen.dart';
 export 'package:covid_19_app/widgets/screens/symptoms_screen.dart';
 export 'package:covid_19_app/widgets/screens/centres_screen.dart';
 export 'package:covid_19_app/widgets/screens/faq_screen.dart';
