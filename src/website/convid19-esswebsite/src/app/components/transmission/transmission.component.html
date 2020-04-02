@@ -5,23 +5,21 @@
     </div>
     <div style="padding: 13px;">
       <mat-card-header>
-        <mat-card-title >
-          <mat-list >
-            <mat-list-item >
-          <h1 matLine style="font-size:30px;"> How is the virus transmitted? </h1>
-        </mat-list-item></mat-list>
-          </mat-card-title>
-      </mat-card-header>
-      <mat-card>
-        <mat-card-content>
+        <mat-card-title>
           <mat-list>
-            <mat-list-item *ngFor="let transmission of Transmission;let i = index">
-              <mat-icon matListIcon>label_important</mat-icon>
-              <p matLine style="font-size:20px;word-wrap: break-word !important;white-space: pre-wrap !important;">
-                {{transmission}}</p>
-              <p matLine></p>
+            <mat-list-item>
+              <h1 matLine style="font-size:30px;"> How is the virus transmitted? </h1>
             </mat-list-item>
           </mat-list>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card *ngFor="let transmission of Transmission" style="margin-top:10px;">
+        <mat-card-content>
+          <p style="font-size:20px">
+            {{transmission }}
+          </p>
+
         </mat-card-content>
       </mat-card>
       <!-- <mat-card *ngFor="let transmission of Transmission" style="margin-top:10px;">

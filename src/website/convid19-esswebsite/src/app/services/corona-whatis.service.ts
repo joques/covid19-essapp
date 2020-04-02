@@ -9,18 +9,18 @@ import { map } from "rxjs/operators";
 })
 export class CoronaWhatisService {
 
-  private whatisApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/whatis';
-  private transmissionApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/transmission';
-  private symptomsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/symptoms';
-  private treatmentApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/treatment';
-  private measuresApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/measures';
-  private factsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/facts';
-  private tipsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/tips';
-  private faqsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6551/covid/v1/faq/all';
-  private circulars = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6552/covid/v1/docs/doc';
-  private newsApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6547/covid/v1/awareness/latest';
-  private centresApi = 'https://cors-anywhere.herokuapp.com/http://196.216.167.150:6550/covid/v1/centre/all';
-  private statisticsApi = 'https://196.216.167.150:6549/covid/v1/statistics/all';
+  private whatisApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/whatis';
+  private transmissionApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/transmission';
+  private symptomsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/symptoms';
+  private treatmentApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/treatment';
+  private measuresApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/measures';
+  private factsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/facts';
+  private tipsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/tips';
+  private faqsApi = 'https://covidservices.nust.na:6551/covid/v1/faq/all';
+  private circulars = 'https://covidservices.nust.na:6552/covid/v1/docs/doc';
+  private newsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/latest';
+  private centresApi = 'https://covidservices.nust.na:6550/covid/v1/centre/all';
+  private statisticsApi = 'https://covidservices.nust.na:6549/covid/v1/statistics/all';
   constructor(private client: HttpClient) {
 //     var handler = new ();
 // handler.ClientCertificateOptions = ClientCertificateOption.Manual;

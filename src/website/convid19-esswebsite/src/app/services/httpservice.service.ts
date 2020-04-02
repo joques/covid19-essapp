@@ -20,12 +20,12 @@ export class HttpserviceService {
 
 
   getCirculars() {
-    return this.http.get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6552/covid/v1/docs/description');
+    return this.http.get('https://covidservices.nust.na:6552/covid/v1/docs/description');
   }
 
   downloadCirculars(docid) {
     console.log(docid);
-    this.http.get('https://cors-anywhere.herokuapp.com/http://196.216.167.150:6552/covid/v1/docs/doc' + '/' + docid, { responseType: 'blob'}).subscribe(res => {
+    this.http.get('https://covidservices.nust.na:6552/covid/v1/docs/doc' + '/' + docid, { responseType: 'blob'}).subscribe(res => {
       window.open(window.URL.createObjectURL(res));
     });
   }

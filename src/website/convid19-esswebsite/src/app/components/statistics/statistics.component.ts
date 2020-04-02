@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from 'src/app/services/httpservice.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { localeData } from 'moment';
+import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 
 
 @Component({
@@ -10,11 +11,11 @@ import { localeData } from 'moment';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
-  suspectedCount:number = 0;
-  confirmedCount:number = 0;
-  deathCount:number = 0;
-  recoveredCount:number = 0;
-  updated:Date = new Date();
+  suspectedCount: number = 0;
+  confirmedCount: number = 0;
+  deathCount: number = 0;
+  recoveredCount: number = 0;
+  updated: Date = new Date();
 
   places = [
     {
@@ -54,88 +55,48 @@ export class StatisticsComponent implements OnInit {
     worldwide: 0
   };
 
-    recovered: string;
-    dead: string;
-    suspected: string;
-    confirmed: string;
-    worldwide: string;
+  recovered: string;
+  dead: string;
+  suspected: string;
+  confirmed: string;
+  worldwide: string;
 
   localData = JSON;
   localValue = [];
   dataString: string;
+  stat_data = [];
 
   constructor(
-    private service: HttpserviceService
+    private http: CoronaWhatisService
   ) { }
 
   ngOnInit(): void {
-    this.suspectedCount =0;
+    this.suspectedCount = 0;
     this.datenow = new Date().toLocaleDateString();
-    //if(this.localData['']
-    //this.startCounter();
-    // // get the data from the api
-    // this.service.getPeriodicStats()
-    //   .subscribe(res =>
-    //     res.forEach((data, i) => {
-    //       let date = `${new Date(data.date).getMonth()}/${new Date(data.date).getDate()}/${new Date(data.date).getFullYear()}`;
-    //       if (date === new Date().toLocaleDateString()) {
-    //         this.datenow = date;
-    //       }
 
-    //       let value = {
-    //         date: date,
-    //         recovered: data.recovered,
-    //         dead: data.dead,
-    //         suspected: data.suspected,
-    //         confirmed: data.confirmed,
-    //         worldwide: data.worldwide
-    //       }
+    console.log('We are here home 1mmmI ');
+    this.http.getStats().subscribe((data: []) => {
+      // this.http.getWhatIsInfo().subscribe((data) => {
+      console.log('We are here after request');
+      console.log(data);
 
-    //       //pushing values to the data array
-    //       this.selected = value;
+      this.stat_data = data;
+      console.log('Starts');
 
-    //       // summing up all the values
-    //       // let newval = {
-    //       //   recovered: +(this.data[i].recovered += this.data[i].recovered),
-    //       //   dead: +(this.data[i].dead += this.data[i].dead),
-    //       //   suspected: +(this.data[i].suspected += this.data[i].suspected),
-    //       //   confirmed: +(this.data[i].confirmed += this.data[i].confirmed),
-    //       //   worldwide: +(this.data[i].worldwide += this.data[i].worldwide)
-    //       // }
-    
-    //       // //assinging it to the selected object
-    //       // this.selected = newval;
-    //       //ends here
-    //     })
-    //   );
+      console.log('i am in home NEWWWWW');
 
-    // for (let i: number = 0; i < this.data.length; i++) {
-    //   let value = {
-    //     recovered: this.data[i].recovered += this.data[i].recovered,
-    //     dead: this.data[i].dead += this.data[i].dead,
-    //     suspected: this.data[i].suspected += this.data[i].suspected,
-    //     confirmed: this.data[i].confirmed += this.data[i].confirmed,
-    //     worldwide: this.data[i].worldwide += this.data[i].worldwide
-    //   }
+      console.log(this.stat_data[this.stat_data.length - 1]['date'].toString());
+      console.log(this.stat_data[this.stat_data.length - 1]['recovered']);
+      this.startCounter();
+    });
 
-    //   this.selected = value;
 
-    //   console.log(value)
-    // }
-    
-    this.dataString = localStorage.getItem('data');
-    // retrieving our data and converting it back into an array
-    this.localData = JSON.parse(this.dataString);
-    var length = Object.keys(this.localData).length;
-    for (let index = 0; index < length; index++) {
-      this.data[index] = localStorage[index];
-    }
-    console.log("i am in stats ,count ="+length);
-    this.startCounter();
-  //  updated= this.localData["date"].toString();
-  
-  console.log("DATE=>"+this.localData["date"].toString());
-  
+
+
+
+   
+
+
   }
 
 
@@ -150,13 +111,13 @@ export class StatisticsComponent implements OnInit {
     // this.places.forEach(coords => {this.latitude = coords.lat; this.longitude = coords.lng})
 
   };
-  
-  startCounter(){
-    
+
+  startCounter() {
+
     let Count = 0;
     //let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
-    let theLoop: (i: number,type:string,first:boolean) => void = (i: number,type:string,first:boolean) => {
-      if(first===true){
+    let theLoop: (i: number, type: string, first: boolean) => void = (i: number, type: string, first: boolean) => {
+      if (first === true) {
         console.log("Here Count ..");
         this.suspectedCount = 0;
         this.confirmedCount = 0;
@@ -166,30 +127,30 @@ export class StatisticsComponent implements OnInit {
       console.log(i.toString());
       setTimeout(() => {
         //metronome.play();
-        if (i>0) {
-          theLoop(--i,type,false);
-          if(type === "suspected"){
+        if (i > 0) {
+          theLoop(--i, type, false);
+          if (type === "suspected") {
             this.suspectedCount++;
-          }else if(type === "confirmed"){
+          } else if (type === "confirmed") {
             this.confirmedCount++;
-          }else if(type === "death"){
+          } else if (type === "death") {
             this.deathCount++;
-          }else if(type === "recovered"){
+          } else if (type === "recovered") {
             this.recoveredCount++;
           }
-            
+
           //console.log(i+"=>"+this.suspectedCount)
         }
       }, 5);
     };
-    var length = Object.keys(this.localData).length;
-    console.log("ALL items =>"+length);
-    theLoop(Number.parseInt(this.localData[length-1]['suspected']),"suspected",true);
-    theLoop(Number.parseInt(this.localData[length-1]['dead']),"death",true);
-    theLoop(Number.parseInt(this.localData[length-1]['confirmed']),"confirmed",true);
-    theLoop(Number.parseInt(this.localData[length-1]['recovered']),"recovered",true);
+    var length = Object.keys(this.stat_data).length;
+    console.log("ALL items =>" + length);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['suspected']), "suspected", true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['dead']), "death", true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['confirmed']), "confirmed", true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['recovered']), "recovered", true);
   }
-  
+
   drawMark(): void {
 
   };
