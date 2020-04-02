@@ -1,8 +1,10 @@
+import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class SymptomsScreen extends StatefulWidget {
   final String title;
@@ -20,6 +22,20 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
   void _symptom2Changed(bool value) => setState(() => symptom2 = value);
   static bool symptom3 = false;
   void _symptom3Changed(bool value) => setState(() => symptom3 = value);
+
+  var title = {
+    '1': 'Common signs of infection include respiratory symptoms:',
+    '2': "In more severe cases, infection can cause:",
+    '3': "Watch for symptoms",
+  };
+  var summary1 = {
+    '1':
+        '- Fever\n- Cough\n- Shortness of breath\n- Breathing difficulties\n- Fatigue',
+    '2':
+        "- Pneumonia\n- Severe acute respiratory\n- Syndorme (SARS)\n- Kidney failure\n- Death",
+    '3':
+        "Reported illnesses have ranged from mild symptoms to severe illness and death for confirmed coronavirus disease 2019 (COVID-19) cases. These symptoms may appear 2-14 days after exposure (based on the incubation period of MERS-CoV viruses)."
+  };
 
   //Consent Section
   //TODO: Verify Consent Notice & Toll Free Number
@@ -42,7 +58,77 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
           crossAxisAlignment: WrapCrossAlignment.center,
           alignment: WrapAlignment.center,
           children: <Widget>[
-            Divider(),
+            CarouselSlider(
+              height: 200,
+              viewportFraction: 1.0,
+              aspectRatio: 2.0,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 30),
+              enlargeCenterPage: false,
+              items: [1, 2, 3].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Card(
+                      color: Theme.of(context).primaryColor,
+                      elevation: 5,
+                      shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(15))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            AutoSizeText(
+                              title['$i'],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Expanded(
+                              child: AutoSizeText(
+                                summary1['$i'],
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 15,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .body2
+                                    .copyWith(
+                                        color: Colors.white, fontSize: 16),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              padding: EdgeInsets.all(9.0),
+              child: Text(
+                "Do a self assessment",
+                style: TextStyle(
+                  color: AppColors.primaryText,
+                  fontFamily: "Roboto",
+                  fontWeight: FontWeight.w800,
+                  fontSize: 22,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
             Wrap(
               runSpacing: 25,
               children: <Widget>[

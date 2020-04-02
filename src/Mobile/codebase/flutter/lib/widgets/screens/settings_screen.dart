@@ -41,42 +41,50 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   textAlign: TextAlign.center,
                 ),
               ), //Heading
-//              ListTile(
-//                leading: Icon(LineIcons.comment),
-//                trailing: Icon(Icons.arrow_forward_ios),
-//                subtitle: Text(
-//                  "Coming Soon",
-//                  textAlign: TextAlign.left,
-//                  style: TextStyle(
-//                    color: AppColors.secondaryText,
-//                    fontSize: 13,
-//                  ),
-//                ),
-//                title: Text(
-//                  'Profile',
-//                  style: TextStyle(
-//                    color: AppColors.secondaryText,
-//                    fontFamily: "Roboto",
-//                    fontWeight: FontWeight.w400,
-//                    fontSize: 16,
-//                  ),
-//                ),
-//                onTap: () => Navigator.of(context).pushNamed('/profile'),
-//              ), //TODO: Profile Feature
-//              ListTile(
-//                leading: Icon(LineIcons.comment),
-//                trailing: Icon(Icons.arrow_forward_ios),
-//                title: Text(
-//                  'Feedback',
-//                  style: TextStyle(
-//                    color: AppColors.secondaryText,
-//                    fontFamily: "Roboto",
-//                    fontWeight: FontWeight.w400,
-//                    fontSize: 16,
-//                  ),
-//                ),
-//                onTap: () => Navigator.of(context).pushNamed('/feedback'),
-//              ), //TODO: Feedback Feature
+              ListTile(
+                leading: Icon(LineIcons.user),
+                trailing: Icon(Icons.arrow_forward_ios),
+                subtitle: Text(
+                  "Coming Soon",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontSize: 13,
+                  ),
+                ),
+                title: Text(
+                  'Profile',
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pushNamed('/profile'),
+              ), //TODO: Profile Feature
+              ListTile(
+                leading: Icon(LineIcons.comment),
+                trailing: Icon(Icons.arrow_forward_ios),
+                subtitle: Text(
+                  "Coming Soon",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontSize: 13,
+                  ),
+                ),
+                title: Text(
+                  'Feedback',
+                  style: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                onTap: () => Navigator.of(context).pushNamed('/feedback'),
+              ), //TODO: Feedback Feature
               ListTile(
                 leading: Icon(LineIcons.group),
                 trailing: Icon(Icons.arrow_forward_ios),
@@ -97,131 +105,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 onTap: () => Navigator.of(context).pushNamed('/sponsors'),
               ),
-              Container(
-                padding: EdgeInsets.all(9.0),
-                child: Text(
-                  "Privacy",
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w800,
-                    fontSize: 22,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                height: 75, //TODO: Fix Overflow
-                margin: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 15,
-                  bottom: 15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Push Notifications",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: AppColors.primaryText,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: 52,
-                          height: 45,
-                          child: Switch(
-                            value: consent,
-                            inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
-                            onChanged: (value) {
-                              setState(() {
-                                consent = value;
-                                print(consent);
-                              });
-                            },
-                            activeColor: AppColors.primaryElement,
-                            activeTrackColor: AppColors.primaryElement,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    Container(
-                      margin: EdgeInsets.only(right: 66),
-                      child: Text(
-                        "By Enabling this option you will receive the latest notifications as they happen.",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: AppColors.secondaryText,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ), // Push Notifications Consent
-              Container(
-                height: 75, //TODO: Fix Overflow
-                margin: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 15,
-                  bottom: 15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Location Access",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: AppColors.primaryText,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: 52,
-                          height: 45,
-                          child: Switch(
-                            value: location,
-                            inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
-                            onChanged: (value) {
-                              setState(() {
-                                location = value;
-                                print(location);
-                              });
-                            },
-                            activeColor: AppColors.primaryElement,
-                            activeTrackColor: AppColors.primaryElement,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    Container(
-                      margin: EdgeInsets.only(right: 66),
-                      child: Text(
-                        "By Enabling this option we will be able to find you the nearest testing centre you will be able ",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: AppColors.secondaryText,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ), // Push Notifications Consent
+//              Container(
+//                padding: EdgeInsets.all(9.0),
+//                child: Text(
+//                  "Privacy",
+//                  style: TextStyle(
+//                    color: AppColors.primaryText,
+//                    fontFamily: "Roboto",
+//                    fontWeight: FontWeight.w800,
+//                    fontSize: 22,
+//                  ),
+//                  textAlign: TextAlign.center,
+//                ),
+//              ),
             ],
           ).toList(),
         ),
