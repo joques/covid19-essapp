@@ -5,7 +5,29 @@ import ballerina/mongodb;
 import ballerina/docker;
 import ballerina/file;
 
-final json docURLs = {"offdoc001": "https://bit.ly/2WTtLry", "offdoc002": "https://bit.ly/2UsxNFr", "offdoc003": "shortURL.at/emFOP", "offdoc004": "https://bit.ly/3bBkHf0", "offdoc005": "https://bit.ly/2UFK08M", "offdoc006": "https://bit.ly/2Jl4LkX", "offdoc007": "https://bit.ly/3at2bFr", "offdoc008": "https://bit.ly/2UqmjSQ", "offdoc009": "https://bit.ly/3aw8VT4", "offdoc010": "https://bit.ly/3aw8VT4", "offdoc011": "https://bit.ly/3aw8VT4", "offdoc012": "https://bit.ly/3aw8VT4", "offdoc013": "https://bit.ly/3aw8VT4", "offdoc014": "https://bit.ly/3aw8VT4", "offdoc015": "https://bit.ly/3dApPSt", "offdoc016": "https://bit.ly/3bC0Oo4", "offdoc017": "https://bit.ly/3dDOBB3", "offdoc018": "https://bit.ly/3bDOX98", "offdoc019": "https://bit.ly/2URpQJc", "offdoc020": "https://bit.ly/3aoM1wG", "offdoc021": "https://bit.ly/39r5T0T"};
+final map<string> docURLs = {
+	offdoc001: "https://bit.ly/2WTtLry", 
+	offdoc002: "https://bit.ly/2UsxNFr", 
+	offdoc003: "shortURL.at/emFOP", 
+	offdoc004: "https://bit.ly/3bBkHf0", 
+	offdoc005: "https://bit.ly/2UFK08M", 
+	offdoc006: "https://bit.ly/2Jl4LkX", 
+	offdoc007: "https://bit.ly/3at2bFr", 
+	offdoc008: "https://bit.ly/2UqmjSQ", 
+	offdoc009: "https://bit.ly/3aw8VT4", 
+	offdoc010: "https://bit.ly/3aw8VT4", 
+	offdoc011: "https://bit.ly/3aw8VT4", 
+	offdoc012: "https://bit.ly/3aw8VT4", 
+	offdoc013: "https://bit.ly/3aw8VT4", 
+	offdoc014: "https://bit.ly/3aw8VT4", 
+	offdoc015: "https://bit.ly/3dApPSt", 
+	offdoc016: "https://bit.ly/3bC0Oo4", 
+	offdoc017: "https://bit.ly/3dDOBB3", 
+	offdoc018: "https://bit.ly/3bDOX98", 
+	offdoc019: "https://bit.ly/2URpQJc", 
+	offdoc020: "https://bit.ly/3aoM1wG", 
+	offdoc021: "https://bit.ly/39r5T0T"
+};
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 		host: "172.17.0.1:27017",
@@ -121,9 +143,10 @@ service documents on apilistener4 {
 				var exDocID = singleDocuItem.docid;
 				if (exDocID is string) {
 					finalDocId = exDocID;
-					var docUrl = docURLs.exDocID;
+					var docUrl = docURLs[exDocID];
 					io:println("this is docURL coming from json ", docUrl);
-					if (docUrl is json) {
+					//finalUrl = docUrl;
+					if (docUrl is string) {
 						finalUrl = docUrl.toJsonString();
 					}
 				}
