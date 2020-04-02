@@ -32,7 +32,7 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
     '1':
         '- Fever\n- Cough\n- Shortness of breath\n- Breathing difficulties\n- Fatigue',
     '2':
-        "- Pneumonia\n- Severe acute respiratory\n- Syndorme (SARS)\n- Kidney failure\n- Death",
+        "- Pneumonia\n- Severe acute respiratory Syndorme (SARS)\n- Kidney failure\n- Death",
     '3':
         "Reported illnesses have ranged from mild symptoms to severe illness and death for confirmed coronavirus disease 2019 (COVID-19) cases. These symptoms may appear 2-14 days after exposure (based on the incubation period of MERS-CoV viruses)."
   };
