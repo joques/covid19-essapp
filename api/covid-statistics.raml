@@ -59,7 +59,7 @@ version: v1
                     200:
                         body:
                             application/json
-                                example:
+                                example: |
                                     {
                                         date: "2020-03-23",
                                         recovered: 400,
@@ -68,3 +68,71 @@ version: v1
                                         confirmed: 345,
                                         worldwide: 45000
                                     }
+
+/statistics/regions:
+	displayName: Provide latest statistics for all regions
+	description:
+		get:
+			description:
+				responses:
+					200:
+						body:
+							application/json:
+								example: |
+									[
+										khomas: {
+											date: "2020-03-23",
+                                        	recovered: 400,
+                                        	dead: 123,
+                                        	suspected: 456,
+                                        	confirmed: 345,
+                                        	worldwide: 45000
+										},
+										karas: {
+											date: "2020-03-23",
+                                        	recovered: 300,
+                                        	dead: 123,
+                                        	suspected: 556,
+                                        	confirmed: 345,
+                                        	worldwide: 45000
+										}
+									]
+
+/statistics/aggregate:
+	displayName: Provide aggregate latest statistics (both national and regional)
+	description:
+		get:
+			description:
+				responses:
+					200:
+						body:
+							application/json:
+								example: |
+									{
+										national: {
+											date: "2020-03-23",
+											recovered: 400,
+                                    		dead: 123,
+                                    		suspected: 456,
+                                    		confirmed: 345, 
+                                    		worldwide: 45000
+										},
+										regions: [
+											khomas: {
+												date: "2020-03-23",
+                                        		recovered: 400,
+                                        		dead: 123,
+                                        		suspected: 456,
+                                        		confirmed: 345,
+                                        		worldwide: 45000
+											},
+										karas: {
+												date: "2020-03-23",
+                                        		recovered: 300,
+                                        		dead: 123,
+                                        		suspected: 556,
+                                        		confirmed: 345,
+                                        		worldwide: 45000
+											}
+										]
+									}
