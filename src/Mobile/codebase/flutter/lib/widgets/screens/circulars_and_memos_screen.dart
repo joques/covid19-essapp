@@ -34,7 +34,7 @@ class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
                               title: data[index].title,
                               author: data[index].author,
                               //Todo fix urls for documents
-                              source:data[index].docurl,
+                              source: data[index].docurl,
                               pubdate: data[index].pubdate.toString(),
                               docid: data[index].title,
                             )));
