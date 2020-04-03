@@ -34,8 +34,7 @@ class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
                               title: data[index].title,
                               author: data[index].author,
                               //Todo fix urls for documents
-                              source:
-                                  'https://www.who.int/docs/default-source/inaugural-who-partners-forum/coronavirus-poster-english-srilanka.pdf?sfvrsn=289dedc3_0',
+                              source:data[index].docurl,
                               pubdate: data[index].pubdate.toString(),
                               docid: data[index].title,
                             )));

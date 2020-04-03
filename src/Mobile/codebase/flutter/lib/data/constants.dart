@@ -31,5 +31,5 @@ const String API_STAT_ALL = 'statistics/latest';
 const String API_STAT_REGION = 'statistics/regional/';
 const String API_STAT_AGG = 'statistics/aggregate';
 const String API_FAQ = 'faq/all';
-const String API_MEMOS = 'docs/description';
+const String API_MEMOS = 'docs/mobile/description';
 const String API_MEMOS_DOC = '/docs/doc/{docid}';
