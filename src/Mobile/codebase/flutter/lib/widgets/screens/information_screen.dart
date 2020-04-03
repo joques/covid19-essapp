@@ -3,7 +3,6 @@ import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
-import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
@@ -74,8 +73,6 @@ class _InformationScreenState extends State<InformationScreen> {
   Widget build(BuildContext context) {
     double _wd = (MediaQuery.of(context).size.width / 2) - 45;
 
-    final String tollFreeNumber = "tel://+264800 100 100";
-
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -83,12 +80,6 @@ class _InformationScreenState extends State<InformationScreen> {
           ),
           centerTitle: true,
         ),
-//        floatingActionButton: FloatingActionButton(
-//          onPressed: () => UrlLauncher.launch(
-//              '$tollFreeNumber'), //TODO: import urlLauncher to Make a call,
-//          child: Icon(LineIcons.phone),
-//        ),
-//        drawer: NavDrawer(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),

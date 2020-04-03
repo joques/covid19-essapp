@@ -2,12 +2,11 @@ import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/common/loading_stats.dart';
 import 'package:covid_19_app/widgets/common/map_of_namibia.dart';
-import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:covid_19_app/widgets/common/loading_faq.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class StatisticsScreen extends StatefulWidget {
@@ -66,7 +65,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               if (snapshot.hasData) {
                 debugPrint("HERE");
                 _regions = snapshot.data;
-                if(firstLoad){
+                if (firstLoad) {
                   selectedRegion = _regions[0];
                   firstLoad = false;
                 }
@@ -274,12 +273,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   ),
                 ));
               } else if (snapshot.hasError) {
-                return LoadingFaq();
+                return LoadingStats();
 //                Center(
 //                child: Text('Error getting data!'),
 //              );
               }
-              return LoadingFaq();
+              return LoadingStats();
             }));
     //ADD CLOSINGS
   }
