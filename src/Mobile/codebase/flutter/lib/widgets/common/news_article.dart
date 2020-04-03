@@ -1,3 +1,4 @@
+import 'package:covid_19_app/widgets/screens/document_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -94,8 +95,9 @@ class _NewsArticleState extends State<NewsArticle> {
                   context,
                   MaterialPageRoute(
                       fullscreenDialog: true,
-                      builder: (context) => PDFViewer(
+                      builder: (context) => DocumentScreen(
                             document: doc,
+                            title: widget.title,
                           )),
                 );
                 print(widget.title);
