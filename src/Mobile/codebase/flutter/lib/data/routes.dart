@@ -8,6 +8,7 @@ final routes = {
   '/sponsors': (BuildContext context) =>
       SponsorsScreen(title: 'Sponsors and Partners'),
   '/centres': (BuildContext context) => CentresScreen(title: 'Testing Centres'),
+  '/home': (BuildContext context) => MainPage(),
 //  '/feedback': (BuildContext context) => FeedbackScreen(title: 'Feedback'),
 //  '/privacy': (BuildContext context) => PrivacyScreen(title: 'Privacy'),
 };
