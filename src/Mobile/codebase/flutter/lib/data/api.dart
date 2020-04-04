@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:covid_19_app/data/constants.dart';
 import 'package:covid_19_app/models/centre.dart';
@@ -97,7 +96,7 @@ class API {
     return stat;
   }
 
-/// Get national and regional statistics - latest
+  /// Get national and regional statistics - latest
   Future<List<Region>> getAggregateStatistics() async {
     List<Region> statList = new List();
     try {
@@ -110,19 +109,22 @@ class API {
       statList = getRegionalData();
       for (var reg in statList) {
         var id = REGION_IDS[reg.name];
-        if( id != 'all' ){
-          debugPrint(reg.name+"=>"+jsonAll['regions'][id].toString());
+        if (id != 'all') {
+          debugPrint(reg.name + "=>" + jsonAll['regions'][id].toString());
           reg.statistics = Statistic.map(jsonAll['regions'][id]);
-        }else{
-          debugPrint(reg.name+"=>"+Statistic.map(jsonAll['national']).toString());
+          reg.statistics.region = id;
+        } else {
+          debugPrint(
+              reg.name + "=>" + Statistic.map(jsonAll['national']).toString());
           reg.statistics = Statistic.map(jsonAll['national']);
+          reg.statistics.region = id;
         }
       }
       //final list = data.map((json) => Statistic.map(json)).toList();
-    
+
       //debugPrint("ALL=>"+statList[1].suspected.toString());
       //final _stat = json.decode(res.body);
-      
+
       //stat = Statistic.map(_stat.regions);
 
       // } else {
@@ -134,6 +136,7 @@ class API {
 
     return statList;
   }
+
   /// Get statistics per regional stats latest
   Future<Statistic> getRegionalStatistics(String region) async {
     Statistic stat;

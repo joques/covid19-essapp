@@ -25,10 +25,12 @@ class Centre {
     var map = new Map<String, dynamic>();
     map["name"] = name;
     map["about"] = about;
-    map["coordinates"] = {
+    map['lat'] = coordinates.latitude;
+    map['lng'] = coordinates.longitude;
+    /*map["coordinates"] = {
       'latitude': coordinates.latitude,
       'longitude': coordinates.longitude
-    };
+    };*/
     return map;
   }
 }
