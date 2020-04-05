@@ -63,7 +63,7 @@ class _SymptomsScreenState extends State<SymptomsScreen> {
               viewportFraction: 1.0,
               aspectRatio: 2.0,
               autoPlay: true,
-              autoPlayInterval: Duration(seconds: 30),
+              autoPlayInterval: Duration(seconds: 10),
               enlargeCenterPage: false,
               items: [1, 2, 3].map((i) {
                 return Builder(

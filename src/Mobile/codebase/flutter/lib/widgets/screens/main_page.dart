@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> {
   ];
   List<BottomNavigationBarItem> _navItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
-        icon: Icon(LineIcons.home), title: Text('Information')),
+        icon: Icon(LineIcons.home), title: Text('Home')),
     BottomNavigationBarItem(
         icon: Icon(LineIcons.pie_chart), title: Text('Statistics')),
     BottomNavigationBarItem(
@@ -37,7 +37,7 @@ class _MainPageState extends State<MainPage> {
     BottomNavigationBarItem(
         icon: Icon(LineIcons.question_circle), title: Text('FAQ')),
     BottomNavigationBarItem(
-        icon: Icon(LineIcons.gear), title: Text('Settings')),
+        icon: Icon(LineIcons.gear), title: Text('info')),
   ];
 
   _onTapped(index) {

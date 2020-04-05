@@ -4,8 +4,9 @@ class Memo {
   String pubdate;
   String author;
   String source;
+  String docurl;
 
-  Memo(this.docid, this.title,this.author,this.pubdate,this.source);
+  Memo(this.docid, this.title,this.author,this.pubdate,this.source,this.docurl);
 
   Memo.map(dynamic json) {
     this.docid = json["docid"];
@@ -13,6 +14,8 @@ class Memo {
     this.pubdate = json["pubdate"];
     this.author = json["author"];
     this.source = json["source"];
+    this.docurl = json["docurl"];
+
   }
 
   Map<String, dynamic> toMap() {
@@ -22,6 +25,7 @@ class Memo {
     map["pubdate"] = pubdate;
     map["author"] = author;
     map["source"] = source;
+    map["docurl"] = docurl;
     return map;
   }
 }

@@ -6,7 +6,7 @@ import ballerina/time;
 import ballerina/lang.'int as langint;
 import ballerina/docker;
 
-final string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
+final string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omaheke", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
 
 mongodb:ClientEndpointConfig  mongoConfig = {
 	host: "172.17.0.1:27017",

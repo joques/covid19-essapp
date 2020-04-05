@@ -28,6 +28,7 @@ export 'package:google_fonts/google_fonts.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:line_icons/line_icons.dart';
+export 'package:flutter_spinkit/flutter_spinkit.dart';
 
 //Common
 export 'package:covid_19_app/widgets/common/map_of_namibia.dart';

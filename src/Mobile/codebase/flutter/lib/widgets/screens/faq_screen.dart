@@ -2,7 +2,6 @@ import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/loading_faq.dart';
-import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 

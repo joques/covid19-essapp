@@ -1,5 +1,6 @@
 import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/data/routes.dart';
+import 'package:covid_19_app/widgets/screens/launch_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: AppColors.primaryBackground,
           cardColor: AppColors.accentElement,
           textSelectionColor: AppColors.primaryText),
-      home: MainPage(),
+      home: SplashScreen(),
     );
   }
 }
