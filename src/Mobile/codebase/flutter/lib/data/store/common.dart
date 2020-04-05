@@ -21,8 +21,8 @@ final colAnswer = 'answer';
 final colSuspected = 'suspected';
 final colConfirmed = 'confirmed';
 final colDead = 'dead';
-final colRecovered = 'recoverd';
-final colTimestamp = 'recoverd';
+final colRecovered = 'recovered';
+final colTimestamp = 'timestamp';
 final colRegion = 'region';
 
 // Create table queries
@@ -32,13 +32,13 @@ final createCentresTable = '''CREATE TABLE $tableCentres (
                 $colAbout TEXT NOT NULL,
                 $colLat REAL NOT NULL,
                 $colLng REAL NOT NULL
-              );''';
+              )''';
 
 final createFaqsTable = '''CREATE TABLE $tableFaq (
                 $colId INTEGER PRIMARY KEY,
-                $colQuestion TEXT NOT NULL,
-                $colAnswer TEXT NOT NULL,
-              );''';
+                $colQuestion TEXT UNIQUE,
+                $colAnswer TEXT NOT NULL
+              )''';
 
 final createStatsTable = '''CREATE TABLE $tableStatistics (
                 $colId INTEGER PRIMARY KEY,
@@ -47,4 +47,5 @@ final createStatsTable = '''CREATE TABLE $tableStatistics (
                 $colRecovered INTEGER NOT NULL,
                 $colDead INTEGER NOT NULL,
                 $colTimestamp TEXT NOT NULL,
-              );''';
+                $colRegion TEXT UNIQUE
+              )''';

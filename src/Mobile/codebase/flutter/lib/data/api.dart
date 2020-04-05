@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:covid_19_app/data/constants.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/centre.dart';
 import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/models/memos.dart';
@@ -14,6 +15,8 @@ import 'package:http/http.dart' as http;
 /// client
 class API {
   final _baseUrl = API_BASE_URL; // choose a random port
+
+  Store store = Store.instance;
 
   /// Get testing centres
   Future<List<Centre>> getCentres() async {
@@ -58,6 +61,7 @@ class API {
   /// Get testing faqs
   Future<List<FAQ>> getFaqs() async {
     List<FAQ> list = List();
+
     try {
       final url = (_baseUrl + API_FAQ)
           .replaceAll('{port}', API_PORTS['faq'].toString());
@@ -68,6 +72,11 @@ class API {
 
       final data = json.decode(res.body) as List;
       list = data.map((json) => FAQ.map(json)).toList();
+
+      // save to local db
+      list.forEach((faq) {
+        store.saveFaq(faq);
+      });
     } catch (err) {
       debugPrint(err.toString());
     }
@@ -108,28 +117,19 @@ class API {
       final jsonAll = json.decode(res.body);
       statList = getRegionalData();
       for (var reg in statList) {
-        var id = REGION_IDS[reg.name];
+        var id = reg.id;
+
         if (id != 'all') {
-          debugPrint(reg.name + "=>" + jsonAll['regions'][id].toString());
-          reg.statistics = Statistic.map(jsonAll['regions'][id]);
+          reg.statistics = Statistic.mapJson(jsonAll['regions'][id]);
           reg.statistics.region = id;
         } else {
-          debugPrint(
-              reg.name + "=>" + Statistic.map(jsonAll['national']).toString());
-          reg.statistics = Statistic.map(jsonAll['national']);
-          reg.statistics.region = id;
+          reg.statistics = Statistic.mapJson(jsonAll['national']);
+          reg.statistics.region = 'all';
         }
+
+        // save to local db
+        store.saveStatistic(reg.statistics);
       }
-      //final list = data.map((json) => Statistic.map(json)).toList();
-
-      //debugPrint("ALL=>"+statList[1].suspected.toString());
-      //final _stat = json.decode(res.body);
-
-      //stat = Statistic.map(_stat.regions);
-
-      // } else {
-      //   print("Failed http call.");
-      // }
     } catch (err) {
       debugPrint(err.toString());
     }
@@ -159,49 +159,63 @@ class API {
   List<Region> getRegionalData() {
     List<Region> regions = [
       Region(
+        id: 'all',
         name: 'All of Namibia',
-        //statistics:await getRegionalStatistics('All of Namibia')
       ),
       Region(
+        id: 'kunene',
         name: 'Kunene Region',
       ),
       Region(
+        id: 'omusati',
         name: 'Omusati Region',
       ),
       Region(
+        id: 'oshana',
         name: 'Oshana Region',
       ),
       Region(
+        id: 'ohangwena',
         name: 'Ohangwena Region',
       ),
       Region(
+        id: 'oshikoto',
         name: 'Oshikoto Region',
       ),
       Region(
+        id: 'kavango-east',
         name: 'Kavango East Region',
       ),
       Region(
+        id: 'zambezi',
         name: 'Zambezi Region',
       ),
       Region(
+        id: 'erongo',
         name: 'Erongo Region',
       ),
       Region(
+        id: 'otjozondjupa',
         name: 'Otjozondjupa Region',
       ),
       Region(
+        id: 'omaheke',
         name: 'Omaheke Region',
       ),
       Region(
+        id: 'khomas',
         name: 'Khomas Region',
       ),
       Region(
+        id: 'hardap',
         name: 'Hardap Region',
       ),
       Region(
+        id: 'karas',
         name: 'ǁKaras Region',
       ),
       Region(
+        id: 'kavamgo-west',
         name: 'Kavango West Region',
       ),
     ];
@@ -217,7 +231,7 @@ class API {
     //     });
 
     regions.forEach((reg) => reg.statistics = Statistic(
-        timestamp: DateTime.now(),
+        timestamp: DateTime.now().toString(),
         confirmed: 0,
         dead: 0,
         suspected: 0,

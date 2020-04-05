@@ -1,5 +1,6 @@
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/region.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/loading_stats.dart';
@@ -21,7 +22,7 @@ class StatisticsScreen extends StatefulWidget {
 class _StatisticsScreenState extends State<StatisticsScreen> {
   //View By Area Drop Down Value
   var _value = '0';
-
+  Store store = Store.instance;
   List<Region> _regions;
   Region selectedRegion;
   bool firstLoad = true;
@@ -60,10 +61,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         ),
 //        drawer: NavDrawer(),
         body: FutureBuilder<List<Region>>(
-            future: API().getAggregateStatistics(),
+            future: store.getStats(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                debugPrint("HERE");
+                debugPrint("Got stats");
                 _regions = snapshot.data;
                 if (firstLoad) {
                   selectedRegion = _regions[0];
@@ -76,37 +77,30 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.only(
-                          top: 15,
-                          bottom: 15,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Wrap(
-                              direction: Axis.horizontal,
-                              alignment: WrapAlignment.spaceAround,
-                              spacing: 50,
-                              runSpacing: 10,
-                              crossAxisAlignment: WrapCrossAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  'Select a Region',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline
-                                      .copyWith(
-                                          color: AppColors.primaryElement,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 16),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Wrap(
+                            direction: Axis.horizontal,
+                            alignment: WrapAlignment.spaceAround,
+                            spacing: 16,
+                            runSpacing: 16,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Select a Region',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline6
+                                    .copyWith(
+                                        color: AppColors.primaryElement,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        ],
                       ), // Region Heading
 
                       ActionChip(
@@ -177,8 +171,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               Icon(LineIcons.clock_o),
                               Text(
                                 'Updated: ' +
-                                    timeago.format(
-                                        _regions[0].statistics.timestamp),
+                                    timeago.format(DateTime.parse(
+                                        _regions[0].statistics.timestamp)),
                                 style: Theme.of(context)
                                     .textTheme
                                     .overline

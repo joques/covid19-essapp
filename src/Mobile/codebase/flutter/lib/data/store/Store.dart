@@ -34,8 +34,10 @@ class Store {
   }
 
   Future _onCreate(Database db, int version) async {
-    await db.execute(
-        createCentresTable + ' ' + createStatsTable + ' ' + createFaqsTable);
+    debugPrint('creating database...');
+    await db.execute(createCentresTable);
+    await db.execute(createFaqsTable);
+    await db.execute(createStatsTable);
 
     ///updateSchedule();
   }
@@ -50,14 +52,26 @@ class Store {
   /// insert a statistic
   Future<int> saveStatistic(Statistic statistic) async {
     Database db = await database;
-    int id = await db.insert(tableStatistics, statistic.toMap());
+
+    int id = 0;
+    id = await db.insert(tableStatistics, statistic.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
+    debugPrint('Saved statistics: ' + statistic.toMap().toString());
     return id;
   }
 
   /// insert a faqs
   Future<int> saveFaq(FAQ faq) async {
-    Database db = await database;
-    int id = await db.insert(tableFaq, faq.toMap());
+    Database db = await instance.database;
+
+    final rows = await db.query(tableFaq,
+        where: "$colQuestion = ? AND $colAnswer = ?",
+        whereArgs: [faq.question, faq.answer]);
+    int id = 0;
+    if (rows.length == 0) {
+      id = await db.insert(tableFaq, faq.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace);
+    }
     return id;
   }
 
@@ -82,7 +96,7 @@ class Store {
   }
 
   /// gets
-  /// Centres
+  /// Stats
   Future<List<FAQ>> getFaqs() async {
     List<FAQ> _faqs = List();
     Database db = await database;
@@ -99,5 +113,48 @@ class Store {
     });
 
     return _faqs;
+  }
+
+  /// Get Stats
+  Future<List<Region>> getStats() async {
+    List<Statistic> _stats = List();
+    List<Region> _regions = List();
+    Database db = await database;
+
+    await db.query(tableStatistics).then((rows) {
+      debugPrint(rows.length.toString() + ' stats returned from db');
+
+      for (var row in rows) {
+        Statistic _stat = Statistic.map(row);
+        _stats.add(_stat);
+        API().getRegionalData().forEach((region) {
+          if (region.id == _stat.region) {
+            region.statistics = _stat;
+            _regions.add(region);
+          }
+        });
+      }
+    }).catchError((error) {
+      debugPrint(error.toString());
+    });
+
+    return _regions;
+  }
+
+  /// Get Stats
+  Future<Statistic> getNationalStats() async {
+    Statistic _stat = Statistic();
+    Database db = await database;
+
+    await db.query(tableStatistics,
+        where: "$colRegion = ?", whereArgs: ['all']).then((rows) {
+      debugPrint(rows.length.toString() + ' stats returned from db');
+
+      _stat = Statistic.map(rows[0]);
+    }).catchError((error) {
+      debugPrint(error.toString());
+    });
+
+    return _stat;
   }
 }

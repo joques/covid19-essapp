@@ -1,4 +1,5 @@
 import 'package:covid_19_app/data/packages.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class SplashScreen extends StatefulWidget {
@@ -9,9 +10,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
+  Store store = Store.instance;
+  API api = API();
+
+  Map<Future, bool> tasks = Map();
+
   @override
   void initState() {
     super.initState();
+    tasks[api.getFaqs()] = false;
+    tasks[api.getAggregateStatistics()] = false;
+    tasks[api.getCentres()] = false;
+
     loadData();
   }
 
@@ -21,10 +31,19 @@ class SplashScreenState extends State<SplashScreen> {
   );
 
   Future<Timer> loadData() async {
-    return Timer(Duration(seconds: 10), onDoneLoading);
+    tasks.forEach((task, value) {
+      task.whenComplete(() => setState(() {
+            tasks[task] = true;
+            debugPrint(tasks.values.toString());
+            if (!tasks.containsValue(false)) {
+              debugPrint('All complete');
+              return onDoneLoading();
+            }
+          }));
+    });
   }
 
-  onDoneLoading() async {
+  onDoneLoading() {
     Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
   }

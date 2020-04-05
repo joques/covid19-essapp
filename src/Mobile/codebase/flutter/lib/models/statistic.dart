@@ -1,6 +1,6 @@
 class Statistic {
   int suspected, confirmed, dead, recovered;
-  DateTime timestamp;
+  String timestamp;
   String region;
 
   Statistic(
@@ -11,9 +11,9 @@ class Statistic {
       this.recovered,
       this.region});
 
-  Statistic.map(dynamic json) {
+  Statistic.mapJson(dynamic json) {
     print(json);
-    timestamp = DateTime.parse(json['date']);
+    timestamp = json['date'];
     suspected = json['suspected'];
     dead = json['dead'];
     confirmed = json['confirmed'];
@@ -21,10 +21,20 @@ class Statistic {
     region = json['region'];
   }
 
+  Statistic.map(dynamic row) {
+    print(row);
+    timestamp = row['timestamp'];
+    suspected = row['suspected'];
+    dead = row['dead'];
+    confirmed = row['confirmed'];
+    recovered = row['recovered'];
+    region = row['region'];
+  }
+
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
     map["dead"] = dead;
-    map["date"] = timestamp.toString();
+    map["timestamp"] = timestamp;
     map["confirmed"] = confirmed;
     map["suspected"] = suspected;
     map["recovered"] = recovered;
