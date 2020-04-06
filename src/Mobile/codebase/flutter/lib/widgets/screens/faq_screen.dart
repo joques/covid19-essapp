@@ -1,4 +1,5 @@
 import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/loading_faq.dart';
@@ -36,6 +37,8 @@ class FAQScreen extends StatefulWidget {
 }*/
 
 List<FAQ> _data = new List(0);
+
+Store store = Store.instance;
 //var getFAQ = fetchFAQ();
 //var myData = jsonDecode(snapshot.data);
 
@@ -55,7 +58,7 @@ class _FAQScreenState extends State<FAQScreen> {
         centerTitle: true,
       ),
       body: FutureBuilder<List<FAQ>>(
-          future: API().getFaqs(),
+          future: store.getFaqs(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(

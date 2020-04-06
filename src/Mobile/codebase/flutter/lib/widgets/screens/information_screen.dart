@@ -1,10 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
-import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,14 +20,14 @@ class InformationScreen extends StatefulWidget {
 
 class _InformationScreenState extends State<InformationScreen> {
   List _slides = <Widget>[];
-  Future<Latest> latestInfo;
-  int confirmed;
-  Statistic latestStat = Statistic(
+  Store store = Store.instance;
+  Statistic nationalStat = Statistic(
+      timestamp: DateTime.now().toString(),
       confirmed: 0,
+      recovered: 0,
       dead: 0,
       suspected: 0,
-      recovered: 0,
-      timestamp: DateTime.now());
+      region: 'all');
 
   var title = {
     '1': 'What is COVID-19?',
@@ -59,9 +58,10 @@ class _InformationScreenState extends State<InformationScreen> {
 
   fetchLatestStats() async {
     try {
-      API().getLatestStatistics().then((value) {
+      store.getNationalStats().then((value) {
         setState(() {
-          latestStat = value;
+          nationalStat = value;
+          debugPrint('Stat: ' + value.toMap().toString());
         });
       });
     } catch (err) {
@@ -232,7 +232,9 @@ class _InformationScreenState extends State<InformationScreen> {
                       children: <Widget>[
                         Icon(LineIcons.clock_o),
                         Text(
-                          'Updated: ' + timeago.format(latestStat.timestamp),
+                          'Updated: ' +
+                              timeago.format(
+                                  DateTime.parse(nationalStat.timestamp)),
                           style: Theme.of(context).textTheme.overline.copyWith(
                               color: AppColors.secondaryText,
                               fontWeight: FontWeight.w400,
@@ -253,13 +255,13 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.confirmed,
+                            count: nationalStat.confirmed,
                             borderColor: Colors.blue.shade800.value,
                             title: 'Confirmed cases',
                           ),
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.dead,
+                            count: nationalStat.dead,
                             borderColor: Colors.red.shade900.value,
                             title: 'Confirmed deaths',
                           ),
@@ -273,13 +275,13 @@ class _InformationScreenState extends State<InformationScreen> {
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.recovered,
+                            count: nationalStat.recovered,
                             borderColor: Colors.green.shade900.value,
                             title: 'Recovered patients',
                           ),
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.suspected,
+                            count: nationalStat.suspected,
                             borderColor: Colors.orange.shade900.value,
                             title: 'Suspected cases',
                           ),
