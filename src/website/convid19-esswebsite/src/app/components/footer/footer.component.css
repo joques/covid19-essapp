@@ -10,22 +10,22 @@ footer {
 }
 
 .img-container img {
-  width: 35%;
-  height: 25%;
+  width: auto;
+  height: 150 px;
   margin: 2rem 1rem 0 0;
 }
 
 @media only screen and (max-width: 500px) {
   .img-container {
-    margin-left: 7rem ;
+    margin-left: 0rem ;
   }
   .img-container img {
-    width: 60%;
-    height: 30%;
+    width: auto;
+    height: 150px;
   }
 
   .img-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
