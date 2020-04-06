@@ -19,6 +19,7 @@ class _OfficialCMScreenState extends State<OfficalCMScreen> {
         child: Scaffold(
             appBar: AppBar(
               title: Text(widget.title),
+              centerTitle: true,
 //            bottom: TabBar(
 //              tabs: <Widget>[
 //                Tab(text: 'News'),

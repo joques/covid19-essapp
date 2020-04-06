@@ -1,8 +1,7 @@
-import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/loading_faq.dart';
-import 'package:covid_19_app/widgets/common/nav_drawer.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +36,8 @@ class FAQScreen extends StatefulWidget {
 }*/
 
 List<FAQ> _data = new List(0);
+
+Store store = Store.instance;
 //var getFAQ = fetchFAQ();
 //var myData = jsonDecode(snapshot.data);
 
@@ -56,7 +57,7 @@ class _FAQScreenState extends State<FAQScreen> {
         centerTitle: true,
       ),
       body: FutureBuilder<List<FAQ>>(
-          future: API().getFaqs(),
+          future: store.getFaqs(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
@@ -64,11 +65,13 @@ class _FAQScreenState extends State<FAQScreen> {
                     snapshot.data.length,
                     (index) => ExpandableNotifier(
                             child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           child: Card(
+                            elevation: 10,
                             shape: BeveledRectangleBorder(
                                 borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(16))),
+                                    bottomRight: Radius.circular(15))),
                             color: Theme.of(context).dialogBackgroundColor,
                             clipBehavior: Clip.antiAlias,
                             child: Column(

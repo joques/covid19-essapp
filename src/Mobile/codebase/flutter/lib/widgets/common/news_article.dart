@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:covid_19_app/styles/colors.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:covid_19_app/styles/colors.dart';
+import 'package:covid_19_app/widgets/screens/document_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NewsArticle extends StatefulWidget {
   final String title;
@@ -36,6 +37,7 @@ class _NewsArticleState extends State<NewsArticle> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 10,
       shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.only(bottomRight: Radius.circular(16))),
       color: Theme.of(context).dialogBackgroundColor,
@@ -94,8 +96,9 @@ class _NewsArticleState extends State<NewsArticle> {
                   context,
                   MaterialPageRoute(
                       fullscreenDialog: true,
-                      builder: (context) => PDFViewer(
+                      builder: (context) => DocumentScreen(
                             document: doc,
+                            title: widget.title,
                           )),
                 );
                 print(widget.title);
