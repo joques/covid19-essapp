@@ -6,26 +6,29 @@ footer {
 
 .img-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
+
+
 
 .img-container img {
   width: auto;
-  height: 180px;
+  height: 70px;
   margin: 2rem 1rem 0 0;
 }
 
 @media only screen and (max-width: 500px) {
   .img-container {
-    margin-left: 3rem ;
+    margin-left: 7rem ;
   }
   .img-container img {
     width: auto;
-    height: 180px;
+    height: 70px;
   }
 
   .img-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
+
 }
