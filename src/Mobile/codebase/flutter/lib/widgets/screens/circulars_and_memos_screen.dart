@@ -20,6 +20,7 @@ class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //backgroundColor: AppColors.primaryElement,
         body: FutureBuilder<List<Memo>>(
             //get list of memos from api
             future: store.getMemos(),
@@ -30,13 +31,17 @@ class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
                 return ListView(
                     children: List.generate(
                         snapshot.data.length,
-                        (index) => NewsArticle(
-                              title: data[index].title,
-                              author: data[index].author,
-                              //Todo fix urls for documents
-                              source: data[index].docurl,
-                              pubdate: data[index].pubdate.toString(),
-                              docid: data[index].title,
+                        (index) => Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 4),
+                              child: NewsArticle(
+                                title: data[index].title,
+                                author: data[index].author,
+                                //Todo fix urls for documents
+                                source: data[index].docurl,
+                                pubdate: data[index].pubdate.toString(),
+                                docid: data[index].title,
+                              ),
                             )));
               } else if (snapshot.hasError) {
                 return LoadingFaq();

@@ -1,4 +1,3 @@
-import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/faq.dart';
 import 'package:covid_19_app/styles/colors.dart';
@@ -66,11 +65,13 @@ class _FAQScreenState extends State<FAQScreen> {
                     snapshot.data.length,
                     (index) => ExpandableNotifier(
                             child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           child: Card(
+                            elevation: 10,
                             shape: BeveledRectangleBorder(
                                 borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(16))),
+                                    bottomRight: Radius.circular(15))),
                             color: Theme.of(context).dialogBackgroundColor,
                             clipBehavior: Clip.antiAlias,
                             child: Column(
