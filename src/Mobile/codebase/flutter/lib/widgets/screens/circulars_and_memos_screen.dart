@@ -1,8 +1,7 @@
 //import 'dart:html';
 
-import 'package:covid_19_app/data/api.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/memos.dart';
-import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/loading_faq.dart';
 import 'package:covid_19_app/widgets/common/news_article.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +16,13 @@ class CircularsAndMemosScreen extends StatefulWidget {
 }
 
 class _CircularsAndMemosScreenState extends State<CircularsAndMemosScreen> {
+  Store store = Store.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: FutureBuilder<List<Memo>>(
             //get list of memos from api
-            future: API().getMemos(),
+            future: store.getMemos(),
             builder: (context, snapshot) {
               //check if response has data
               if (snapshot.hasData) {

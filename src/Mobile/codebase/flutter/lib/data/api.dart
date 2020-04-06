@@ -51,6 +51,10 @@ class API {
 
       final data = json.decode(res.body) as List;
       list = data.map((json) => Memo.map(json)).toList();
+
+      list.forEach((memo) {
+        store.saveMemo(memo);
+      });
     } catch (err) {
       debugPrint(err.toString());
     }

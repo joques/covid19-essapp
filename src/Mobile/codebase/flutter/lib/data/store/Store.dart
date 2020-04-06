@@ -38,6 +38,7 @@ class Store {
     await db.execute(createCentresTable);
     await db.execute(createFaqsTable);
     await db.execute(createStatsTable);
+    await db.execute(createMemosTable);
 
     ///updateSchedule();
   }
@@ -72,6 +73,16 @@ class Store {
       id = await db.insert(tableFaq, faq.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace);
     }
+    return id;
+  }
+
+  /// insert a memo
+  Future<int> saveMemo(Memo memo) async {
+    Database db = await instance.database;
+
+    int id = 0;
+    id = await db.insert(tableMemos, memo.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
     return id;
   }
 
@@ -113,6 +124,25 @@ class Store {
     });
 
     return _faqs;
+  }
+
+  /// Stats
+  Future<List<Memo>> getMemos() async {
+    List<Memo> _memos = List();
+    Database db = await database;
+
+    await db.query(tableMemos).then((rows) {
+      debugPrint(rows.length.toString() + ' memos returned from db');
+
+      for (var row in rows) {
+        Memo _memo = Memo.map(row);
+        _memos.add(_memo);
+      }
+    }).catchError((error) {
+      debugPrint(error.toString());
+    });
+
+    return _memos;
   }
 
   /// Get Stats

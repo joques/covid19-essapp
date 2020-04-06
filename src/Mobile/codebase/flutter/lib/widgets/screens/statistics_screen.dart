@@ -160,7 +160,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             'Statistics',
                             style: Theme.of(context)
                                 .textTheme
-                                .headline
+                                .headline6
                                 .copyWith(
                                     color: AppColors.primaryElement,
                                     fontWeight: FontWeight.w700,
@@ -241,6 +241,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       ),
                       Container(
                         decoration: ShapeDecoration(
+                            color: Theme.of(context).accentColor,
                             shape: BeveledRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(16)),
@@ -360,10 +361,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         measureFn: (Cases cases, _) => cases.count,
         data: suspectedCasesData,
         seriesColor: Charts.Color(
-            r: Colors.yellow.red,
-            g: Colors.yellow.green,
-            a: Colors.yellow.alpha,
-            b: Colors.yellow.blue),
+            r: Colors.blue.red,
+            g: Colors.blue.green,
+            a: Colors.blue.alpha,
+            b: Colors.blue.blue),
       ),
       Charts.Series<Cases, String>(
         id: 'Recovered',

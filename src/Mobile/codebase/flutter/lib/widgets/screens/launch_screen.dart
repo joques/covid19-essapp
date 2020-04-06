@@ -21,6 +21,7 @@ class SplashScreenState extends State<SplashScreen> {
     tasks[api.getFaqs()] = false;
     tasks[api.getAggregateStatistics()] = false;
     tasks[api.getCentres()] = false;
+    tasks[api.getMemos()] = false;
 
     loadData();
   }

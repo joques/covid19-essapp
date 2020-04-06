@@ -3,6 +3,7 @@ final tableCentres = 'centres';
 final tableStatistics = 'statistics';
 final tableFaq = 'faqs';
 final tableNews = 'news';
+final tableMemos = 'memos';
 
 // columns
 final colId = 'id';
@@ -24,6 +25,14 @@ final colDead = 'dead';
 final colRecovered = 'recovered';
 final colTimestamp = 'timestamp';
 final colRegion = 'region';
+
+// memos
+final colDocId = 'docid';
+final colTitle = 'title';
+final colPudate = 'pubdate';
+final colSource = 'source';
+final colAuthor = 'author';
+final colDocurl = 'docurl';
 
 // Create table queries
 final createCentresTable = '''CREATE TABLE $tableCentres (
@@ -48,4 +57,14 @@ final createStatsTable = '''CREATE TABLE $tableStatistics (
                 $colDead INTEGER NOT NULL,
                 $colTimestamp TEXT NOT NULL,
                 $colRegion TEXT UNIQUE
+              )''';
+
+final createMemosTable = '''CREATE TABLE $tableMemos (
+                $colId INTEGER PRIMARY KEY,
+                $colDocId TEXT UNIQUE,
+                $colTitle TEXT NULL,
+                $colSource TEXT NULL,
+                $colPudate TEXT NULL,
+                $colAuthor TEXT NULL,
+                $colDocurl TEXT NULL
               )''';
