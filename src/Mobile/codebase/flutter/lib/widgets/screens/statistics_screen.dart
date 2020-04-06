@@ -1,3 +1,4 @@
+import 'package:charts_flutter/flutter.dart' as Charts;
 import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
 import 'package:covid_19_app/data/store/Store.dart';
@@ -51,7 +52,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double _wd = (MediaQuery.of(context).size.width / 2) - 45;
+    double _wd = (MediaQuery.of(context).size.width / 2) - (16 + 8);
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -192,7 +193,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               height: 16,
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 StatisticCounter(
                                   width: _wd,
@@ -212,7 +213,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               height: 16,
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 StatisticCounter(
                                   width: _wd,
@@ -233,6 +234,44 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       ),
                       SizedBox(
                         height: 18,
+                      ),
+                      Divider(),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Container(
+                        decoration: ShapeDecoration(
+                            shape: BeveledRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(16)),
+                                side: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2))),
+                        height: 400,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Charts.BarChart(
+                            _chartData(),
+                            barGroupingType: Charts.BarGroupingType.grouped,
+                            vertical: false,
+                            behaviors: [
+                              Charts.SeriesLegend(
+                                position: Charts.BehaviorPosition.top,
+                                horizontalFirst: false,
+                                cellPadding:
+                                    EdgeInsets.only(right: 4.0, bottom: 4.0),
+                                showMeasures: true,
+
+                                /*measureFormatter: (num value) {
+                                  return value == null ? '-' : '${value}k';
+                                },*/
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16,
                       ),
                       Container(
                         child: Row(
@@ -276,4 +315,85 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             }));
     //ADD CLOSINGS
   }
+
+  List<Charts.Series<Cases, String>> _chartData() {
+    final confirmedCasesData = <Cases>[];
+    final suspectedCasesData = <Cases>[];
+    final recoveredCasesData = <Cases>[];
+    final deadCasesData = <Cases>[];
+
+    _regions.forEach((region) {
+      int total = region.statistics.suspected +
+          region.statistics.confirmed +
+          region.statistics.recovered +
+          region.statistics.dead;
+      if (region.id != 'all') {
+        confirmedCasesData.add(Cases(
+            region: region.name.replaceAll('Region', ''),
+            count: region.statistics.confirmed));
+        suspectedCasesData.add(Cases(
+            region: region.name.replaceAll('Region', ''),
+            count: region.statistics.suspected));
+        recoveredCasesData.add(Cases(
+            region: region.name.replaceAll('Region', ''),
+            count: region.statistics.recovered));
+        deadCasesData.add(Cases(
+            region: region.name.replaceAll('Region', ''),
+            count: region.statistics.dead));
+      }
+    });
+    return [
+      Charts.Series<Cases, String>(
+        id: 'Confirmed',
+        domainFn: (Cases cases, _) => cases.region,
+        measureFn: (Cases cases, _) => cases.count,
+        data: confirmedCasesData,
+        seriesColor: Charts.Color(
+            r: Colors.red.red,
+            g: Colors.red.green,
+            a: Colors.red.alpha,
+            b: Colors.red.blue),
+      ),
+      new Charts.Series<Cases, String>(
+        id: 'Suspected',
+        domainFn: (Cases cases, _) => cases.region,
+        measureFn: (Cases cases, _) => cases.count,
+        data: suspectedCasesData,
+        seriesColor: Charts.Color(
+            r: Colors.yellow.red,
+            g: Colors.yellow.green,
+            a: Colors.yellow.alpha,
+            b: Colors.yellow.blue),
+      ),
+      Charts.Series<Cases, String>(
+        id: 'Recovered',
+        domainFn: (Cases cases, _) => cases.region,
+        measureFn: (Cases cases, _) => cases.count,
+        data: recoveredCasesData,
+        seriesColor: Charts.Color(
+            r: Colors.green.red,
+            g: Colors.green.green,
+            a: Colors.green.alpha,
+            b: Colors.green.blue),
+      ),
+      new Charts.Series<Cases, String>(
+        id: 'Dead',
+        domainFn: (Cases cases, _) => cases.region,
+        measureFn: (Cases cases, _) => cases.count,
+        data: deadCasesData,
+        seriesColor: Charts.Color(
+            r: Colors.black.red,
+            g: Colors.black.green,
+            a: Colors.black.alpha,
+            b: Colors.black.blue),
+      ),
+    ];
+  }
+}
+
+class Cases {
+  final String region;
+  final int count;
+
+  Cases({this.region, this.count});
 }
