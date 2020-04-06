@@ -59,9 +59,9 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                 Container(
                   padding: EdgeInsets.all(9.0),
                   margin: EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/images/sponsors/NUSTLogo.png',
-                    height: 50,
+                  child: SvgPicture.asset(
+                    'assets/images/sponsors/NUST-Co-Branded.svg',
+                    height: 60,
                   ),
                 ),
                 ListTile(
