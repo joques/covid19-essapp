@@ -13,17 +13,20 @@ footer {
 
 .img-container img {
   width: auto;
-  height: 70px;
+  height: 100px;
   margin: 2rem 1rem 0 0;
 }
 
 @media only screen and (max-width: 500px) {
   .img-container {
-    margin-left: 7rem ;
+    margin-left: 35%;
+    margin-right: 35%;
+    align-items: center;
+    
   }
   .img-container img {
     width: auto;
-    height: 70px;
+    height: 100px;
   }
 
   .img-container {

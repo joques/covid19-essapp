@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ChartsModule, WavesModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -83,6 +83,8 @@ import { TechResponseComponent } from './components/tech-response/tech-response.
     ReactiveFormsModule,
     MatExpansionModule,
     MatListModule,
+    ChartsModule,
+    WavesModule,
     //ngCountTo,
     HttpClientModule,
     Ng2SearchPipeModule,

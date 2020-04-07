@@ -17,32 +17,57 @@ export class StatisticsComponent implements OnInit {
   recoveredCount: number = 0;
   updated: Date = new Date();
 
-  places = [
-    {
-      lat: -22.575224324350007,
-      lng: 17.08553119601639
-    }, {
-      lat: -23.920876916085312,
-      lng: 18.06606098117264
+  //Chart info setup and configuration for chart
+  suspectedList: number[] = new Array<number>();
+  confirmedList: number[] = new Array<number>();
+  deadList: number[] = new Array<number>();
+  recoveredList: number[] = new Array<number>();
+  regionsNames: string[] = new Array<string>();
+  isLoaded: boolean = false;
+  public chartType: string = 'bar';
+  public chartDatasets: Array<any> = [
+    { data: this.suspectedList, label: 'Suspected' },
+    { data: this.confirmedList, label: 'Confirmed' },
+    { data: this.recoveredList, label: 'Recovered' },
+    { data: this.deadList, label: 'Deaths' }
+  ];
 
-    }, {
-      lat: -22.64675073724474,
-      lng: 14.595686021333671
-    }, {
-      lat: -20.489839878217655,
-      lng: 16.67759520102117
-    }, {
-      lat: -22.442920657272868,
-      lng: 18.5031611607708
-    }, {
-      lat: -23.920876916085312,
-      lng: 18.06606098117264
+  public chartLabels: Array<any> = this.regionsNames;
+
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: this.getColor('orange'),
+      borderColor: this.getColor('orange'),
+      borderWidth: 2,
+    },
+    {
+      backgroundColor: this.getColor('blue'),
+      borderColor: this.getColor('blue'),
+      borderWidth: 1,
+    },
+    {
+      backgroundColor: this.getColor('green'),
+      borderColor: this.getColor('green'),
+      borderWidth: 1,
+    },
+    {
+      backgroundColor: this.getColor('red'),
+      borderColor: this.getColor('red'),
+      borderWidth: 1,
     }
   ];
 
-  latitude = -22.967062;
-  longitude = 18.4929993;
-  chosenLocation = false;
+  public chartOptions: any = {
+    responsive: true,
+    title: {
+      display: true,
+      text: 'COVID-19 Namibia Regional Data',
+      position:'top',
+      fontSize: 22,
+      fontfamily:"'Arial', 'Helvetica', 'sans-serif'"
+  }
+  };
+
 
   datenow: string;
   data = [];
@@ -66,6 +91,8 @@ export class StatisticsComponent implements OnInit {
   dataString: string;
   stat_data = [];
 
+  
+
   constructor(
     private http: CoronaWhatisService
   ) { }
@@ -86,31 +113,36 @@ export class StatisticsComponent implements OnInit {
       console.log('i am in home NEWWWWW');
 
       console.log(this.stat_data[this.stat_data.length - 1]['date'].toString());
+      this.updated = new Date(this.stat_data[this.stat_data.length - 1]['date']);
       console.log(this.stat_data[this.stat_data.length - 1]['recovered']);
       this.startCounter();
+    });
+
+    //chart info from service
+    this.http.getRegionalData().subscribe((res) => {
+
+      const regions = JSON.parse(JSON.stringify(res)).regions;
+
+      Object.keys(regions).forEach(key => {
+        this.regionsNames.push(key.toLocaleUpperCase());
+        this.suspectedList.push(regions[key].suspected);
+        this.confirmedList.push(regions[key].confirmed);
+        this.deadList.push(regions[key].dead);
+        this.recoveredList.push(regions[key].recovered);
+        console.log(regions[key]);
+
+      });
+      this.isLoaded = true;
     });
 
 
 
 
 
-   
 
 
   }
 
-
-  // draw a marker on the map
-  onMapClick(event): void {
-    // if (event) {
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
-    this.chosenLocation = true;
-    // }
-
-    // this.places.forEach(coords => {this.latitude = coords.lat; this.longitude = coords.lng})
-
-  };
 
   startCounter() {
 
@@ -118,7 +150,7 @@ export class StatisticsComponent implements OnInit {
     //let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
     let theLoop: (i: number, type: string, first: boolean) => void = (i: number, type: string, first: boolean) => {
       if (first === true) {
-        console.log("Here Count ..");
+        console.log('Here Count ..');
         this.suspectedCount = 0;
         this.confirmedCount = 0;
         this.recoveredCount = 0;
@@ -129,13 +161,13 @@ export class StatisticsComponent implements OnInit {
         //metronome.play();
         if (i > 0) {
           theLoop(--i, type, false);
-          if (type === "suspected") {
+          if (type === 'suspected') {
             this.suspectedCount++;
-          } else if (type === "confirmed") {
+          } else if (type === 'confirmed') {
             this.confirmedCount++;
-          } else if (type === "death") {
+          } else if (type === 'death') {
             this.deathCount++;
-          } else if (type === "recovered") {
+          } else if (type === 'recovered') {
             this.recoveredCount++;
           }
 
@@ -144,16 +176,16 @@ export class StatisticsComponent implements OnInit {
       }, 5);
     };
     var length = Object.keys(this.stat_data).length;
-    console.log("ALL items =>" + length);
-    theLoop(Number.parseInt(this.stat_data[length - 1]['suspected']), "suspected", true);
-    theLoop(Number.parseInt(this.stat_data[length - 1]['dead']), "death", true);
-    theLoop(Number.parseInt(this.stat_data[length - 1]['confirmed']), "confirmed", true);
-    theLoop(Number.parseInt(this.stat_data[length - 1]['recovered']), "recovered", true);
+    console.log('ALL items =>' + length);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['suspected']), 'suspected', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['dead']), 'death', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['confirmed']), 'confirmed', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['recovered']), 'recovered', true);
   }
 
   drawMark(): void {
 
-  };
+  }
 
   // method that will populate the selected object and update the badges on the html page
   select(date): void {
@@ -165,9 +197,21 @@ export class StatisticsComponent implements OnInit {
           suspected: parseInt(data.suspected),
           confirmed: data.confirmed,
           worldwide: data.worldwide
-        }
+        };
         this.selected = value;
       }
-    })
-  };
+    });
+  }
+
+  
+  public chartClicked(e: any): void { }
+  public chartHovered(e: any): void { }
+  getColor(color: string) {
+    const colorList = new Array<string>(14);
+    for (let i = 0; i < colorList.length; i++) {
+      colorList[i] = color;
+
+    }
+    return colorList;
+  }
 }

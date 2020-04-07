@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpHandler } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from "rxjs/operators";
+import { Region } from '../models/region';
 
 
 @Injectable({
@@ -21,6 +22,8 @@ export class CoronaWhatisService {
   private newsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/latest';
   private centresApi = 'https://covidservices.nust.na:6550/covid/v1/centre/all';
   private statisticsApi = 'https://covidservices.nust.na:6549/covid/v1/statistics/all';
+  
+  apiURL: string = 'https://covidservices.nust.na:{port}/covid/v1';
   constructor(private client: HttpClient) {
 //     var handler = new ();
 // handler.ClientCertificateOptions = ClientCertificateOption.Manual;
@@ -28,6 +31,10 @@ export class CoronaWhatisService {
 // handler.ClientCertificates.Add(new X509Certificate2("cert.crt"));
    }
 
+   public getRegionalData() {
+
+    return this.client.get<Region[]>(`${this.apiURL.replace('{port}','6549')}/statistics/aggregate`);
+  }
   public sendGetRequest() {
     return this.client.get(this.whatisApi);
   }
