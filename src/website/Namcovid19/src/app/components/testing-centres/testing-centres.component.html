@@ -1,0 +1,29 @@
+<!-- <div class="prgress">
+  <mat-progress-bar mode="indeterminate" *ngIf="showprogress"></mat-progress-bar>
+</div> -->
+
+<section class="testing-centres-section">
+  <div id="link1">
+    <mdb-card-body>
+     
+  
+      <div style="padding: 13px;">
+        <mat-card-header>
+          <mat-card-title style="text-align: center;">Testing Centres</mat-card-title>
+        </mat-card-header>
+        <mat-card *ngFor="let testing of Testing" style="margin-top:10px;">
+          <mat-card-content>
+            <p style="font-size:20px">
+              {{testing.name}}
+              <br>
+              {{testing.about}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- <div class="img-container">
+        <img src="../../../assets/img/testing.jpg" alt="profile">
+      </div> -->
+    </mdb-card-body>
+  </div>  
+  </section>
