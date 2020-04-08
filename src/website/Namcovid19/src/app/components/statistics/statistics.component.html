@@ -16,8 +16,8 @@
     <div class="container">
       <div class="row" >
         <br />
-        <div class="col text-center">
-          <h2>Namibian COVID-19 Statistics on {{updated | date:'EEEE, MMMM d, y, H:mm:ss'}} </h2>
+        <div class="col text-center" style="font-family:Arial, Helvetica, sans-serif ">
+          <h2>COVID-19 Namibia National Statistics last updated {{updated | date:'EEEE, MMMM d, y, H:mm:ss'}} </h2>
           <p> &nbsp; &nbsp;</p>
         </div>
       </div>
@@ -77,6 +77,21 @@
     </agm-map> -->
 
   </mat-card>
+  <mat-card style="padding-top: 5em">
+    <div style="display: block" [hidden]="!isLoaded"  >
+      <canvas mdbChart
+          [chartType]="chartType"
+          [datasets]="chartDatasets"
+          [labels]="chartLabels"
+          [colors]="chartColors"
+          [options]="chartOptions"
+          [legend]="true"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </mat-card>
+
   <!-- <div style="padding: 13px;">
     <mat-card-header>
       <mat-card-title style="text-align: center;">Notice</mat-card-title>
