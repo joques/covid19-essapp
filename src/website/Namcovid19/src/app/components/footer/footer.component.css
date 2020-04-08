@@ -1,0 +1,37 @@
+footer {
+  position: relative;
+  bottom: 0;
+  padding-top: 0.5rem;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.img-container img {
+  width: auto;
+  height: 100px;
+  margin: 2rem 1rem 0 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .img-container {
+    margin-left: 35%;
+    margin-right: 35%;
+    align-items: center;
+    
+  }
+  .img-container img {
+    width: auto;
+    height: 100px;
+  }
+
+  .img-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
