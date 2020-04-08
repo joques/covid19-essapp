@@ -77,7 +77,28 @@
     </agm-map> -->
 
   </mat-card>
-  <mat-card style="padding-top: 5em">
+  <div style="padding: 13px;">
+    <!-- <mat-card-header>
+      <mat-card-title style="text-align: center;">Notice</mat-card-title>
+    </mat-card-header> -->
+    <mat-card  style="padding-top: 5em">
+      <mat-card-content>
+        <div style="display: block" [hidden]="!isLoaded"  >
+          <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasets"
+              [labels]="chartLabels"
+              [colors]="chartColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- <mat-card style="padding-top: 5em">
     <div style="display: block" [hidden]="!isLoaded"  >
       <canvas mdbChart
           [chartType]="chartType"
@@ -90,7 +111,7 @@
           (chartClick)="chartClicked($event)">
       </canvas>
     </div>
-  </mat-card>
+  </mat-card> -->
 
   <!-- <div style="padding: 13px;">
     <mat-card-header>
@@ -114,3 +135,4 @@
     <app-transmission></app-transmission>
   </div> -->
 </section>
+
