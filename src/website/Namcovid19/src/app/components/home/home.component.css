@@ -11,6 +11,10 @@
   height: 100hv;
 }
 
+#hotline-wrapper {
+  display: none;
+}
+
 
 .scrollspy-example {
   padding: 5rem 10rem;
@@ -59,12 +63,13 @@
 
 @keyframes maq {
   0% {
-  transform: translateX(400%);
+    transform: translateX(400%);
   }
+
   100% {
-  transform: translateX(0%);
+    transform: translateX(0%);
   }
-  }
+}
 
 .welcome-message {
   text-align: center;
@@ -502,7 +507,11 @@ mdb-card {
 
 @media only screen and (max-width:500px) {
 
-  .home{
+  #hotline-wrapper {
+    display: block;
+  }
+
+  .home {
     padding-top: 0;
   }
 
