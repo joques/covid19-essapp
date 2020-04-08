@@ -501,6 +501,11 @@ mdb-card {
 
 
 @media only screen and (max-width:500px) {
+
+  .home{
+    padding-top: 0;
+  }
+
   .scrollspy-example {
     padding: 5rem 1rem;
   }
