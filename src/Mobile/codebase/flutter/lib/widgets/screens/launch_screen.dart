@@ -111,7 +111,7 @@ class SplashScreenState extends State<SplashScreen> {
                     borderRadius:
                         BorderRadius.only(bottomRight: Radius.circular(16))),
                 label: Text(
-                  'Call Help Line'.toUpperCase(),
+                  'Call Help Line \n0800100100'.toUpperCase(),
                   style: TextStyle(color: AppColors.accentElement),
                 ),
                 icon: Padding(

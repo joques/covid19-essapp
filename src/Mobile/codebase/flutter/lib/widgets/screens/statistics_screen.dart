@@ -93,7 +93,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                 'Select a Region',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline6
+                                    .headline
                                     .copyWith(
                                         color: AppColors.primaryElement,
                                         fontWeight: FontWeight.w700,
@@ -160,7 +160,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             'Statistics',
                             style: Theme.of(context)
                                 .textTheme
-                                .headline6
+                                .headline
                                 .copyWith(
                                     color: AppColors.primaryElement,
                                     fontWeight: FontWeight.w700,
