@@ -2,5 +2,36 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;  padding-top: 3rem;
+
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 90% 1fr;
+    grid-template-areas: ". center ."
+}
+
+.center-wrapper {
+    grid-area: center;
+    padding-top: 20px;
+}
+
+@media screen and (min-width:768px) {
+
+    .main-grid {
+        grid-template-columns: 1fr 80% 1fr;
+        grid-template-areas: ". center ."
+    }
+
+    .center-wrapper {
+        grid-area: center;
+    }
+}

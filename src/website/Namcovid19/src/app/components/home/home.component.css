@@ -3,9 +3,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
-  padding-top: 3rem;
 }
+
 
 .home-section {
   height: 100hv;
@@ -17,8 +16,9 @@
 
 
 .scrollspy-example {
-  padding: 5rem 10rem;
+  padding: 0;
 }
+
 
 .img-container {
   display: flex;
@@ -49,7 +49,7 @@
 } */
 .trans-background {
   background-color: rgba(0, 0, 0, 0.8);
-  height: 100vh;
+  height: 100%;
 }
 
 .maq {
@@ -298,9 +298,6 @@
 
 }
 
-.general {
-  padding: 50px 15px;
-}
 
 .general-img-container {
   position: relative;
@@ -463,24 +460,6 @@ h4 span {
 }
 
 
-#link1 {
-  margin-top: 1rem;
-  padding: 0 6rem;
-
-  /* padding-top: 2rem; */
-}
-
-#link2 {
-  padding: 0 6rem;
-}
-
-#link3 {
-  padding: 0 6rem;
-
-  /* padding-top: 2rem; */
-}
-
-
 mdb-card {
   margin-bottom: 2rem;
 }
@@ -498,12 +477,6 @@ mdb-card {
 }
 
 
-@media only screen and (max-width: 770px) {
-  .scrollspy-example {
-    padding: 5rem 6rem;
-  }
-}
-
 
 @media only screen and (max-width:500px) {
 
@@ -511,33 +484,12 @@ mdb-card {
     display: block;
   }
 
+
+
   .home {
     padding-top: 0;
   }
 
-  .scrollspy-example {
-    padding: 5rem 1rem;
-  }
-
-  #link1 {
-    padding: 0 0.5rem;
-
-    /* padding-top: 2rem; */
-  }
-
-  #link2 {
-    padding: 0 0.5rem;
-  }
-
-  #link3 {
-    padding: 0 0.5rem;
-
-    /* padding-top: 2rem; */
-  }
-
-  .scrollspy-example {
-    padding: 5rem 1.5rem;
-  }
 }
 
 
@@ -621,7 +573,6 @@ mdb-card {
 }
 
 #arrow-style {
-  padding-top: 12%;
   padding-left: 47%;
   margin-right: auto;
 }
