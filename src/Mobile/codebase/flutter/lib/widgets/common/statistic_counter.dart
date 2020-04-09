@@ -25,19 +25,14 @@ class _StatisticCounterState extends State<StatisticCounter> {
     return Container(
       width: widget.width,
       height: 100,
-      decoration: ShapeDecoration(
-        shape: BeveledRectangleBorder(
-            side: BorderSide(color: Color(this.borderColor), width: 2),
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(15))),
-      ) /*BoxDecoration(
-
+      decoration:  BoxDecoration(
         color: AppColors.accentElement,
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           width: 1.4,
           color: Color(this.borderColor),
         ),
-      )*/
+      )
       ,
       child: Container(
         margin: EdgeInsets.all(5.0),

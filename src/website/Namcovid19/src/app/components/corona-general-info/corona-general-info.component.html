@@ -1,23 +1,27 @@
-<div class="prgress">
-  <mat-progress-bar mode="indeterminate" *ngIf="showprogress"></mat-progress-bar>
-</div>
+<main class="main-grid">
+  <div class="center-wrapper">
+    <div class="prgress">
+      <mat-progress-bar mode="indeterminate" *ngIf="showprogress"></mat-progress-bar>
+    </div>
 
-<section class="general-section">
-  <!-- <h2 class="text-center">General<span> Information about Coronavirus</span></h2> -->
-  <!-- <h5>General<span> Information about
+    <section class="general-section">
+      <!-- <h2 class="text-center">General<span> Information about Coronavirus</span></h2> -->
+      <!-- <h5>General<span> Information about
       Coronavirus</span></h5> -->
-  <app-corona-whatis></app-corona-whatis>
-  <br>
-  <app-transmission></app-transmission>
-  <br>
-  <app-symptoms></app-symptoms>
-  <br>
-  <app-treatment></app-treatment>
-  <br>
-  <app-measures></app-measures>
-  <br>
-  <app-facts></app-facts>
-  <br>
-  <app-tips></app-tips>
-  <!-- <p align = "right">Source : MoHSS, CDC and WHO</p> -->
-</section>
+      <app-corona-whatis></app-corona-whatis>
+      <br>
+      <app-transmission></app-transmission>
+      <br>
+      <app-symptoms></app-symptoms>
+      <br>
+      <app-treatment></app-treatment>
+      <br>
+      <app-measures></app-measures>
+      <br>
+      <app-facts></app-facts>
+      <br>
+      <app-tips></app-tips>
+      <!-- <p align = "right">Source : MoHSS, CDC and WHO</p> -->
+    </section>
+  </div>
+</main>

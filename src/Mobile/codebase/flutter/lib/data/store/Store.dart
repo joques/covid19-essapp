@@ -115,7 +115,7 @@ class Store {
     await db.query(tableFaq).then((rows) {
       debugPrint(rows.length.toString() + ' faqs returned from db');
 
-      for (var row in rows) {
+      for (var row in rows.reversed) {
         FAQ _faq = FAQ.map(row);
         _faqs.add(_faq);
       }
@@ -134,7 +134,7 @@ class Store {
     await db.query(tableMemos).then((rows) {
       debugPrint(rows.length.toString() + ' memos returned from db');
 
-      for (var row in rows) {
+      for (var row in rows.reversed) {
         Memo _memo = Memo.map(row);
         _memos.add(_memo);
       }

@@ -6,14 +6,3 @@
   justify-content: center;
   margin-bottom: 2rem;
 }
-
-#link1 {
-  padding: 0 6rem;
-}
-
-
-@media only screen and (max-width: 500px) {
-  #link1 {
-    padding: 0 1rem;
-  }
-}
