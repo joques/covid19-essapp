@@ -6,8 +6,14 @@ footer {
 
 .img-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
+
+
+img.profile {
+    width: 800px !important;
+    height: auto !important;
+  }
 
 
 

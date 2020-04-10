@@ -59,6 +59,7 @@ export class StatisticsComponent implements OnInit {
 
   public chartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: 'COVID-19 Namibia Regional Data',

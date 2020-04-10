@@ -79,13 +79,10 @@
         </agm-map> -->
     
       </mat-card>
-      <div style="padding: 13px;">
-        <!-- <mat-card-header>
-          <mat-card-title style="text-align: center;">Notice</mat-card-title>
-        </mat-card-header> -->
-        <mat-card  style="padding-top: 5em">
+      <div  style="padding-top: 1em;padding-bottom: 4%">
+        <mat-card>
           <mat-card-content>
-            <div style="display: block" [hidden]="!isLoaded"  >
+            <div  id="stats-canvas" style="display: block; height: 500px" [hidden]="!isLoaded"  >
               <canvas mdbChart
                   [chartType]="chartType"
                   [datasets]="chartDatasets"
@@ -100,6 +97,8 @@
           </mat-card-content>
         </mat-card>
       </div>
+            
+
       <!-- <mat-card style="padding-top: 5em">
         <div style="display: block" [hidden]="!isLoaded"  >
           <canvas mdbChart
@@ -137,6 +136,7 @@
         <app-transmission></app-transmission>
       </div> -->
     </section>
+    
   </div>
 </main>
 

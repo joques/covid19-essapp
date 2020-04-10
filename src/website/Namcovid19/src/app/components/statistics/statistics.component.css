@@ -91,7 +91,6 @@ button {
 
 @media only screen and (max-width: 500px) {
 
-
   mat-card {
     padding: 1rem;
     margin: 0.3rem;
@@ -108,4 +107,10 @@ button {
     width: 85%;
   }
 
+}
+
+@media only screen and (max-width: 768px) {
+  #stats-canvas {
+    height:"450px" !important;
+  }
 }

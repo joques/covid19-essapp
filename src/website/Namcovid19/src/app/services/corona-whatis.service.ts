@@ -22,18 +22,18 @@ export class CoronaWhatisService {
   private newsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/latest';
   private centresApi = 'https://covidservices.nust.na:6550/covid/v1/centre/all';
   private statisticsApi = 'https://covidservices.nust.na:6549/covid/v1/statistics/all';
-  
+
   apiURL: string = 'https://covidservices.nust.na:{port}/covid/v1';
   constructor(private client: HttpClient) {
-//     var handler = new ();
-// handler.ClientCertificateOptions = ClientCertificateOption.Manual;
-// handler.SslProtocols = SslProtocols.Tls12;
-// handler.ClientCertificates.Add(new X509Certificate2("cert.crt"));
-   }
+    //     var handler = new ();
+    // handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+    // handler.SslProtocols = SslProtocols.Tls12;
+    // handler.ClientCertificates.Add(new X509Certificate2("cert.crt"));
+  }
 
-   public getRegionalData() {
+  public getRegionalData() {
 
-    return this.client.get<Region[]>(`${this.apiURL.replace('{port}','6549')}/statistics/aggregate`);
+    return this.client.get<Region[]>(`${this.apiURL.replace('{port}', '6549')}/statistics/aggregate`);
   }
   public sendGetRequest() {
     return this.client.get(this.whatisApi);
@@ -74,8 +74,8 @@ export class CoronaWhatisService {
   }
   public getStats() {
     //this.client.
-    
+
     return this.client.get(this.statisticsApi);
 
-}
+  }
 }
