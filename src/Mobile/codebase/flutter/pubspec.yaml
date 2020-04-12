@@ -41,6 +41,10 @@ dependencies:
   webview_flutter:
   shimmer:
   flutter_spinkit: "^4.1.2"
+  sqflite:
+  path_provider:
+  charts_flutter:
+    
 
 
 

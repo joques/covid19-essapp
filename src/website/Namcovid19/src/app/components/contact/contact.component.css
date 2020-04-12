@@ -1,0 +1,19 @@
+.contact {
+  padding-top: 3rem;
+  float: center;
+	width: 100%;
+	padding: 60px 60px;
+	height: 100%;
+  display: flex;
+  background-color: #fff;
+    align-items: center;
+    position: relative;
+}
+
+
+.btn-primary{
+  background-color:  #212529 !important;
+  outline: none;
+  outline-color: #fff ;
+  border-color: transparent;
+}

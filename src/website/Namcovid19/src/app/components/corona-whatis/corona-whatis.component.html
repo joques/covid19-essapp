@@ -1,0 +1,32 @@
+<div>
+  <mdb-card-body>
+    <div class="img-container">
+      <img src="../../../assets/img/virus-small.png" alt="profile">
+    </div>
+
+    <div style="padding: 13px;">
+
+      <mat-card-header>
+        <mat-card-title>What is Coronavirus?</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card *ngFor="let info of coronaInfo" style="margin-top:10px;">
+        <mat-card-content>
+            <p style="font-size:20px">
+                {{info}}
+              </p>
+          <!-- <mat-list>
+            <mat-list-item *ngFor="let info of coronaInfo">
+              <mat-icon matListIcon>label_important</mat-icon>
+              <p matLine style="font-size:20px;word-wrap: break-word !important;white-space: pre-wrap !important;">
+                {{info}}</p>
+              <p matLine></p>
+              <p matLine></p>
+            </mat-list-item>
+          </mat-list> -->
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </mdb-card-body>
+</div>

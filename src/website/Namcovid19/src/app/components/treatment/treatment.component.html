@@ -1,0 +1,20 @@
+<div>
+  <mdb-card-body>
+    <div class="img-container">
+      <img src="../../../assets/img/virus-small.png" alt="profile">
+    </div>
+
+    <div style="padding: 13px;">
+      <mat-card-header>
+        <mat-card-title style="text-align: center;">Treatment</mat-card-title>
+      </mat-card-header>
+      <mat-card *ngFor="let treatment of Treatment" style="margin-top:10px;">
+        <mat-card-content>
+          <p style="font-size:20px">
+            {{treatment}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mdb-card-body>
+</div>

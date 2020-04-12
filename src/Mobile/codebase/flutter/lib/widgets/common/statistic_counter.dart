@@ -25,10 +25,15 @@ class _StatisticCounterState extends State<StatisticCounter> {
     return Container(
       width: widget.width,
       height: 100,
-      decoration: BoxDecoration(
-          color: AppColors.accentElement,
-          borderRadius: BorderRadius.circular(9.0),
-          border: Border.all(width: 1.4, color: Color(this.borderColor))),
+      decoration:  BoxDecoration(
+        color: AppColors.accentElement,
+        borderRadius: BorderRadius.circular(9.0),
+        border: Border.all(
+          width: 1.4,
+          color: Color(this.borderColor),
+        ),
+      )
+      ,
       child: Container(
         margin: EdgeInsets.all(5.0),
         child: Column(

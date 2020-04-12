@@ -1,0 +1,116 @@
+.stats-section {
+  position: relative;
+}
+
+mat-card {
+  padding: 1rem;
+  margin: 0rem 2rem 0 3rem;
+}
+
+agm-map {
+  height: 400px;
+}
+
+
+.buttons {
+  margin-bottom: 2rem;
+  margin-left: 8rem;
+}
+
+button {
+  margin: 0 1.5rem;
+}
+
+.primary {
+  background: #063bca;
+  color: rgb(255, 255, 255);
+
+}
+
+.success {
+  background: #1c8135;
+  color: rgb(255, 255, 255);
+
+}
+
+.danger {
+  background: #ca0606;
+  color: rgb(255, 255, 255);
+}
+
+.warning {
+  background: #e9ab37;
+  color: rgb(255, 255, 255);
+
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+.counter {
+  background-color:#f5f5f5;
+  padding: 20px 0;
+  border-radius: 5px;
+}
+
+.count-title {
+  font-size: 40px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.count-text {
+  font-size: 18px;
+  font-weight:bold;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.fa-2x {
+  margin: 0 auto;
+  float: none;
+  display: table;
+  color: #4ad1e5;
+}
+
+@media only screen and (max-width: 1025px) {
+
+  .buttons {
+    margin-top: 2rem;
+    margin-left: 3rem;
+  }
+
+  button {
+    margin: 0.5rem;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+  mat-card {
+    padding: 1rem;
+    margin: 0.3rem;
+  }
+
+
+  .buttons {
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+
+  button {
+    margin: 0.5rem;
+    width: 85%;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  #stats-canvas {
+    height:"450px" !important;
+  }
+}

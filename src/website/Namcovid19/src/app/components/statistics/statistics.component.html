@@ -1,0 +1,142 @@
+<main class="main-grid">
+  <div class="center-wrapper">
+    <section class="stats-section">
+
+      <mat-card id="mat-container">
+        <!-- <h5 class="text-center" style="margin-bottom: 1rem;">Statistics as of {{datenow | date}} -->
+          <!-- <mat-form-field>
+            <mat-label> Select date </mat-label>
+            <mat-select>
+              <mat-option *ngFor="let data of data" [value]="data.date" (onSelectionChange)="select(data.date)">
+                {{data.date | date}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <!-- </mat-form-field> -->
+        <!-- </h5> -->
+        <!-- Counter test-->
+        <div class="container">
+          <div class="row" >
+            <br />
+            <div class="col text-center" style="font-family:Arial, Helvetica, sans-serif ">
+              <h2>COVID-19 Namibia National Statistics last updated {{updated | date:'EEEE, MMMM d, y, H:mm:ss'}} </h2>
+              <p> &nbsp; &nbsp;</p>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md">
+              <div class="counter bg-info">
+                <!-- <i class="fa fa-code fa-2x"></i> -->
+                <!-- <img src="../../../assets/img/confirm_stats.png" style="height: 64px" class="img-fluid" alt="Responsive image"> -->
+                <h2 class="count-title">{{ this.confirmedCount }}</h2>
+                <!-- <h2 class="count-title">{{13}}</h2> -->
+                <p class="count-text ">Confirmed Cases</p>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="counter bg-success">
+                <!-- <img src="../../../assets/img/recover_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image"> -->
+                <h2 class="count-title">{{ this.recoveredCount }}</h2>
+                <!-- <h2 class="count-title">{{ 3}}</h2> -->
+                <p class="count-text ">Recovered Patients</p>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="counter bg-danger">
+                <!-- <img src="../../../assets/img/dead_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image"> -->
+                <h2 class="count-title">{{ this.deathCount }}</h2>
+                <!-- <h2 class="count-title">{{ 0 }}</h2> -->
+                <p class="count-text ">Confirmed Deaths</p>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="counter bg-warning">
+                <!-- <img src="../../../assets/img/suspected_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image"> -->
+                <h2 class="count-title">{{ this.suspectedCount }}</h2>
+                <!-- <h2 class="count-title">{{ 306 }}</h2> -->
+                <p class="count-text ">Suspected Cases</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    <!--End Counter test-->
+        <!-- <div class="buttons">
+          <button class="danger" mat-raised-button matBadge="{{this.localData['confirmed'].toString()}}">Confirmed Cases</button>
+          <button class="primary" mat-raised-button matBadge="{{this.localData['recovered'].toString()}}">Recovered Patients</button>
+          <button class="warning" mat-raised-button matBadge="{{this.localData['dead'].toString()}}">Confirmed Deaths</button>
+          <button class="success" mat-raised-button matBadge="{{this.localData['suspected'].toString()}}">Suspected Cases</button>
+          <button class="success" mat-raised-button >Suspected Cases</button> -->
+        <!-- </div> -->
+        <!-- <agm-map style="height: 680px;padding-top: 30px;" [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+          <agm-marker *ngIf="chosenLocation" [latitude]="latitude" [longitude]="longitude">
+          </agm-marker>
+          <div *ngIf="places">
+            <div *ngFor="let coors of places;">
+              <agm-marker [latitude]="coors.lat" [longitude]="coors.lng">
+              </agm-marker>
+            </div>
+          </div>
+        </agm-map> -->
+    
+      </mat-card>
+      <div  style="padding-top: 1em;padding-bottom: 4%">
+        <mat-card>
+          <mat-card-content>
+            <div  id="stats-canvas" style="display: block; height: 500px" [hidden]="!isLoaded"  >
+              <canvas mdbChart
+                  [chartType]="chartType"
+                  [datasets]="chartDatasets"
+                  [labels]="chartLabels"
+                  [colors]="chartColors"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+            
+
+      <!-- <mat-card style="padding-top: 5em">
+        <div style="display: block" [hidden]="!isLoaded"  >
+          <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasets"
+              [labels]="chartLabels"
+              [colors]="chartColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </mat-card> -->
+    
+      <!-- <div style="padding: 13px;">
+        <mat-card-header>
+          <mat-card-title style="text-align: center;">Notice</mat-card-title>
+        </mat-card-header>
+        <mat-card  style="margin-top:10px;">
+          <mat-card-content>
+            <p style="font-size:20px">
+             The MoHSS can only classify someone as recovered when the test result come out negative.
+              Though the two  ( German couple) have recovered from all signs and symptoms they have not
+               been cleared lab test wise. Hence only one recovered so far.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div> -->
+      <!-- <h1 class="text-center">Statistics</h1>
+      <div>
+        <app-corona-whatis></app-corona-whatis>
+      </div>
+      <div>
+        <app-transmission></app-transmission>
+      </div> -->
+    </section>
+    
+  </div>
+</main>
+

@@ -6,12 +6,14 @@ footer {
 
 .img-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
+
+
 .img-container img {
-  width: 35%;
-  height: 25%;
+  width: auto;
+  height: 70px;
   margin: 2rem 1rem 0 0;
 }
 
@@ -20,12 +22,13 @@ footer {
     margin-left: 7rem ;
   }
   .img-container img {
-    width: 60%;
-    height: 30%;
+    width: auto;
+    height: 70px;
   }
 
   .img-container {
     display: flex;
     flex-direction: column;
   }
+
 }

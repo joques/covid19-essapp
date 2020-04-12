@@ -1,10 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:covid_19_app/data/api.dart';
 import 'package:covid_19_app/data/packages.dart';
+import 'package:covid_19_app/data/store/Store.dart';
 import 'package:covid_19_app/models/statistic.dart';
 import 'package:covid_19_app/styles/colors.dart';
 import 'package:covid_19_app/widgets/common/statistic_counter.dart';
-import 'package:covid_19_app/widgets/common/statistical_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,14 +20,14 @@ class InformationScreen extends StatefulWidget {
 
 class _InformationScreenState extends State<InformationScreen> {
   List _slides = <Widget>[];
-  Future<Latest> latestInfo;
-  int confirmed;
-  Statistic latestStat = Statistic(
+  Store store = Store.instance;
+  Statistic nationalStat = Statistic(
+      timestamp: DateTime.now().toString(),
       confirmed: 0,
+      recovered: 0,
       dead: 0,
       suspected: 0,
-      recovered: 0,
-      timestamp: DateTime.now());
+      region: 'all');
 
   var title = {
     '1': 'What is COVID-19?',
@@ -59,9 +58,10 @@ class _InformationScreenState extends State<InformationScreen> {
 
   fetchLatestStats() async {
     try {
-      API().getLatestStatistics().then((value) {
+      store.getNationalStats().then((value) {
         setState(() {
-          latestStat = value;
+          nationalStat = value;
+          debugPrint('Stat: ' + value.toMap().toString());
         });
       });
     } catch (err) {
@@ -71,7 +71,7 @@ class _InformationScreenState extends State<InformationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double _wd = (MediaQuery.of(context).size.width / 2) - 45;
+    double _wd = (MediaQuery.of(context).size.width / 2) - (16 + 8);
 
     return Scaffold(
         appBar: AppBar(
@@ -144,30 +144,33 @@ class _InformationScreenState extends State<InformationScreen> {
                 SizedBox(
                   height: 16,
                 ),
-                RaisedButton.icon(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/centres');
-                  },
-                  color: AppColors.primaryElement,
-                  shape: BeveledRectangleBorder(
-                      borderRadius:
-                          BorderRadius.only(bottomRight: Radius.circular(16))),
-                  label: Text(
-                    'Testing Centres'.toUpperCase(),
-                    style: TextStyle(color: AppColors.accentElement),
-                  ),
-                  icon: Padding(
-                    padding: EdgeInsets.all(
-                      4.0,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: RaisedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/centres');
+                    },
+                    color: AppColors.primaryElement,
+                    shape: BeveledRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(16))),
+                    label: Text(
+                      'Testing Centres'.toUpperCase(),
+                      style: TextStyle(color: AppColors.accentElement),
                     ),
-                    child: Icon(
-                      LineIcons.map_o,
-                      color: AppColors.accentElement,
+                    icon: Padding(
+                      padding: EdgeInsets.all(
+                        4.0,
+                      ),
+                      child: Icon(
+                        LineIcons.map_o,
+                        color: AppColors.accentElement,
+                      ),
                     ),
                   ),
                 ),
                 ButtonBar(
-                  alignment: MainAxisAlignment.spaceBetween,
+                  alignment: MainAxisAlignment.spaceEvenly,
                   buttonMinWidth: (MediaQuery.of(context).size.width / 2) - 32,
                   children: <Widget>[
                     RaisedButton.icon(
@@ -213,34 +216,42 @@ class _InformationScreenState extends State<InformationScreen> {
                 SizedBox(
                   height: 8,
                 ),
-                Wrap(
-                  direction: Axis.horizontal,
-                  alignment: WrapAlignment.spaceBetween,
-                  spacing: 100,
-                  runSpacing: 10,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Statistics',
-                      style: Theme.of(context).textTheme.headline.copyWith(
-                          color: AppColors.primaryElement,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16),
-                    ),
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: <Widget>[
-                        Icon(LineIcons.clock_o),
-                        Text(
-                          'Updated: ' + timeago.format(latestStat.timestamp),
-                          style: Theme.of(context).textTheme.overline.copyWith(
-                              color: AppColors.secondaryText,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12),
-                        )
-                      ],
-                    ), //Updated Time
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    alignment: WrapAlignment.spaceBetween,
+                    spacing: 100,
+                    runSpacing: 10,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Statistics',
+                        style: Theme.of(context).textTheme.headline.copyWith(
+                            color: AppColors.primaryElement,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16),
+                      ),
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: <Widget>[
+                          Icon(LineIcons.clock_o),
+                          Text(
+                            'Updated: ' +
+                                timeago.format(
+                                    DateTime.parse(nationalStat.timestamp)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .overline
+                                .copyWith(
+                                    color: AppColors.secondaryText,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12),
+                          )
+                        ],
+                      ), //Updated Time
+                    ],
+                  ),
                 ), //Stats Heading
                 Container(
                   child: Column(
@@ -249,17 +260,17 @@ class _InformationScreenState extends State<InformationScreen> {
                         height: 16,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.confirmed,
+                            count: nationalStat.confirmed,
                             borderColor: Colors.blue.shade800.value,
                             title: 'Confirmed cases',
                           ),
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.dead,
+                            count: nationalStat.dead,
                             borderColor: Colors.red.shade900.value,
                             title: 'Confirmed deaths',
                           ),
@@ -269,17 +280,17 @@ class _InformationScreenState extends State<InformationScreen> {
                         height: 16,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.recovered,
+                            count: nationalStat.recovered,
                             borderColor: Colors.green.shade900.value,
                             title: 'Recovered patients',
                           ),
                           StatisticCounter(
                             width: _wd,
-                            count: latestStat.suspected,
+                            count: nationalStat.suspected,
                             borderColor: Colors.orange.shade900.value,
                             title: 'Suspected cases',
                           ),
@@ -289,7 +300,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 18,
+                  height: 25,
                 ),
                 Container(
                   child: Row(
@@ -309,8 +320,8 @@ class _InformationScreenState extends State<InformationScreen> {
                         width: 5,
                       ),
                       Image.asset(
-                        'assets/images/sponsors/liberity.png',
-                        height: 50,
+                        'assets/images/sponsors/Liberty3.png',
+                        height: 85,
                       ),
 //                      SvgPicture.asset(
 //                        'assets/images/sponsors/NamibiaEmblem-01.svg',

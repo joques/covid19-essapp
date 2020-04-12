@@ -37,7 +37,7 @@ class _MainPageState extends State<MainPage> {
     BottomNavigationBarItem(
         icon: Icon(LineIcons.question_circle), title: Text('FAQ')),
     BottomNavigationBarItem(
-        icon: Icon(LineIcons.gear), title: Text('info')),
+        icon: Icon(LineIcons.gear), title: Text('Info')),
   ];
 
   _onTapped(index) {
