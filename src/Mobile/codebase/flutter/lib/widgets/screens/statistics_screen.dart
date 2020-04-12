@@ -272,7 +272,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 16,
+                        height: 25,
                       ),
                       Container(
                         child: Row(
@@ -292,8 +292,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               width: 5,
                             ),
                             Image.asset(
-                              'assets/images/sponsors/liberity.png',
-                              height: 50,
+                              'assets/images/sponsors/Liberty3.png',
+                              height: 85,
                             ),
 //                      SvgPicture.asset(
 //                        'assets/images/sponsors/NamibiaEmblem-01.svg',
