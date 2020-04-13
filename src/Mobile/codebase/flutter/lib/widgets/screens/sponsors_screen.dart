@@ -60,8 +60,8 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                   padding: EdgeInsets.all(9.0),
                   margin: EdgeInsets.all(10.0),
                   child: SvgPicture.asset(
-                    'assets/images/sponsors/NUST-Co-Branded.svg',
-                    height: 60,
+                    'assets/images/sponsors/Nust_Logo.svg',
+                    height: 110,
                   ),
                 ),
                 ListTile(
@@ -95,8 +95,8 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                   padding: EdgeInsets.all(9.0),
                   margin: EdgeInsets.all(10.0),
                   child: Image.asset(
-                    'assets/images/sponsors/liberity.png',
-                    height: 100,
+                    'assets/images/sponsors/Liberty3.png',
+                    height: 110,
                   ),
                 ),
                 ListTile(
@@ -126,34 +126,37 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                 SizedBox(
                   height: 25,
                 ),
-                // Image.asset(
-                //   'assets/images/sponsors/UNDP Logo 2020.jpg',
-                //   height: 120,
-                // ),
-                // ListTile(
-                //     isThreeLine: true,
-                //     title: Container(
-                //       child: Text(
-                //         "UNDP Namibia",
-                //         style: TextStyle(
-                //           color: AppColors.primaryText,
-                //           fontFamily: "Roboto",
-                //           fontWeight: FontWeight.w800,
-                //           fontSize: 18,
-                //         ),
-                //         textAlign: TextAlign.center,
-                //       ),
-                //       margin: EdgeInsets.all(10.0),
-                //     ),
-                //     subtitle: Text(
-                //       "UNDP is the UN’s global development network, advocating for change and connecting countries to knowledge, experience and resources to help people build a better life. We are on the ground in 177 countries, working with them on their own solutions to global and national development challenges.",
-                //       style: TextStyle(
-                //         color: AppColors.secondaryText,
-                //         fontFamily: "Roboto",
-                //         fontWeight: FontWeight.w400,
-                //         fontSize: 16,
-                //       ),
-                //     )),
+                Image.asset(
+                  'assets/images/sponsors/UNDP Logo 2020.jpg',
+                  height: 120,
+                ),
+                ListTile(
+                    isThreeLine: true,
+                    title: Container(
+                      child: Text(
+                        "UNDP Namibia",
+                        style: TextStyle(
+                          color: AppColors.primaryText,
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.w800,
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      margin: EdgeInsets.all(10.0),
+                    ),
+                    subtitle: Text(
+                      "UNDP is the UN’s global development network, advocating for change and connecting countries to knowledge, experience and resources to help people build a better life. We are on the ground in 177 countries, working with them on their own solutions to global and national development challenges.",
+                      style: TextStyle(
+                        color: AppColors.secondaryText,
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
+                    )),
+                SizedBox(
+                  height: 25,
+                ),
               ],
             ),
           ),
