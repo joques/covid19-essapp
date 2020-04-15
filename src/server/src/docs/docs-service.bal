@@ -6,27 +6,29 @@ import ballerina/docker;
 import ballerina/file;
 
 final map<string> docURLs = {
-	offdoc001: "https://bit.ly/2WTtLry", 
-	offdoc002: "https://bit.ly/2UsxNFr", 
-	offdoc003: "shortURL.at/emFOP", 
-	offdoc004: "https://bit.ly/3bBkHf0", 
-	offdoc005: "https://bit.ly/2UFK08M", 
-	offdoc006: "https://bit.ly/2Jl4LkX", 
-	offdoc007: "https://bit.ly/3at2bFr", 
-	offdoc008: "https://bit.ly/2UqmjSQ", 
-	offdoc009: "https://bit.ly/3aw8VT4", 
-	offdoc010: "https://bit.ly/3aw8VT4", 
-	offdoc011: "https://bit.ly/3aw8VT4", 
-	offdoc012: "https://bit.ly/3aw8VT4", 
-	offdoc013: "https://bit.ly/3aw8VT4", 
-	offdoc014: "https://bit.ly/3aw8VT4", 
-	offdoc015: "https://bit.ly/3dApPSt", 
-	offdoc016: "https://bit.ly/3bC0Oo4", 
-	offdoc017: "https://bit.ly/3dDOBB3", 
-	offdoc018: "https://bit.ly/3bDOX98", 
-	offdoc019: "https://bit.ly/2URpQJc", 
-	offdoc020: "https://bit.ly/3aoM1wG", 
-	offdoc021: "https://bit.ly/39r5T0T"
+	offdoc001: "https://bit.ly/2WTtLry",
+	offdoc002: "https://bit.ly/2UsxNFr",
+	offdoc003: "shortURL.at/emFOP",
+	offdoc004: "https://bit.ly/3bBkHf0",
+	offdoc005: "https://bit.ly/2UFK08M",
+	offdoc006: "https://bit.ly/2Jl4LkX",
+	offdoc007: "https://bit.ly/3at2bFr",
+	offdoc008: "https://bit.ly/2UqmjSQ",
+	offdoc009: "https://bit.ly/3aw8VT4",
+	offdoc010: "https://bit.ly/3aw8VT4",
+	offdoc011: "https://bit.ly/3aw8VT4",
+	offdoc012: "https://bit.ly/3aw8VT4",
+	offdoc013: "https://bit.ly/3aw8VT4",
+	offdoc014: "https://bit.ly/3aw8VT4",
+	offdoc015: "https://bit.ly/3dApPSt",
+	offdoc016: "https://bit.ly/3bC0Oo4",
+	offdoc017: "https://bit.ly/3dDOBB3",
+	offdoc018: "https://bit.ly/3bDOX98",
+	offdoc019: "https://bit.ly/2URpQJc",
+	offdoc020: "https://bit.ly/3aoM1wG",
+	offdoc021: "https://bit.ly/39r5T0T",
+	offdoc038: "shorturl.at/dgHPW",
+	offdoc039: "shorturl.at/x2459"
 };
 
 mongodb:ClientEndpointConfig  mongoConfig = {
@@ -96,7 +98,7 @@ service documents on apilistener4 {
 	}
 	resource function getAllMetadata(http:Caller caller, http:Request docReq){
 		http:Response allMetaResp = new;
-		
+
 		//pull the official document metadata from the data store
 		var docuMetaData = dbClient -> find("ofdocus", ());
 
@@ -107,20 +109,20 @@ service documents on apilistener4 {
 			var sendRes = caller->respond(allMetaResp);
 
 			io:println("sending the metadata out...");
-		
+
 			if (sendRes is error) {
 				log:printError(sendRes.reason(), sendRes);
 			}
-		}	
+		}
 	}
-	
+
 	@http: ResourceConfig {
 		methods: ["GET"],
 		path: "/mobile/description"
 	}
 	resource function getAllMetadataForMobile(http:Caller caller, http:Request docReq){
 		http:Response allMetaResp = new;
-		
+
 		//pull the official document metadata from the data store
 		var docuMetaData = dbClient -> find("ofdocus", ());
 
@@ -128,7 +130,7 @@ service documents on apilistener4 {
 			log:printError("An error occurred while pulling document metadata from the data store", err=docuMetaData);
 		} else {
 			json[] finalDocuData = [];
-			
+
 			foreach var singleDocuItem in docuMetaData {
 				string finalDocId = "";
 				string finalTitle = "";
@@ -136,7 +138,7 @@ service documents on apilistener4 {
 				string finalAuthor = "";
 				string finalSource  = "";
 				string finalUrl = "";
-				
+
 				var exDocID = singleDocuItem.docid;
 				if (exDocID is string) {
 					finalDocId = exDocID;
@@ -145,41 +147,41 @@ service documents on apilistener4 {
 						finalUrl = docUrl.toJsonString();
 					}
 				}
-				
+
 				var exDocTitle = singleDocuItem.title;
 				if (exDocTitle is string) {
 					finalTitle = exDocTitle;
 				}
-				
+
 				var exDocPubDate = singleDocuItem.pubdate;
 				if (exDocPubDate is string) {
 					finalPubDate = exDocPubDate;
 				}
-				
+
 				var exDocAuthor = singleDocuItem.author;
 				if (exDocAuthor is string) {
 					finalAuthor = exDocAuthor;
 				}
-				
+
 				var exDocSource = singleDocuItem.docsource;
 				if (exDocSource is string) {
 					finalSource = exDocSource;
 				}
-				
+
 				json docuSample = {"docid": finalDocId, "title": finalTitle, "pubdate": finalPubDate, "author": finalAuthor, "source": finalSource, "docurl": finalUrl};
-				
+
 				finalDocuData.push(docuSample);
 			}
-			
-			allMetaResp.setJsonPayload(finalDocuData);			
+
+			allMetaResp.setJsonPayload(finalDocuData);
 			var sendRes = caller->respond(allMetaResp);
 
 			io:println("sending the metadata out...");
-		
+
 			if (sendRes is error) {
 				log:printError(sendRes.reason(), sendRes);
 			}
-		}	
+		}
 	}
 
 	@http: ResourceConfig {
@@ -190,9 +192,9 @@ service documents on apilistener4 {
 		http:Response docResp = new;
 		string pdfDocuContentType = "application/pdf";
 		string jpegDocuContentType = "application/jpeg";
-		
+
 		string pdfFilePath = "./data/official-docs/" + docid + ".pdf";
-		
+
 		if (file:exists(<@untainted> pdfFilePath)) {
 			docResp.setFileAsPayload(<@untainted> pdfFilePath, pdfDocuContentType);
 		} else {
@@ -204,7 +206,7 @@ service documents on apilistener4 {
 				docResp.setJsonPayload(<@untainted> noFileInfo);
 			}
 		}
-		
+
 		var sendRes1 = caller -> respond(docResp);
 		if (sendRes1 is error) {
 			io:println("there was an error sending the response ", sendRes1.reason());
