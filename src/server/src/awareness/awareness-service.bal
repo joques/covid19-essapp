@@ -299,7 +299,7 @@ service awareness on apiListener1 {
 		// pull the facts
 		var sympJson = awarenessDS?.symptoms;
 
-        io:println(sympJson);
+    io:println(sympJson);
 
 
 		if (sympJson is error) {
@@ -310,6 +310,31 @@ service awareness on apiListener1 {
 
 			// send the response to the caller
 			var respResult = caller->respond(sympResp);
+			if (respResult is error) {
+				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+
+	@http: ResourceConfig {
+		methods: ["GET"],
+		path: "/testing"
+	}
+	resource function getTestingDetails(http:Caller caller, http:Request testingReq) {
+		http:Response testingResp = new;
+
+		//pull the testing detail content
+		var testingJson = awarenessDS?.testing;
+
+		io:println(testingJson);
+
+		if (testingJson is error) {
+			log:printError("An error occurred while pulling testing details from the json store", err=testingJson);
+		} else {
+			// fill the response payload with the content
+			testingResp.setJsonPayload(testingJson);
+
+			var respResult = caller->respond(testingResp);
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
 			}

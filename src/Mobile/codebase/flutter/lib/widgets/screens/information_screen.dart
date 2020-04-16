@@ -300,7 +300,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 18,
+                  height: 25,
                 ),
                 Container(
                   child: Row(
@@ -320,8 +320,8 @@ class _InformationScreenState extends State<InformationScreen> {
                         width: 5,
                       ),
                       Image.asset(
-                        'assets/images/sponsors/liberity.png',
-                        height: 50,
+                        'assets/images/sponsors/Liberty3.png',
+                        height: 85,
                       ),
 //                      SvgPicture.asset(
 //                        'assets/images/sponsors/NamibiaEmblem-01.svg',
@@ -350,7 +350,4 @@ class _InformationScreenState extends State<InformationScreen> {
         //})
         );
   }
-
-
 }
-
