@@ -77,12 +77,12 @@
             </div>
           </div>
         </agm-map> -->
-    
+        
       </mat-card>
       <div  style="padding-top: 1em;padding-bottom: 4%">
         <mat-card>
           <mat-card-content>
-            <div  id="stats-canvas" style="display: block; height: 500px" [hidden]="!isLoaded"  >
+            <div  id="stats-canvas" style="display: block; height: 500px" [hidden]="!isLoaded">
               <canvas mdbChart
                   [chartType]="chartType"
                   [datasets]="chartDatasets"
@@ -97,6 +97,25 @@
           </mat-card-content>
         </mat-card>
       </div>
+
+      <div  style="padding-top: 1em;padding-bottom: 4%">
+        <mat-card>
+          <mat-card-content>
+            <div  id="stats-canvas" style="display: block; height: 500px" [hidden]="!timeGraphLoaded" *ngIf="timeChartDatasets">
+              <canvas mdbChart
+                  [chartType]="timeChartType"
+                  [datasets]="timeChartDatasets"
+                  [options]="timeChartOptions"
+                  [legend]="true"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+  
             
 
       <!-- <mat-card style="padding-top: 5em">

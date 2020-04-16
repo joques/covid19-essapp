@@ -4,6 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { localeData } from 'moment';
 import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-statistics',
@@ -63,10 +65,10 @@ export class StatisticsComponent implements OnInit {
     title: {
       display: true,
       text: 'COVID-19 Namibia Regional Data',
-      position:'top',
+      position: 'top',
       fontSize: 22,
-      fontfamily:"'Arial', 'Helvetica', 'sans-serif'"
-  }
+      fontfamily: "'Arial', 'Helvetica', 'sans-serif'"
+    }
   };
 
 
@@ -92,7 +94,41 @@ export class StatisticsComponent implements OnInit {
   dataString: string;
   stat_data = [];
 
-  
+  // Time series chart variables
+
+  //Chart info setup and configuration for chart
+  timeSuspectedList: number[] = new Array<number>();
+  timeConfirmedList: number[] = new Array<number>();
+  timeDeadList: number[] = new Array<number>();
+  timeRecoveredList: number[] = new Array<number>();
+  timeGraphLoaded = true;
+
+  public timeChartType: string = 'line';
+  public timeChartDatasets: Array<any> = null;
+  public datasetLabels: Array<any> = ["recovered", "dead", "suspected", "confirmed"];
+  public timeChartLabels: Array<any> = ["Recovered", "Deaths", "Suspected", "Confirmed"];
+
+  public timeChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: 'COVID-19 Namibia Timeline',
+      position: 'top',
+      fontSize: 22,
+      fontfamily: "'Arial', 'Helvetica', 'sans-serif'"
+    },
+    scales: {
+      xAxes: [{
+        type: 'time',
+        distribution: "series",
+        time: {
+          unit: 'day'
+        }
+      }]
+    }
+  };
+
 
   constructor(
     private http: CoronaWhatisService
@@ -102,16 +138,16 @@ export class StatisticsComponent implements OnInit {
     this.suspectedCount = 0;
     this.datenow = new Date().toLocaleDateString();
 
-    console.log('We are here home 1mmmI ');
     this.http.getStats().subscribe((data: []) => {
       // this.http.getWhatIsInfo().subscribe((data) => {
-      console.log('We are here after request');
-      console.log(data);
+      console.log("Stats: ", data);
+
 
       this.stat_data = data;
       console.log('Starts');
 
-      console.log('i am in home NEWWWWW');
+      //Prepare the time chart data
+      this.prepareTimeChart();
 
       console.log(this.stat_data[this.stat_data.length - 1]['date'].toString());
       this.updated = new Date(this.stat_data[this.stat_data.length - 1]['date']);
@@ -121,6 +157,7 @@ export class StatisticsComponent implements OnInit {
 
     //chart info from service
     this.http.getRegionalData().subscribe((res) => {
+      console.log("RegionsL ", res);
 
       const regions = JSON.parse(JSON.stringify(res)).regions;
 
@@ -130,17 +167,11 @@ export class StatisticsComponent implements OnInit {
         this.confirmedList.push(regions[key].confirmed);
         this.deadList.push(regions[key].dead);
         this.recoveredList.push(regions[key].recovered);
-        console.log(regions[key]);
+        console.log(key, " : ", regions[key]);
 
       });
       this.isLoaded = true;
     });
-
-
-
-
-
-
 
   }
 
@@ -157,7 +188,6 @@ export class StatisticsComponent implements OnInit {
         this.recoveredCount = 0;
         this.deathCount = 0;
       }
-      console.log(i.toString());
       setTimeout(() => {
         //metronome.play();
         if (i > 0) {
@@ -204,7 +234,7 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
-  
+
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
   getColor(color: string) {
@@ -215,4 +245,49 @@ export class StatisticsComponent implements OnInit {
     }
     return colorList;
   }
+
+  /**
+   * @name prepareTimeChart
+   * @description initiates orderly functions to get data for time chart initiation
+   */
+  prepareTimeChart = (): void => {
+    this.timeChartDatasets = this.mapDataTimeDataSets(this.stat_data);
+    this.timeGraphLoaded = true;
+  }
+
+  /**
+   * @name mapDataTimeDataSets
+   * @description matches first level datasets for given labels
+   * @param {Array} stats full stats dataset from the API
+   * @returns {Array} returns array of fully mapped dataSet in format of Chart.js
+   * @see https://www.chartjs.org/docs/latest/axes/cartesian/time.html
+   */
+  mapDataTimeDataSets = (stats: Array<Object>): Array<Object> => {
+    const mapped = this.datasetLabels.map(label => {
+      return {
+        label: label.charAt(0).toUpperCase() + label.substring(1),
+        data: this.assignDataValues(stats, label),
+        fill:false 
+      }
+    });
+    console.log("Full DataSet Mapped: ", mapped);
+    return mapped;
+  }
+
+  /**
+   * @name assignDataValues
+   * @description assigns x and y data values matching the given label
+   * @param {Array} stats full stats dataset from the API
+   * @param {string} label data label to match in a statistic object
+   * @returns {Array} returns mapped data for the given label
+   */
+  assignDataValues = (stats: Array<any>, label: string): Array<Object> => {
+    const mapped = stats.map(stat => {
+      return { x:new Date(stat.date), y: stat[label]}
+    });
+    console.log("Mapping: ", label, " Data: ", mapped);
+    return mapped;
+  }
+
+
 }

@@ -47,5 +47,5 @@ testem.log
 .DS_Store
 Thumbs.db
 node_modules
-#/src/website/Namcovid19/node_modules
-#src/website/Namcovid19/node_modules
+/src/website/Namcovid19/node_modules
+src/website/Namcovid19/node_modules
