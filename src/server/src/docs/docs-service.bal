@@ -28,7 +28,9 @@ final map<string> docURLs = {
 	offdoc020: "https://bit.ly/3aoM1wG",
 	offdoc021: "https://bit.ly/39r5T0T",
 	offdoc038: "shorturl.at/dgHPW",
-	offdoc039: "shorturl.at/x2459"
+	offdoc039: "shorturl.at/x2459",
+	offdoc041: "shorturl.at/dksu0",
+	offdoc042: "shorturl.at/kzCD5"
 };
 
 mongodb:ClientEndpointConfig  mongoConfig = {
@@ -67,8 +69,8 @@ listener http:Listener apilistener4 = new (6552, config = {
 		{sourceFile: "../../official-docs/offdoc007.pdf", target: "/home/ballerina/data/official-docs/offdoc007.pdf"},
 		{sourceFile: "../../official-docs/offdoc008.pdf", target: "/home/ballerina/data/official-docs/offdoc008.pdf"},
 		{sourceFile: "../../official-docs/offdoc009.pdf", target: "/home/ballerina/data/official-docs/offdoc009.pdf"},
-        {sourceFile: "../../official-docs/offdoc010.pdf", target: "/home/ballerina/data/official-docs/offdoc010.pdf"},
-        {sourceFile: "../../official-docs/offdoc011.pdf", target: "/home/ballerina/data/official-docs/offdoc011.pdf"},
+    {sourceFile: "../../official-docs/offdoc010.pdf", target: "/home/ballerina/data/official-docs/offdoc010.pdf"},
+    {sourceFile: "../../official-docs/offdoc011.pdf", target: "/home/ballerina/data/official-docs/offdoc011.pdf"},
 		{sourceFile: "../../official-docs/offdoc012.pdf", target: "/home/ballerina/data/official-docs/offdoc012.pdf"},
 		{sourceFile: "../../official-docs/offdoc013.pdf", target: "/home/ballerina/data/official-docs/offdoc013.pdf"},
 		{sourceFile: "../../official-docs/offdoc014.pdf", target: "/home/ballerina/data/official-docs/offdoc014.pdf"},
@@ -78,7 +80,11 @@ listener http:Listener apilistener4 = new (6552, config = {
 		{sourceFile: "../../official-docs/offdoc018.jpeg", target: "/home/ballerina/data/official-docs/offdoc018.jpeg"},
 		{sourceFile: "../../official-docs/offdoc019.jpeg", target: "/home/ballerina/data/official-docs/offdoc019.jpeg"},
 		{sourceFile: "../../official-docs/offdoc020.jpeg", target: "/home/ballerina/data/official-docs/offdoc020.jpeg"},
-		{sourceFile: "../../official-docs/offdoc021.jpeg", target: "/home/ballerina/data/official-docs/offdoc021.jpeg"}
+		{sourceFile: "../../official-docs/offdoc021.jpeg", target: "/home/ballerina/data/official-docs/offdoc021.jpeg"},
+		{sourceFile: "../../official-docs/offdoc038.pdf", target: "/home/ballerina/data/official-docs/offdoc038.pdf"},
+		{sourceFile: "../../official-docs/offdoc039.pdf", target: "/home/ballerina/data/official-docs/offdoc039.pdf"},
+		{sourceFile: "../../official-docs/offdoc041.pdf", target: "/home/ballerina/data/official-docs/offdoc041.pdf"},
+		{sourceFile: "../../official-docs/offdoc042.pdf", target: "/home/ballerina/data/official-docs/offdoc042.pdf"}
 	]
 }
 
