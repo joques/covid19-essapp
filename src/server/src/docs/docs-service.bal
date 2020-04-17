@@ -33,15 +33,17 @@ final map<string> docURLs = {
 	offdoc042: "shorturl.at/kzCD5"
 };
 
-mongodb:ClientEndpointConfig  mongoConfig = {
-		host: "172.17.0.1:27017",
-        dbName: "covid-nam",
-        username: "",
-        password: "",
-        options: {sslEnabled: false, serverSelectionTimeout: 500}
+mongodb:ClientConfig  mongoConfig = {
+	host: "172.17.0.1",
+	port: 27017,
+	username: "",
+	password: "",
+	options: {sslEnabled: false, serverSelectionTimeout: 500}
 };
 
-mongodb:Client dbClient = check new (mongoConfig);
+mongodb:Client dbClient = checkpanic new (mongoConfig);
+mongodb:Database dBase = checkpanic dbClient->getDatabase("covid-nam");
+mongodb:Collection docCol = checkpanic dBase->getCollection("ofdocus");
 
 @docker:Expose {}
 listener http:Listener apilistener4 = new (6552, config = {
@@ -106,7 +108,7 @@ service documents on apilistener4 {
 		http:Response allMetaResp = new;
 
 		//pull the official document metadata from the data store
-		var docuMetaData = dbClient -> find("ofdocus", ());
+		var docuMetaData = docCol -> find();
 
 		if (docuMetaData is error) {
 			log:printError("An error occurred while pulling document metadata from the data store", err=docuMetaData);
@@ -130,7 +132,7 @@ service documents on apilistener4 {
 		http:Response allMetaResp = new;
 
 		//pull the official document metadata from the data store
-		var docuMetaData = dbClient -> find("ofdocus", ());
+		var docuMetaData = docCol -> find();
 
 		if (docuMetaData is error) {
 			log:printError("An error occurred while pulling document metadata from the data store", err=docuMetaData);

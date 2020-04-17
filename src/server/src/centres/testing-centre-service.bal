@@ -4,15 +4,18 @@ import ballerina/log;
 import ballerina/io;
 import ballerina/docker;
 
-mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "172.17.0.1:27017",
-	dbName: "covid-nam",
+mongodb:ClientConfig  mongoConfig = {
+	host: "172.17.0.1",
+	port: 27017,
 	username: "",
 	password: "",
 	options: {sslEnabled: false, serverSelectionTimeout: 500}
 };
 
-mongodb:Client dbClient = check new (mongoConfig);
+mongodb:Client dbClient = checkpanic new (mongoConfig);
+mongodb:Database dBase = checkpanic dbClient->getDatabase("covid-nam");
+mongodb:Collection centreCol = checkpanic dBase->getCollection("centres");
+
 
 @docker:Expose {}
 listener http:Listener apiListener3 = new (6550, config = {
@@ -47,7 +50,7 @@ service faq on apiListener3 {
 		http:Response ctResp = new;
 
 		// pull the latest news data
-		var ctData = dbClient->find("centres", ());
+		var ctData = centreCol->find();
 
 		// fill the repsonse payload with the new content
 		if (ctData is error) {
