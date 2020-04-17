@@ -8,15 +8,17 @@ import ballerina/docker;
 
 final string[] regionids = ["erongo", "hardap", "kavango-east", "kavango-west", "khomas", "kunene", "ohangwena", "omaheke", "omusati", "oshana", "oshikoto", "otjozondjupa", "zambezi", "karas"];
 
-mongodb:ClientEndpointConfig  mongoConfig = {
-	host: "172.17.0.1:27017",
-	dbName: "covid-nam",
+mongodb:ClientConfig  mongoConfig = {
+	host: "172.17.0.1",
+	port: 27017,
 	username: "",
 	password: "",
 	options: {sslEnabled: false, serverSelectionTimeout: 500}
 };
 
-mongodb:Client dbClient = check new (mongoConfig);
+mongodb:Client dbClient = checkpanic new (mongoConfig);
+mongodb:Database dBase = checkpanic dbClient->getDatabase("covid-nam");
+mongodb:Collection statCol = checkpanic dBase->getCollection("covidstats");
 
 @docker:Expose {}
 listener http:Listener apiListener2 = new (6549, config = {
@@ -50,7 +52,7 @@ service statistics on apiListener2 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var allData = dbClient->find("covidstats", ({level: "national"}));
+		var allData = statCol->find({level: "national"});
 
 		// fill the repsonse payload with the new content
 		if (allData is error) {
@@ -76,7 +78,7 @@ service statistics on apiListener2 {
 		http:Response allStatResp = new;
 
 		// pull the official virus definition data
-		var allStatData = dbClient->find("covidstats", ({level: "national"}));
+		var allStatData = statCol->find({level: "national"});
 
 		if (allStatData is error) {
 			log:printError("An error occurred while pulling all statistics", err=allStatData);
@@ -101,7 +103,7 @@ service statistics on apiListener2 {
 		http:Response latestResp = new;
 
 		// pull the latest news data
-		var allData = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
+		var allData = statCol->find({level: "regional", regionid: regionid});
 
 		if (allData is error) {
 			io:println("there was an error pulling the data from the statistics store...");
@@ -146,7 +148,7 @@ service statistics on apiListener2 {
 		map<json> regionStats = pullRegionalStatistics();
 		http:Response aggResp = new;
 
-		var natData = dbClient->find("covidstats", ({level: "national"}));
+		var natData = statCol->find({level: "national"});
 		if (natData is error) {
 			log:printError("An error occurred while pulling the national statistics", err=natData);
 		} else {
@@ -172,7 +174,7 @@ function pullRegionalStatistics() returns map<json> {
 	map<json> regionStats = {};
 
 	foreach var regionid in regionids {
-		var regStats = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
+		var regStats = statCol->find({level: "regional", regionid: regionid});
 		if (regStats is error) {
 			log:printError(regStats.reason(), regStats);
 			io:println("There was an error pulling stats for region ", regionid);
@@ -329,7 +331,7 @@ function processAllStats(json[] allStatData) returns json[] {
 		}
 
 		int total_quarantined = 0;
-		var quarantinedVar = theLatest.total_quarantined;
+		var quarantinedVar = singleItem.total_quarantined;
 		if (quarantinedVar is error) {
 			io:println("total_quarantined did not exist in this object");
 		} else if (quarantinedVar is int) {
@@ -337,7 +339,7 @@ function processAllStats(json[] allStatData) returns json[] {
 		}
 
 		int total_tested = 0;
-		var testedVar = theLatest.total_tested;
+		var testedVar = singleItem.total_tested;
 		if (testedVar is error) {
 			io:println("total_tested did not exist in this object");
 		} else if (testedVar is int) {
@@ -345,7 +347,7 @@ function processAllStats(json[] allStatData) returns json[] {
 		}
 
 		int active_cases = 0;
-		var activeVar = theLatest.active_cases;
+		var activeVar = singleItem.active_cases;
 		if (activeVar is error) {
 			io:println("active_cases did not exist in this object");
 		} else if (activeVar is int) {
