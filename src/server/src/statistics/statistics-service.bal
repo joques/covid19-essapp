@@ -51,7 +51,7 @@ service statistics on apiListener2 {
 
 		// pull the latest news data
 		var allData = dbClient->find("covidstats", ({level: "national"}));
-		
+
 		// fill the repsonse payload with the new content
 		if (allData is error) {
 			log:printError("An error occurred while pulling the statistics", err=allData);
@@ -82,7 +82,7 @@ service statistics on apiListener2 {
 			log:printError("An error occurred while pulling all statistics", err=allStatData);
 		} else {
 			json[] respContent = processAllStats(allStatData);
-			
+
 			allStatResp.setJsonPayload(respContent);
 
 			// send the response to the caller and log errors
@@ -92,7 +92,7 @@ service statistics on apiListener2 {
 			}
 		}
 	}
-	
+
 	@http: ResourceConfig {
 		methods: ["GET"],
 		path: "/regional/{regionid}"
@@ -102,13 +102,13 @@ service statistics on apiListener2 {
 
 		// pull the latest news data
 		var allData = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
-		
+
 		if (allData is error) {
 			io:println("there was an error pulling the data from the statistics store...");
 			log:printError("An error occurred while pulling the latest statistics", err=allData);
 		} else {
 			json respContent = processLatestStat(allData);
-			
+
 			latestResp.setJsonPayload(respContent);
 
 			// send the response to the caller and log errors
@@ -118,26 +118,26 @@ service statistics on apiListener2 {
 			}
 		}
 	}
-	
+
 	@http: ResourceConfig {
 		methods: ["GET"],
 		path: "/regions"
 	}
 	resource function getLatestAllLatestRegional(http:Caller caller, http:Request hReq) {
 		map<json> regionStats = pullRegionalStatistics();
-		
+
 		io:println("showing the result...");
 		io:println(regionStats);
-		
+
 		http:Response regResp = new;
 		regResp.setJsonPayload(regionStats);
-		
+
 		var respResult = caller->respond(regResp);
 		if (respResult is error) {
 			log:printError(respResult.reason(), respResult);
 		}
 	}
-	
+
 	@http: ResourceConfig {
 		methods: ["GET"],
 		path: "/aggregate"
@@ -145,7 +145,7 @@ service statistics on apiListener2 {
 	resource function getLatestAggregate(http:Caller caller, http:Request hReq) {
 		map<json> regionStats = pullRegionalStatistics();
 		http:Response aggResp = new;
-		
+
 		var natData = dbClient->find("covidstats", ({level: "national"}));
 		if (natData is error) {
 			log:printError("An error occurred while pulling the national statistics", err=natData);
@@ -154,11 +154,11 @@ service statistics on apiListener2 {
 			map<json> aggStats = {};
 			aggStats["national"] = natStats;
 			aggStats["regions"] = regionStats;
-			
+
 			aggResp.setJsonPayload(aggStats);
-			
+
 			var respResult = caller -> respond(aggResp);
-			
+
 			if (respResult is error) {
 				io:println("an error occurred while sending the aggregate stats response");
 				log:printError(respResult.reason(), respResult);
@@ -170,7 +170,7 @@ service statistics on apiListener2 {
 
 function pullRegionalStatistics() returns map<json> {
 	map<json> regionStats = {};
-		
+
 	foreach var regionid in regionids {
 		var regStats = dbClient->find("covidstats", ({level: "regional", regionid: regionid}));
 		if (regStats is error) {
@@ -181,7 +181,7 @@ function pullRegionalStatistics() returns map<json> {
 			regionStats[regionid] = curRegStat;
 		}
 	}
-	
+
 	return regionStats;
 }
 
@@ -189,13 +189,13 @@ function pullRegionalStatistics() returns map<json> {
 function processLatestStat(json[] allData) returns json {
 	time:TimeZone noZoneValue = {id: ""};
 	time:Time theLatestTime = time:currentTime();
-	
+
 	json theLatest = ();
-	
+
 	foreach var singleData in allData {
 		time:Time singleDataTime = time:currentTime();
 		var theDate = singleData.date;
-		
+
 		if (theDate is error) {
 			log:printError("An error occurred extracting a date from the mongodb document", err=theDate);
 		} else {
@@ -205,7 +205,7 @@ function processLatestStat(json[] allData) returns json {
 			if (numDate is error) {
 				log:printError("An error occurred csting a string into int for date extraction", err=numDate);
 			} else {
-				singleDataTime = {time: numDate, zone: noZoneValue};						
+				singleDataTime = {time: numDate, zone: noZoneValue};
 
 				if(theLatest == null) {
 					theLatest = singleData;
@@ -213,13 +213,13 @@ function processLatestStat(json[] allData) returns json {
 				} else {
 					if (singleDataTime.time > theLatestTime.time) {
 						theLatest = singleData;
-						theLatestTime = singleDataTime; 
+						theLatestTime = singleDataTime;
 					}
 				}
 			}
 		}
 	}
-	
+
 	string|error convertedDateToStr = time:format(theLatestTime, "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 	string dateStrCopy = "";
 	if (convertedDateToStr is error) {
@@ -227,73 +227,97 @@ function processLatestStat(json[] allData) returns json {
 	} else {
 		dateStrCopy = convertedDateToStr;
 	}
-	
+
 	io:println("printing latest data before sending...");
-	
+
 	int finalRecovered = 0;
 	var recoveredVar = theLatest.recovered;
 	if (recoveredVar is int) {
 		finalRecovered = recoveredVar;
 	}
-	
+
 	int finalDead = 0;
 	var deadVar = theLatest.dead;
 	if (deadVar is int) {
 		finalDead = deadVar;
 	}
-	
+
 	int finalSuspected = 0;
 	var suspectedVar = theLatest.suspected;
 	if (suspectedVar is int) {
 		finalSuspected = suspectedVar;
 	}
-	
+
 	int finalConfirmed = 0;
 	var confirmedVar = theLatest.confirmed;
 	if (confirmedVar is int) {
 		finalConfirmed = confirmedVar;
 	}
-	
+
+	int total_quarantined = 0;
+	var quarantinedVar = theLatest.total_quarantined;
+	if (quarantinedVar is error) {
+		io:println("total_quarantined did not exist in this object");
+	} else if (quarantinedVar is int) {
+		total_quarantined = quarantinedVar;
+	}
+
+	int total_tested = 0;
+	var testedVar = theLatest.total_tested;
+	if (testedVar is error) {
+		io:println("total_tested did not exist in this object");
+	} else if (testedVar is int) {
+		total_tested = testedVar;
+	}
+
+	int active_cases = 0;
+	var activeVar = theLatest.active_cases;
+	if (activeVar is error) {
+		io:println("active_cases did not exist in this object");
+	} else if (activeVar is int) {
+		active_cases = activeVar;
+	}
+
 	int finalWorldwide = 0;
 	var worldwideVar = theLatest.worldwide;
 	if (worldwideVar is int) {
 		finalWorldwide = worldwideVar;
 	}
-	
-	json latestCopy = {"date": dateStrCopy, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide};
+
+	json latestCopy = {"date": dateStrCopy, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide, "total_quarantined": total_quarantined, "total_tested": total_tested, "active_cases": active_cases};
 	io:println(latestCopy);
-	
+
 	return latestCopy;
 }
 
 function processAllStats(json[] allStatData) returns json[] {
 	json[] finalStatData = [];
 	time:TimeZone noZoneValue = {id: ""};
-	
-	
+
+
 	foreach var singleItem in allStatData {
 		string finalDateStr = "";
 		int finalRecovered = 0;
 		int finalDead = 0;
 		int finalSuspected = 0;
 		int finalConfirmed = 0;
-		int finalWorldwide = 0;		
+		int finalWorldwide = 0;
 
 		var recoveredVar = singleItem.recovered;
 		if (recoveredVar is int) {
 			finalRecovered = recoveredVar;
-		}	
+		}
 
 		var deadVar = singleItem.dead;
 		if (deadVar is int) {
 			finalDead = deadVar;
-		}	
-		
+		}
+
 		var suspectedVar = singleItem.suspected;
 		if (suspectedVar is int) {
 			finalSuspected = suspectedVar;
 		}
-		
+
 		var confirmedVar = singleItem.confirmed;
 		if (confirmedVar is int) {
 			finalConfirmed = confirmedVar;
@@ -302,6 +326,30 @@ function processAllStats(json[] allStatData) returns json[] {
 		var worldwideVar = singleItem.worldwide;
 		if (worldwideVar is int) {
 			finalWorldwide = worldwideVar;
+		}
+
+		int total_quarantined = 0;
+		var quarantinedVar = theLatest.total_quarantined;
+		if (quarantinedVar is error) {
+			io:println("total_quarantined did not exist in this object");
+		} else if (quarantinedVar is int) {
+			total_quarantined = quarantinedVar;
+		}
+
+		int total_tested = 0;
+		var testedVar = theLatest.total_tested;
+		if (testedVar is error) {
+			io:println("total_tested did not exist in this object");
+		} else if (testedVar is int) {
+			total_tested = testedVar;
+		}
+
+		int active_cases = 0;
+		var activeVar = theLatest.active_cases;
+		if (activeVar is error) {
+			io:println("active_cases did not exist in this object");
+		} else if (activeVar is int) {
+			active_cases = activeVar;
 		}
 
 		var theDate = singleItem.date;
@@ -323,14 +371,14 @@ function processAllStats(json[] allStatData) returns json[] {
 				}
 			}
 		}
-				
-		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide};
-				
-		finalStatData.push(singleItemData); 
+
+		json singleItemData = {"date": finalDateStr, "recovered": finalRecovered, "dead": finalDead, "suspected": finalSuspected, "confirmed": finalConfirmed, "worldwide": finalWorldwide, "total_tested": total_tested, "total_quarantined": total_quarantined, "active_cases": active_cases};
+
+		finalStatData.push(singleItemData);
 	}
-	
+
 	io:println("printing the result for all before sending...");
 	io:println(finalStatData);
-	
+
 	return finalStatData;
 }
