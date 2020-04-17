@@ -87,6 +87,8 @@
               <mdb-card-body>
     
                 <mdb-card-text>
+                   
+    
                   <app-measures></app-measures>
                   <div class="about-footer">
                     <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
@@ -106,6 +108,8 @@
               <mdb-card-body>
     
                 <mdb-card-text>
+                    
+    
                   <app-symptoms></app-symptoms>
                   <div class="hr"></div>
                   <div class="about-footer">
@@ -129,17 +133,14 @@
                   <img src="../../../assets/img/virus-small.png" alt="profile">
                 </div>
                 <mdb-card-text>
-                  <h2 class="text-center">Testing Centres</h2>
-                  <p>You can get tested at the following centers:</p>
-                  <ul class="list-group list-group-flush">
-                    <!-- <li class="list-group-item">Robert Mugabe Clinic</li> -->
-                    <li class="list-group-item">Namibia Institute of Pathology</li>
-                  </ul>
+                    <!-- <h1 class="text-center">Coronavirus Testing Information</h1> -->
+    
+                   <app-testing-info></app-testing-info>
                   <div class="hr"></div>
                   <div class="about-footer">
                     <a class="btn btn-danger" block="true"
                       style="outline-color: white; float: right !important; margin-top: 1.5rem;"
-                      [routerLink]="['/app-testing-centres']">Read more
+                      [routerLink]="['/app-testing-centres']">Testing Centres 
                     </a>
                   </div>
                   <div class="hr"></div>
