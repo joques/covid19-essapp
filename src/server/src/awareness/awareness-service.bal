@@ -1,7 +1,18 @@
+import ballerina/mongodb;
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
 import ballerina/docker;
+
+mongodb:ClientEndpointConfig  mongoConfig = {
+	host: "172.17.0.1:27017",
+	dbName: "covid-nam",
+	username: "",
+	password: "",
+	options: {sslEnabled: false, serverSelectionTimeout: 500}
+};
+
+mongodb:Client dbClient = check new (mongoConfig);
 
 @docker:Expose {}
 listener http:Listener apiListener1 = new (6547, config = {
