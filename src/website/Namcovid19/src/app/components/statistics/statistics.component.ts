@@ -12,7 +12,10 @@ import * as moment from 'moment';
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css']
 })
+
 export class StatisticsComponent implements OnInit {
+
+
   suspectedCount: number = 0;
   confirmedCount: number = 0;
   deathCount: number = 0;
@@ -83,34 +86,25 @@ export class StatisticsComponent implements OnInit {
     worldwide: 0
   };
 
-  recovered: string;
-  dead: string;
-  suspected: string;
-  confirmed: string;
-  worldwide: string;
-
-  localData = JSON;
-  localValue = [];
-  dataString: string;
   stat_data = [];
 
   // Time series chart variables
 
-  //Chart info setup and configuration for chart
-  timeSuspectedList: number[] = new Array<number>();
-  timeConfirmedList: number[] = new Array<number>();
-  timeDeadList: number[] = new Array<number>();
-  timeRecoveredList: number[] = new Array<number>();
   timeGraphLoaded = true;
 
   public timeChartType: string = 'line';
   public timeChartDatasets: Array<any> = null;
-  public datasetLabels: Array<any> = ["recovered", "dead", "suspected", "confirmed"];
-  public timeChartLabels: Array<any> = ["Recovered", "Deaths", "Suspected", "Confirmed"];
+
+  public datasetLabels: Array<any> = [
+    { label: 'recovered', color: 'rgb(0, 200, 81)' },
+    { label: 'dead', color: 'rgb(255, 53, 71)' },
+    { label: 'confirmed', color: 'rgb(255, 187, 51)' },
+    { label: 'active_cases', color: 'rgb(51, 181, 229)' }
+  ];
 
   public timeChartOptions: any = {
     responsive: true,
-    maintainAspectRatio: false,
+    // maintainAspectRatio: false,
     title: {
       display: true,
       text: 'COVID-19 Namibia Timeline',
@@ -122,9 +116,7 @@ export class StatisticsComponent implements OnInit {
       xAxes: [{
         type: 'time',
         distribution: "series",
-        time: {
-          unit: 'day'
-        }
+        time: { unit: 'day' }
       }]
     }
   };
@@ -149,6 +141,7 @@ export class StatisticsComponent implements OnInit {
       //Prepare the time chart data
       this.prepareTimeChart();
 
+
       console.log(this.stat_data[this.stat_data.length - 1]['date'].toString());
       this.updated = new Date(this.stat_data[this.stat_data.length - 1]['date']);
       console.log(this.stat_data[this.stat_data.length - 1]['recovered']);
@@ -167,7 +160,7 @@ export class StatisticsComponent implements OnInit {
         this.confirmedList.push(regions[key].confirmed);
         this.deadList.push(regions[key].dead);
         this.recoveredList.push(regions[key].recovered);
-        console.log(key, " : ", regions[key]);
+        // console.log(key, " : ", regions[key]);
 
       });
       this.isLoaded = true;
@@ -182,7 +175,6 @@ export class StatisticsComponent implements OnInit {
     //let max = Math.max(data[0].suspected,data[0].confirmed,data[0].dead,data[0].recovered);
     let theLoop: (i: number, type: string, first: boolean) => void = (i: number, type: string, first: boolean) => {
       if (first === true) {
-        console.log('Here Count ..');
         this.suspectedCount = 0;
         this.confirmedCount = 0;
         this.recoveredCount = 0;
@@ -214,10 +206,6 @@ export class StatisticsComponent implements OnInit {
     theLoop(Number.parseInt(this.stat_data[length - 1]['recovered']), 'recovered', true);
   }
 
-  drawMark(): void {
-
-  }
-
   // method that will populate the selected object and update the badges on the html page
   select(date): void {
     this.data.forEach(data => {
@@ -241,7 +229,6 @@ export class StatisticsComponent implements OnInit {
     const colorList = new Array<string>(14);
     for (let i = 0; i < colorList.length; i++) {
       colorList[i] = color;
-
     }
     return colorList;
   }
@@ -263,11 +250,15 @@ export class StatisticsComponent implements OnInit {
    * @see https://www.chartjs.org/docs/latest/axes/cartesian/time.html
    */
   mapDataTimeDataSets = (stats: Array<Object>): Array<Object> => {
-    const mapped = this.datasetLabels.map(label => {
+    const mappedLabels = this.datasetLabels.map(labels => labels.label);
+    const mapped = mappedLabels.map(label => {
+      console.log("Label: ", label);
       return {
         label: label.charAt(0).toUpperCase() + label.substring(1),
         data: this.assignDataValues(stats, label),
-        fill:false 
+        fill: false,
+        // borderColor: this.datasetLabels.find(labelObj => labelObj.label === label).color,
+        borderColor: "#f39c12"
       }
     });
     console.log("Full DataSet Mapped: ", mapped);
@@ -283,7 +274,7 @@ export class StatisticsComponent implements OnInit {
    */
   assignDataValues = (stats: Array<any>, label: string): Array<Object> => {
     const mapped = stats.map(stat => {
-      return { x:new Date(stat.date), y: stat[label]}
+      return { x: new Date(stat.date), y: stat[label] }
     });
     console.log("Mapping: ", label, " Data: ", mapped);
     return mapped;
