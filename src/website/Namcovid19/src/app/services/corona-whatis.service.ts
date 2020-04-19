@@ -22,6 +22,7 @@ export class CoronaWhatisService {
   private newsApi = 'https://covidservices.nust.na:6547/covid/v1/awareness/latest';
   private centresApi = 'https://covidservices.nust.na:6550/covid/v1/centre/all';
   private statisticsApi = 'https://covidservices.nust.na:6549/covid/v1/statistics/all';
+  private testingApi= 'https://covidservices.nust.na:6547/covid/v1/awareness/testing';
 
   apiURL: string = 'https://covidservices.nust.na:{port}/covid/v1';
   constructor(private client: HttpClient) {
@@ -77,5 +78,8 @@ export class CoronaWhatisService {
 
     return this.client.get(this.statisticsApi);
 
+  }
+  public getTestinginfo() {
+    return this.client.get(this.testingApi);
   }
 }

@@ -48,6 +48,7 @@ import {MatListModule} from '@angular/material/list';
 import { from } from 'rxjs';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 import { TechResponseComponent } from './components/tech-response/tech-response.component';
+import { TestingInfoComponent } from './components/testing-info/testing-info.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { TechResponseComponent } from './components/tech-response/tech-response.
     TestingCentresComponent,
     CommingComponent,
     LatestNewsComponent,
-    TechResponseComponent
+    TechResponseComponent,
+    TestingInfoComponent
   ],
   imports: [
     BrowserModule,

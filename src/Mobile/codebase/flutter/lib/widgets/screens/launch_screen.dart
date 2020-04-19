@@ -89,8 +89,8 @@ class SplashScreenState extends State<SplashScreen> {
                 spacing: 35,
                 runSpacing: 50,
                 children: <Widget>[
-                  SvgPicture.asset(
-                    'assets/images/sponsors/NUST&MOHSS.svg',
+                  Image.asset(
+                    'assets/images/sponsors/NUST&MOHSS.png',
                     height: 62,
                   ),
                   // Image.asset(

@@ -127,7 +127,7 @@ class _SponsorsScreenState extends State<SponsorsScreen> {
                   height: 25,
                 ),
                 Image.asset(
-                  'assets/images/sponsors/UNDP Logo 2020.jpg',
+                  'assets/images/sponsors/UNDPLogo2020.jpg',
                   height: 120,
                 ),
                 ListTile(

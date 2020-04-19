@@ -52,7 +52,7 @@ export class TestingCentresComponent implements OnInit {
   constructor(private coronaService: CoronaWhatisService) { }
   Testing = [];
   ngOnInit(): void {
-    console.log('We are here');
+    console.log('We are here: testing centers');
     this.coronaService.getTestingCentres().subscribe((data: []) => {
       // this.http.getWhatIsInfo().subscribe((data) => {
       console.log('We are here 9999');
