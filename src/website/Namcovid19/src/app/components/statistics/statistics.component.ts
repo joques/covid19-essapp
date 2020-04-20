@@ -20,6 +20,9 @@ export class StatisticsComponent implements OnInit {
   confirmedCount: number = 0;
   deathCount: number = 0;
   recoveredCount: number = 0;
+  testedCount: number = 0;
+  activeCount: number = 0;
+  quarantinedCount: number = 0;
   updated: Date = new Date();
 
   //Chart info setup and configuration for chart
@@ -131,7 +134,7 @@ export class StatisticsComponent implements OnInit {
     this.datenow = new Date().toLocaleDateString();
 
     this.http.getStats().subscribe((data: []) => {
-      // this.http.getWhatIsInfo().subscribe((data) => {
+
       console.log("Stats: ", data);
 
 
@@ -179,6 +182,9 @@ export class StatisticsComponent implements OnInit {
         this.confirmedCount = 0;
         this.recoveredCount = 0;
         this.deathCount = 0;
+        this.testedCount = 0;
+        this.activeCount = 0;
+        this.quarantinedCount = 0;
       }
       setTimeout(() => {
         //metronome.play();
@@ -192,7 +198,14 @@ export class StatisticsComponent implements OnInit {
             this.deathCount++;
           } else if (type === 'recovered') {
             this.recoveredCount++;
+          }else if (type === 'active_cases') {
+            this.activeCount++;
+          }else if (type === 'total_tested') {
+            this.testedCount++;
+          }else if (type === 'total_quarantined') {
+            this.quarantinedCount++;
           }
+
 
           //console.log(i+"=>"+this.suspectedCount)
         }
@@ -204,6 +217,9 @@ export class StatisticsComponent implements OnInit {
     theLoop(Number.parseInt(this.stat_data[length - 1]['dead']), 'death', true);
     theLoop(Number.parseInt(this.stat_data[length - 1]['confirmed']), 'confirmed', true);
     theLoop(Number.parseInt(this.stat_data[length - 1]['recovered']), 'recovered', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['active_cases']), 'active_cases', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['total_tested']), 'total_tested', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['total_quarantined']), 'total_quarantined', true);
   }
 
   // method that will populate the selected object and update the badges on the html page
