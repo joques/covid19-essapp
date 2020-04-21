@@ -161,7 +161,7 @@ export class StatisticsComponent implements OnInit {
       Object.keys(regions).forEach(key => {
         this.regionsNames.push(key.toLocaleUpperCase());
         this.suspectedList.push(regions[key].suspected);
-        this.activeList.push((regions[key].confirmed - regions[key].recovered));
+        this.activeList.push((regions[key].confirmed - (regions[key].recovered + regions[key].dead)));
         this.confirmedList.push(regions[key].confirmed);
         this.deadList.push(regions[key].dead);
         this.recoveredList.push(regions[key].recovered);
