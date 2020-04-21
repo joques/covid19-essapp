@@ -18,13 +18,14 @@ final colLng = 'lng';
 final colQuestion = 'question';
 final colAnswer = 'answer';
 
-// faqs
+// stats
 final colSuspected = 'suspected';
 final colConfirmed = 'confirmed';
 final colDead = 'dead';
 final colRecovered = 'recovered';
 final colTimestamp = 'timestamp';
 final colRegion = 'region';
+final colQuarantined = 'quarantined';
 
 // memos
 final colDocId = 'docid';
@@ -55,6 +56,7 @@ final createStatsTable = '''CREATE TABLE $tableStatistics (
                 $colConfirmed INTEGER NOT NULL,
                 $colRecovered INTEGER NOT NULL,
                 $colDead INTEGER NOT NULL,
+                $colQuarantined INTEGER NOT NULL,
                 $colTimestamp TEXT NOT NULL,
                 $colRegion TEXT UNIQUE
               )''';

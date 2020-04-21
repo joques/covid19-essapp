@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 class StatisticCounter extends StatefulWidget {
   final double width;
+  final double height;
   final int count;
   final String title;
   final int borderColor;
   StatisticCounter(
-      {Key key, this.width, this.count, this.title, this.borderColor})
+      {Key key, this.width, this.count, this.title, this.borderColor,this.height=100})
       : super(key: key);
   @override
   _StatisticCounterState createState() =>
@@ -24,7 +25,7 @@ class _StatisticCounterState extends State<StatisticCounter> {
   Widget build(BuildContext context) {
     return Container(
       width: widget.width,
-      height: 100,
+      height: widget.height,
       decoration:  BoxDecoration(
         color: AppColors.accentElement,
         borderRadius: BorderRadius.circular(9.0),
@@ -61,7 +62,7 @@ class _StatisticCounterState extends State<StatisticCounter> {
                 style: TextStyle(
                   color: AppColors.secondaryText,
                   fontWeight: FontWeight.w700,
-                  fontSize: 12,
+                  fontSize: 16,
                 ),
               ),
             ),

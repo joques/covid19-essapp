@@ -72,7 +72,7 @@ class _InformationScreenState extends State<InformationScreen> {
   @override
   Widget build(BuildContext context) {
     double _wd = (MediaQuery.of(context).size.width / 2) - (16 + 8);
-
+    double _wdFull = (MediaQuery.of(context).size.width ) - (16 + 16);
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -263,6 +263,26 @@ class _InformationScreenState extends State<InformationScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           StatisticCounter(
+                            width: _wdFull,
+                            count: nationalStat.confirmed-(nationalStat.recovered+nationalStat.dead),
+                            borderColor: Colors.yellow.shade900.value,
+                            title: 'Active Cases',
+                          ),
+                          // StatisticCounter(
+                          //   width: _wd,
+                          //   count: nationalStat.quarantined,
+                          //   borderColor: Colors.black.value,
+                          //   title: 'Total Quarantined',
+                          // ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          StatisticCounter(
                             width: _wd,
                             count: nationalStat.confirmed,
                             borderColor: Colors.blue.shade800.value,
@@ -292,7 +312,21 @@ class _InformationScreenState extends State<InformationScreen> {
                             width: _wd,
                             count: nationalStat.suspected,
                             borderColor: Colors.orange.shade900.value,
-                            title: 'Suspected cases',
+                            title: 'Total Tested',
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          StatisticCounter(
+                            width: _wdFull,
+                            count: nationalStat.quarantined,
+                            borderColor: Colors.black.value,
+                            title: 'Total Quarantined',
                           ),
                         ],
                       ),

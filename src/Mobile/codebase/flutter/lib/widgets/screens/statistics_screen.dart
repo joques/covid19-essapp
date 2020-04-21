@@ -53,6 +53,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   @override
   Widget build(BuildContext context) {
     double _wd = (MediaQuery.of(context).size.width / 2) - (16 + 8);
+    double _wdFull = (MediaQuery.of(context).size.width ) - (16 + 8);
     return Scaffold(
         appBar: AppBar(
           title: Text(

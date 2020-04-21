@@ -106,12 +106,12 @@ class SplashScreenState extends State<SplashScreen> {
               RaisedButton.icon(
                 onPressed: () => UrlLauncher.launch(
                     '$tollFreeNumber'), //TODO: import urlLauncher to Make a call
-                color: AppColors.primaryElement,
+                color: Colors.redAccent,
                 shape: BeveledRectangleBorder(
                     borderRadius:
                         BorderRadius.only(bottomRight: Radius.circular(16))),
                 label: Text(
-                  'Call Help Line \n0800100100'.toUpperCase(),
+                  'Call Help Line 0800100100'.toUpperCase(),
                   style: TextStyle(color: AppColors.accentElement),
                 ),
                 icon: Padding(

@@ -1,5 +1,5 @@
 class Statistic {
-  int suspected, confirmed, dead, recovered;
+  int suspected, confirmed, dead, recovered,quarantined;
   String timestamp;
   String region;
 
@@ -9,6 +9,7 @@ class Statistic {
       this.dead,
       this.suspected,
       this.recovered,
+      this.quarantined,
       this.region});
 
   Statistic.mapJson(dynamic json) {
@@ -19,6 +20,7 @@ class Statistic {
     confirmed = json['confirmed'];
     recovered = json['recovered'];
     region = json['region'];
+    quarantined = json['total_quarantined'];
   }
 
   Statistic.map(dynamic row) {
@@ -29,6 +31,7 @@ class Statistic {
     confirmed = row['confirmed'];
     recovered = row['recovered'];
     region = row['region'];
+    quarantined = row['quarantined'];
   }
 
   Map<String, dynamic> toMap() {
@@ -38,6 +41,7 @@ class Statistic {
     map["confirmed"] = confirmed;
     map["suspected"] = suspected;
     map["recovered"] = recovered;
+    map["quarantined"] = quarantined;
     map["region"] = region;
 
     return map;
