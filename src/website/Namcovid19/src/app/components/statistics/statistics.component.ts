@@ -6,7 +6,6 @@ import { CoronaWhatisService } from 'src/app/services/corona-whatis.service';
 
 import * as moment from 'moment';
 
-
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
@@ -17,6 +16,7 @@ export class StatisticsComponent implements OnInit {
 
 
   suspectedCount: number = 0;
+  activeCount: number = 0;
   confirmedCount: number = 0;
   deathCount: number = 0;
   recoveredCount: number = 0;
@@ -24,6 +24,7 @@ export class StatisticsComponent implements OnInit {
 
   //Chart info setup and configuration for chart
   suspectedList: number[] = new Array<number>();
+  activeList: number[] = new Array<number>();
   confirmedList: number[] = new Array<number>();
   deadList: number[] = new Array<number>();
   recoveredList: number[] = new Array<number>();
@@ -31,7 +32,7 @@ export class StatisticsComponent implements OnInit {
   isLoaded: boolean = false;
   public chartType: string = 'bar';
   public chartDatasets: Array<any> = [
-    { data: this.suspectedList, label: 'Suspected' },
+    { data: this.activeList, label: 'Active Cases' },
     { data: this.confirmedList, label: 'Confirmed' },
     { data: this.recoveredList, label: 'Recovered' },
     { data: this.deadList, label: 'Deaths' }
@@ -83,7 +84,8 @@ export class StatisticsComponent implements OnInit {
     dead: 0,
     suspected: 0,
     confirmed: 0,
-    worldwide: 0
+    worldwide: 0,
+    active : 0
   };
 
   stat_data = [];
@@ -157,6 +159,7 @@ export class StatisticsComponent implements OnInit {
       Object.keys(regions).forEach(key => {
         this.regionsNames.push(key.toLocaleUpperCase());
         this.suspectedList.push(regions[key].suspected);
+        this.activeList.push((regions[key].confirmed - regions[key].recovered));
         this.confirmedList.push(regions[key].confirmed);
         this.deadList.push(regions[key].dead);
         this.recoveredList.push(regions[key].recovered);
@@ -179,6 +182,7 @@ export class StatisticsComponent implements OnInit {
         this.confirmedCount = 0;
         this.recoveredCount = 0;
         this.deathCount = 0;
+        this.activeCount = 0;
       }
       setTimeout(() => {
         //metronome.play();
@@ -192,6 +196,8 @@ export class StatisticsComponent implements OnInit {
             this.deathCount++;
           } else if (type === 'recovered') {
             this.recoveredCount++;
+          } else if (type === 'active_cases') {
+            this.activeCount++;
           }
 
           //console.log(i+"=>"+this.suspectedCount)
@@ -204,6 +210,7 @@ export class StatisticsComponent implements OnInit {
     theLoop(Number.parseInt(this.stat_data[length - 1]['dead']), 'death', true);
     theLoop(Number.parseInt(this.stat_data[length - 1]['confirmed']), 'confirmed', true);
     theLoop(Number.parseInt(this.stat_data[length - 1]['recovered']), 'recovered', true);
+    theLoop(Number.parseInt(this.stat_data[length - 1]['active_cases']), 'active_cases', true);
   }
 
   // method that will populate the selected object and update the badges on the html page
@@ -215,7 +222,8 @@ export class StatisticsComponent implements OnInit {
           dead: data.dead,
           suspected: parseInt(data.suspected),
           confirmed: data.confirmed,
-          worldwide: data.worldwide
+          worldwide: data.worldwide,
+          active: data.active_cases
         };
         this.selected = value;
       }

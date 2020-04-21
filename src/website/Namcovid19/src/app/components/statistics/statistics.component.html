@@ -54,7 +54,7 @@
                 <!-- <img src="../../../assets/img/suspected_stat.png" style="height: 64px" class="img-fluid" alt="Responsive image"> -->
                 <h2 class="count-title">{{ this.suspectedCount }}</h2>
                 <!-- <h2 class="count-title">{{ 306 }}</h2> -->
-                <p class="count-text ">Suspected Cases</p>
+                <p class="count-text ">Total Tested</p>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@
       <div  style="padding-top: 1em;padding-bottom: 6%">
         <mat-card>
           <mat-card-content>
-            <div  id="stats-canvas" style="display: block; height: 500px" *ngIf="timeChartDatasets">
+            <div  id="timeline-canvas" style="display: block" *ngIf="timeChartDatasets">
               <canvas mdbChart
                   [chartType]="timeChartType"
                   [datasets]="timeChartDatasets"
