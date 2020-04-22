@@ -1,6 +1,8 @@
 .stats-section {
   position: relative;
+  min-height: 100vh;
 }
+
 
 mat-card {
   padding: 1rem;
