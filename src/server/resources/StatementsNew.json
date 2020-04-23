@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Date of Last Update</key>
+	<string>2020-04-22</string>
+	<key>Statements_COVID19</key>
+	<dict>
+		<key>Date Published</key>
+		<string>2020-04-22</string>
+		<key>Docid</key>
+		<string>0ffdoc001</string>
+		<key>Link</key>
+		<string>https://bit.ly/2WTtLry</string>
+		<key>Source</key>
+		<dict>
+			<key>Source 1</key>
+			<dict>
+				<key>DocType</key>
+				<string>Other(s)</string>
+				<key>DocType 1</key>
+				<string>Press releases</string>
+				<key>DocType 2</key>
+				<string>Lockdown Guidelines</string>
+				<key>DocType 3</key>
+				<string>Travel Guidelines</string>
+				<key>DocType 4</key>
+				<string>Media Cards</string>
+				<key>DocType 5</key>
+				<string>Situation reports</string>
+				<key>DocType 6</key>
+				<string>Leaflets</string>
+			</dict>
+			<key>Source 2</key>
+			<dict>
+				<key>DocType 1</key>
+				<string>Press releases</string>
+				<key>DocType 2</key>
+				<string>Lockdown Guidelines</string>
+				<key>DocType 3</key>
+				<string>Travel Guidelines</string>
+				<key>DocType 4</key>
+				<string>Media Cards</string>
+				<key>DocType 5</key>
+				<string>Situation reports</string>
+				<key>DocType 6</key>
+				<string>Other(s)</string>
+			</dict>
+			<key>Source 3</key>
+			<dict>
+				<key>DocType 1</key>
+				<string>Press releases</string>
+				<key>DocType 2</key>
+				<string>Lockdown Guidelines</string>
+				<key>DocType 3</key>
+				<string>Travel Guidelines</string>
+				<key>DocType 4</key>
+				<string>Media Cards</string>
+				<key>DocType 5</key>
+				<string>Situation reports</string>
+				<key>DocType 6</key>
+				<string>Other(s)</string>
+			</dict>
+			<key>Source 4</key>
+			<dict>
+				<key>DocType 1</key>
+				<string>Press releases</string>
+				<key>DocType 2</key>
+				<string>Lockdown Guidelines</string>
+				<key>DocType 3</key>
+				<string>Travel Guidelines</string>
+				<key>DocType 4</key>
+				<string>Media Cards</string>
+				<key>DocType 5</key>
+				<string>Situation reports</string>
+				<key>DocType 6</key>
+				<string>Other(s)</string>
+			</dict>
+			<key>Source 5</key>
+			<dict>
+				<key>DocType 1</key>
+				<string>Press releases</string>
+				<key>DocType 2</key>
+				<string>Lockdown Guidelines</string>
+				<key>DocType 3</key>
+				<string>Travel Guidelines</string>
+				<key>DocType 4</key>
+				<string>Media Cards</string>
+				<key>DocType 5</key>
+				<string>Situation reports</string>
+				<key>DocType 6</key>
+				<string>Other(s)</string>
+			</dict>
+			<key>Source 6</key>
+			<dict>
+				<key>DocType 2</key>
+				<string>Lockdown Guidelines</string>
+				<key>DocType 3</key>
+				<string>Travel Guidelines</string>
+				<key>DocType 4</key>
+				<string>Media Cards</string>
+				<key>DocType 5</key>
+				<string>Situation reports</string>
+				<key>DocType 6</key>
+				<string>Other(s)</string>
+				<key>DocType1</key>
+				<string>Press releases</string>
+			</dict>
+		</dict>
+		<key>title</key>
+		<string>Update on COVID-19 in Namibia</string>
+	</dict>
+</dict>
+</plist>
