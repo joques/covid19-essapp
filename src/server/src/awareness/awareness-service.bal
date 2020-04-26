@@ -3,6 +3,36 @@ import ballerina/log;
 import ballerina/io;
 import ballerina/docker;
 
+map<http:WebSocketCaller> callerMap = {};
+
+
+@docker:Expose{}
+listener http:Listener newsWSEP = new(6548);
+
+@http:WebSocketServiceConfig {
+    path: "/ws/news",
+    subProtocols: ["xml", "json"],
+    idleTimeoutInSeconds: 120
+}
+service newsws on newsWSEP {
+	resource function onOpen(http:WebSocketCaller caller) {
+		io:println("New client connected...");
+		string connID = caller.getConnectionId();
+		callerMap[connID] = <@untainted> caller;
+	}
+	
+	resource function onClose(http:WebSocketCaller caller, int statusCode, string reason){
+		io:println("Existing client leaving...");
+		string connID = caller.getConnectionId();
+		_ = callerMap.remove(connID);
+	}
+	
+	resource function onError(http:WebSocketCaller caller, error err) {
+		log:printError("An error occurred", err);
+	}
+}
+
+
 @docker:Expose {}
 listener http:Listener apiListener1 = new (6547, config = {
 	secureSocket: {
@@ -80,6 +110,27 @@ service awareness on apiListener1 {
 			var respResult = caller->respond(latestResp);
 			if (respResult is error) {
 				log:printError(respResult.reason(), respResult);
+			}
+		}
+	}
+	
+	@http:ResourceConfig {
+		methods: ["POST"],
+		path: "/breakingnews",
+		body: "newsDetails"
+	}
+	resource function handleBreakingNews(http:Caller caller, http:Request nReq, json newsDetails) {
+		var breakingNews = newsDetails.info;
+		if (breakingNews is error) {
+			log:printError(breakingNews.reason(), breakingNews);
+		} else {
+			string breakingNewsStr = breakingNews.toString();
+			foreach var singleEntry in callerMap.entries() {
+				var [entryKey, entryVal] = singleEntry;
+				var res = entryVal->pushText(breakingNewsStr);
+				if (res is error) {
+					log:printError(res.reason(), res);
+				}
 			}
 		}
 	}
