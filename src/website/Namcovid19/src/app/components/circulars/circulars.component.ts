@@ -10,29 +10,27 @@ export class CircularsComponent implements OnInit {
 
   constructor(private http: HttpserviceService) { }
 
-  data = [];
   public circulars = [];
-memo = [];
+  classifications = new Set(); //set of unique classifications
+
   ngOnInit(): void {
 
-    this.http.getCirculars().subscribe((res : any[])=>{
-      console.log(res);
+    this.http.getCirculars().subscribe((res: any[]) => {
       res.forEach(data => {
-        this.data = res as string [];
-        this.circulars.push(res);
-        localStorage.setItem('memos', JSON.stringify(this.circulars[0]));
-        // console.log(res[1]);
+        //gets each document's classification and creates a unique set of classes
+        this.classifications.add(data.classification)
+        this.circulars.push(data);
+
       })
 
-  });
-  
-  const memos = JSON.parse(localStorage.getItem('memos'));
+      localStorage.setItem('memos', JSON.stringify(this.circulars))
+    });
 
   }
 
-download(docid: string):  void {
-  console.log(docid);
-  console.log('im here');
+  download(docid: string): void {
+    console.log(docid);
+    console.log('im here');
     this.http.downloadCirculars(docid);
   }
 
