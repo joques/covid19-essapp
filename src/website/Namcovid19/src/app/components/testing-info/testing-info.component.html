@@ -1,25 +1,44 @@
-<div class="center-wrapper">
-<section class="testing-centres-section">
-<div>
-    <mdb-card-body>
-        <!-- <div class="img-container">
-        <img src="../../../assets/img/symtom-small.png" alt="profile">
-      </div>
-   -->
-        <div style="padding: 13px;">
-            <mat-card-header>
-                <mat-card-title style="text-align: center;">Coronavirus Testing Information</mat-card-title>
-            </mat-card-header>
-            <mat-card *ngFor="let testing of testingInfo" style="margin-top:10px;">
-                <mat-card-content>
-                    <p style="font-size:20px">
-                        {{testing}}
-                    </p>
-                </mat-card-content>
-            </mat-card>
+
+<!--Section: Features v.1-->
+<section class="text-center">
+
+    <!-- Section heading -->
+    <h2 class="h1-responsive text-center my-5">Testing Information <strong style='color: red'>NB!!</strong> </h2>
+    <hr />
+    <!--Section description-->
+    <p class="px-5 mb-5 pb-3">
+        Notable information about COVID19! testing:
+    </p>
+
+    <!--Grid row-->
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-4">
+            <mdb-icon fas icon="user-md" size="3x" class="red-text"></mdb-icon>
+            <h5 class="font-weight-bold mt-3"></h5>
+            <p>{{testingInfo[0]}}</p>
         </div>
-       
-    </mdb-card-body>
-</div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4">
+            <mdb-icon fas icon="phone-alt" size="3x" class="cyan-text"></mdb-icon>
+            <h5 class="font-weight-bold mt-3"></h5>
+            <p>{{testingInfo[1]}}</p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4">
+            <mdb-icon fas icon="medkit" size="3x" class="orange-text"></mdb-icon>
+            <h5 class="font-weight-bold mt-3"></h5>
+            <p>{{testingInfo[2]}}</p>
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
 </section>
-</div>
+<!--Section: Features v.1-->
