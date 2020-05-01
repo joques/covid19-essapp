@@ -24,7 +24,7 @@ button {
 }
 
 .primary {
-  background: #063bca;
+  background: #FFA500;
   color: rgb(255, 255, 255);
 
 }
@@ -47,7 +47,7 @@ button {
 }
 .death {
   background: #000000;
-  color: rgb(0, 0, 0);
+  color: rgb(255,255,255);
 
 }
 
