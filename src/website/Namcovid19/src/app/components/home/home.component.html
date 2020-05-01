@@ -3,12 +3,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 <section id="home" class="home">
-    
+
   <div class="trans-background">
 
     <div class="welcome-message">
       <div ng-controller="MyCtrl" class="maq">
-        <marquee vspace="20" direction="right" style="animation: maq 5s ease-out;"><span>Latest News:</span> The current lockdown will be extended to a full countrywide  lockdown from <span class="text-danger"> Friday, 17th April 2020 </span>
+        <marquee vspace="20" direction="right" style="animation: maq 5s ease-out;"><span>Latest News:</span> The current
+          lockdown will be extended to a full countrywide lockdown from <span class="text-danger"> Friday, 17th April
+            2020 </span>
           <span> to </span> <span class="text-danger"> Monday, 4 May 2020.</span> </marquee>
       </div>
       <div class="img-container-1">
@@ -24,10 +26,10 @@
       </div>
 
       <div id="hotline-wrapper">
-        <span class="text-danger " ><strong>Hotline: 0800 100 100</strong></span>
+        <span class="text-danger "><strong>Hotline: 0800 100 100</strong></span>
       </div>
-    
-     
+
+
       <!--  <div class="hr"></div> -->
       <!-- <div class="hr"></div>  -->
 
@@ -51,44 +53,81 @@
 <main class="main-grid">
   <div class="center-wrapper">
     <section class="home-section">
-      
-    <!--/.Navbar-->
-    
+
+      <!--/.Navbar-->
+
       <div #general class="scrollspy-example">
-        <mdb-card>
+
+        <h2 class="h1-responsive text-center my-5">National Stats</h2>
+        <hr />
+        <!-- STATS CARDS-->
+        <div class="card-deck">
+          <mdb-card class="text-center mb-3" borderColor="border-info" style="max-width: 20rem">
+            <mdb-card-header>CONFIRMED CASES</mdb-card-header>
+            <mdb-card-body>
+              <mdb-card-title class="text-info">
+                <h1 class="card-title animated bounceInDown"><strong>{{confirmedCount || 0}}</strong></h1>
+              </mdb-card-title>
+            </mdb-card-body>
+          </mdb-card>
+          <mdb-card class="text-center mb-3" borderColor="border-danger" style="max-width: 20rem">
+            <mdb-card-header>ACTIVE CASES</mdb-card-header>
+            <mdb-card-body>
+              <mdb-card-title class="text-danger">
+                <h1 class="card-title animated bounceInDown"><strong>{{activeCount || 0}}</strong></h1>
+              </mdb-card-title>
+            </mdb-card-body>
+          </mdb-card>
+          <mdb-card class="text-center mb-3" borderColor="border-success" style="max-width: 20rem">
+            <mdb-card-header>RECOVERED</mdb-card-header>
+            <mdb-card-body>
+              <mdb-card-title class="text-success">
+                <h1 class="card-title animated bounceInDown"><strong>{{recoveredCount || 0}}</strong></h1>
+              </mdb-card-title>
+            </mdb-card-body>
+          </mdb-card>
+          <mdb-card class="text-center mb-3" borderColor="border-dark" style="max-width: 20rem">
+            <mdb-card-header>DEATHS</mdb-card-header>
+            <mdb-card-body>
+              <mdb-card-title class="text-dark">
+                <h1 class="card-title animated bounceInDown"><strong>{{deathCount || 0}}</strong></h1>
+              </mdb-card-title>
+            </mdb-card-body>
+          </mdb-card>
+          <mdb-card class="text-center mb-3" borderColor="border-warning" style="max-width: 20rem">
+            <mdb-card-header>TOTAL TESTED</mdb-card-header>
+            <mdb-card-body>
+              <mdb-card-title class="text-warning">
+                <h1 class="card-title animated bounceInDown"><strong>{{testedCount || 0}}</strong></h1>
+              </mdb-card-title>
+            </mdb-card-body>
+          </mdb-card>
+        </div>
+
+        <!-- STATS CARDS-->
+
+
+        <!-- NEWS SECTION-->
+        <app-latest-news></app-latest-news>
+        <!-- NEWS SECTION-->
+
+        <br/>
+
+        <!-- PREVENTATIVE MEASURES -->
+        <app-measures></app-measures>
+        <!-- PREVENTATIVE MEASURES -->
+
+
+
+        <!-- PREVENTATIVE MEASURES -->
+                  <app-symptoms></app-symptoms>
+        <!-- PREVENTATIVE MEASURES -->
+
+        <!-- <mdb-card>
           <div id="general" class="general container">
             <div class="link3">
               <mdb-card-body>
-    
                 <mdb-card-text>
-                  <h1 class="text-center">Latest<span> News:</span></h1>
-    
-                  <app-latest-news></app-latest-news>
-    
-                  <div class="hr"></div>
-    
-                  <!-- <h2 class="text-center"> Khomas And Erongo regions COVID-19 Lockdown Starts on <span class="text-danger"> Friday, 27 March 2020.</span></h2> -->
-    
-                  <div class="about-footer">
-                    <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
-                      [routerLink]="['/app-statistics']">Statistics
-                    </a>
-                  </div>
-                  <div class="hr"></div>
-                </mdb-card-text>
-              </mdb-card-body>
-            </div>
-          </div>
-    
-        </mdb-card>
-        <mdb-card>
-          <div id="general" class="general container">
-            <div class="link3">
-              <mdb-card-body>
-    
-                <mdb-card-text>
-                   
-    
                   <app-measures></app-measures>
                   <div class="about-footer">
                     <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
@@ -100,31 +139,8 @@
               </mdb-card-body>
             </div>
           </div>
-    
-        </mdb-card>
-        <mdb-card>
-          <div id="general" class="general container">
-            <div class="link3">
-              <mdb-card-body>
-    
-                <mdb-card-text>
-                    
-    
-                  <app-symptoms></app-symptoms>
-                  <div class="hr"></div>
-                  <div class="about-footer">
-                    <a class="btn btn-danger" block="true"
-                      style="outline-color: white; float: right !important; margin-top: 1.5rem;"
-                      [routerLink]="['/app-corona-general-info']">Read more
-                    </a>
-                  </div>
-                  <div class="hr"></div>
-                </mdb-card-text>
-              </mdb-card-body>
-            </div>
-          </div>
-        </mdb-card>
-    
+        </mdb-card> -->
+
         <mdb-card>
           <div id="general" class="general container">
             <div class="link3">
@@ -133,14 +149,14 @@
                   <img src="../../../assets/img/virus-small.png" alt="profile">
                 </div>
                 <mdb-card-text>
-                    <!-- <h1 class="text-center">Coronavirus Testing Information</h1> -->
-    
-                   <app-testing-info></app-testing-info>
+                  <!-- <h1 class="text-center">Coronavirus Testing Information</h1> -->
+
+                  <app-testing-info></app-testing-info>
                   <div class="hr"></div>
                   <div class="about-footer">
                     <a class="btn btn-danger" block="true"
                       style="outline-color: white; float: right !important; margin-top: 1.5rem;"
-                      [routerLink]="['/app-testing-centres']">Testing Centres 
+                      [routerLink]="['/app-testing-centres']">Testing Centres
                     </a>
                   </div>
                   <div class="hr"></div>

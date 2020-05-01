@@ -49,6 +49,7 @@ import { from } from 'rxjs';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 import { TechResponseComponent } from './components/tech-response/tech-response.component';
 import { TestingInfoComponent } from './components/testing-info/testing-info.component';
+import { SocketService } from './services/socket.io.service';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,7 @@ import { TestingInfoComponent } from './components/testing-info/testing-info.com
     MatBadgeModule,
     MatSelectModule
   ],
-  providers: [CoronaWhatisService],
+  providers: [CoronaWhatisService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

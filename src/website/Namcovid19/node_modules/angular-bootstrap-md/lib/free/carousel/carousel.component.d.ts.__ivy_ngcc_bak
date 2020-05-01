@@ -66,6 +66,6 @@ export declare class CarouselComponent implements OnDestroy, AfterViewInit {
     protected hasClass(el: any, className: any): any;
     protected classAdd(el: any, className: any): void;
     protected removeClass(el: any, className: any): void;
-    keyboardControl(event: KeyboardEvent): void;
+    keyboardControl(event: any): void;
     focus(): void;
 }
