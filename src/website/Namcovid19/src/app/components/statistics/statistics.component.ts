@@ -44,8 +44,8 @@ export class StatisticsComponent implements OnInit {
 
   public chartColors: Array<any> = [
     {
-      backgroundColor: this.getColor('orange'),
-      borderColor: this.getColor('orange'),
+      backgroundColor: this.getColor('red'),
+      borderColor: this.getColor('red'),
       borderWidth: 2,
     },
     {
@@ -59,8 +59,8 @@ export class StatisticsComponent implements OnInit {
       borderWidth: 1,
     },
     {
-      backgroundColor: this.getColor('red'),
-      borderColor: this.getColor('red'),
+      backgroundColor: this.getColor('black'),
+      borderColor: this.getColor('black'),
       borderWidth: 1,
     }
   ];

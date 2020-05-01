@@ -11,6 +11,14 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "redirects": [ {
+      // Returns a temporary redirect for all requests to files or directories in the "firebase" directory
+      "source": "**",
+      "destination": "https://namibiacovid19.gov.na/home",
+      "type": 301
+    }
+
     ]
   }
 }

@@ -13,7 +13,6 @@ export class TestingInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.coronaService.getTestinginfo().subscribe((data: []) => {
-      // this.http.getWhatIsInfo().subscribe((data) => {
       console.log('We are here testing info');
       console.log(data);
       this.testingInfo = data;
