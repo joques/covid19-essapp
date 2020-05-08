@@ -49,7 +49,11 @@ import { from } from 'rxjs';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 import { TechResponseComponent } from './components/tech-response/tech-response.component';
 import { TestingInfoComponent } from './components/testing-info/testing-info.component';
+<<<<<<< HEAD
 import { CircularsAllComponent } from './components/circulars-all/circulars-all.component';
+=======
+import { SocketService } from './services/socket.io.service';
+>>>>>>> c16d316bce14847d3edd7f1b4800dcaea0fbc706
 
 @NgModule({
   declarations: [
@@ -106,7 +110,7 @@ import { CircularsAllComponent } from './components/circulars-all/circulars-all.
     MatBadgeModule,
     MatSelectModule
   ],
-  providers: [CoronaWhatisService],
+  providers: [CoronaWhatisService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,24 +1,38 @@
-<div id="link1">
-    <mdb-card-body>
-      <!-- <div class="img-container">
-        <img src="../../../assets/Logos/news.jpg" alt="profile">
-      </div> -->
-  
-      <div style="padding: 13px;">
-        <!-- <mat-card-header>
-          <mat-card-title style="text-align: center;">Advices and Tips</mat-card-title>
-        </mat-card-header> -->
-        <mat-card *ngFor="let news of News" style="margin-top:10px;">
-          <mat-card-content>
-            <p style="font-size:20px">
-              {{news}}
-            </p>
-          <!-- <div class="img-container">
-        <img src="../../../assets/img/fakenews.jpg" alt="profile">
-      </div>  -->
+<section class="magazine-section my-5">
 
-          </mat-card-content>
-  
-        </mat-card>
+  <!-- Section heading -->
+  <h2 class="h1-responsive text-center my-5">News</h2>
+  <hr />
+  <!-- Grid row -->
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col-lg-12 col-md-12">
+
+      <!-- <h6 class="h5-responsive text-center my-5">Latest News</h6> -->
+
+      <!-- Featured news -->
+      <div *ngFor="let news of News" class="single-news mb-lg-0 mb-4">
+
+        <br/>
+
+        <!-- Data -->
+        <div class="news-data d-flex justify-content-between">
+          <a href="#!" class="red-text">
+            <h6 class="font-weight-bold">
+              <mdb-icon fas icon="bullhorn" class="pr-2 animated bounceInDown"></mdb-icon>News!!
+            </h6>
+          </a>
+          <p class="font-weight-bold dark-grey-text">
+            <mdb-icon far icon="clock" class="pr-2"></mdb-icon>{{news.date}}
+          </p>
+        </div>
+        <p class="dark-grey-text mb-lg-0 mb-md-5 mb-4">{{news.news}}</p>
       </div>
-  
+      <!-- Featured news -->
+
+    </div>
+
+  </div>
+  <!-- Grid row -->
+
+</section>
