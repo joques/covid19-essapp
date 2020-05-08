@@ -9,25 +9,30 @@
 
           </div>
       </div>
-      <div *ngIf="classifications" class="row" >
-          <div *ngFor="let class of classifications" class="col-sm-12">
-              <h3 style="text-align: left; font-weight: bolder;">{{class}}</h3>
-            <div class="row">
-                <ng-template ngFor let-doc [ngForOf]="circulars">
-                    <div *ngIf="doc.classification == class" class="col-lg-3 col-md-6 col-sm-12">
-                        <div   class="circular" (click)="download(doc.docid)">
-                            <i class="fas fa-file-pdf icon"></i>
-                            <h5><strong> {{doc.title}}</strong></h5>
-                            <!-- <p>Document id: {{doc.docid}}</p> -->
-                            <p>Publication Date: {{doc.pubdate}}</p>
-                            <p>Author: {{doc.author}}</p>
-                            <!-- <p>Source: {{doc.source}}</p> -->
-                        </div>
-                    </div>
-                </ng-template>
-          </div>
-      </div>
-<br>
+      <div id="classifications-container">
+        <div *ngIf="circulars" class="row" >
+            <div *ngFor="let class of circulars" class="col-sm-12">
+                <div class="row" style="align-items: center;">
+                  <h3 style="text-align: left; font-weight: bolder; flex-grow: 1;">{{class.classification}}</h3>
+                  <button *ngIf="class.docs.length > max_docs"  class="btn btn-danger"  [routerLink]="['/circulars', class.classification]" >see all</button>
+                </div>
+              <div class="row circular-container">
+                  <ng-template ngFor let-doc [ngForOf]="class.docs" let-i=index>
+                      <div *ngIf="i < max_docs" class="circular-wrapper">
+                          <div class="circular" (click)="download(doc.docid)">
+                              <i class="fas fa-file-pdf icon"></i>
+                              <h5><strong> {{doc.title}}</strong></h5>
+                              <!-- <p>Document id: {{doc.docid}}</p> -->
+                              <p>Publication Date: {{doc.pubdate}}</p>
+                              <p>Author: {{doc.author}}</p>
+                              <!-- <p>Source: {{doc.source}}</p> -->
+                          </div>
+                      </div>
+                  </ng-template>
+            </div>
+        </div>
+          <br>
+        </div>
       </div>
       <!--row-->
   </div>

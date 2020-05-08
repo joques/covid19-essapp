@@ -1,0 +1,41 @@
+
+<section class="circulars">
+    <h1 style="text-align: center; font-weight: bold; ">Statements<span> on COVID-19</span></h1>
+    
+    <section id="services" class="services">
+      <div class="container">
+          <div class="row">
+              <div class="col">
+    
+              </div>
+          </div>
+          <div id="classifications-container">
+            <div *ngIf="circulars" class="row" >
+                <div class="col-sm-12">
+                    <div>
+                      <h3 style="text-align: left; font-weight: bolder;">{{id}}</h3>
+                    </div>
+                  <div class="row circular-container">
+                      <ng-template ngFor let-doc [ngForOf]="circulars">
+                          <div class="circular-wrapper">
+                              <div class="circular" (click)="download(doc.docid)">
+                                  <i class="fas fa-file-pdf icon"></i>
+                                  <h5><strong> {{doc.title}}</strong></h5>
+                                  <!-- <p>Document id: {{doc.docid}}</p> -->
+                                  <p>Publication Date: {{doc.pubdate}}</p>
+                                  <p>Author: {{doc.author}}</p>
+                                  <!-- <p>Source: {{doc.source}}</p> -->
+                              </div>
+                          </div>
+                      </ng-template>
+                </div>
+            </div>
+              <br>
+            </div>
+          </div>
+          <!--row-->
+      </div>
+      <!--container-->
+    </section>
+    </section>
+    

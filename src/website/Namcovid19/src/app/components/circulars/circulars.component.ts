@@ -11,16 +11,33 @@ export class CircularsComponent implements OnInit {
   constructor(private http: HttpserviceService) { }
 
   public circulars = [];
-  classifications = new Set(); //set of unique classifications
+  max_docs: Number
 
   ngOnInit(): void {
+    this.calc_max_docs()
 
     this.http.getCirculars().subscribe((res: any[]) => {
       res.forEach(data => {
-        //gets each document's classification and creates a unique set of classes
-        this.classifications.add(data.classification)
-        this.circulars.push(data);
 
+        var exist = false
+        var index
+
+        for (var i = 0; i < this.circulars.length; i++) {
+          if (this.circulars[i].classification == data.classification) {
+            exist = true
+            index = i
+            break;
+          }
+        }
+
+        if (exist) {
+          this.circulars[index].docs.push(data)
+        } else {
+          this.circulars.push({
+            classification: data.classification,
+            docs: [data]
+          })
+        }
       })
 
       localStorage.setItem('memos', JSON.stringify(this.circulars))
@@ -30,8 +47,16 @@ export class CircularsComponent implements OnInit {
 
   download(docid: string): void {
     console.log(docid);
-    console.log('im here');
     this.http.downloadCirculars(docid);
   }
+
+  calc_max_docs() {
+    var w = document.getElementById('classifications-container').offsetWidth
+    if (window.screen.width < 768)
+      this.max_docs = 4
+    else if (window.screen.width > 768)
+      this.max_docs = Math.floor(w / 200)
+  }
+
 
 }

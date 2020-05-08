@@ -24,6 +24,7 @@ import { CommingComponent } from './components/comming/comming.component';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 import { TechResponseComponent } from './components/tech-response/tech-response.component';
 import { TestingInfoComponent } from './components/testing-info/testing-info.component';
+import { CircularsAllComponent } from './components/circulars-all/circulars-all.component';
 
 const routes: Routes = [
 
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'app-latest-news', component: LatestNewsComponent },
   { path: 'app-tech-response', component: TechResponseComponent },
   { path: 'app-testing-info', component: TestingInfoComponent },
+  { path: 'circulars/:id', component: CircularsAllComponent}
 ];
 
 @NgModule({

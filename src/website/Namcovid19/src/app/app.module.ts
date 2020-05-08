@@ -49,6 +49,7 @@ import { from } from 'rxjs';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 import { TechResponseComponent } from './components/tech-response/tech-response.component';
 import { TestingInfoComponent } from './components/testing-info/testing-info.component';
+import { CircularsAllComponent } from './components/circulars-all/circulars-all.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TestingInfoComponent } from './components/testing-info/testing-info.com
     CommingComponent,
     LatestNewsComponent,
     TechResponseComponent,
-    TestingInfoComponent
+    TestingInfoComponent,
+    CircularsAllComponent
   ],
   imports: [
     BrowserModule,
