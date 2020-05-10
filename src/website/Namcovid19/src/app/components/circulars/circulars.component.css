@@ -1,19 +1,5 @@
-.circulars {
-    margin-top: 7rem;
-}
-
 .circular-wrapper {
     max-width: 50%;
-}
-
-.services {
-    padding: 40px 0 30px;
-    background-color: #F1F1F1;
-    text-align: center;
-}
-
-.circular h3 {
-    color: #343A40;
 }
 
 .services-body {
@@ -21,12 +7,20 @@
     padding: 0 15px;
 }
 
-.circular {
-    padding: 10px;
-    line-height: 25px;
-    margin: 20px 0;
-    transition: all .8s ease-out;
+
+.circular-wrapper{
+    padding: 5px;
+}
+
+.circular-inner{
+    background-color: gainsboro;
+    height: 100%;
+    border-radius: 2px;
+    padding: 10px 5px;
     cursor: pointer;
+    outline: none;
+    transition: all .8s ease-out;
+
 }
 
 .circular * {
@@ -43,14 +37,8 @@
     transition: all .8s ease-out;
 }
 
-.circular p {
-    color: rgb(85, 85, 85);
-    font-weight: 400;
-    line-height: 24px;
-}
-
-.circular:hover {
-    background-color: #fff;
+.circular-inner:hover {
+    background-color: rgb(197, 195, 195);
 }
 
 .circular:hover .icon {

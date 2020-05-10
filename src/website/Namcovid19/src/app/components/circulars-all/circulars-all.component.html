@@ -1,41 +1,50 @@
-
-<section class="circulars">
-    <h1 style="text-align: center; font-weight: bold; ">Statements<span> on COVID-19</span></h1>
-    
-    <section id="services" class="services">
-      <div class="container">
-          <div class="row">
-              <div class="col">
-    
-              </div>
-          </div>
-          <div id="classifications-container">
-            <div *ngIf="circulars" class="row" >
-                <div class="col-sm-12">
-                    <div>
-                      <h3 style="text-align: left; font-weight: bolder;">{{id}}</h3>
+<main class="main-grid">
+  <div class="center-wrapper">
+              <div class="container">
+            <div id="classifications-container">
+              <div *ngIf="circulars" class="row" >
+                  <div class="col-sm-12">
+                    <div class="row" style="align-items: center;">
+                      <h5 style="text-align: left; font-weight: bolder; flex-grow: 1;">{{id}}</h5>
                     </div>
-                  <div class="row circular-container">
-                      <ng-template ngFor let-doc [ngForOf]="circulars">
+                    <div class="row circular-container">
+                        <ng-template ngFor let-doc [ngForOf]="circulars">
                           <div class="circular-wrapper">
-                              <div class="circular" (click)="download(doc.docid)">
-                                  <i class="fas fa-file-pdf icon"></i>
-                                  <h5><strong> {{doc.title}}</strong></h5>
-                                  <!-- <p>Document id: {{doc.docid}}</p> -->
-                                  <p>Publication Date: {{doc.pubdate}}</p>
-                                  <p>Author: {{doc.author}}</p>
-                                  <!-- <p>Source: {{doc.source}}</p> -->
+                            <div class="circular-inner" (click)="download(doc.docid)">
+                              <div class="circular">
+                                <div style="text-align: center;">
+                                  <i class="fa fa-file-pdf icon"></i>
+                                </div>
+                                <table>
+                                  <tr>
+                                    <td colspan="2" style="text-align: center;">
+                                      <p>
+                                      {{doc.title}}
+                                      </p>
+                                    </td>
+                                  </tr>
+                                  <tr style="font-size: small;">
+                                    <td>Published:</td>
+                                    <td>{{doc.pubdate}}</td>
+                                  </tr>
+                                  <tr style="font-size: small;">
+                                    <td style="vertical-align: top;">Author:</td>
+                                    <td>{{doc.author}}</td>
+                                  </tr>
+                                </table>
                               </div>
+                            </div>
                           </div>
-                      </ng-template>
-                </div>
+                        </ng-template>
+                  </div>
+              </div>
+                <br>
+              </div>
             </div>
-              <br>
-            </div>
-          </div>
-          <!--row-->
-      </div>
-      <!--container-->
-    </section>
-    </section>
+            <!--row-->
+        </div>
+
+  </div>
+</main>
+
     

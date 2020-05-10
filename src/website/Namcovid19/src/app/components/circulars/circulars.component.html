@@ -1,41 +1,56 @@
+<main class="main-grid">
+  <div class="center-wrapper">
 
-<section class="circulars">
-<h1 style="text-align: center; font-weight: bold; ">Statements<span> on COVID-19</span></h1>
-
-<section id="services" class="services">
-  <div class="container">
+    <div class="container">
       <div class="row">
-          <div class="col">
+        <div class="col">
 
-          </div>
+        </div>
       </div>
       <div id="classifications-container">
-        <div *ngIf="circulars" class="row" >
-            <div *ngFor="let class of circulars" class="col-sm-12">
-                <div class="row" style="align-items: center;">
-                  <h3 style="text-align: left; font-weight: bolder; flex-grow: 1;">{{class.classification}}</h3>
-                  <button *ngIf="class.docs.length > max_docs"  class="btn btn-danger"  [routerLink]="['/circulars', class.classification]" >see all</button>
-                </div>
-              <div class="row circular-container">
-                  <ng-template ngFor let-doc [ngForOf]="class.docs" let-i=index>
-                      <div *ngIf="i < max_docs" class="circular-wrapper">
-                          <div class="circular" (click)="download(doc.docid)">
-                              <i class="fas fa-file-pdf icon"></i>
-                              <h5><strong> {{doc.title}}</strong></h5>
-                              <!-- <p>Document id: {{doc.docid}}</p> -->
-                              <p>Publication Date: {{doc.pubdate}}</p>
-                              <p>Author: {{doc.author}}</p>
-                              <!-- <p>Source: {{doc.source}}</p> -->
-                          </div>
-                      </div>
-                  </ng-template>
+        <div *ngIf="circulars" class="row">
+          <div *ngFor="let class of circulars" class="col-sm-12" style="margin:  10px 0;">
+            <div class="row" style="align-items: center;">
+              <h5 style="text-align: left; font-weight: bolder; flex-grow: 1;">{{class.classification}}</h5>
+              <button *ngIf="class.docs.length > max_docs" class="btn btn-danger btn-sm"
+                [routerLink]="['/circulars', class.classification]">SEE ALL</button>
             </div>
-        </div>
+            <div class="row circular-container">
+              <ng-template ngFor let-doc [ngForOf]="class.docs" let-i=index>
+                <div *ngIf="i < max_docs" class="circular-wrapper">
+                  <div class="circular-inner" (click)="download(doc.docid)">
+                    <div class="circular">
+                      <div style="text-align: center;">
+                        <i class="fa fa-file-pdf icon"></i>
+                      </div>
+                      <table>
+                        <tr>
+                          <td colspan="2" style="text-align: center;">
+                            <p>
+                            {{doc.title}}
+                            </p>
+                          </td>
+                        </tr>
+                        <tr style="font-size: small;">
+                          <td>Published:</td>
+                          <td>{{doc.pubdate}}</td>
+                        </tr>
+                        <tr style="font-size: small;">
+                          <td style="vertical-align: top;">Author:</td>
+                          <td>{{doc.author}}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
           <br>
         </div>
       </div>
       <!--row-->
+    </div>
+    <!--container-->
   </div>
-  <!--container-->
-</section>
-</section>
+</main>
