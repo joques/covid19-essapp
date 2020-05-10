@@ -30,7 +30,24 @@ final map<string> docURLs = {
 	offdoc038: "shorturl.at/dgHPW",
 	offdoc039: "shorturl.at/x2459",
 	offdoc041: "shorturl.at/dksu0",
-	offdoc042: "shorturl.at/kzCD5"
+	offdoc042: "shorturl.at/kzCD5",
+	offdoc043: "shorturl.at/jzBQ7",
+	offdoc044: "shorturl.at/gmuF3",
+	offdoc045: "shorturl.at/muxS5",
+	offdoc046: "shorturl.at/mqIO0",
+	offdoc047: "shorturl.at/aNSTW",
+	offdoc048: "shorturl.at/CLXZ",
+	offdoc049: "shorturl.at/gKMT4",
+	offdoc050: "shorturl.at/ceFGV",
+	offdoc051: "shorturl.at/vCE14",
+	offdoc052: "shorturl.at/hFHIJ",
+	offdoc053: "shorturl.at/hGPUY",
+	offdoc054: "shorturl.at/xzCNO",
+	offdoc055: "shorturl.at/uyIKN",
+	offdoc056: "shorturl.at/cpqU7",
+	offdoc057: "shorturl.at/qwKV4",
+	offdoc058: "shorturl.at/epDP5",
+	offdoc059: "shorturl.at/diloD"
 };
 
 mongodb:ClientConfig  mongoConfig = {
@@ -86,7 +103,24 @@ listener http:Listener apilistener4 = new (6552, config = {
 		{sourceFile: "../../official-docs/offdoc038.pdf", target: "/home/ballerina/data/official-docs/offdoc038.pdf"},
 		{sourceFile: "../../official-docs/offdoc039.pdf", target: "/home/ballerina/data/official-docs/offdoc039.pdf"},
 		{sourceFile: "../../official-docs/offdoc041.pdf", target: "/home/ballerina/data/official-docs/offdoc041.pdf"},
-		{sourceFile: "../../official-docs/offdoc042.pdf", target: "/home/ballerina/data/official-docs/offdoc042.pdf"}
+		{sourceFile: "../../official-docs/offdoc042.pdf", target: "/home/ballerina/data/official-docs/offdoc042.pdf"},
+		{sourceFile: "../../official-docs/offdoc043.pdf", target: "/home/ballerina/data/official-docs/offdoc043.pdf"},
+		{sourceFile: "../../official-docs/offdoc044.pdf", target: "/home/ballerina/data/official-docs/offdoc044.pdf"},
+		{sourceFile: "../../official-docs/offdoc045.pdf", target: "/home/ballerina/data/official-docs/offdoc045.pdf"},
+		{sourceFile: "../../official-docs/offdoc046.pdf", target: "/home/ballerina/data/official-docs/offdoc046.pdf"},
+		{sourceFile: "../../official-docs/offdoc047.pdf", target: "/home/ballerina/data/official-docs/offdoc047.pdf"},
+		{sourceFile: "../../official-docs/offdoc048.pdf", target: "/home/ballerina/data/official-docs/offdoc048.pdf"},
+		{sourceFile: "../../official-docs/offdoc049.pdf", target: "/home/ballerina/data/official-docs/offdoc049.pdf"},
+		{sourceFile: "../../official-docs/offdoc050.pdf", target: "/home/ballerina/data/official-docs/offdoc050.pdf"},
+		{sourceFile: "../../official-docs/offdoc051.pdf", target: "/home/ballerina/data/official-docs/offdoc051.pdf"},
+		{sourceFile: "../../official-docs/offdoc052.pdf", target: "/home/ballerina/data/official-docs/offdoc052.pdf"},
+		{sourceFile: "../../official-docs/offdoc053.pdf", target: "/home/ballerina/data/official-docs/offdoc053.pdf"},
+		{sourceFile: "../../official-docs/offdoc054.pdf", target: "/home/ballerina/data/official-docs/offdoc054.pdf"},
+		{sourceFile: "../../official-docs/offdoc055.pdf", target: "/home/ballerina/data/official-docs/offdoc055.pdf"},
+		{sourceFile: "../../official-docs/offdoc056.pdf", target: "/home/ballerina/data/official-docs/offdoc056.pdf"},
+		{sourceFile: "../../official-docs/offdoc057.pdf", target: "/home/ballerina/data/official-docs/offdoc057.pdf"},
+		{sourceFile: "../../official-docs/offdoc058.pdf", target: "/home/ballerina/data/official-docs/offdoc058.pdf"},
+		{sourceFile: "../../official-docs/offdoc059.pdf", target: "/home/ballerina/data/official-docs/offdoc059.pdf"}
 	]
 }
 
