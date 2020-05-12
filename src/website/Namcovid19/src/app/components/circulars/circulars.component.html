@@ -2,13 +2,8 @@
   <div class="center-wrapper">
 
     <div class="container">
-      <div class="row">
-        <div class="col">
-
-        </div>
-      </div>
       <div id="classifications-container">
-        <div *ngIf="circulars" class="row">
+        <div class="row" *ngIf="circulars.length; else loading">
           <div *ngFor="let class of circulars" class="col-sm-12" style="margin:  10px 0;">
             <div class="row" style="align-items: center;">
               <h5 style="text-align: left; font-weight: bolder; flex-grow: 1;">{{class.classification}}</h5>
@@ -48,6 +43,11 @@
           </div>
           <br>
         </div>
+        <ng-template #loading>
+          <div id="loader-wrapper">
+            <div class="loader"></div>      
+          </div>
+        </ng-template>
       </div>
       <!--row-->
     </div>

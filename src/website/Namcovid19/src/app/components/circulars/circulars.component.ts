@@ -43,7 +43,7 @@ export class CircularsComponent implements OnInit {
       localStorage.setItem('memos', JSON.stringify(this.circulars))
     });
 
-    //this.circulars = JSON.parse(localStorage.getItem('memos'))
+    // this.circulars = JSON.parse(localStorage.getItem('memos'))
 
   }
 
