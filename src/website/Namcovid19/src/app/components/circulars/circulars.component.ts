@@ -48,7 +48,6 @@ export class CircularsComponent implements OnInit {
   }
 
   download(docid: string): void {
-    console.log(docid);
     this.http.downloadCirculars(docid);
   }
 

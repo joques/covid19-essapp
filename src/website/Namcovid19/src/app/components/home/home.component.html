@@ -2,186 +2,94 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<section id="home" class="home">
-
-  <div class="trans-background">
-
-    <div class="welcome-message">
-      <div ng-controller="MyCtrl" class="maq">
-        <marquee vspace="20" direction="right" style="animation: maq 5s ease-out;"><span>Latest News:</span> <span>
-            Stage 2 where by the country will gradually re-open under </span><span class="text-danger">Strict
-            Precautions </span><span> Starts from</span>
-          <span class="text-danger"> Tuesday, 5 May 2020.</span> <span> to </span> <span class="text-danger"> Monday, 1
-            June 2020.</span> </marquee>
-      </div>
-      <div class="img-container-1">
-        <img src="../../../assets/Logos/liberity1.jpg" alt="profile">
-      </div>
-
-      <span class="animated bounceInDown delay-1s">Get your facts right about</span>
-      <h1 class="animated bounceInDown delay-2s">Coronavirus disease(COVID-19)</h1>
-      <div class="about-footer">
-        <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
-          [routerLink]="['/app-tech-response']">Join Us
-        </a>
-      </div>
-
-      <div id="hotline-wrapper">
-        <span class="text-danger "><strong>Hotline: 0800 100 100</strong></span>
-      </div>
-
-
-      <!-- <span class="animated bounceInDown delay-2s">Brought to you by Namibia virtual hackathon for COVID-19</span> -->
-
-
-      <!-- <h2 class="animated heartBeat delay-3s"> MoHSS COVID-19 hotline at 0800 100 100.
-      </h2> -->
-
-    </div>
-
-    <div class="row" id="arrow-style" (click)="scroll(general)">
-      <div class="chevron"></div>
-      <div class="chevron"></div>
-      <div class="chevron"></div>
-    </div>
-  </div>
-
-</section>
 <main class="main-grid">
   <div class="center-wrapper">
-    <section class="home-section">
 
-      <!--/.Navbar-->
-
-      <div #general class="scrollspy-example">
-
-        <h2 class="h1-responsive text-center my-5">National Stats</h2>
-        <hr />
-        <!-- STATS CARDS-->
-        <div class="card-deck">
-          <mdb-card class="text-center mb-3" borderColor="border-info" style="max-width: 20rem">
-            <mdb-card-header>CONFIRMED CASES</mdb-card-header>
-            <mdb-card-body>
-              <mdb-card-title class="text-info">
-                <h1 class="card-title animated bounceInDown"><strong>{{confirmedCount || 0}}</strong></h1>
-              </mdb-card-title>
-            </mdb-card-body>
-          </mdb-card>
-          <mdb-card class="text-center mb-3" borderColor="border-danger" style="max-width: 20rem">
-            <mdb-card-header>ACTIVE CASES</mdb-card-header>
-            <mdb-card-body>
-              <mdb-card-title class="text-danger">
-                <h1 class="card-title animated bounceInDown"><strong>{{activeCount || 0}}</strong></h1>
-              </mdb-card-title>
-            </mdb-card-body>
-          </mdb-card>
-          <mdb-card class="text-center mb-3" borderColor="border-success" style="max-width: 20rem">
-            <mdb-card-header>RECOVERED</mdb-card-header>
-            <mdb-card-body>
-              <mdb-card-title class="text-success">
-                <h1 class="card-title animated bounceInDown"><strong>{{recoveredCount || 0}}</strong></h1>
-              </mdb-card-title>
-            </mdb-card-body>
-          </mdb-card>
-          <mdb-card class="text-center mb-3" borderColor="border-dark" style="max-width: 20rem">
-            <mdb-card-header>DEATHS</mdb-card-header>
-            <mdb-card-body>
-              <mdb-card-title class="text-dark">
-                <h1 class="card-title animated bounceInDown"><strong>{{deathCount || 0}}</strong></h1>
-              </mdb-card-title>
-            </mdb-card-body>
-          </mdb-card>
-          <mdb-card class="text-center mb-3" borderColor="border-warning" style="max-width: 20rem">
-            <mdb-card-header>TOTAL TESTED</mdb-card-header>
-            <mdb-card-body>
-              <mdb-card-title class="text-warning">
-                <h1 class="card-title animated bounceInDown"><strong>{{testedCount || 0}}</strong></h1>
-              </mdb-card-title>
-            </mdb-card-body>
-          </mdb-card>
-        </div>
-
-        <div class="d-flex justify-content-center">
+    <div class="card-wrapper">
+      <div style="display: flex; align-items: center; margin-bottom: 10px;">
+        <div style="flex-grow: 1; font-size: medium;">National Statistics</div>
+        <div>
 
           <a href="https://datastudio.google.com/open/1xzhTMucZJZg-hCGaLpwhDdOlzzUaCzQA" target="__blank">
-            <button mdbBtn type="button" color="default" rounded="true" outline="true" mdbWavesEffect>
+            <button class="btn btn-dark btn-sm">
               Statistics Dashboard
               <mdb-icon fas icon="chart-line" class="mr-2"></mdb-icon>
             </button>
           </a>
         </div>
 
-        <!-- STATS CARDS-->
-
-
-        <!-- NEWS SECTION-->
-        <app-latest-news></app-latest-news>
-        <!-- NEWS SECTION-->
-
-        <br />
-
-        <!-- PREVENTATIVE MEASURES -->
-        <app-measures></app-measures>
-        <!-- PREVENTATIVE MEASURES -->
-
-
-
-        <!-- SYMPTOMS -->
-        <app-symptoms></app-symptoms>
-        <!-- SYMPTOMS -->
-        <br />
-
-
-        <!-- TESTING INFO -->
-        <app-testing-info></app-testing-info>
-        <!-- TESTING INFO -->
-        <br />
-
-        <!-- <mdb-card>
-          <div id="general" class="general container">
-            <div class="link3">
-              <mdb-card-body>
-                <mdb-card-text>
-                  <app-measures></app-measures>
-                  <div class="about-footer">
-                    <a class="btn btn-danger" block="true" style="outline-color: white; float: right !important;"
-                      [routerLink]="['/app-corona-general-info']">Read more
-                    </a>
-                  </div>
-                  <div class="hr"></div>
-                </mdb-card-text>
-              </mdb-card-body>
-            </div>
-          </div>
-        </mdb-card> -->
-
-        <!-- <mdb-card>
-          <div id="general" class="general container">
-            <div class="link3">
-              <mdb-card-body>
-                <div class="img-container">
-                  <img src="../../../assets/img/virus-small.png" alt="profile">
-                </div>
-                <mdb-card-text>
-
-                  <app-testing-info></app-testing-info>
-                  <div class="hr"></div>
-                  <div class="about-footer">
-                    <a class="btn btn-danger" block="true"
-                      style="outline-color: white; float: right !important; margin-top: 1.5rem;"
-                      [routerLink]="['/app-testing-centres']">Testing Centres
-                    </a>
-                  </div>
-                  <div class="hr"></div>
-                </mdb-card-text>
-              </mdb-card-body>
-            </div>
-          </div>
-        </mdb-card> -->
-
-
-
       </div>
-    </section>
+
+      <!-- STATS CARDS-->
+      <div class="card-deck">
+        <mdb-card class="text-center mb-3" borderColor="border-info" style="max-width: 20rem">
+          <mdb-card-header>CONFIRMED</mdb-card-header>
+          <mdb-card-body>
+            <mdb-card-title class="text-info">
+              <h1 class="card-title animated bounceInDown"><strong>{{confirmedCount || 0}}</strong></h1>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+        <mdb-card class="text-center mb-3" borderColor="border-danger" style="max-width: 20rem">
+          <mdb-card-header>ACTIVE</mdb-card-header>
+          <mdb-card-body>
+            <mdb-card-title class="text-danger">
+              <h1 class="card-title animated bounceInDown"><strong>{{activeCount || 0}}</strong></h1>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+        <mdb-card class="text-center mb-3" borderColor="border-success" style="max-width: 20rem">
+          <mdb-card-header>RECOVERED</mdb-card-header>
+          <mdb-card-body>
+            <mdb-card-title class="text-success">
+              <h1 class="card-title animated bounceInDown"><strong>{{recoveredCount || 0}}</strong></h1>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+        <mdb-card class="text-center mb-3" borderColor="border-dark" style="max-width: 20rem">
+          <mdb-card-header>DEATHS</mdb-card-header>
+          <mdb-card-body>
+            <mdb-card-title class="text-dark">
+              <h1 class="card-title animated bounceInDown"><strong>{{deathCount || 0}}</strong></h1>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+        <mdb-card class="text-center mb-3" borderColor="border-warning" style="max-width: 20rem">
+          <mdb-card-header>TOTAL TESTED</mdb-card-header>
+          <mdb-card-body>
+            <mdb-card-title class="text-warning">
+              <h1 class="card-title animated bounceInDown"><strong>{{testedCount || 0}}</strong></h1>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+
+      <!-- STATS CARDS-->
+    </div>
+
+      <!-- NEWS SECTION-->
+      <app-latest-news></app-latest-news>
+      <!-- NEWS SECTION-->
+
+
+    <div class="section-wrapper">
+      <!-- PREVENTATIVE MEASURES -->
+      <app-measures></app-measures>
+      <!-- PREVENTATIVE MEASURES -->
+    </div>
+
+
+    <div class="section-wrapper">
+      <!-- SYMPTOMS -->
+      <app-symptoms></app-symptoms>
+      <!-- SYMPTOMS -->
+    </div>
+
+    <div class="section-wrapper">
+
+      <!-- TESTING INFO -->
+      <app-testing-info></app-testing-info>
+      <!-- TESTING INFO -->
+    </div>
   </div>
 </main>

@@ -1,8 +1,14 @@
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color-dark fixed-top">
-
   <mdb-navbar-brand>
-    <a class="navbar-brand" style="color: azure;  float: right;" [routerLink]="['/home']">COVID-19 Namibia <span class="text-danger " id="hotline-wrapper"><strong>Hotline: 0800 100 100</strong></span></a>
+    <div id="icon-wrapper">
+      <div id="icon" >
+      </div>
+    </div>
+  </mdb-navbar-brand>
+  <mdb-navbar-brand>
+    <a class="navbar-brand" style="color: azure;  float: right;" [routerLink]="['/home']">COVID-19 Namibia <span
+        class="text-danger " id="hotline-wrapper"><strong>Hotline: 0800 100 100</strong></span></a>
   </mdb-navbar-brand>
 
 
@@ -46,7 +52,8 @@
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/coming']">Research/Publications</a>
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-circulars']">Statement Documents</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-about-us']" routerLinkActive="active">About Us</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/app-about-us']"
+            routerLinkActive="active">About Us</a>
         </div>
       </li>
       <!-- <li class="nav-item">

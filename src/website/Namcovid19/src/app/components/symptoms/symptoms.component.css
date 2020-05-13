@@ -1,8 +1,6 @@
-
-.img-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
+.symptom-wrapper{
+  border: 1px solid gray;
+  border-radius: 5px;
+  border-left: 4px solid gray;
+  padding: 10px;
 }

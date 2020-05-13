@@ -1,36 +1,29 @@
-<section class="magazine-section my-5">
+<section>
 
   <!-- Section heading -->
-  <h2 class="h1-responsive text-center my-5">News</h2>
-  <hr />
+  <div style="font-size: medium;">News</div>
   <!-- Grid row -->
-  <div class="row">
-    <!-- Grid column -->
-    <div class="col-lg-12 col-md-12">
+  <div style="display: flex;">
+    <!-- Featured news -->
+    <div *ngFor="let news of News" style="width: 33.3%; padding: 10px">
 
-      <!-- <h6 class="h5-responsive text-center my-5">Latest News</h6> -->
-
-      <!-- Featured news -->
-      <div *ngFor="let news of News" class="single-news mb-lg-0 mb-4">
-
-        <br/>
-
+      <div style="border: 1px solid gray; border-radius: 5px; padding: 10px; height: 200px; display: flex; flex-flow: column;">
         <!-- Data -->
-        <div class="news-data d-flex justify-content-between">
-          <a href="#!" class="red-text">
-            <h6 class="font-weight-bold">
-              <mdb-icon fas icon="bullhorn" class="pr-2 animated bounceInDown"></mdb-icon>News!!
-            </h6>
-          </a>
-          <p class="font-weight-bold dark-grey-text">
-            <mdb-icon far icon="clock" class="pr-2"></mdb-icon>{{news.date}}
-          </p>
+        <div >
+          <span><mdb-icon far icon="clock" class="pr-2"></mdb-icon></span>
+          <span style="font-size: small;" >
+            {{news.date}}
+          </span>
         </div>
-        <p class="dark-grey-text mb-lg-0 mb-md-5 mb-4">{{news.news}}</p>
+        <div style="overflow: hidden; flex-grow: 1; font-size: smaller;">
+          <p class="dark-grey-text mb-lg-0 mb-md-5 mb-4" style="height: 100%;">{{news.news}}</p>
+        </div>
+        <div>
+          <span style="float: right; clear: both; font-size: x-small;">read more</span>
+        </div>
       </div>
-      <!-- Featured news -->
-
     </div>
+    <!-- Featured news -->
 
   </div>
   <!-- Grid row -->
