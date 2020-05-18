@@ -40,7 +40,7 @@ listener http:Listener apiListener2 = new (6549, config = {
 	cors: {
 				allowOrigins: ["https://covidservices.nust.na"],
 				allowHeaders: ["*"],
-				exposeHeaders: ["X-CUSTOM-HEADER"],
+				exposeHeaders: ["X-CUSTOM-HEADER"]
     }
 }
 service statistics on apiListener2 {
