@@ -20,13 +20,13 @@ service newsws on newsWSEP {
 		string connID = caller.getConnectionId();
 		callerMap[connID] = <@untainted> caller;
 	}
-	
+
 	resource function onClose(http:WebSocketCaller caller, int statusCode, string reason){
 		io:println("Existing client leaving...");
 		string connID = caller.getConnectionId();
 		_ = callerMap.remove(connID);
 	}
-	
+
 	resource function onError(http:WebSocketCaller caller, error err) {
 		log:printError("An error occurred", err);
 	}
@@ -82,9 +82,10 @@ json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 @http: ServiceConfig {
 	basePath: "/covid/v1/awareness",
 	cors: {
-        allowOrigins: ["*"],
-        allowHeaders: ["*"],
-        maxAge: 84900
+				allowOrigins: ["*"],
+				allowCredentials: false,
+				allowHeaders: ["*"],
+				maxAge: 84900
     }
 }
 
@@ -113,7 +114,7 @@ service awareness on apiListener1 {
 			}
 		}
 	}
-	
+
 	@http:ResourceConfig {
 		methods: ["POST"],
 		path: "/breakingnews",

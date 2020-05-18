@@ -50,7 +50,10 @@ final map<string> docURLs = {
 	offdoc059: "shorturl.at/diloD",
 	offdoc060: "shorturl.at/cdgsy",
 	offdoc061: "shorturl.at/hnKOT",
-	offdoc062: "shorturl.at/uyAJ4"
+	offdoc062: "shorturl.at/uyAJ4",
+	offdoc063: "shorturl.at/qtFGO",
+	offdoc064: "shorturl.at/fhsG3",
+	offdoc065: "shorturl.at/nMTU3"
 };
 
 mongodb:ClientConfig  mongoConfig = {
@@ -126,16 +129,20 @@ listener http:Listener apilistener4 = new (6552, config = {
 		{sourceFile: "../../official-docs/offdoc059.pdf", target: "/home/ballerina/data/official-docs/offdoc059.pdf"},
 		{sourceFile: "../../official-docs/offdoc060.pdf", target: "/home/ballerina/data/official-docs/offdoc060.pdf"},
 		{sourceFile: "../../official-docs/offdoc061.pdf", target: "/home/ballerina/data/official-docs/offdoc061.pdf"},
-		{sourceFile: "../../official-docs/offdoc062.pdf", target: "/home/ballerina/data/official-docs/offdoc062.pdf"}
+		{sourceFile: "../../official-docs/offdoc062.pdf", target: "/home/ballerina/data/official-docs/offdoc062.pdf"},
+		{sourceFile: "../../official-docs/offdoc063.pdf", target: "/home/ballerina/data/official-docs/offdoc063.pdf"},
+		{sourceFile: "../../official-docs/offdoc064.pdf", target: "/home/ballerina/data/official-docs/offdoc064.pdf"},
+		{sourceFile: "../../official-docs/offdoc065.pdf", target: "/home/ballerina/data/official-docs/offdoc065.pdf"}
 	]
 }
 
 @http: ServiceConfig {
 	basePath: "/covid/v1/docs",
 	cors: {
-        allowOrigins: ["*"],
-        allowHeaders: ["*"],
-        maxAge: 84900
+				allowOrigins: ["*"],
+				allowCredentials: false,
+				allowHeaders: ["*"],
+				maxAge: 84900
     }
 }
 
