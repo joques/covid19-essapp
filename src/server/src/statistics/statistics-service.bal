@@ -38,7 +38,8 @@ listener http:Listener apiListener2 = new (6549, config = {
 @http: ServiceConfig {
 	basePath: "/covid/v1/statistics",
 	cors: {
-        allowOrigins: ["https://namibiacovid19.gov.na"],
+        allowOrigins: ["https://namibiacovid19.gov.na", "https://covidservices.nust.na"],
+				allowCredentials: false,
         allowHeaders: ["*"],
         maxAge: 84900
     }
