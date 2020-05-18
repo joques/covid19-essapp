@@ -83,7 +83,7 @@ json awarenessDS = <@untainted> loadAwarenessData("./data/awareness.json");
 	basePath: "/covid/v1/awareness",
 	cors: {
         allowOrigins: ["https://namibiacovid19.gov.na", "https://covidservices.nust.na"],
-				allowCredentials: false,
+				allowCredentials: true,
         allowHeaders: ["*"],
         maxAge: 84900
     }
