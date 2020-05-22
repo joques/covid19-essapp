@@ -58,7 +58,9 @@ final map<string> docURLs = {
 	offdoc067: "shorturl.at/AGLUY",
 	offdoc068: "shorturl.at/goIJK",
 	offdoc069: "shorturl.at/eluDU",
-	offdoc070: "shorturl.at/cftJ8"
+	offdoc070: "shorturl.at/cftJ8",
+	offdoc073: "https://bit.ly/2XkirTQ",
+	offdoc074: "https://cutt.ly/jyOq1uG"
 };
 
 mongodb:ClientConfig  mongoConfig = {
@@ -142,7 +144,9 @@ listener http:Listener apilistener4 = new (6552, config = {
 		{sourceFile: "../../official-docs/offdoc067.pdf", target: "/home/ballerina/data/official-docs/offdoc067.pdf"},
 		{sourceFile: "../../official-docs/offdoc068.pdf", target: "/home/ballerina/data/official-docs/offdoc068.pdf"},
 		{sourceFile: "../../official-docs/offdoc069.pdf", target: "/home/ballerina/data/official-docs/offdoc069.pdf"},
-		{sourceFile: "../../official-docs/offdoc070.pdf", target: "/home/ballerina/data/official-docs/offdoc070.pdf"}
+		{sourceFile: "../../official-docs/offdoc070.pdf", target: "/home/ballerina/data/official-docs/offdoc070.pdf"},
+		{sourceFile: "../../official-docs/offdoc073.pdf", target: "/home/ballerina/data/official-docs/offdoc073.pdf"},
+		{sourceFile: "../../official-docs/offdoc074.pdf", target: "/home/ballerina/data/official-docs/offdoc074.pdf"}
 	]
 }
 
