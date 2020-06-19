@@ -12,7 +12,7 @@ export class FaqsComponent implements OnInit {
   // data =  [];
   Faqs = [];
   showprogress: boolean;
-  
+
   searchForm: FormGroup;
 
   search;
@@ -26,6 +26,7 @@ export class FaqsComponent implements OnInit {
     this.showprogress = true;
     this.coronaService.getFaqs().subscribe((data: []) => {
       this.Faqs = data;
+      console.log('FAQs: ', this.Faqs);
       this.showprogress = false;
     });
   }

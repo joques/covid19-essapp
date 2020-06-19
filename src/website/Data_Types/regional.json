@@ -1,0 +1,12 @@
+{
+    "id": "req_01",
+    "region": "Khomas",
+    "confirmed": 12,
+    "dead": 0,
+    "recovered": 0,
+    "suspected": 1,
+    "totalQuarantined": 12,
+    "totalTested": 12,
+    "timestamp": "13/06/2020-18:00:24",
+
+}

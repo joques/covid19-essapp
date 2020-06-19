@@ -1,0 +1,45 @@
+<!-- Material form subscription -->
+<div class="authentication">
+
+  <div class="text-center">
+    <h1 class="h1-responsive">ESS-App Admin Portal</h1>
+  </div>
+
+  <div class="text-center auth">
+    <div class="card">
+      <!--Card content-->
+      <div class="card-body px-lg-5">
+
+        <!-- Form -->
+        <form novalidate class="text-center" style="color: #757575;" [formGroup]="loginForm"
+          (keyup.enter)='login(loginForm.value)'>
+
+          <h5>Sign In</h5>
+
+          <!-- Name -->
+          <div class="md-form mt-3">
+            <input type="text" id="materialSubscriptionFormPasswords" class="form-control">
+            <label for="materialSubscriptionFormPasswords">Username</label>
+          </div>
+
+          <!-- E-mai -->
+          <div class="md-form">
+            <input type="email" id="materialSubscriptionFormEmail" class="form-control">
+            <label for="materialSubscriptionFormEmail">Password</label>
+          </div>
+
+          <!-- Sign in button -->
+          <button mdbBtn type="button" color="red" rounded="true" outline="true" mdbWavesEffect>
+            Sign In
+            <mdb-icon fas icon="chart-line" class="mr-2"></mdb-icon>
+          </button>
+
+        </form>
+        <!-- Form -->
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+{
+    "_id": "",
+    "firstName": "John",
+    "lastName": "Doe",
+    "organization": "MOHSS",
+    "userType": "admin",
+    "email": "jdoe@mohss.gov.na",
+    "username": "jdoe",
+    "password": "encrypted version",
+    "timestamp": "13/06/2020-18:00:24",
+    "active": true
+}

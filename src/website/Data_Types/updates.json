@@ -1,0 +1,13 @@
+{
+    "_comment": "Data to be passed on update, assuming an update is combined",
+    "update":{
+        "regions":{
+            "region1":{"active":0,"recorved":2,"dead":0,"tested":24},
+            "region2":{"active":0,"recorved":2,"dead":0,"tested":24},
+            "region3":{"active":0,"recorved":2,"dead":0,"tested":24},
+            "regionN":{"active":0,"recorved":2,"dead":0,"tested":24}
+        },
+        "timestamp":"13/06/2020-18:00:24",
+        "author":"current_user"
+    }
+}

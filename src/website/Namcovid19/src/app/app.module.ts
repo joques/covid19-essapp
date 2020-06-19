@@ -51,6 +51,7 @@ import { TechResponseComponent } from './components/tech-response/tech-response.
 import { TestingInfoComponent } from './components/testing-info/testing-info.component';
 import { CircularsAllComponent } from './components/circulars-all/circulars-all.component';
 import { SocketService } from './services/socket.io.service';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { SocketService } from './services/socket.io.service';
     LatestNewsComponent,
     TechResponseComponent,
     TestingInfoComponent,
-    CircularsAllComponent
+    CircularsAllComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
