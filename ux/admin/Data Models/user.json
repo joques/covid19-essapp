@@ -1,0 +1,12 @@
+{
+    "_comment": "User profile",
+    "user":{
+        "firstname":"John",
+        "lastname":"doe",
+        "organization":"MOHSS",
+        "usertype":"admin",
+        "email":"jdoe@mohss.gov.na",
+        "username":"jdoe",
+        "password":"encrypted version"
+    }
+}

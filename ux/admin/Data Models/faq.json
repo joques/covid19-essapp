@@ -1,0 +1,12 @@
+{
+    "_comment": "We might not need the timpe stamp here",
+    "faq":{
+        "faqs":{
+            "question1":{"question":"What is ..","answer":"X is ..."},
+            "question2":{"question":"What is ..","answer":"X is ..."},
+            "questionN":{"question":"What is ..","answer":"X is ..."}
+        },
+        "timestamp":"13/06/2020-18:00:24",
+        "author":"current_user"
+    }
+}
