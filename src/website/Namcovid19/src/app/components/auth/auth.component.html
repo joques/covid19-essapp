@@ -18,20 +18,27 @@
 
           <!-- Name -->
           <div class="md-form mt-3">
-            <input type="text" id="materialSubscriptionFormPasswords" class="form-control">
+            <input type="text" formControlName="username" nam="username"  id="materialSubscriptionFormPasswords" class="form-control">
             <label for="materialSubscriptionFormPasswords">Username</label>
           </div>
 
           <!-- E-mai -->
           <div class="md-form">
-            <input type="email" id="materialSubscriptionFormEmail" class="form-control">
+            <input type="password" formControlName="password" name="password" id="password" class="form-control">
             <label for="materialSubscriptionFormEmail">Password</label>
           </div>
 
           <!-- Sign in button -->
-          <button mdbBtn type="button" color="red" rounded="true" outline="true" mdbWavesEffect>
-            Sign In
-            <mdb-icon fas icon="chart-line" class="mr-2"></mdb-icon>
+          <button mdbBtn type="button" color="red" rounded="true" outline="true" mdbWavesEffect (click)="login(loginForm.value)" >
+            <div *ngIf="!loading">
+              Sign In
+              <mdb-icon fas icon="chart-line" class="mr-2"></mdb-icon>
+            </div>
+            <div *ngIf="loading">
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              Signing in...
+            </div>
+
           </button>
 
         </form>

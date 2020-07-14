@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AuthComponent implements OnInit {
 
   loginForm: FormGroup; // Login form Model
+  loading: boolean = false;
+
   constructor(
     private _fb: FormBuilder) { }
 
@@ -20,7 +22,7 @@ export class AuthComponent implements OnInit {
 
   public createLoginForm = (data?: any): void => {
     this.loginForm = this._fb.group({
-      id: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }

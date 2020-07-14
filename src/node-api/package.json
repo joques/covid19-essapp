@@ -1,0 +1,49 @@
+{
+  "name": "XX-SMS-Gateway",
+  "version": "1.0.0-alpha",
+  "description": "SMS Gateway Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start pm2.config.json && pm2 logs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "author": "Erastus Nathingo <contact@erassy.com.",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "1.17.2",
+    "colors": "^1.3.3",
+    "compression": "1.6.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "express": "4.15.3",
+    "firebase-admin": "5.1.0",
+    "jsonwebtoken": "8.0.1",
+    "jwt-express": "1.1.0",
+    "lodash": "4.17.4",
+    "method-override": "2.3.9",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.22",
+    "mongoose-auto-increment": "5.0.1",
+    "mongoose-encrypt": "0.0.1-alpha.3",
+    "mongoose-geojson-schema": "^2.1.2",
+    "mongoose-id-validator": "^0.5.3",
+    "mongoose-unique-validator": "^2.0.2",
+    "morgan": "^1.9.1",
+    "multer": "1.3.0",
+    "node-schedule": "^1.3.2",
+    "pdfkit": "^0.10.0",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.9.0"
+}
+}

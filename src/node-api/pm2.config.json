@@ -1,0 +1,22 @@
+{
+    "apps": [{
+        "name": "thestore",
+        "script": "./index.js",
+        "watch": true,
+        "ignore_watch": [
+            ".git",
+            ".md",
+            "/logs",
+            "logs",
+            "./*/*.pdf",
+            "node_modules"
+        ],
+        "output":"./logs/thestore-out.log",
+        "error":"./logs/thestore-error.err",
+        "log_file": "./logs/thestore-combined.log",
+        "time": true,
+        "env": {
+            "PORT": 9000
+        }
+    }]
+}
