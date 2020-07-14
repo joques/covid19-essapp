@@ -1,4 +1,4 @@
-# Template API
+# COVID ADMIN PORTAL API
 
 Integrate our high availability, auto-scaling API, including built-in redundancies, failovers and enterprise ready SLAs.
 Template API uses Node.js, Expressjs, Mongodb and Mongoose.
