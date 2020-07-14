@@ -1,0 +1,21 @@
+#%RAML 1.0
+title: CODIV Essential Information -- Admin portal
+baseURI: http://196.216.167.150:6552/covid/{version}
+version: v1
+
+/admin/login
+
+
+
+
+/awareness/latest:
+    displayName: Latest information about the virus
+    description:
+        get:
+            description:
+                responses:
+                    200:
+                        body:
+                            text/plain:
+								example: |
+									["latest11", "latest2", "latest3",..., "latestn"]
