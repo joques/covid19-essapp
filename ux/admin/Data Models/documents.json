@@ -1,0 +1,19 @@
+{
+    "_comment": "This needs to be explained, what document are you uploading and what meta data do we have ",
+    "documents":{
+           "newDocuments":{
+                "document1":{
+                "title":"Dr Hage weekly update",
+                "catergory":"cat1",
+                "summary":"The head of state......"
+            },
+            "document2":{
+                "title":"Daily Health update  ",
+                "catergory":"cat2",
+                "summary":"The health minister......"
+            }
+        },
+        "timestamp":"13/06/2020-18:00:24",
+        "author":"current_user"
+    }
+}
