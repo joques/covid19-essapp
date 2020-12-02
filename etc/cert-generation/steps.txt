@@ -1,0 +1,7 @@
+695  openssl genrsa -out covkey.pem
+  717  openssl x509 -days 365 -req -in covcert.csr -signkey covkey.pem -out covcert.crt
+  723  openssl genrsa -out covkey.pem 4096
+  724  openssl req -new -key covkey.pem -out covcert.csr
+  725  openssl x509 -req -in covcert.csr -signkey covkey.pem -out covcert.crt
+  726  openssl pkcs12 -export -in covcert.crt -inkey covkey.pem -out cov19cert.p12
+  740  openssl pkcs12 -export -in cert.pem -inkey privkey.pem -certfile intermediate.pem -name "covidservices.nust.na" -out cov19cert.p12
